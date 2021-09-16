@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+
+
+<script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
+
+<div class="musicwyy2" style="position:fixed;left:0px;bottom:0px;z-index:105;opacity: 1; 
+    width: 30px;
+    height: 110px;    font-size: 15px;
+    font-family: 'Long Cang';">
+
+  <button type="button" style="
+    width: 30px;
+    height: 66px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0px;
+    background: #f5f5f5;
+    z-index:200;" onclick="musicChange()"> 播放器</button>
+
+</div> 
+
+
+
+<div class="musicwyy1" style="position:fixed;left:0px;bottom:0px;z-index:100;opacity: 1; 
+    width: 300px;
+    height: 110px;font-size: 0;">
+
+  <div class="aplayer-miniswitcher" style="
+    height: 110px;
+    width: 20px;
+    display: inline-block; overflow: hidden;">
+
+
+
+  </div>
+
+  <div style="
+    width: calc(100% - 30px);
+    height: 110px;
+    display: inline-block;" id="musicZJ">
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4968365&auto=1&height=66"></iframe>
+
+  </div>
+  
+</div>
+<meta name="description" content="关于《Practical TLA+》第一部分Chapter 5阅读笔记以及关于高并发的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Practical TLA+》阅读笔记（六）">
+<meta property="og:url" content="https://yang-shijun.gitee.io/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/index.html">
+<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:description" content="关于《Practical TLA+》第一部分Chapter 5阅读笔记以及关于高并发的理解">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-27T08:35:00.000Z">
+<meta property="article:modified_time" content="2021-09-01T08:32:39.536Z">
+<meta property="article:author" content="杨释钧">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yang-shijun.gitee.io/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/","path":"2021/08/27/《Practical-TLA+》阅读笔记（五）/","title":"《Practical TLA+》阅读笔记（六）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《Practical TLA+》阅读笔记（六） | 杨释钧的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">杨释钧的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Labels"><span class="nav-number">2.</span> <span class="nav-text">Labels</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Processes"><span class="nav-number">3.</span> <span class="nav-text">Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Await"><span class="nav-number">3.1.</span> <span class="nav-text">Await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deadlocks"><span class="nav-number">3.2.</span> <span class="nav-text">Deadlocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-Sets"><span class="nav-number">3.2.1.</span> <span class="nav-text">Process Sets</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Procedures"><span class="nav-number">4.</span> <span class="nav-text">Procedures</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example"><span class="nav-number">5.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨释钧"
+      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">杨释钧</p>
+  <div class="site-description" itemprop="description">欢迎欢迎</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_55101026?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ysjyx7" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="杨释钧">
+      <meta itemprop="description" content="欢迎欢迎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨释钧的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Practical TLA+》阅读笔记（六）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-27 16:35:00" itemprop="dateCreated datePublished" datetime="2021-08-27T16:35:00+08:00">2021-08-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-01 16:32:39" itemprop="dateModified" datetime="2021-09-01T16:32:39+08:00">2021-09-01</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">关于《Practical TLA+》第一部分Chapter 5阅读笔记以及关于高并发的理解</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    现在我们接触到的大多数程序都是独立于时间的，都是一个发生之后另外一个接着发生，我们可以根据系统的初始状态和几行代码具体描述出系统最终的状态。</p>
+<p>​    但是很多程序都不是这样的简单地程序，在并发系统中，没有单一时间线，事实上会有以任意顺序发生在任何时候的事情，进而产生新时间线的断裂传播。设计并发系统需要很多进行推理的可能的行为，因此很难被正常设计。</p>
+<p>​    在这一章我们将会合理使用TLA+，我们在之前已经用其中的<strong>either</strong>和<strong>with</strong>做过一些基本的不确定性行为，现在主要介绍<strong>processes</strong>和<strong>labels</strong>两种想法，这将会帮助我们测试高并发代码</p>
+<h1 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h1><p>​    首先我们先说一下labels，labels一般不会去描述单一的过程，而失去描述并发系统</p>
+<p>​    labels决定了spec的原子性，因为TLC在单个步骤中会执行标签中的所有步骤。执行完单个步骤后，TLC会检查不变量然后寻找下一个要执行的标签。TLC是会检查下一个标签集上的所有可能行为的<del>（或许类似于BFS）</del>，对于并发系统，TLC将会测试所有可用的下一步操作是否存在可能的错误</p>
+<p>​    在将PlusCal编译成TLA+时，会产生一个新的变量pc，pc标记着我们目前所在的标签，如果pc = “A”的话，下一个步骤将会有A标签下的东西组成。在同一个过程中，我们可以用<strong>goto NameOfLabel</strong>进行标签跳转,<strong>值得注意的是，”Done”标签是每个过程最后的标签，不能作为自己的标签名，但是可以用goto跳转至Done</strong></p>
+<p>​    贴标签要遵循以下的规则:</p>
+<ol>
+<li>在每一个过程的开始和每一个while前都要有一个标签</li>
+<li>不能在macro或with内部放标签</li>
+<li>在每一个goto后面必须有标签</li>
+<li>如果在if或either之类的分支结构内部有标签，那么在控制结构的尾端也要有标签</li>
+<li>在一个标签中不能指派同一个变量两次</li>
+</ol>
+<p>给一个例子解释一下最后一条</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Valid:</span><br><span class="line"> either x := 1;</span><br><span class="line"> or x := 2;</span><br><span class="line"> end either;</span><br><span class="line">Invalid:</span><br><span class="line"> x := 1;</span><br><span class="line"> x := 2;</span><br></pre></td></tr></table></figure>
+<p>另外就是在处理函数的赋值时也不能这样，但是PlusCal给出了||操作，这样可以被认为是同时发生的。<strong>但是对于一般地变量还是会报错</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Valid:</span><br><span class="line"> struct.key1 = 1 ||</span><br><span class="line"> struct.key2 = 2;</span><br></pre></td></tr></table></figure>
+<h1 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h1><p>​    编程中常见的一种情况是读写器模式（reader-writer pattern），这里有两个或多个异步进程通过共享通道进行通信的地方，其中一个用来编写信息，另一个主要是使用它们。我们接下来要模拟共享通道有界的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-----MODULE test-----</span><br><span class="line">EXTENDS TLC, Integers, Sequences</span><br><span class="line">CONSTANTS MaxQueueSize</span><br><span class="line">(*--algorithm message_queue</span><br><span class="line">variable</span><br><span class="line">    queue = &lt;&lt;&gt;&gt;;</span><br><span class="line">define</span><br><span class="line">    BoundedQueue == Len(queue) &lt;= MaxQueueSize</span><br><span class="line">end define;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Writer:</span><br><span class="line">    while TRUE do</span><br><span class="line">        queue := Append(queue, &quot;msg&quot;);</span><br><span class="line">    end while;</span><br><span class="line">end process;</span><br><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variables</span><br><span class="line">    current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">     while TRUE do</span><br><span class="line">        current_message := Head(queue);</span><br><span class="line">        queue := Tail(queue);</span><br><span class="line">     end while;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    我们通过关键字<strong>process</strong>来定义一个新的过程，每一个过程都需要分配一个值，所有的过程都必须使用标签</p>
+<p>​    TLA+可以运行任意的一个过程，在每一个过程中都可以检查相应的不变量，另外就是本地变量（local variable），也就是在过程中定义的变量，比如reader过程中的current_message变量，她不可以被其他模块获取，当然，在这个过程中被使用的macro中可以使用该变量，本地变量也可以用\in来定义</p>
+<p>​    现在运行上面的程序，很快就会报错，因为高并发的缘故，TLC可以先运行过程reader，这会先求queue的头部，但是它是空的！<strong>Head运算在空列表的情况下是没有意义的</strong>，当然也可以类比现实生活，这个bug是很容易修复的，只需要加一个判定即可，不过这里给出了一个表达式</p>
+<h2 id="Await"><a href="#Await" class="headerlink" title="Await"></a>Await</h2><p>​    这个表达式也相当于一个判定，即await Expression，含义是如果Expression为真，运行后面的步骤，否则阻止其运行，当然也可以用<strong>when</strong>得到相同的用法，我们改写一下reader过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line"> while TRUE do</span><br><span class="line"> await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line"> current_message := Head(queue);</span><br><span class="line"> queue := Tail(queue);</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    当队列为空时，意味着Read行为不能发生，这时唯一可以发生的就是Write行为，所以TLC接下来必须执行Write。事实上这样强迫阅读者在队列为空时一直等待，然而如果这样运行的话会报一个别的错误，即写的人会一直写下去，所以我们也可以加入一个等待语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line"> while TRUE do</span><br><span class="line"> queue := Append(queue, &quot;msg&quot;);</span><br><span class="line"> await Len(queue) &lt;= MaxQueueSize;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    值得注意的是，这里的await语句加载了写文字的后面，如果先判断再写的话容易产生错误，即队列长度比最大长度大1，这是很显然的错误</p>
+<h2 id="Deadlocks"><a href="#Deadlocks" class="headerlink" title="Deadlocks"></a>Deadlocks</h2><p>​    现在来埋之前挖的一个坑</p>
+<p>​    上一节说到的await的使用有可能会导致所有的过程都不发生，例如我们可以在上一节的通信中加入读者有可能出现错误的这一缓解，即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">macro add_to_queue(val) begin</span><br><span class="line">	await Len(queue) &lt; MaxQueueSize;</span><br><span class="line">	queue := Append(queue, val);</span><br><span class="line">end macro;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line"> while TRUE do</span><br><span class="line"> 	add_to_queue(&quot;msg&quot;);</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">  while TRUE do</span><br><span class="line">  	await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line">  	current_message := Head(queue);</span><br><span class="line">  	queue := Tail(queue);</span><br><span class="line">  either</span><br><span class="line"> 	skip;</span><br><span class="line">  or</span><br><span class="line"> 	NotifyFailure:</span><br><span class="line"> 		current_message := &quot;none&quot;;</span><br><span class="line"> 		add_to_queue(&quot;fail&quot;);</span><br><span class="line">  end either;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里采用了either来模拟这种情况，另外就是其中的做出操作的这种情况必须采用一个标签，<strong>这是因为其中的两个变量我们都已经在这个步骤中操作过了，而一个步骤中只能对一个变量进行一次分配，所以需要添加标签来更改步骤层次</strong>，另外就是因为either的一个分支中已经有了一个标签，所以如果想在过程中写另外的一些东西的话需要在either标签后再定义新的标签，但是这里是不需要的</p>
+<p>​    一旦运行，就会报一个新的错误，即<strong>Deadlock Reached</strong>，这指的是spec中的所有过程都无法采取动作的情况，这通常是因为await所造成的错误，但是像with x \in S，如果S是空集的话也会报错，通常这是一个很坏的错误，但是如果spec中不考虑这一点的话，可以在Model Overview &gt; What to Check? &gt; Deadlock中修改</p>
+<h3 id="Process-Sets"><a href="#Process-Sets" class="headerlink" title="Process Sets"></a>Process Sets</h3><p>​    通常的解决这一错误的办法是加入更多的读者，但是仔细想一下就会知道这样的方法根本没用啊！！！因为本身根据TLC的特性，报错是肯定的，但是通过增加更多的读者这一方法在实际生产中肯定是可以大幅减少可能出现的错误产生</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">process reader \in &#123;&quot;r1&quot;, &quot;r2&quot;&#125;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line"> while TRUE do</span><br><span class="line"> 	await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line"> 	current_message := Head(queue);</span><br><span class="line"> 	queue := Tail(queue);</span><br><span class="line"> either</span><br><span class="line"> 	skip;</span><br><span class="line"> or</span><br><span class="line"> 	NotifyFailure:</span><br><span class="line"> 		current_message := &quot;none&quot;;</span><br><span class="line"> 		add_to_queue(self);</span><br><span class="line">  end either;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里的第一行实际上就是定义了两个过程，其中的self就是当前过程的名字</p>
+<p>​    <strong>值得注意的是，所有的过程名字必须是可比的，这里因为writer是字符串，所以reader要么是字符串的集合，要么是模型值的集合</strong></p>
+<h1 id="Procedures"><a href="#Procedures" class="headerlink" title="Procedures"></a>Procedures</h1><p>​    现在有这样一个需求，即可以在多个过程之间共享一个多步骤的操作，这里不能用宏，因为宏中不能包含标签，所以我们引入了<strong>procedures</strong>，下面我们给出的spec就像是用procedure代替了macro一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">procedure add_to_queue(val=&quot;&quot;) begin</span><br><span class="line">	Add:</span><br><span class="line">		await Len(queue) &lt; MaxQueueSize;</span><br><span class="line">		queue := Append(queue, val);</span><br><span class="line">		return;</span><br><span class="line">end procedure;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line">	while TRUE do</span><br><span class="line">		call add_to_queue(&quot;msg&quot;);</span><br><span class="line">	end while;</span><br><span class="line">end process;</span><br><span class="line">process reader \in &#123;&quot;r1&quot;, &quot;r2&quot;&#125;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">	while TRUE do</span><br><span class="line">		await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line">		current_message := Head(queue);</span><br><span class="line"> 		queue := Tail(queue);</span><br><span class="line"> 		either</span><br><span class="line"> 			skip;</span><br><span class="line"> 		or</span><br><span class="line"> 			NotifyFailure:</span><br><span class="line"> 				current_message := &quot;none&quot;;</span><br><span class="line"> 				call add_to_queue(self);</span><br><span class="line"> 		end either;</span><br><span class="line">	end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    运行的话会产生同样的deadlock，procedure和macro的语法是差不多的，但是他之中可以有标签，在procedure中也可以定义局部变量，不过只能用<strong>=</strong>去定义，最后用return来结束这一过程，，但是它没有任何的返回值，然后在过程中我们可以通过<strong>call</strong>来使用程序，被调用的过程必须紧跟在标签、封闭块的结尾、goto或return中</p>
+<p>​    另外就是这个东西必须在宏之后定义，在process之前定义。</p>
+<p>​    <strong>值得注意的是在使用过程集合时，如果其中使用了procedure或者宏的话，也可以使用self</strong></p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>​    该例子主要用来模拟多个客户端共享一些实时更新的资源</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    主要介绍了TLA+在高并发程序中的应用</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杨释钧
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yang-shijun.gitee.io/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" title="《Practical TLA+》阅读笔记（六）">https://yang-shijun.gitee.io/2021/08/27/《Practical-TLA+》阅读笔记（五）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://www.zhihu.com/people/yang-lao-er-25-83">
+          <span class="icon">
+            <i class="fab fa-zhihu"></i>
+          </span>
+
+          <span class="label">知乎</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343">
+          <span class="icon">
+            <i class="fa fa-book"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/ysjyx7">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/08/26/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="prev" title="《Practical TLA+》阅读笔记（四）">
+                  <i class="fa fa-chevron-left"></i> 《Practical TLA+》阅读笔记（四）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2021/09/02/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（六）">
+                  《Practical TLA+》阅读笔记（六） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">62k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">57 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

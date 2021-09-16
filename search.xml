@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>大学生数学竞赛微分相关知识的复习</title>
+    <url>/blog/2021/08/16/2021-8-16-%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B%E5%BE%AE%E5%88%86%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h1><h2 id="前导"><a href="#前导" class="headerlink" title="前导"></a>前导</h2><ol>
+<li>不为计算而计算，很多时候是为了便于分析，比如定义$e=\lim_{n\to +\infty}{\sum_{i=1}^n\frac{1}{n!}}$</li>
+<li>要注意的是抓住主要矛盾，比如计算极限$\lim_{n \to +\infty} \sum_{k=1}^{n}\frac{k^n}{n^n}$</li>
+</ol>
+<h2 id="极限的典型方法"><a href="#极限的典型方法" class="headerlink" title="极限的典型方法"></a>极限的典型方法</h2><ol>
+<li><p>定义，即$\epsilon-\delta$语言</p>
+</li>
+<li><p>四则运算</p>
+</li>
+<li><p>等价无穷小替换（两个重要极限）</p>
+</li>
+<li><p>L’ Hospital法则，注意使用条件</p>
+</li>
+<li><p>夹逼定理</p>
+</li>
+<li><p>单调有界收敛定理</p>
+</li>
+<li><p>Taylor展开</p>
+</li>
+<li><p>Stolz定理</p>
+<p>设${x_n}$严格单调增加，且$\lim_{n \to \infty}x_n=+\infty$,若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则有$\lim_{n \to \infty}\frac{y_n}{x_n}=a$</p>
+<p>设$x_n$严格单调，且$\lim_{n \to \infty}x_n=0,\lim_{n \to\infty}y_n=0$，若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则$\lim_{n\to\infty}\frac{y_n}{x_n}=a$</p>
+</li>
+</ol>
+<h2 id="典型例题"><a href="#典型例题" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
+<li><p>主要比较难以看出来的就是使用夹逼准则的求和极限，这时候大多数时候都需要通过恒等变形和放缩来利用夹逼准则转换成黎曼和，如$\lim_{n \to +\infty} \sum_{k=1}^n \frac{a^\frac{k}{n}}{n+(a-1)k^{-1}}$</p>
+</li>
+<li><p>当含有三角函数和积分时，最佳的做法应该是根据三角函数的有界性将积分做掉，例如$\lim_{x \to+\infty}\sqrt[3]{x}\int_x^{x+1}\frac{sint}{\sqrt[]{t+cost}}dt$</p>
+</li>
+<li><p>对于极限$\lim_{n \to \infty}\sum_{k=0}^n\frac{1}{n+k}$，有多种不同的做法，这里主要想提一下欧拉常数，即$\lim_{n\to\infty}\sum_{k=1}^n\frac{1}{k}-lnn=\gamma_n$，其中$\lim_{n \to\infty}\gamma_n=C$</p>
+</li>
+<li><p>PPT31页值得再看</p>
+</li>
+<li><p>与积分相结合的极限题目</p>
+<ol>
+<li><p>通过观察转换成Riemann和，下面给几个例子</p>
+<p> $\lim\sum_{k=1}^{n-1}(1+\sqrt[]\frac{k}{n})sin\frac{k\pi}{n^2}$</p>
+</li>
+<li><p>利用积分中值定理和微分中值定理进行化简，下面给一个很经典的例子，即</p>
+<ol>
+<li>设f(x)在[0,1]上有连续导数，f(0)=0,f(1)=1,证明:<br>$\lim_{n \to \infty}n(\int_{0}^{1}f(x)dx-\frac{1}{n}\sum_{k=1}^{n}f(\frac{k}{n}))$</li>
+</ol>
+</li>
+<li><p>在存在k之类和三角函数时可以考虑求递推式，如求$\lim_{x \to 0^+}\frac{\int_0^xsin^k\frac{1}{t}dt}{x},k=1,2,…$</p>
+</li>
+<li><p>然后就是一道代数变形不太好想的题目，即$\lim_{n \to \infty}\sqrt[n+1]{(n+1)!}-\sqrt[n]{n!}$</p>
+</li>
+</ol>
+</li>
+<li><p>单调有界定理队函数和数列统统适用</p>
+</li>
+<li><p>泰勒展开式是一种非常重要的方法，或许可以看作是等价无穷小，这方面的例题很多，需要注意的是$tanx$和$(1+x)^\alpha$的泰勒展开式，将其转化成在0附近，就可以展开，下面给出几个题</p>
+<ol>
+<li>$\lim_{x \to0}\frac{(1+x)^\frac{2}{x}-e^2(1-ln(1+x))}{x}$，该题目需要注意的是在有减法的时候不要随意用等价无穷小！尽量先用泰勒公式展开</li>
+</ol>
+</li>
+<li><p>Stolz定理</p>
+<p>使用stolz定理的关键就在于构造出满足条件的式子，这里PPT上给出的题目基本都是谢惠民上的题目，此处不再赘述</p>
+</li>
+</ol>
+<hr>
+<h1 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h1><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol>
+<li>介值性</li>
+<li>最值性</li>
+</ol>
+<h2 id="典型例题-1"><a href="#典型例题-1" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
+<li>这里的典型例题大多是利用反证法导出矛盾</li>
+</ol>
+<hr>
+<h1 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h1><ol>
+<li><p>导数，单侧导数，微分，偏导数，全微分，方向导数</p>
+</li>
+<li><p>高阶导数的计算，主要利用Leibniz求导公式</p>
+</li>
+<li><p>这里就贴几道让我印象深刻的题目，</p>
+<p>已知$y=\frac{2x}{x^2+1}$，求$y^{(n)}$</p>
+<p>已知$y=\frac{x^n}{(x+1)^2(x+2)^2}$，求$y^{(n)}$</p>
+<p>已知$y=(arcsinx)^2$，求$y^{(n)}(0)$</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大学生数学竞赛</category>
+        <category>微分学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>AVL树  Treap</title>
+    <url>/blog/2021/08/19/BST%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>​    二叉搜索树就是对于树中的每一个结点，其左子树都小于它，右子树都大于它，其查询效率为$log(n)$，但是，一旦输入的序列有序，二叉搜索树就退化成了链表，时间复杂度退化至$n$</p>
+<p>​    正是由于二叉搜索树在这种情况下的劣势，我们考虑从两个方面对其进行优化，一是在每次插入的时候，考察此时的平衡因子，根据其值做适当的调整，来防止它出现单支树的情况，此即为AVL树，二是将输入的序列随机化，因为二叉搜索树在输入序列随机时具有较高的性能，这个时候需要加入一个另外的特征值来使其具有堆的性质，此即为Treap</p>
+<h1 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h1><h2 id="类型定义"><a href="#类型定义" class="headerlink" title="类型定义"></a>类型定义</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> height,data;</span><br><span class="line">    ArcNode *left,*right;</span><br><span class="line">&#125;*ArcTree,ArcNode;</span><br></pre></td></tr></table></figure>
+<h2 id="调整"><a href="#调整" class="headerlink" title="调整"></a>调整</h2><ol>
+<li><p>在插入新节点和删除结点的时候都需要进行所谓的旋转，即有四种类型</p>
+</li>
+<li><p>LL型</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//		  2</span></span><br><span class="line"><span class="comment">//	    //</span></span><br><span class="line"><span class="comment">//	  1            -------&gt;  		1</span></span><br><span class="line"><span class="comment">//   //						   //	   \\</span></span><br><span class="line"><span class="comment">// 0						0			 2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LL</span><span class="params">(AvlTree &amp;T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AvlTree q=T-&gt;left;</span><br><span class="line">    T-&gt;left=q-&gt;right;</span><br><span class="line">    q-&gt;right=T;</span><br><span class="line">    update(T);<span class="comment">//这里的更新主要是对于结点的高度进行更新，即左右子树的高度的最大值加一，具体题目具体去设计函数即可</span></span><br><span class="line">    update(q);</span><br><span class="line">    T=q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RR型</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//   2</span></span><br><span class="line"><span class="comment">//    \\</span></span><br><span class="line"><span class="comment">// 		1	------&gt;     		1</span></span><br><span class="line"><span class="comment">//         \\			    //		\\</span></span><br><span class="line"><span class="comment">//           0            2 			0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RR</span><span class="params">(AvlTree &amp;T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AvlTree q=T-&gt;right;</span><br><span class="line">    T-&gt;right=q-&gt;left;</span><br><span class="line">    q-&gt;left=T;</span><br><span class="line">    update(T);</span><br><span class="line">    update(q);</span><br><span class="line">    T=q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LR型</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//    2				2</span></span><br><span class="line"><span class="comment">//  //             //</span></span><br><span class="line"><span class="comment">// 1	----&gt;    0     ------&gt;  	  0</span></span><br><span class="line"><span class="comment">//  \\ 		   //				  //   \\</span></span><br><span class="line"><span class="comment">//	  0		 1					1		2</span></span><br><span class="line"><span class="comment">//      先右旋			 再左旋</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LR</span><span class="params">(AvlTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RR(T-&gt;left);</span><br><span class="line">    LL(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RL型</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//和上面差不多，这里就不画图了</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RL</span><span class="params">(AvlTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL(T-&gt;right);</span><br><span class="line">    RR(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="插入结点操作"><a href="#插入结点操作" class="headerlink" title="插入结点操作"></a>插入结点操作</h2><p>​    其实和二叉树的插入节点操作差不多，但是区别就在于需要在插入之后利用旋转操作对二叉树进行维护</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(AvlTree T,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)<span class="comment">//为空则初始化</span></span><br><span class="line">    &#123;</span><br><span class="line">        T=(ArcTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode));</span><br><span class="line">        T-&gt;left=<span class="literal">NULL</span>,T-&gt;right=<span class="literal">NULL</span>;</span><br><span class="line">        T-&gt;data=x;</span><br><span class="line">        T-&gt;height=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;data&lt;x)<span class="comment">//根据定义判断插入到左支还是右支</span></span><br><span class="line">    &#123;</span><br><span class="line">        insert(T-&gt;right,x);</span><br><span class="line">        update(T);</span><br><span class="line">        <span class="keyword">if</span>(GetHeight(T-&gt;right)-GetHeight(T-&gt;left)&gt;<span class="number">1</span>)</span><br><span class="line">        &#123;<span class="comment">//检查更新后是否还是AVL树</span></span><br><span class="line">            <span class="keyword">if</span>(x&lt;T-&gt;right-&gt;data)<span class="comment">//分情况做旋转</span></span><br><span class="line">                RL(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                RR(T);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;data&gt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(T-&gt;left,x);</span><br><span class="line">        update(T);</span><br><span class="line">        <span class="keyword">if</span> (GetHeight(T-&gt;left)-GetHeight(T-&gt;right) &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &lt; T-&gt;left-&gt;data)</span><br><span class="line">                LL(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                LR(T);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>;</span><br><span class="line">    update(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除结点操作"><a href="#删除结点操作" class="headerlink" title="删除结点操作"></a>删除结点操作</h2><p>​    这是一种之前没学过的操作，但是具体其实和插入结点没有太多区别，主要分三类：</p>
+<ol>
+<li><p>如果左子树不存在，直接将右子树提上来</p>
+</li>
+<li><p>如果右子树不存在，直接将左子树提上来</p>
+</li>
+<li><p>如果都存在，有两种选择，既可以将左子树的最右结点拿上来，也可以将右子树的最左结点拿上来，这里选择第二种，代码几乎是一样的</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(AvlTree T,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;data==x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;left&amp;&amp;T-&gt;right)<span class="comment">//左右子树都存在</span></span><br><span class="line">        &#123;</span><br><span class="line">            AvlTree q=T-&gt;right;</span><br><span class="line">            <span class="keyword">while</span>(q-&gt;left)<span class="comment">//找节点</span></span><br><span class="line">                q=q-&gt;left;</span><br><span class="line">            T-&gt;data=q-&gt;data;<span class="comment">//把这个结点替换到要删除的结点</span></span><br><span class="line">            Delete(T-&gt;right,q-&gt;data);<span class="comment">//然后删除最下面的那个，它一定没有左右子树，归到其他情况</span></span><br><span class="line">            update(T);</span><br><span class="line">            <span class="keyword">if</span>(GetHeight(T-&gt;left)-GetHeight(T-&gt;right)&gt;<span class="number">1</span>)<span class="comment">//由于这个时候删除了右子树的结点，所以只需要判断这个条件</span></span><br><span class="line">                <span class="keyword">if</span>(GetHeight(T-&gt;left-&gt;left)&gt;=GetHeight(T-&gt;left-&gt;right))<span class="comment">//这个时候由于删除的是叶子节点，只需要判断左右子树的高度</span></span><br><span class="line">                    LL(T);</span><br><span class="line">            	<span class="keyword">else</span></span><br><span class="line">                    LR(T);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span><span class="comment">//如果左右子树有没有的，直接提上来就可以了</span></span><br><span class="line">        &#123;</span><br><span class="line">            AvlTree q=T;</span><br><span class="line">            <span class="keyword">if</span>(T-&gt;left)</span><br><span class="line">                T=T-&gt;left;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;right)</span><br><span class="line">                T=T-&gt;right;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                T=<span class="literal">NULL</span>;</span><br><span class="line">            <span class="built_in">free</span>(q);<span class="comment">//一定要free</span></span><br><span class="line">            q=<span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x&lt;T-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        Delete(T-&gt;left,x),update(T);</span><br><span class="line">        <span class="keyword">if</span> (GetHeight(T-&gt;right) - GetHeight(T-&gt;left) &gt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> (GetHeight(T-&gt;right-&gt;left) &lt;= GetHeight(T-&gt;right-&gt;right))</span><br><span class="line">                RR(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                RL(T);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Delete(T-&gt;right, x), update(T);</span><br><span class="line">        <span class="keyword">if</span> (GetHeight(T-&gt;left) - GetHeight(T-&gt;right) &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (GetHeight(T-&gt;left-&gt;left) &gt;= GetHeight(T-&gt;left-&gt;right))</span><br><span class="line">                LL(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                LR(T);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    update(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ol>
+<li>其他操作和二叉搜索树基本差不多</li>
+</ol>
+<h1 id="Treap"><a href="#Treap" class="headerlink" title="Treap"></a>Treap</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>​    Treap相比于普通的BST，每一个结点多了一个优先级，优先级是满足堆的性质的，所以这样就可以让他的结点保持一种随机的状态，防止成链</p>
+<h2 id="结点类型"><a href="#结点类型" class="headerlink" title="结点类型"></a>结点类型</h2><p>​    这里采用了一个数组来存储左孩子和右孩子，可以有效减少代码量，相比于普通的二叉搜索树，多了另外的一个关键字</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> rank,data,size,same;</span><br><span class="line">	TreNode* son[<span class="number">2</span>];</span><br><span class="line">&#125;TreNode,*Treap;</span><br></pre></td></tr></table></figure>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><p>​    旋转相当于是Treap中最核心的操作了，这里只有左旋和右旋，下面以左旋为例说明</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//这里的左旋主要有两步，首先先将根节点的右孩子的左孩子作为根节点的右孩子，然后原来根节点的右孩子的左孩子变为原来的根节点即可</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rotate</span><span class="params">(Treap &amp;T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Treap p=T-&gt;son[<span class="number">1</span>];</span><br><span class="line">    T-&gt;son[<span class="number">1</span>]=p-&gt;son[<span class="number">0</span>];</span><br><span class="line">    p-&gt;son[<span class="number">0</span>]=T;</span><br><span class="line">    T=p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//事实上，可以将其统一成一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rotate</span><span class="params">(Treap &amp;T,<span class="keyword">int</span> way)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Treap p=T-&gt;son[way^<span class="number">1</span>];</span><br><span class="line">    T-&gt;son[way^<span class="number">1</span>]=p-&gt;son[way];</span><br><span class="line">    p-&gt;son[way]=T;</span><br><span class="line">    T=p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>​    Treap的插入操作和BST差不多，只是在每次插入之后要判断是否需要旋转，旋转的方向由需要维护的堆的类型和插入子树根节点与当前根节点共同决定</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(Treap &amp;T,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        T=(TreNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(TreNode));</span><br><span class="line">        T-&gt;son[<span class="number">0</span>]=<span class="literal">NULL</span>;</span><br><span class="line">        T-&gt;son[<span class="number">1</span>]=<span class="literal">NULL</span>;</span><br><span class="line">        T-&gt;data=x;</span><br><span class="line">        T-&gt;size=T-&gt;same=<span class="number">1</span>;</span><br><span class="line">        T-&gt;rank=rand();</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    T-&gt;size++;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;data&lt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        Insert(T-&gt;son[<span class="number">1</span>],x);</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;son[<span class="number">1</span>]-&gt;rank&lt;T-&gt;rank) Rotate(T,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;data&gt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        Insert(T-&gt;son[<span class="number">0</span>],x);</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;son[<span class="number">0</span>]-&gt;rank&lt;T-&gt;rank) Rotate(T,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> T-&gt;same++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>​    删除的方式也和二叉搜索树差不多</p>
+<p>​    若删除元素原本存在多个，则只需将其存在个数减1即可。否则，若删除元素没有子节点，则直接将这个元素free即可。否则，若删除元素没有右子节点，或左子节点的优先级高于右子节点，就将以删除元素为根的子树右旋，我们可以发现，此时：原先的左子节点− − &gt; —&gt;−−&gt;新的根节点，原先的根节点− − &gt; —&gt;−−&gt;新的右子节点，因此，我们只要继续删除新的右子节点即可。否则，就将以删除元素为根的子树左旋，继续删除新的左子节点即可（与上面类似）。</p>
+<p>​    这个删除的过程其实就是旋转之后将要删除的结点的高度降低，然后逐步递归，最后肯定会到达成为叶子节点的情况</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(Treap &amp;T,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;data==x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;same&gt;<span class="number">1</span>) T-&gt;same--,update(T),<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;son[<span class="number">0</span>]||T-&gt;son[<span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(T-&gt;son[<span class="number">1</span>]==<span class="literal">NULL</span>||T-&gt;son[<span class="number">0</span>]-&gt;rank&gt;T-&gt;son[<span class="number">1</span>]-&gt;rank)</span><br><span class="line">                Rotate(T,<span class="number">1</span>),Delete(T-&gt;son[<span class="number">1</span>],x);</span><br><span class="line">            <span class="keyword">else</span> Rotate(T,<span class="number">0</span>),Delete(T-&gt;son[<span class="number">0</span>],x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">free</span>(T),T=<span class="literal">NULL</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;data&gt;x) Delete(T-&gt;son[<span class="number">0</span>],x);</span><br><span class="line">    <span class="keyword">else</span> Delete(T-&gt;son[<span class="number">1</span>],x);</span><br><span class="line">    update(T);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="其他操作-1"><a href="#其他操作-1" class="headerlink" title="其他操作"></a>其他操作</h3><ol>
+<li>和二叉搜索树差不多</li>
+</ol>
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><h2 id="AVL树-1"><a href="#AVL树-1" class="headerlink" title="AVL树"></a>AVL树</h2><p>​    查找时间复杂度：$O(log_2N)$</p>
+<h2 id="Treap-1"><a href="#Treap-1" class="headerlink" title="Treap"></a>Treap</h2><p>​    查找时间复杂度：$O(log_2N)$</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>二叉树</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>二叉树</tag>
+        <tag>AVL树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>uva540 队列的使用</title>
+    <url>/blog/2021/08/16/uva540/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>​    有t个团队的人正在排一个长队。每次新来一个人时，如果他有队友在排队，那么新人会插队到最后一个队友的身后。如果没有任何一个队友排队，则他会被排到长队的队尾。 输入每个团队中所有队员的编号，要求支持如下3种指令： ENQUEUE x：编号为x的人进入长队 DEQUEUE：长队的队首出队 STOP：停止模拟 对于每个DEQUEUE指令，输出出队的人的编号。</p>
+<h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><p>​    首先题目中给出了队员编号的范围，这就启发我们用一个数组根据下标存放，内容是队伍编号，然后为了更快，以时间换空间，开t个队列，然后每次入队的时候，根据入队编号，求出来是否有队员，这里需要三个数组，一个根据入队顺序来存储队伍编号，一个来根据队伍编号存放大数组中队头位置，一个存放队尾，如果有队员，直接插入到二维数组后面，否则先将队伍编号加入到队伍编号队列中，然后再插入。每次出队的时候，根据存放队伍变化数组的队头元素得到要出的队，将其队头增加，然后如果刚刚出的队空了，就将存放队伍编号的队列的队头增加，出队</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000010</span>], b[<span class="number">1010</span>][<span class="number">1010</span>], q1[<span class="number">1010</span>], q2[<span class="number">1010</span>], q[<span class="number">1010</span>];</span><br><span class="line"><span class="comment">//数组a用来存放最开始的数据，数组b是定义的t个队列，每次入队列时，判断进入哪个队列，数组q用来存储队列中的编号</span></span><br><span class="line"><span class="comment">//数组q1用来存储每个队列队尾的位置，数组q2用来存储每个队列队头的位置</span></span><br><span class="line"><span class="keyword">int</span> q1l = <span class="number">0</span>, q2l = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mem</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    q1l = <span class="number">0</span>;</span><br><span class="line">    q2l = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memset</span>(q1, <span class="number">0</span>, <span class="keyword">sizeof</span>(q1));</span><br><span class="line">    <span class="built_in">memset</span>(q2, <span class="number">0</span>, <span class="keyword">sizeof</span>(q2));</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t, count = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span> (t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Scenario #%d\n&quot;</span>, count);</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> num;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;num);</span><br><span class="line">                a[num] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        mem();</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> cmd[<span class="number">20</span>];</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, cmd);</span><br><span class="line">            <span class="keyword">if</span> (cmd[<span class="number">0</span>] == <span class="string">&#x27;S&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmd[<span class="number">0</span>] == <span class="string">&#x27;E&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> now, i;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;now);</span><br><span class="line">                <span class="keyword">if</span> (q2[a[now]] == q1[a[now]])<span class="comment">//判断第a[now]的队列是否为空</span></span><br><span class="line">                    q[++q1l] = a[now];<span class="comment">//为空的话这里入队</span></span><br><span class="line">                b[a[now]][++q1[a[now]]] = now;<span class="comment">//此时的编号入队</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q2[q[q2l]]++;<span class="comment">//q2l记录当前的队头在q中的编号，则q[q2l]队的队头自增</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, b[q[q2l]][q2[q[q2l]]]);</span><br><span class="line">                <span class="keyword">if</span> (q2[q[q2l]] == q1[q[q2l]])<span class="comment">//如果这里为空的话就可以看q中的下一个了</span></span><br><span class="line">                    q2l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="comment">//end of while(cmd)</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    &#125; <span class="comment">//end of big while(t)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>队列</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>readme</title>
+    <url>/blog/2021/08/14/readme/</url>
+    <content><![CDATA[<h1 id="我个人的信息"><a href="#我个人的信息" class="headerlink" title="我个人的信息"></a>我个人的信息</h1><p>​    我是华中科技大学计算机学院2020级本科生，对科研方面的工作有着浓厚的兴趣，对体系结构和人工制能方面都比较感兴趣，同时对数学方面的一些知识也很感兴趣</p>
+<h1 id="博客的一些信息"><a href="#博客的一些信息" class="headerlink" title="博客的一些信息"></a>博客的一些信息</h1><p>​    目前这个博客主要更新我在学习方面的一些经历和日常生活的一些感触，算是对我平常生活的复盘和总结</p>
+]]></content>
+      <tags>
+        <tag>总述</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Introduction to distributed systems》阅读笔记（二）</title>
+    <url>/blog/2021/09/04/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><p>​    程序由两部分组成，即有类型的变量的集合，以及任务的有限集，后者又通常被称为行为（<strong>action</strong>）</p>
+<p>​    注意到这里说的是任务的集合，这意味着任务是<strong>无序的</strong>，变量在最开始用关键字<strong>var</strong>来声明，任务在下一个部分被列出，用关键字<strong>assign</strong>来声明，任务之间用[]隔开，<del>其实或许应该用一个fatbar，但是我不会打</del></p>
+<p>​    下面给一个简单地例子</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Program Trivial</span><br><span class="line">var		x,y: int</span><br><span class="line">assign</span><br><span class="line">	x := 2</span><br><span class="line">  [] y := f.7</span><br></pre></td></tr></table></figure>
+<p>​    如果类型容易从上下文中看出，那么可以省略</p>
+<p>​    值得一提的是，所有程序的assignments都是非空的，即使没有，也默认执行了一个<strong>skip</strong>动作</p>
+<p>​    另外，程序也有可能包含一些初始条件，用关键字<strong>initially</strong>声明“initially section”，这部分会声明在变量后面，在任务前面，注意初始化部分是程序的变量的谓词</p>
+<h1 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h1><h2 id="简单指派"><a href="#简单指派" class="headerlink" title="简单指派"></a>简单指派</h2><p>​    每个行为最终都必须结束，但是分类到的内容是不确定的，例如</p>
+<script type="math/tex; mode=display">
+x := rand(1,10)</script><p>​    这给x随机分配了1到10中的任意一个整数</p>
+<p>​    行为必须对每一个状态都能被定义，这就要考虑某些变量的取值让整个表达式无意义的情况，例如</p>
+<script type="math/tex; mode=display">
+x:=x/y</script><p>​    这个表达式在$y=0$的时候无意义</p>
+<h2 id="多元指派"><a href="#多元指派" class="headerlink" title="多元指派"></a>多元指派</h2><p>​    在单一行为中可以存在多元的指派，有两种写法，第一种如下，也更加精悍</p>
+<script type="math/tex; mode=display">
+x,y := 2,f.3</script><p>​    这个行为是这样运作的，即首先计算等式右边的所有的表达式，然后一一指派给左边，所以可以用如下的一个表达式来进行变量值的交换</p>
+<script type="math/tex; mode=display">
+x,y := y,x</script><p>​    第二种表达就显得冗长一些，但是有助于量化，可以用||运算符来分隔多个赋值，即</p>
+<script type="math/tex; mode=display">
+x := y || y:=x</script><h2 id="受制行为（Guarded-Actions）"><a href="#受制行为（Guarded-Actions）" class="headerlink" title="受制行为（Guarded Actions）"></a>受制行为（Guarded Actions）</h2><p>​    就像是条件语句吧，后面的要想发生前面的必须为真，前面的称之为<strong>guard</strong></p>
+<script type="math/tex; mode=display">
+x>0\rightarrow x,y :=2,f.3</script><p>​    其中的guard是程序状态空间中的一个谓词，如果guard在某些状态下为真，该行为在那个状态下就被称为可满足的</p>
+<h2 id="顺序组合"><a href="#顺序组合" class="headerlink" title="顺序组合"></a>顺序组合</h2><p>​    我们现在要使用一个显式的程序计数器来模拟程序的顺序执行，并且用上面的Guarded Actions来模拟顺序执行，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Program SequentialSwap</span><br><span class="line">var x, y, temp : int,</span><br><span class="line">	pc : nat</span><br><span class="line">initially pc = 1</span><br><span class="line">assign</span><br><span class="line">	pc = 1 −→ temp, pc := x, 2</span><br><span class="line">	[] pc = 2 −→ x, pc := y, 3</span><br><span class="line">	[] pc = 3 −→ y, pc := temp, 4</span><br></pre></td></tr></table></figure>
+<h1 id="Operational-Intuition"><a href="#Operational-Intuition" class="headerlink" title="Operational Intuition"></a>Operational Intuition</h1><h2 id="程序执行"><a href="#程序执行" class="headerlink" title="程序执行"></a>程序执行</h2><p>​    这部分说的好像是，虽然我们可以使用断言来检查程序算法，但是我们仍然需要对程序执行的一种非正式的操作直觉</p>
+<p>​    程序执行是这样的，即在满足初始谓词的任何状态下开始，通过随机的选择并执行程序动作集中的动作，完成后继续重复上面的操作，并且是无限的，可以认为是抽取后再放回，这些选择本身就是随机的，几乎不受任何限制，但是有一种叫做<strong>fairness</strong>的限制，这会在以后详细讨论</p>
+<h2 id="终止"><a href="#终止" class="headerlink" title="终止"></a>终止</h2><p>​    非确定的行为选择是没有尽头的，下面考察这样一个程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Program Boring</span><br><span class="line">initially x = 2 ∧ y = f.7</span><br><span class="line">assign</span><br><span class="line">	   x := 2</span><br><span class="line">	[] y := f.7</span><br></pre></td></tr></table></figure>
+<p>​    很显然无论选择哪一个行为，整个程序的状态都不会有任何的变化，这意味着整个程序的状态保持稳定，计算可以被视为完成，所以很显然，我们所认为的程序的终止是指的程序最终到达了一个不动点（<strong>fixed point</strong>），简称<strong>FP</strong>，注意到FP是一个谓词，表示程序处于固定点的状态，给出一个计算FP的范式，即将每个赋值改成相等，但后取谓词结果集的合取</p>
+<h2 id="例子：求最大值"><a href="#例子：求最大值" class="headerlink" title="例子：求最大值"></a>例子：求最大值</h2><p>​    事实上在我们以往所用到的顺序编程语言中，我们需要一个循环来找到最大值，但是在这里我们没有循序组合，更没有迭代，但是可以通过以下更简单的方式来实现</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Program	FindMax</span><br><span class="line">var A:array 0..N-1 of int,</span><br><span class="line">	result:int</span><br><span class="line">initially result = A[0]</span><br><span class="line">assign</span><br><span class="line">	([]x : 0&lt;=x&lt;=N-1 : result:=max(result,A[x]))</span><br></pre></td></tr></table></figure>
+<h1 id="程序可视化"><a href="#程序可视化" class="headerlink" title="程序可视化"></a>程序可视化</h1><h2 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h2><p>​    这里主要谈论一种有助于增加对程序直觉性的方法，即画图辅助</p>
+<p>​    首先，再程序状态空间中的每一个状态可以被看做结点，每一个行为可以看作有向边，然后就是有以下几个约定</p>
+<ol>
+<li>所有程序都包含skip，这意味着所有有向图都具有自回路</li>
+<li>所有的行为都是<strong>total</strong>，这意味着所有结点度不为0</li>
+</ol>
+<h2 id="一个练习"><a href="#一个练习" class="headerlink" title="一个练习"></a>一个练习</h2><p>​    略</p>
+<h1 id="公平（Fairness）"><a href="#公平（Fairness）" class="headerlink" title="公平（Fairness）"></a>公平（Fairness）</h1><h2 id="动机（Motivation）"><a href="#动机（Motivation）" class="headerlink" title="动机（Motivation）"></a>动机（Motivation）</h2><p>​    我们注意到，每个程序都必然隐含着一个跳过的步骤，而每个程序都包含了多个步骤，按照之前的理论，我们每次都要选择一个动作，那么必然就会有一种不走运的情况，即每次都选择了跳过动作。为了避免这种情况，我们对动作的选择增加了公平的要求，这里主要分为强公平和弱公平</p>
+<h2 id="弱公平"><a href="#弱公平" class="headerlink" title="弱公平"></a>弱公平</h2><p>​    在弱公平性的条件下，每个动作都保证被无限频繁的选择，这意味着在选择两个特别的相同的行为时，中间有有限数量的其他的行为被选择，这样的一种条件对效率没有保证，而且有可能程序不会达到不动点</p>
+<h2 id="强公平-标记，有疑问"><a href="#强公平-标记，有疑问" class="headerlink" title="强公平**标记，有疑问"></a>强公平**标记，有疑问</h2><p>​    根据之前的假想，需要有一种更强的公平。弱公平主要是用来阻止一些“恶意”的选择</p>
+<p>​    强公平要求每个动作都被无限频繁的选择，此外，如果一个动作被无限频繁的启用，那么他会被无限频繁的选择，<del>感觉这里不是很理解</del></p>
+<p>​    在StackOverflow中查了一下（不得不说里面大佬真多），强公平性大概指的就是没有动作可以无限的启用而不被执行</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>《Introduction to distributed systems》</category>
+      </categories>
+      <tags>
+        <tag>分布式系统</tag>
+        <tag>《Introduction to distributed systems》</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（一）</title>
+    <url>/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>​    在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
+<p>​    这样的错误叫做<strong>“specification errors”</strong>，我们可以用一些特殊的语言去找到这种错误，比如<strong>“TLA+”</strong>。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
+<p>​    TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
+<h1 id="CHAPTER-1"><a href="#CHAPTER-1" class="headerlink" title="CHAPTER 1"></a>CHAPTER 1</h1><h2 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>​    两个人在银行有账户，每个账户中有0￥或更多￥，现在这个银行想要添加“电汇”功能，可以相互转账。要求如下：</p>
+<pre><code> 1. 每条电汇必须在银行中的两个不同账户间进行，至少一美元
+ 2. 成功的话从发送方中扣除并添加到接收方
+ 3. 失败的话两个账户不变
+ 4. 电汇可能不会导致出现账户负值
+ 5. 多条线路可能同时发生
+</code></pre><p>​    算法应满足以上所有要求</p>
+<h3 id="解决样例"><a href="#解决样例" class="headerlink" title="解决样例"></a>解决样例</h3><p>​    要使用TLA+，首先需要创建新的文件，即<strong>File-&gt;Open Spec-&gt;Add New Spec</strong></p>
+<p>​    然后我们需要保证模块名称和文件名称匹配，否则会报错。TLC    默认只识别最上方横线和最下方双横线之间的内容</p>
+<p>​    接下来是一个比较重要的TLA+的关键字，即<strong>EXTENDS</strong>，由于在这个场景中我们需要进行数字运算，所以导入<strong>Integers</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers  *\单行注释用这个</span><br><span class="line">**注释块用这个**</span><br><span class="line">**导入块之后可以继续写我们的算法框架**</span><br><span class="line">(*--algorithm wire</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    然后我们来进一步具体化，从题目中很显然可以看到两个变量，即人和他们的账户，所以我们需要声明变量，这里假定每个人都有五块钱</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">	variables</span><br><span class="line">		people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[p \in people |-&gt; 5];</span><br><span class="line">		**等同于acc[&quot;alice&quot;]=acc[&quot;bob&quot;]=5**</span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    现在来解释一下上面的代码，people是声明的一个集合，没什么好说的。对于acc，这是一个<strong>函数</strong>，但是不等同于传统的函数，它更接近于一个字典，对于给出的集合中的每一个值，都有一个相应的输出值，在这里的集合是people，元素是p，类似于python中的{“alice”:5,”bob”:5}</p>
+<p>​    接下来我们继续去搭建这条线，可以继续指定变量，最后我们需要的就是设置一些不变量，不管在什么时候都需要为真，这里的”==”是一个<strong>操作</strong>，而不是指的比较，而对于这个常量的表述，就满足了我们上面的所有账户的值非负的要求</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">variables</span><br><span class="line">	peoples=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">	sender=&quot;alice&quot;,</span><br><span class="line">	receiver=&quot;bob&quot;,</span><br><span class="line">	amount=3;</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: acc[p] &gt;= 0</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
+<p>​    现在我们定义好的变量和常量，我们接下来需要在begin和end中间添加相关的算法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender] := acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver] := acc[receiver]+amount;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>​    现在进行一些对上面的解释，如果是第一次给变量分配一个值，需要用=，如果变量已经存在而需要给他分配一个新值，则用:=。上面的Withdraw和Deposit是两个<strong>标签</strong>，这代表着他们之中的部分会同时发生</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>​    这里给出的验证方法是通过验证不变量是否正确开始的，我们需要创建一个model，即在<strong>TLC Model Checker</strong>中找到<strong>New Model</strong>，然后在页面的<strong>Invariants</strong>中添加新的核查量即可，接着就可以运行了，由于我们的问题不算复杂，一共经历了如下的过程：</p>
+<pre><code>1. 选择一个可能的初始状态，现在只有一种
+2. 检查初状态的不变量的值，然后如果满足就继续执行**Withdraw**步骤
+3. 检查不变量的值，为真就继续执行
+4. 进行**Deposit**步骤
+5. 检查不变量的值，如果满足的话，就结束
+</code></pre><p>​    如果在这个过程中出现任何错误的话，就会直接跳出程序</p>
+<h3 id="增加初始化"><a href="#增加初始化" class="headerlink" title="增加初始化"></a>增加初始化</h3><p>​    上面的例子显然太简单了，只能有一种对应的输入，我们来增加一些更多的选择</p>
+<ol>
+<li><p>TLA+使用a..b来表示a到b的整数，也就是说可以对上述代码中的amount做如下改变，显然这个时候再次运行model的话会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..6;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当然我们可以通过如下的改动来使他不报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..acc[sender];</span><br></pre></td></tr></table></figure>
+<p>但是这样明显违背了商家的本意，我们可以假设这是可以接受的，进行更改并确认模型再次通过</p>
+</li>
+</ol>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>​    在Pluscal中，每一个算法在他自己独特的进程中同时发生，每一个进程有着他自己的变量和代码，然后就可以根据下面的方法创建多进程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">variables</span><br><span class="line">	people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: a[p]&gt;=0</span><br><span class="line">end define;</span><br><span class="line">process Wire \in 1..2</span><br><span class="line">	variables</span><br><span class="line">		sender=&quot;alice&quot;,</span><br><span class="line">		receiver=&quot;bob&quot;,</span><br><span class="line">		amount \in 1..acc[sender];</span><br><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    如果我们重新翻译重新运行上述程序，仍然会报错，由于多进程的缘故，在执行了两次Withdraw后，仍然有可能出错，也就是我们只需要在执行之前做一个判断即可，这就是<strong>if</strong>语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then</span><br><span class="line">    	**algorithm**</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    但是这样竟然仍然会报错！这个时候的错误似乎没有那么明显，我们需要在Error-Trace中找到错误原因</p>
+<p>​    打开Error-Trace，他直接从每一步开始给出了错误的原因，这里的bug是因为两个进程同时发生导致的，我们可以将withdraw和check放在一起来防止这种错误的发生</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里简单解释一下，对于多进程的同时性，是值得两个进程在同时完成了某一步，在上面那种报错的写法后，第一个进程进行完check后，准备进行withdraw，这个时候acc[sender]的值未改变，所以第二个进程的check也没问题，这样就出错了。而在上述正确的写法中，在进程一的check步骤结束后acc[sender]已经发生改变，第二个进程就会报错</p>
+<p>​    一定要注意理解什么叫做多进程与他的并发性！</p>
+<h3 id="时间属性"><a href="#时间属性" class="headerlink" title="时间属性"></a>时间属性</h3><p>​    现在我们来完成接下来的要求，即如果电汇失败，账户不会改变。我们容易知道有一个更弱的条件，即电汇前后账户总额保持不变。这个不变量和之前的NoOverdrafts不同，他是一个<strong>时间属性</strong></p>
+<p>​    不变量检查是检查每个状态是否有效，而时间属性检查的是算法的每个可能的生命周期，从开始到结束，都遵守所需要的某个规则，我们加上这一点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people:acc[p]&gt;=0</span><br><span class="line">	EventuallyConsistent == &lt;&gt;[](acc[&quot;alice&quot;]+acc[&quot;bob&quot;]=10)</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
+<p>​    上面的<strong>EventuallyConsistent</strong>和NoOverdrafts差不多，但是以<strong>&lt;&gt;[]</strong>开始，它是一种时间属性的算子，意味着不管算法是怎样的，在最后所给的等式必须为真，但是中间过程的真假是无所谓的，然后我们可以在<strong>Model</strong>中继续加入时间属性来进行验证</p>
+<p>​    运行一下，会发现程序报错，整体的流程上没有什么错误，但是在error-trace的最后有了标签<strong>Stuttering</strong>，这个标签代表着这个过程只是简单地停止了，没有东西阻止他继续应该进行的deposit，他只是自己不再尝试了，<strong><del>这看起来好牵强</del></strong>，但是事实上是有迹可循的，有可能是服务器在步骤之间崩溃，有可能是停电了，也有可能发生了其他的不可预知的情况，这些情况都是以<strong>Stuttering</strong>状态呈现的</p>
+<p>​    然而，对于这种错误，很难有什么比较好的方法去修正，我们可以从以下的几个方面考虑</p>
+<ol>
+<li>我们可以将check、withdraw、deposit合成为一个步骤，减少他们中间的步骤的时间跨度，防止在步骤之间崩溃，但是这导致我们的流程中只有一个标签，实际的运行时间为0，违反了电汇占用任意时间的核心要求</li>
+<li>我们可以明确告诉TLA+，我们的程序不能断断续续，这样做的话我们的spec会通过，但是我们不能实现它，服务器仍会故障</li>
+<li>说服项目经历放宽最终的要求</li>
+<li>尝试不同的实现</li>
+<li>放宽NoOverdrafts要求，事实上在很多地方都是这样做的</li>
+</ol>
+<p>​    很显然更改这样的一个error是非常复杂的，但是目前这里不作为我们的重点考虑</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这一章从一个简单的样例入手，讲述了TLA+的基本概念和一些简单地语法，以及对于model的使用，由于只是一个引入，所以不用花费太多的精力，重点就在于一些全新的概念，另外就是对于多进程大致有了一个印象</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Introduction to distributed systems》阅读笔记（一）</title>
+    <url>/blog/2021/09/03/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    从标题上看，这一章应该是对布尔值、谓词和量词等一般概念的讲解，大概和离散数学里学的差不多</p>
+<h1 id="初步知识"><a href="#初步知识" class="headerlink" title="初步知识"></a>初步知识</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>​    其实定义什么的都和之前学过的差不多，函数也就是映射，注意一下这里的表示，即如开方函数表示为<em>sqrt : $IR^+ \rightarrow IR^+$</em></p>
+<p>​    然后就是函数的一种操作符，即为函数应用符（<strong>function application</strong>），用”.”来表示，比如sqrt.16，事实上我们编程的时候更常见的是sqrt(16)，但是通常选择前者，因为它很适合<strong>Currying</strong>，<del>暂时还不知道是什么东西</del></p>
+<p>​    当然如果函数有多个参数的话似乎就不太好表示了，例如$max2 : Z \times Z \rightarrow Z$，将会被写成$max2.(a,b)$</p>
+<p>​    点号运算符优先和1左边结合，即$f.x.y$，将会被看成$(f.x).y$，这意味着$f.x$必须是一个函数，用这种方式可以重新定义具有多个参数的函数<del>虽然仔细一想感觉我设计的都比较鸡肋</del></p>
+<h2 id="布尔值和谓词"><a href="#布尔值和谓词" class="headerlink" title="布尔值和谓词"></a>布尔值和谓词</h2><p>​    对于布尔值，和之前学过的都差不多，当然就是这些操作可以看作是函数，例如$\bigwedge.true.false$，其值为$false$，但是通常写成中缀形式，即$true\bigwedge false$</p>
+<p>​    对于谓词，这里指的是值域为布尔值的函数，可以写成如下通用形式</p>
+<script type="math/tex; mode=display">
+P : S \rightarrow boolean</script><p>​    其中S是任意的定义域</p>
+<p>​    感觉这里说的谓词就像是描述某一种属性一样，即满足条件的为$true$，否则为$false$，也因此问哦们可以使用韦恩图来可视化谓词</p>
+<p>​    在计算机科学中，谓词的域通常是程序的状态空间，缩写出的表达式都是布尔表达式，对于状态空间的点，要么为真要么为假</p>
+<h2 id="提升-lifting"><a href="#提升-lifting" class="headerlink" title="提升(lifting)"></a>提升(lifting)</h2><p>​    从现在来看，布尔值和谓词还是有明显区别的，但是如果考虑操作的时候，两者的界限再次模糊。在布尔值上的一些操作都是可以用在谓词上的，他们是不同的操作，但是符号相同，因此有可能产生混淆</p>
+<script type="math/tex; mode=display">
+\bigwedge : boolean \times boolean \rightarrow boolean\\
+\bigwedge : predicate \times predicate \rightarrow \ldots</script><p>​    通常后者得到的是一个函数，并且值域是布尔值</p>
+<p>​    通过这种方式，布尔值上的一个运算符被提升为对映射到布尔值的函数进行操作，这种单一符号的重载被称为<strong>提升（lifting）</strong></p>
+<p>​    提升也可以应用到常量$true$和$false$，它们可以被提升到谓词，即前者在每处都映射到$true$，而后者在每处都映射到$flase$，接下来我们要界定每处(everywhere)这个概念</p>
+<h2 id="Everywhere-Brackets"><a href="#Everywhere-Brackets" class="headerlink" title="Everywhere Brackets"></a>Everywhere Brackets</h2><p>​    <del>有一说一感觉这个感念有些费解</del></p>
+<p>​    感觉就像是对于谓词来使用布尔运算符，用中括号括起来，始终恒为真或恒为假，直接得到了一个布尔值，下面给一下例子</p>
+<script type="math/tex; mode=display">
+(istall = isheavy).xiaoming
+\\
+[istall = isheavy]</script><h1 id="谓词演算"><a href="#谓词演算" class="headerlink" title="谓词演算"></a>谓词演算</h1><h2 id="Equivalence"><a href="#Equivalence" class="headerlink" title="Equivalence"></a>Equivalence</h2><p>​    $X \equiv Y$意味着两个要么都为真，要么都为假</p>
+<p>​    这里之所以不用平常的=是有原因的，因为如果在同一行写多个等于号有着独特的含义，即</p>
+<script type="math/tex; mode=display">
+sqrt.16 = 4 = 2^2</script><p>​    这称之为chaining，相当于下面这种情况的简写</p>
+<script type="math/tex; mode=display">
+(sqrt.16=4) \bigwedge (4=2^2)</script><p>​    当然$\equiv$也可以在同一行，但是就没有太多的含义，例如</p>
+<script type="math/tex; mode=display">
+false \equiv true \equiv false
+\\
+\rightarrow flase \equiv flase \rightarrow true</script><p>​    但是如果仿照chaining重写的话就会出现问题，这里自己想一下就行了</p>
+<p>​    然后就是几条公理</p>
+<script type="math/tex; mode=display">
+Axiom1.结合律
+\\
+[((X \equiv Y)\equiv Z) \equiv (X \equiv(Y \equiv Z))]</script><script type="math/tex; mode=display">
+Axiom2.交换律\\
+[X\equiv Y \equiv Y\equiv X]</script><p>​    当然根据结合律上面的交换律可以随意加括号</p>
+<script type="math/tex; mode=display">
+Axiom 3.永真律\\
+[Y\equiv Y \equiv true]</script><h2 id="Disjunction"><a href="#Disjunction" class="headerlink" title="Disjunction"></a>Disjunction</h2><p>​    其实就是$\bigvee$，然后也有很多的公理，其实感觉就跟之前学的命题等价公式差不多</p>
+<script type="math/tex; mode=display">
+Axiom4. \bigvee的结合律\\
+[X \bigvee (Y \bigvee Z)\equiv(X\bigvee Y)\bigvee Z]</script><script type="math/tex; mode=display">
+Axiom5. \bigvee的交换律\\
+[X\bigvee Y \equiv Y \bigvee X]</script><script type="math/tex; mode=display">
+Axiom6.\bigvee幂等律\\
+[X\bigvee X\equiv X]</script><script type="math/tex; mode=display">
+Axiom7.\bigvee的分配律\\
+[X\bigvee(Y\equiv Z)\equiv(X\bigvee Y)\equiv(X \bigvee Z)]</script><h2 id="证明格式"><a href="#证明格式" class="headerlink" title="证明格式"></a>证明格式</h2><p>​    这些东西感觉和离散数学真的很像，证明的每一步都需要相应的注释，另外就是需要注意的是分行写证明过程和卸载一行的等式是不一样的</p>
+<h2 id="连词和暗示"><a href="#连词和暗示" class="headerlink" title="连词和暗示"></a>连词和暗示</h2><p>​    现在考虑仅使用$\equiv$和$\bigvee$并且只有两个或更少变量的表达式，事实上，我们只能写出少量结构不同的最简化的表达式，事实上，只有两个</p>
+<p>​    这些表达式的每一个都看一看作对两个变量的操作，我们可以借此引入新的二元运算符</p>
+<script type="math/tex; mode=display">
+Axiom 8. \bigwedge的定义，也称为黄金律\\
+[X \bigvee Y \equiv X\equiv Y \equiv(X\bigwedge Y)]</script><script type="math/tex; mode=display">
+Axiom 9. \Rightarrow 的定义
+\\
+[X\bigvee Y\equiv Y \equiv(X \Rightarrow Y)]</script><p>​    另外我们可以通过规定运算顺序来减少括号的数量，这里和离散数学中是完全一样的，因此不再赘述</p>
+<h2 id="否定和错误"><a href="#否定和错误" class="headerlink" title="否定和错误"></a>否定和错误</h2><p>​    其实就是之前的非运算，<del>无奈符号不会敲</del></p>
+<p>​    这里的一些公理不再打了<del>（主要是不会打非运算）</del>，和离散数学中学到的差不多</p>
+<h2 id="不等于"><a href="#不等于" class="headerlink" title="不等于"></a>不等于</h2><p>​    其实就是个不等于号，但是中间有三条横杠，定义其实就是相等的否定</p>
+<script type="math/tex; mode=display">
+[(X\equiv(Y\neq Z))\equiv ((X\equiv Y)\neq Z)]</script><p>​    我们甚至可以去掉所有括号，<del>但是感觉好难受哦</del></p>
+<h1 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>​    看起来量词好像和之前学过的不太一样，这里要讲述的是更为根本的定义，一个量词有着如下的形式</p>
+<script type="math/tex; mode=display">
+(Qi : r.i:t.i)</script><p>​    其中的Q是操作，i是绑定变量，r.i是范围，t.i是方式，为了成为一个有效的量词，这些元素需要满足以下条件</p>
+<ol>
+<li>操作必须是具有单位元素的二元对称关联运算符</li>
+<li>范围必须是绑定变量i的谓词</li>
+<li>方式必须是一个表达式，并且类型一定要和运算符的操作数类型相同</li>
+</ol>
+<p>​    因此，对于绑定变量的类型$T$，范围是$T$的谓词，条件是一些类型$D$的表达式</p>
+<h2 id="Informal-Interpretation"><a href="#Informal-Interpretation" class="headerlink" title="Informal Interpretation"></a>Informal Interpretation</h2><p>​    这节貌似是用非正式的方式解释了一下上面说的量词的含义。</p>
+<p>​    我们容易知道r.i指的是i的取值范围，那么我们可以将上述式子转化成下面的写法</p>
+<script type="math/tex; mode=display">
+u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
+<p>​    下面是一些比较常用的量词和对应的操作符</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Quantification Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\bigwedge$</td>
+<td style="text-align:center">$\forall$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\bigvee$</td>
+<td style="text-align:center">$\exists$</td>
+</tr>
+<tr>
+<td style="text-align:center">$+$</td>
+<td style="text-align:center">$\sum$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\times$</td>
+<td style="text-align:center">$\prod$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    当然使用以上 i的规则可以写出更多的量词，例如</p>
+<script type="math/tex; mode=display">
+1. (\bigcup i:i\in Z \bigwedge even.i:{i})\\
+2.(Min n:n \in N \bigwedge even.n:(n-3)^2)</script><p>​    另外就是对于绑定变量的类型通常是有约定的，例如$i$通常用作在整数上的绑定变量，而n通常被认为是自然数，因此上面的是可以再度简化的</p>
+<p>​    另外就是在范围谓词为真是是可以被直接忽略的，例如</p>
+<script type="math/tex; mode=display">
+(\forall i::i^2>0)</script><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>​    书中最开始给出了一个这样的例子，即如何理解$\prod_{i=4}^1i$，现在可以通过刚刚学到的定义进行解决，即中间的范围谓词的值恒为假，我们有如下公理</p>
+<script type="math/tex; mode=display">
+(Qi:false:t.i)=u</script><p>​    所以现在需要明确的就是量词的单位元，但是问题在于一些量词可能不是很容易找出单位元，这里的单位元的含义就是找到一个$u$使得对$\forall x$均有$uQx =x$，也就是说，比如对于Min操作的单位元，或许就是$+\infty$</p>
+<script type="math/tex; mode=display">
+(Qi:i=E:t.i)=t.E</script><p>​    现在我们对于量化仅仅只是一个非正式的理解，要进行完整的定义需要更多的公式，此处不再继续深入</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>Introduction to distributed systems</category>
+      </categories>
+      <tags>
+        <tag>分布式系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（二）</title>
+    <url>/blog/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>​    Pluscal是一种可以编译成TLA+的语言，学习Pluscal比直接学习TLA+要简单很多，本章将涵盖除多进程算法和fair process之外的关于Plucal的知识</p>
+<h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="layout-of-spec"><a href="#layout-of-spec" class="headerlink" title="layout of spec"></a>layout of spec</h2><p>先在这里引入以下上一张的程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----(1)MODULE wire(2)----</span><br><span class="line">EXTENDS Integers \*(3)</span><br><span class="line">(*--algorithm wire \*(4)</span><br><span class="line">	variables (5)</span><br><span class="line">		people =&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[alice |-&gt;5,bob \-&gt;5];</span><br><span class="line">begin \*(6)</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)(4)</span><br><span class="line">==== \*(1)</span><br></pre></td></tr></table></figure>
+<p>我们所有写出的spec都有着以上的格式，即</p>
+<ol>
+<li>必须以MODULE开始，并且其两侧至少有四个’-‘，结尾最后一行也必须有四个‘=’，在这上面和下面的东西都会被忽略，经常会放一些<strong>metadata</strong></li>
+<li>MODULE的名字必须和文件的名字相同</li>
+<li>关键字<strong>EXTENDS</strong>用来加载模块</li>
+<li>*是行注释，(*…*)是块注释，Pluscal放在块注释中，因此解析器会忽略他，整体以<strong>—algorithm name</strong>开头，以<strong>end algorithm;</strong>结束，算法的名字和文件名没有直接关系</li>
+<li>在算法内部用variables声明并初始化变量，变量之间以逗号或分号分隔开</li>
+<li>在begin处开始写算法本身</li>
+</ol>
+<h2 id="表达式（expressions）"><a href="#表达式（expressions）" class="headerlink" title="表达式（expressions）"></a>表达式（expressions）</h2><p>​    在表达式中的只能是值（value）或操作（operator），这里暂时先使用标准库中的操作，到后面我们完全有能力自己写一种操作</p>
+<p>​    现在先介绍一种方式，可以不用运行整段spec就可以检查他的正确性，即<strong>expression evaluator</strong>。我们在model中打开model checking results，其中有窗口<strong>Evaluate Constant Expression</strong>，在expression部分输入表达式，运行后在value处可以给出值。当然这样的话仍然会检查spec，勾选旁边的<strong>No Behavior Spec</strong>选项就可以只运行表达式</p>
+<h2 id="值（values）"><a href="#值（values）" class="headerlink" title="值（values）"></a>值（values）</h2><p>​    在TLA+中有四种基本的值类型，即字符串型、整形、布尔型和模型值。没有浮点型，模型值（<strong>model value</strong>）这里先略过，字符串型必须用被双引号包括。</p>
+<p>​    标准操作如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operations</th>
+<th style="text-align:center">Meaning</th>
+<th style="text-align:center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x=y</td>
+<td style="text-align:center">相等</td>
+<td style="text-align:center">1=2  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x/=y或x#y</td>
+<td style="text-align:center">不相等</td>
+<td style="text-align:center">1/=2  TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">x/\y</td>
+<td style="text-align:center">且</td>
+<td style="text-align:center">TRUE/\FALSE  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x\/y</td>
+<td style="text-align:center">或</td>
+<td style="text-align:center">TRUE\/FALSE  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x:=y</td>
+<td style="text-align:center">分配</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">~x</td>
+<td style="text-align:center">否定</td>
+<td style="text-align:center">~TRUE  FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>注意区分一下=和:=，在原始的TLA+中只有相等而没有指派，这指的是：如果x没有初始化而想要将其初始化为1或者x已经初始化而想要将其和1作比较，应该用x’=1</em></strong>    <strong><em>然后我们做如下规定，即，如果是第一次使用该变量，=作为初始化使用，在其他情况下，=是相等，:=是分配，例如写变量x=2,y=x,z=(x=y)，将会得到x=2,y=2,z=TRUE</em></strong></p>
+<p>​    当我们导入Integers模块时，我们就得到了运算符号，即<strong>+ - % *</strong>，这里面的整数除法是<strong>\div</strong>，但是不支持十进制除法，另外就是<strong>..</strong>运算符表示列表</p>
+<p>​    然后就是四种构造类型，即<strong>集合（set），元组（tuples）或称序列（sequences），结构（structures），函数（functions）</strong></p>
+<h3 id="集合（sets）"><a href="#集合（sets）" class="headerlink" title="集合（sets）"></a>集合（sets）</h3><p>​    集合很显然，但是要求就是内部的元素类型必须相同，以下是一些基本的运算</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Meanings</th>
+<th style="text-align:center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x \in set</td>
+<td style="text-align:center">x在集合中</td>
+<td style="text-align:center">1 \in 1..2  TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">x \notin set或~(x \in set)</td>
+<td style="text-align:center">x不在集合中</td>
+<td style="text-align:center">1 \notin 1..2  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \subesteq set2</td>
+<td style="text-align:center">子集关系</td>
+<td style="text-align:center">1..2 \subseteg 1..3 TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \union set2</td>
+<td style="text-align:center">并集</td>
+<td style="text-align:center">1..2 \union 2..3  1..3</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \intersect set2</td>
+<td style="text-align:center">交集</td>
+<td style="text-align:center">1..2 \intersect 2..3 {2}</td>
+</tr>
+<tr>
+<td style="text-align:center">Cardinality(set)</td>
+<td style="text-align:center">返回元素个数</td>
+<td style="text-align:center">Cardinality(1..2) 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>当然需要注意的是其中的交集和并集分别可以写为\cap和\cup</em></strong></p>
+<p>集合中也有两种常见的写法，即<strong>{x \in set: conditional}和{expression: x \in set}</strong></p>
+<h3 id="元素或列表"><a href="#元素或列表" class="headerlink" title="元素或列表"></a>元素或列表</h3><p>​    该种结构的元素有序，并且类型可以不一样，在<strong>&lt;&lt;&gt;&gt;</strong>之间，和数组一样的索引方式，但是是从1开始索引的，我们导入Sequences模块，可以得到一些新的表达式，这里的一些定义感觉和广义表差不多</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Meaning</th>
+<th style="text-align:center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Head(seq)</td>
+<td style="text-align:center">get head of seq</td>
+<td style="text-align:center">Head(&lt;<1,2>&gt;)  1</1,2></td>
+</tr>
+<tr>
+<td style="text-align:center">Tail(seq)</td>
+<td style="text-align:center">get tail of seq</td>
+<td style="text-align:center">Tail(&lt;<1,2,3>&gt;)  &lt;<2,3>&gt;</2,3></1,2,3></td>
+</tr>
+<tr>
+<td style="text-align:center">Append(seq,x)</td>
+<td style="text-align:center">Append</td>
+<td style="text-align:center">Append(&lt;<1,2>&gt;,3)  &lt;<1,2,3>&gt;</1,2,3></1,2></td>
+</tr>
+<tr>
+<td style="text-align:center">seq1 \o seq2</td>
+<td style="text-align:center">Combine</td>
+<td style="text-align:center">&lt;<1>&gt; \o &lt;<2>&gt;  &lt;<1,2>&gt;</1,2></2></1></td>
+</tr>
+<tr>
+<td style="text-align:center">Len(seq)</td>
+<td style="text-align:center">get length of seq</td>
+<td style="text-align:center">Len(&lt;<1,2>&gt;)  2</1,2></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于Tuples和Sequences，如果不需要使用对seq的操作时就声明前者，否则声明后者</p>
+<h3 id="结构（Structures）"><a href="#结构（Structures）" class="headerlink" title="结构（Structures）"></a>结构（Structures）</h3><p>​    结构将值指派给字符串，可以按照如下格式声明</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[key1 |-&gt; val1,key2 |-&gt;val2, etc]</span><br></pre></td></tr></table></figure>
+<p>​    可以通过Structures.key1来得到值</p>
+<h2 id="算法结构"><a href="#算法结构" class="headerlink" title="算法结构"></a>算法结构</h2><h3 id="Assignment"><a href="#Assignment" class="headerlink" title="Assignment"></a>Assignment</h3><p>​    采用:=来给一个变量分配一个新的值</p>
+<h3 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h3><p>​    添加模块TLC可以使用断言，添加断言可以通过测试不变量来测试某个表达式是否成立，assert expression</p>
+<h3 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h3><p>​    没有任何操作，可以通过skip来填充我们尚未完成的部分</p>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if condition1 then</span><br><span class="line">	body</span><br><span class="line">elsif condition2 then</span><br><span class="line">	body</span><br><span class="line">else</span><br><span class="line">	body</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure>
+<p>​    if不是唯一的分支结构，其余的将在后面介绍</p>
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while condition do</span><br><span class="line">	body</span><br><span class="line">end while;</span><br></pre></td></tr></table></figure>
+<p>​    这是PlusCal中唯一的循环体</p>
+<h3 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h3><p>​    可以在begin前使用来变得更简洁一些</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">macro name(arg1,arg2) begin</span><br><span class="line"> \* assignments</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">	name(x,y);</span><br><span class="line">end algorithm;</span><br></pre></td></tr></table></figure>
+<p>​    可以加入分配、断言、判断，但不能是循环，<strong>也不能指配任何变量超过一次（这里不太理解）</strong>，可以引用外部值，也可以指配外部变量，maybe it seems like the function in some programming languege like C. In the next example we can use it to clean our TLA+. <strong>But in fact I don’ t know why visit the element in a structure in this way</strong></p>
+<p><strong><em>ok, as I read again, I realized that the structures and sequences are the same data structures, so in this angle I think this way is right</em></strong></p>
+<h3 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Integers,TLC,Sequences,FiniteSets</span><br><span class="line">(*--algorithm sort</span><br><span class="line">variable</span><br><span class="line">    dustbin = [trash |-&gt;&#123;&#125;,recycle |-&gt;&#123;&#125;],</span><br><span class="line">    count =[trash |-&gt; 0,recycle |-&gt;0],</span><br><span class="line">    capacity =[trash |-&gt; 10,recycle |-&gt;10],</span><br><span class="line">    items = &lt;&lt;</span><br><span class="line">        [type |-&gt; &quot;recycle&quot;, size |-&gt; 5],</span><br><span class="line">        [type |-&gt; &quot;trash&quot;,size |-&gt;5],</span><br><span class="line">        [type |-&gt; &quot;recycle&quot;,size |-&gt;4],</span><br><span class="line">        [type |-&gt;&quot;recycle&quot;,size |-&gt;4]</span><br><span class="line">    &gt;&gt;,</span><br><span class="line">    cur=&quot;&quot;;</span><br><span class="line">macro add_item(type) begin</span><br><span class="line">        capacity[type] := capacity[type] -cur.size;</span><br><span class="line">        dustbin[type] := dustbin[type] \union &#123;cur&#125;;</span><br><span class="line">        count[type] := count[type] + 1;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while items /= &lt;&lt;&gt;&gt; do</span><br><span class="line">    cur := Head(items);</span><br><span class="line">    items := Tail(items);</span><br><span class="line">    if cur.type = &quot;recycle&quot;/\ cur.size&lt;=capacity.recycle then</span><br><span class="line">        add_item(&quot;recycle&quot;);</span><br><span class="line">    elsif cur.type =&quot;trash&quot;/\cur.size&lt;=capacity.trash then</span><br><span class="line">        add_item(&quot;trash&quot;);</span><br><span class="line">    end if;</span><br><span class="line">    end while;</span><br><span class="line">    assert capacity.recycle&gt;=0 /\ capacity.trash&gt;=0;</span><br><span class="line">    assert Cardinality(dustbin.trash) = count.trash;</span><br><span class="line">    assert Cardinality(dustbin.recycle) = count.recycle;</span><br><span class="line">end algorithm*)</span><br><span class="line">=====</span><br></pre></td></tr></table></figure>
+<h2 id="Complex-Behaviors"><a href="#Complex-Behaviors" class="headerlink" title="Complex Behaviors"></a>Complex Behaviors</h2><p>​    其实根据这几天的学习，我们已经能够去写一些很简单的spec了，但是我们需要让这些东西变得更加使用，下面介绍三种基本的方式</p>
+<h3 id="Multiple-Starting-States"><a href="#Multiple-Starting-States" class="headerlink" title="Multiple Starting States"></a>Multiple Starting States</h3><p>​    我们可以采用更加多元化的方式来声明变量，而不是仅仅用赋值号，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(*--algorithm in</span><br><span class="line">variables x \in 1..3;</span><br><span class="line">begin</span><br><span class="line">	assert x&lt;=2;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    可以用来逐个表示集合中的元素，直到x=3退出，也可以用同样的方式再添加一些像y之类的变量，需要提一下的是，TLA+给出了布尔类型的集合BOOLEAN {TRUE,FALSE}。</p>
+<p>​    从上面的论述我们可以知道通过这一点我们可以创造出任意的数，也可以用类似的方式选择出任意的集合、结构和元组。</p>
+<p>​    首先，对于集合，有操作SUBSET set，可以求出集合set的幂集，也有操作UNION {set1,set2,etc}，可以求出多个集合的并集，另外就是set1 \X set2，求出笛卡尔积，可以用它来创造列表的集合，最后就是创造结构的集合，我们采用[key : set]的格式，比如[a : {“a”,”b”}]，表示的就是{[a |-&gt; “a”], [a |-&gt; “b”]}，当然结构中也可以写多个上述的格式，得到的最终形式类似于笛卡尔积，如[a: {“a”, “b”}, b: (1..2)]，当然如果想要保持其中的一个量不变，另一个跟随集合而取，可以写成[key1: set, key2: {val}]</p>
+<p>​    注意以上的东西原则上都是可以混用的，接下来我们重写上面的分类垃圾的例子，来达到随机的效果，<strong>得到列表，用笛卡尔积，得到结构，用多个组合</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">variables</span><br><span class="line">	capacity \in [trash: 1..10, recycle: 1..10],</span><br><span class="line">	bins = [trash |-&gt; &#123;&#125;,recycle |-&gt;&#123;&#125;],</span><br><span class="line">	count =[trash |-&gt; 0,recycle |-&gt; 0],</span><br><span class="line">	item =[type: &#123;&quot;recycle&quot;,&quot;trash&quot;&#125;,size: 1..6],</span><br><span class="line">	items \in item \X item \X item \X item,</span><br><span class="line">	curr =&quot;&quot;;</span><br></pre></td></tr></table></figure>
+<p>​    首先的话这次运行的程序明显比之前要慢很多，因为可能性实在是太多了，还有值得优化的地方，其次就是对于assert，程序出错了</p>
+<p>​    值得优化的地方有很多，比如这里的bins采用的是集合，对于取并集的操作会产生一定的错误，因为{x} \UNION {x}={x}，这就导致了如果我们处理两个完全相同的物品，箱里只加了一次，但是数目加了两次，这就是由于<strong>集合的互异性</strong>造成的，所以如果这里使用列表可以有效地修正这一错误，最终的修改总代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Integers,TLC,Sequences,FiniteSets</span><br><span class="line">(*--algorithm sort</span><br><span class="line">variable</span><br><span class="line">    capacity \in [trash: 1..10, recycle: 1..10],</span><br><span class="line">    dustbin = [trash |-&gt; &lt;&lt;&gt;&gt;,recycle |-&gt;&lt;&lt;&gt;&gt;],</span><br><span class="line">    count =[trash |-&gt; 0,recycle |-&gt; 0],</span><br><span class="line">    item =[type: &#123;&quot;recycle&quot;,&quot;trash&quot;&#125;,size: 1..6],</span><br><span class="line">    items \in item \X item \X item \X item,</span><br><span class="line">    cur =&quot;&quot;;</span><br><span class="line">macro add_item(type) begin</span><br><span class="line">        capacity[type] := capacity[type] -cur.size;</span><br><span class="line">        dustbin[type] := Append(dustbin[type],cur);</span><br><span class="line">        count[type] := count[type] + 1;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while items /= &lt;&lt;&gt;&gt; do</span><br><span class="line">    cur := Head(items);</span><br><span class="line">    items := Tail(items);</span><br><span class="line">    if cur.type = &quot;recycle&quot;/\ cur.size&lt;=capacity.recycle then</span><br><span class="line">        add_item(&quot;recycle&quot;);</span><br><span class="line">    elsif cur.type =&quot;trash&quot;/\cur.size&lt;=capacity.trash then</span><br><span class="line">        add_item(&quot;trash&quot;);</span><br><span class="line">    end if;</span><br><span class="line">    end while;</span><br><span class="line">    assert capacity.recycle&gt;=0 /\ capacity.trash&gt;=0;</span><br><span class="line">    assert Len(dustbin.trash) = count.trash;</span><br><span class="line">    assert Len(dustbin.recycle) = count.recycle;</span><br><span class="line">end algorithm*)</span><br><span class="line">=========</span><br></pre></td></tr></table></figure>
+<h3 id="Nondeterministic-Behavior"><a href="#Nondeterministic-Behavior" class="headerlink" title="Nondeterministic Behavior"></a>Nondeterministic Behavior</h3><p>​    并不是所有的行为都是确定的，在PlusCal中有两个关键字用来模拟不确定性</p>
+<p><strong>Either</strong></p>
+<p>​    大致的语法格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">either</span><br><span class="line">	\* branch 1</span><br><span class="line">or</span><br><span class="line">	\* branch 2</span><br><span class="line">\* ...</span><br><span class="line">or</span><br><span class="line">	\* branch n</span><br><span class="line">end either;</span><br></pre></td></tr></table></figure>
+<p>​    当我们开始核实的时候，TLC将会同时检查所有的分支，可以通过这一点来展示所有的可能情况，但是每种情况都是等可能的，一旦其中有一个让spec无效，都要去修正它，在分支中可以放任何表达式，如果可以让macro有效，可以将either放入macro中</p>
+<p><strong>With</strong></p>
+<p>​    大致的语法格式有两种，见下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with var = value do</span><br><span class="line">	\* body</span><br><span class="line">end with;</span><br><span class="line">\* or</span><br><span class="line">with var \in set do</span><br><span class="line">	\*body</span><br><span class="line">end with;</span><br></pre></td></tr></table></figure>
+<p>​    前一种用法大概是创建了一个临时变量，后面一种情况是不确定性的应用，将会检查集合中的每一个元素所对应的情况，如果集合为空，此处的spec将会停止。</p>
+<p>​    with语句给的是值而不是参照，在书中给了一个比较清晰的例子，即如果x和y是变量，通过写with t \in {x,y} do t := 1来为其重新赋值是不可以的，仅仅只能写 with t \in {x,y} do x := t。</p>
+<p><strong>example</strong></p>
+<p>​    这个问题大概就是说有个人送信到中转站，收信的人可以选择收也可以选择不收，我们直译以下就得到了以下的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Sequences,TLC</span><br><span class="line">(*--algorithm message</span><br><span class="line">variable</span><br><span class="line">    to_send = &lt;&lt;1,2,3&gt;&gt;,</span><br><span class="line">    receiver = &lt;&lt;&gt;&gt;,</span><br><span class="line">    in_transit = &#123;&#125;;</span><br><span class="line">begin</span><br><span class="line">    while Len(receiver) /= 3 do</span><br><span class="line">    if Len(to_send) /= 0 then</span><br><span class="line">        in_transit := in_transit \union &#123;Head(to_send)&#125;;</span><br><span class="line">        to_send := Tail(to_send);</span><br><span class="line">    end if;</span><br><span class="line">    either</span><br><span class="line">        with msg \in in_transit do</span><br><span class="line">            receiver := Append(receiver,msg);    </span><br><span class="line">            in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">        end with;</span><br><span class="line">    or</span><br><span class="line">        skip;</span><br><span class="line">    end either;</span><br><span class="line">    end while;</span><br><span class="line">end algorithm;*)</span><br><span class="line">====</span><br></pre></td></tr></table></figure>
+<p>​    注意如果在最下面加入断言assert receiver = &lt;<1,2,3>&gt;会报错，这个错误是由于高并发造成的，称之为<strong>concurrency bugs</strong>，即送1，收件人没收，然后送2，然后收件人收1，送3，然后收3，2，导致顺序发生变化，所以这里可以加入一个判定，保证在上一封信被收到的时候，下一封信才可以寄出，进而保证了有序性</1,2,3></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Sequences,TLC</span><br><span class="line">(*--algorithm message</span><br><span class="line">variable</span><br><span class="line">    to_send = &lt;&lt;1,2,3&gt;&gt;,</span><br><span class="line">    receiver = &lt;&lt;&gt;&gt;,</span><br><span class="line">    in_transit = &#123;&#125;;</span><br><span class="line">    can_send = TRUE</span><br><span class="line">begin</span><br><span class="line">    while Len(receiver) /= 3 do</span><br><span class="line">    if can_send /\ Len(to_send) /= 0 then</span><br><span class="line">        in_transit := in_transit \union &#123;Head(to_send)&#125;;</span><br><span class="line">        to_send := Tail(to_send);</span><br><span class="line">        can_send := FALSE;</span><br><span class="line">    end if;</span><br><span class="line">    either</span><br><span class="line">        with msg \in in_transit do</span><br><span class="line">            can_send := TRUE;</span><br><span class="line">            receiver := Append(receiver,msg);    </span><br><span class="line">            in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">        end with;</span><br><span class="line">    or</span><br><span class="line">        skip;</span><br><span class="line">    end either;</span><br><span class="line">    end while;</span><br><span class="line">    assert receiver = &lt;&lt;1,2,3&gt;&gt;;</span><br><span class="line">end algorithm;*)</span><br><span class="line">======</span><br></pre></td></tr></table></figure>
+<p>​    但是这样改动也会造成一个问题，就是发出去的信永远都没收到，这样就永远无法寄信，这称之为<strong>liveness bugs</strong>，未来会更加详细的介绍它</p>
+<p>​    当然在现实中也会有一些别的情况，比如信收到了但是邮差却误以为没有收导致报错，只需要在加入either即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with msg \in in_transit do</span><br><span class="line">	receiver := Append(receiver,msg);</span><br><span class="line">	in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">	either</span><br><span class="line">		can_send := true;</span><br><span class="line">	or</span><br><span class="line">		skip;</span><br><span class="line">	end either;</span><br><span class="line">end with;</span><br></pre></td></tr></table></figure>
+<p>​    但是这样却会报错<strong>Deadlock reached</strong>，这意味着spec进入到了一个玄学阶段，即啥都做不了，这样的一个阶段显然是很容易模拟出来的，关于这样的报错以后也会继续了解</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要讲了PlusCal的一些基础知识，重点在于四种结构及其之间的相互组合和一些算法结构</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（三）</title>
+    <url>/blog/2021/08/25/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    这一章主要介绍<strong>TLA+ proper</strong>并且用它来写一些更加复杂的不变量</p>
+<h1 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h1><p>​    在这里我们可以自行的写一些操作，大概是这样的格式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Op(arg1, arg2) == Expr</span><br></pre></td></tr></table></figure>
+<p>​    注意这里要写两个等于号，如果不需要参数的话可以直接用类似于赋值的写法，我们可以简化之前那个分类的程序，感觉其实还是类似于直接定义一个函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BinTypes == &#123;&quot;trash&quot;, &quot;recycle&quot;&#125;</span><br><span class="line">SetsOfFour(set) == set \X set \X set \X set</span><br><span class="line">Items == [type: BinTypes, size: 1..6]</span><br><span class="line">(* --algorithm recycler</span><br><span class="line">variables</span><br><span class="line">	capacity \* ...</span><br><span class="line">	items \in SetsOfFour(Items);</span><br><span class="line">	*\...)</span><br></pre></td></tr></table></figure>
+<p>​    这里这么定义其实也没有简化多少，但是是有一定好处的，因为我们把可能的物品构成的集合当成了一个常量而非变量，这个时候就比较适合将它定义成一个操作，从而防止在算法中不小心改变了这个集合。</p>
+<p>​    另外就是在定义时，TLA+不适用分号，而PlusCal使用分号。如果想要用PlusCal声明的变量定义操作的话，应该放在define之中，<strong>另外就是它的定义一定要在variable之后，在macro之前</strong>，然后就是在<strong>TLA+中唯一一个对于缩进敏感的地方</strong>，也就是定义操作时的结合问题，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/\ A</span><br><span class="line">/\B</span><br><span class="line">	\/C</span><br><span class="line">/\D</span><br></pre></td></tr></table></figure>
+<p>​    我们得到的是A/(B\/C)/\D</p>
+<p>​    另外需要说一下的就是操作的嵌套，最大的操作也称之为<strong>higher-order operators</strong>，需要提前声明所有它用过的操作，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Add(a,b) == a+b</span><br><span class="line">Apply(op(_,_),x,y) == op(x,y)</span><br><span class="line">\*  example</span><br><span class="line">Apply(Add,1,2)   -&gt;     3</span><br></pre></td></tr></table></figure>
+<p>​    可以用LAMBDA定义一些匿名的操作，匿名操作（Anonymous operators）只能作为参数被其它操作使用，不能单独使用，写法正如LAMBDA param1, param2, paramN: body</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apply(LAMBDA x,y: x+y, 1, 2)</span><br></pre></td></tr></table></figure>
+<p>​    最后可以通过自定义操作来让语句更短</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set ++ elem == set \union &#123;elem&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Invariants"><a href="#Invariants" class="headerlink" title="Invariants"></a>Invariants</h1><p>​    我们不需要定义一个单独的操作来声明一个不变量，但是这样做可以增加可读性</p>
+<h2 id="Logical-Operators"><a href="#Logical-Operators" class="headerlink" title="Logical Operators"></a>Logical Operators</h2><h3 id="A-and-E"><a href="#A-and-E" class="headerlink" title="\A and \E"></a>\A and \E</h3><p>​    \A意味着”all elements in a set”，通常的格式为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\A x \in set: P(x)</span><br><span class="line">\*意为，对于集合中的所有元素，P(x)为真，下面给一个例子</span><br><span class="line">AllLessThan(set, max) == \A num \in set: num&lt;max</span><br><span class="line">\*如</span><br><span class="line">AllLessThan(&#123;1,3&#125;,4)  ---&gt;   TRUE</span><br></pre></td></tr></table></figure>
+<p>​    \E意味着”there exists some element in the set”，通常的格式为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\E x \in set: P(x)</span><br><span class="line">\* 意为在集合中至少有一个元素使P(x)为真，下面给一个例子</span><br><span class="line">\* SeqOverlapsSet(seq, set) == \E x \in 1..Len(seq): seq[x] \in set</span><br><span class="line">\* 如</span><br><span class="line">SeqOverlapsSet(&lt;&lt;1,3&gt;&gt;,&#123;2,3,4&#125;) --&gt; TRUE</span><br></pre></td></tr></table></figure>
+<p>​    另外就是如果集合为空，那么\E恒为FALSE，\A恒为TRUE，也可以在这两个量词前加否定，即~\E表示”there is no element in the set”，另外~\A表示”not all elements in the set”</p>
+<p>​    如果参数的顺序不影响操作的话，我们称之为”commutative operator”，如果我们想要查看它是不是的话，就需要测试集合中的所有的值对，可以通过上面的量词来达到这一点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IsCommutativeOver(Op(_,_),S)==</span><br><span class="line">	\A x,y \in S: Op(x,y) = Op(y,x)</span><br><span class="line">\* 还有别的写法</span><br><span class="line">IsCommutativeOver(Op(_, _), S) ==</span><br><span class="line">	\A x \in S, y \in S: Op(x, y) = Op(y, x)</span><br><span class="line">\* 还有</span><br><span class="line">IsCommutativeOver(Op(_, _), S) ==</span><br><span class="line">	\A &lt;&lt;x, y&gt;&gt; \in S \X S: Op(x, y) = Op(y, x)</span><br><span class="line">\* 例如</span><br><span class="line">IsCommutativeOver(Lambda x,y: x+y,1..10)</span><br><span class="line">TRUE</span><br><span class="line">IsCommutativeOver(Lambda x,y: x-y,1..10)</span><br><span class="line">FALSE</span><br></pre></td></tr></table></figure>
+<h3 id="gt-and-lt-gt"><a href="#gt-and-lt-gt" class="headerlink" title="=&gt; and &lt;=&gt;"></a>=&gt; and &lt;=&gt;</h3><p>​    这里和命题的等价公式还挺像的</p>
+<p>​    P=&gt;Q means that if P is true, then Q is true，这等价于~P\/Q，一般来说这个会用在当预条件满足时检查某事是否发生</p>
+<p>​    P&lt;=&gt;Q </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Xor(A,B) == (~A/\B)\/(A/\~B)</span><br><span class="line">OtherXor(A,B) == ~A &lt;=&gt; B</span><br><span class="line">\ A A \in BOOLEAN,B \IN BOOLEAN: Xor(A,B) = OtherXor(A,B)</span><br></pre></td></tr></table></figure>
+<p>另外需要注意的就是这里也对空白敏感</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/\ P</span><br><span class="line">/\ Q		--&gt;  (P/\Q) =&gt; R</span><br><span class="line">=&gt; R</span><br><span class="line"></span><br><span class="line">/\ P</span><br><span class="line">/\ Q		--&gt;  P/\(Q=&gt; R)</span><br><span class="line">  =&gt; R</span><br></pre></td></tr></table></figure>
+<h2 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h2><p>​    以下的这些东西自由度很高，可以在任何表达中使用</p>
+<h3 id="LET-IN"><a href="#LET-IN" class="headerlink" title="LET-IN"></a>LET-IN</h3><p>​    所有的表达都可以使用LET-IN 来一些操作和定义，<del>不过暂时不太理解这个东西的好处在哪里</del>，或许好在局部操作？现在大概明白了，这里IN后面跟的是返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RotateRight(seq) == </span><br><span class="line">	LET</span><br><span class="line">		last == seq[Len(seq)]</span><br><span class="line">		first == SubSeq(seq, 1, Len(seq)-1)</span><br><span class="line">	IN &lt;&lt;last&gt;&gt; \o first</span><br><span class="line"></span><br><span class="line">&gt;&gt; RotateRight(&lt;&lt;1,2,3&gt;&gt;)</span><br><span class="line">&lt;&lt;3,1,2&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="IF-THEN-ELSE"><a href="#IF-THEN-ELSE" class="headerlink" title="IF-THEN-ELSE"></a>IF-THEN-ELSE</h3><p>​    所有if的表达都必须要有else，这是一个表达而非语法格式，内部不能赋值，但是PlusCal可以在内部赋值而不能将其赋给别的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Max(x,y) == IF x&gt;y THEN x ELSE y</span><br><span class="line">&gt;&gt; &lt;&lt;Max(2,3),Max(3,2)&gt;&gt;</span><br><span class="line">&lt;&lt;3,3&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="CASE"><a href="#CASE" class="headerlink" title="CASE"></a>CASE</h3><p>​    case的子列用中括号来标记</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CASE x = 1 -&gt; TRUE</span><br><span class="line">  [] x = 2 -&gt; TRUE</span><br><span class="line">  [] x = 3 -&gt; 7</span><br><span class="line">  [] OTHER -&gt; FALSE</span><br></pre></td></tr></table></figure>
+<p>​    必须要有最后的OTHER，否则会报错，然后就是允许多个陈述都比配，但是尽量避免这种情况</p>
+<h3 id="CHOOSE"><a href="#CHOOSE" class="headerlink" title="CHOOSE"></a>CHOOSE</h3><p>​    <strong>这个比较重要！！！</strong></p>
+<p>​    CHOOSE x \in S : P(x)指的是”select an x such that P(x) is TRUE”，如果超过一个，会任意返回一个，如果一个都没有，会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IndexOf(seq, elem) ==</span><br><span class="line">	CHOOSE i \in 1..Len(seq)</span><br><span class="line">&gt;&gt; IndexOf(&lt;&lt;8, 3, 1&gt;&gt;, 3)</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>​    然后如果和逻辑词联结在一起的话会有一些比较棒的用法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Max(set) == </span><br><span class="line">	CHOOSE x \in set: \A y \in set: x&gt;=y</span><br><span class="line">&gt;&gt; Max(1..10)</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>​    甚至可以解方程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CHOOSE &lt;&lt;x,y&gt;&gt; \in (-10..10) \X (-10..10):</span><br><span class="line">	/\ 2*x + y = -2</span><br><span class="line">	/\ 3*x -2*y = 11</span><br></pre></td></tr></table></figure>
+<h1 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h1><p>​    一个函数是从输入到输出的一个映射，所有的函数都有如下形式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[x \in set |-&gt; P(x)]</span><br><span class="line">/* 也可以改写成多元的</span><br><span class="line">[x \in set1, y \in set2 |-&gt; Q(x,y)]</span><br><span class="line">[x \in numbers |-&gt; x*2]</span><br></pre></td></tr></table></figure>
+<p>​    为了使用一个函数，可以用<strong>f[bar]</strong>，这里指的是引用输出，就像前面的元组或结构，之前说它俩实际上是一种类型，这里解释一下，元组可以看成定义域是1..n的函数，结构可以看成定义域是一系列字符串的函数</p>
+<p>​    类似于结构，我们可以指派函数，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Flags == &#123;&quot;f1&quot;, &quot;f2&quot;&#125;</span><br><span class="line">(*--algorithm flags</span><br><span class="line">variable</span><br><span class="line">	flags = [f \in Flags |-&gt; FALSE];</span><br><span class="line">begin</span><br><span class="line">	with f \in Flags do</span><br><span class="line">		flags[f] := TRUE;</span><br><span class="line">	end with;</span><br><span class="line">end algorithm</span><br></pre></td></tr></table></figure>
+<p>​    函数中的每一个f对应的值都会被改成TRUE</p>
+<h2 id="Functions-and-Operators"><a href="#Functions-and-Operators" class="headerlink" title="Functions and Operators"></a>Functions and Operators</h2><p>​    我们可以把一个函数当作一个操作，如果操作没有参数的话有两种写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Op == [x \in S |-&gt; P(x)]</span><br><span class="line">Op[x \in S] == P(x)</span><br></pre></td></tr></table></figure>
+<p>​    如果有参数的话就只有一种有效的写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MapToSomeNumber(set,num)==[x \in set |-&gt;num]</span><br></pre></td></tr></table></figure>
+<p>​    但是函数和操作之间有着一点关键的差别，操作对输入是无所谓的，但是函数一定有它确定的定义域，但是他们对于迭代递归之类的都没有限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SumUpTo(n) ==</span><br><span class="line">	LET F[m \in 0..n] ==</span><br><span class="line">		IF m = 0 THEN 0</span><br><span class="line">		ELSE m + F[m-1]</span><br><span class="line">	IN F[n]</span><br></pre></td></tr></table></figure>
+<p>​    然后针对递归，有一个相近的库函数ReduceSet</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PT == INSTANCE PT</span><br><span class="line">SumUpTo(n) ==</span><br><span class="line"> PT!ReduceSet(LAMBDA x, y: x + y, 0..n, 0)</span><br></pre></td></tr></table></figure>
+<p>​    目前就当成一个模板去用吧，用之前需要导入库PT</p>
+<h3 id="DOMAIN"><a href="#DOMAIN" class="headerlink" title="DOMAIN"></a>DOMAIN</h3><p>​    DOMAIN是一个给出函数可能的输入的操作，使用格式为DOMAIN func</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">F[x \in BOOLEAN] == x</span><br><span class="line">G == &lt;&lt;6, 0, 9&gt;&gt;</span><br><span class="line">H == [F |-&gt; DOMAIN F, G |-&gt; DOMAIN G]</span><br><span class="line">&gt;&gt; H</span><br><span class="line">[F |-&gt; &#123;FALSE, TRUE&#125;, G |-&gt; 1..3]</span><br><span class="line">&gt;&gt; DOMAIN H</span><br><span class="line">&#123;&quot;F&quot;, &quot;G&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id><a href="#" class="headerlink" title="@@"></a>@@</h3><p>​    f @@ g合并了两个函数，来看一下这个操作的源程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Merge(f, g) == [</span><br><span class="line">	x \in (DOMAIN f) \union (DOMAIN g) |-&gt;</span><br><span class="line">	  IF x \in DOMAIN f THEN f[x] ELSE g[x]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>​    需要导入模块TLC</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS TLC</span><br><span class="line">f[x \in 1..2] == &quot;a&quot;</span><br><span class="line">g[x \in 2..3] == &quot;b&quot;</span><br><span class="line">&gt;&gt; f @@ g</span><br><span class="line">&lt;&lt;&quot;a&quot;, &quot;a&quot;, &quot;b&quot;&gt;&gt;</span><br><span class="line">&gt;&gt; g @@ f</span><br><span class="line">&lt;&lt;&quot;a&quot;, &quot;b&quot;, &quot;b&quot;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="gt"><a href="#gt" class="headerlink" title=":&gt;"></a>:&gt;</h3><p>​    仍然需要模块TLC</p>
+<p>​    a :&gt; b是函数[x \in {a} |-&gt; b]</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; (2 :&gt; 3)[2]</span><br><span class="line">3</span><br><span class="line">&gt;&gt; (&quot;a&quot; :&gt; &quot;b&quot;).a</span><br><span class="line">&quot;b&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="函数集合"><a href="#函数集合" class="headerlink" title="函数集合"></a>函数集合</h2><p>​    这指的是从一个函数到另外一个函数，但是和之前的有一点区别，即[set1 -&gt; set2]，下面给几个例子</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; [s \in &#123;&quot;a&quot;, &quot;b&quot;&#125; |-&gt; &#123;1, 2&#125;]</span><br><span class="line">[a |-&gt; &#123;1, 2&#125;, b |-&gt; &#123;1, 2&#125;]</span><br><span class="line">&gt;&gt; [&#123;&quot;a&quot;, &quot;b&quot;&#125; -&gt; &#123;1, 2&#125;]</span><br><span class="line">&#123; [a |-&gt; 1, b |-&gt; 1],</span><br><span class="line"> [a |-&gt; 1, b |-&gt; 2],</span><br><span class="line"> [a |-&gt; 2, b |-&gt; 1],</span><br><span class="line"> [a |-&gt; 2, b |-&gt; 2] &#125;</span><br></pre></td></tr></table></figure>
+<p>​    现在我们来回忆以下之前的那个分类程序，我们中间利用了笛卡尔直角积来构造了一个随机集合，但是这样是很笨拙的，我们就可以利用这里的东西来进行简化</p>
+<p>​    首先我们需要知道一点，TLC会将定义域为1..N的函数转化成列表，如[x \in 1..3 |-&gt; P(x)]，就会转化成&lt;<P(1), p(2),p(3)>&gt;，那我们另外考虑一下[1..3 -&gt; S]，其实仔细想一下，它代表的就是S \X S \X S，<del>这里我暂时不是很理解</del></P(1),></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SeqOf(set, count) == [1..count -&gt; set]</span><br></pre></td></tr></table></figure>
+<p>​    然后就是对于之前的那个flag的例子可以做一个简短的优化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flags \in &#123;config \in [Flags -&gt; BOOLEAN]: \E f \in Flags: config[f]&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="example"><a href="#example" class="headerlink" title="example"></a>example</h1><p>​    这里解决的是背包问题，其实从背包问题的解决就可以看出来TLA+的很多思路，就是通过设定一些操作来将整个过程描述出来，但是和编程的描述过程还不太一样</p>
+<p>​    就比如背包问题，其实在TLA+中抽象之后就变得很简单，即先找出所有符合条件的可能性，然后在这些所有的可能性中寻找最佳的即可，即利用CHOOSE操作，将所有的可行的背包中的价值最大的找到</p>
+<p>​    不过在输入随机时，有可能产生错误，即所有物品的价值全都是0，这个时候可以考虑再加入一些限制条件</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（六）</title>
+    <url>/blog/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    现在我们接触到的大多数程序都是独立于时间的，都是一个发生之后另外一个接着发生，我们可以根据系统的初始状态和几行代码具体描述出系统最终的状态。</p>
+<p>​    但是很多程序都不是这样的简单地程序，在并发系统中，没有单一时间线，事实上会有以任意顺序发生在任何时候的事情，进而产生新时间线的断裂传播。设计并发系统需要很多进行推理的可能的行为，因此很难被正常设计。</p>
+<p>​    在这一章我们将会合理使用TLA+，我们在之前已经用其中的<strong>either</strong>和<strong>with</strong>做过一些基本的不确定性行为，现在主要介绍<strong>processes</strong>和<strong>labels</strong>两种想法，这将会帮助我们测试高并发代码</p>
+<h1 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h1><p>​    首先我们先说一下labels，labels一般不会去描述单一的过程，而失去描述并发系统</p>
+<p>​    labels决定了spec的原子性，因为TLC在单个步骤中会执行标签中的所有步骤。执行完单个步骤后，TLC会检查不变量然后寻找下一个要执行的标签。TLC是会检查下一个标签集上的所有可能行为的<del>（或许类似于BFS）</del>，对于并发系统，TLC将会测试所有可用的下一步操作是否存在可能的错误</p>
+<p>​    在将PlusCal编译成TLA+时，会产生一个新的变量pc，pc标记着我们目前所在的标签，如果pc = “A”的话，下一个步骤将会有A标签下的东西组成。在同一个过程中，我们可以用<strong>goto NameOfLabel</strong>进行标签跳转,<strong>值得注意的是，”Done”标签是每个过程最后的标签，不能作为自己的标签名，但是可以用goto跳转至Done</strong></p>
+<p>​    贴标签要遵循以下的规则:</p>
+<ol>
+<li>在每一个过程的开始和每一个while前都要有一个标签</li>
+<li>不能在macro或with内部放标签</li>
+<li>在每一个goto后面必须有标签</li>
+<li>如果在if或either之类的分支结构内部有标签，那么在控制结构的尾端也要有标签</li>
+<li>在一个标签中不能指派同一个变量两次</li>
+</ol>
+<p>给一个例子解释一下最后一条</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Valid:</span><br><span class="line"> either x := 1;</span><br><span class="line"> or x := 2;</span><br><span class="line"> end either;</span><br><span class="line">Invalid:</span><br><span class="line"> x := 1;</span><br><span class="line"> x := 2;</span><br></pre></td></tr></table></figure>
+<p>另外就是在处理函数的赋值时也不能这样，但是PlusCal给出了||操作，这样可以被认为是同时发生的。<strong>但是对于一般地变量还是会报错</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Valid:</span><br><span class="line"> struct.key1 = 1 ||</span><br><span class="line"> struct.key2 = 2;</span><br></pre></td></tr></table></figure>
+<h1 id="Processes"><a href="#Processes" class="headerlink" title="Processes"></a>Processes</h1><p>​    编程中常见的一种情况是读写器模式（reader-writer pattern），这里有两个或多个异步进程通过共享通道进行通信的地方，其中一个用来编写信息，另一个主要是使用它们。我们接下来要模拟共享通道有界的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----MODULE test-----</span><br><span class="line">EXTENDS TLC, Integers, Sequences</span><br><span class="line">CONSTANTS MaxQueueSize</span><br><span class="line">(*--algorithm message_queue</span><br><span class="line">variable</span><br><span class="line">    queue = &lt;&lt;&gt;&gt;;</span><br><span class="line">define</span><br><span class="line">    BoundedQueue == Len(queue) &lt;= MaxQueueSize</span><br><span class="line">end define;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Writer:</span><br><span class="line">    while TRUE do</span><br><span class="line">        queue := Append(queue, &quot;msg&quot;);</span><br><span class="line">    end while;</span><br><span class="line">end process;</span><br><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variables</span><br><span class="line">    current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">     while TRUE do</span><br><span class="line">        current_message := Head(queue);</span><br><span class="line">        queue := Tail(queue);</span><br><span class="line">     end while;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    我们通过关键字<strong>process</strong>来定义一个新的过程，每一个过程都需要分配一个值，所有的过程都必须使用标签</p>
+<p>​    TLA+可以运行任意的一个过程，在每一个过程中都可以检查相应的不变量，另外就是本地变量（local variable），也就是在过程中定义的变量，比如reader过程中的current_message变量，她不可以被其他模块获取，当然，在这个过程中被使用的macro中可以使用该变量，本地变量也可以用\in来定义</p>
+<p>​    现在运行上面的程序，很快就会报错，因为高并发的缘故，TLC可以先运行过程reader，这会先求queue的头部，但是它是空的！<strong>Head运算在空列表的情况下是没有意义的</strong>，当然也可以类比现实生活，这个bug是很容易修复的，只需要加一个判定即可，不过这里给出了一个表达式</p>
+<h2 id="Await"><a href="#Await" class="headerlink" title="Await"></a>Await</h2><p>​    这个表达式也相当于一个判定，即await Expression，含义是如果Expression为真，运行后面的步骤，否则阻止其运行，当然也可以用<strong>when</strong>得到相同的用法，我们改写一下reader过程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line"> while TRUE do</span><br><span class="line"> await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line"> current_message := Head(queue);</span><br><span class="line"> queue := Tail(queue);</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    当队列为空时，意味着Read行为不能发生，这时唯一可以发生的就是Write行为，所以TLC接下来必须执行Write。事实上这样强迫阅读者在队列为空时一直等待，然而如果这样运行的话会报一个别的错误，即写的人会一直写下去，所以我们也可以加入一个等待语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line"> while TRUE do</span><br><span class="line"> queue := Append(queue, &quot;msg&quot;);</span><br><span class="line"> await Len(queue) &lt;= MaxQueueSize;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    值得注意的是，这里的await语句加载了写文字的后面，如果先判断再写的话容易产生错误，即队列长度比最大长度大1，这是很显然的错误</p>
+<h2 id="Deadlocks"><a href="#Deadlocks" class="headerlink" title="Deadlocks"></a>Deadlocks</h2><p>​    现在来埋之前挖的一个坑</p>
+<p>​    上一节说到的await的使用有可能会导致所有的过程都不发生，例如我们可以在上一节的通信中加入读者有可能出现错误的这一缓解，即</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">macro add_to_queue(val) begin</span><br><span class="line">	await Len(queue) &lt; MaxQueueSize;</span><br><span class="line">	queue := Append(queue, val);</span><br><span class="line">end macro;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line"> while TRUE do</span><br><span class="line"> 	add_to_queue(&quot;msg&quot;);</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br><span class="line">process reader = &quot;reader&quot;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">  while TRUE do</span><br><span class="line">  	await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line">  	current_message := Head(queue);</span><br><span class="line">  	queue := Tail(queue);</span><br><span class="line">  either</span><br><span class="line"> 	skip;</span><br><span class="line">  or</span><br><span class="line"> 	NotifyFailure:</span><br><span class="line"> 		current_message := &quot;none&quot;;</span><br><span class="line"> 		add_to_queue(&quot;fail&quot;);</span><br><span class="line">  end either;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里采用了either来模拟这种情况，另外就是其中的做出操作的这种情况必须采用一个标签，<strong>这是因为其中的两个变量我们都已经在这个步骤中操作过了，而一个步骤中只能对一个变量进行一次分配，所以需要添加标签来更改步骤层次</strong>，另外就是因为either的一个分支中已经有了一个标签，所以如果想在过程中写另外的一些东西的话需要在either标签后再定义新的标签，但是这里是不需要的</p>
+<p>​    一旦运行，就会报一个新的错误，即<strong>Deadlock Reached</strong>，这指的是spec中的所有过程都无法采取动作的情况，这通常是因为await所造成的错误，但是像with x \in S，如果S是空集的话也会报错，通常这是一个很坏的错误，但是如果spec中不考虑这一点的话，可以在Model Overview &gt; What to Check? &gt; Deadlock中修改</p>
+<h3 id="Process-Sets"><a href="#Process-Sets" class="headerlink" title="Process Sets"></a>Process Sets</h3><p>​    通常的解决这一错误的办法是加入更多的读者，但是仔细想一下就会知道这样的方法根本没用啊！！！因为本身根据TLC的特性，报错是肯定的，但是通过增加更多的读者这一方法在实际生产中肯定是可以大幅减少可能出现的错误产生</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">process reader \in &#123;&quot;r1&quot;, &quot;r2&quot;&#125;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line"> while TRUE do</span><br><span class="line"> 	await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line"> 	current_message := Head(queue);</span><br><span class="line"> 	queue := Tail(queue);</span><br><span class="line"> either</span><br><span class="line"> 	skip;</span><br><span class="line"> or</span><br><span class="line"> 	NotifyFailure:</span><br><span class="line"> 		current_message := &quot;none&quot;;</span><br><span class="line"> 		add_to_queue(self);</span><br><span class="line">  end either;</span><br><span class="line"> end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里的第一行实际上就是定义了两个过程，其中的self就是当前过程的名字</p>
+<p>​    <strong>值得注意的是，所有的过程名字必须是可比的，这里因为writer是字符串，所以reader要么是字符串的集合，要么是模型值的集合</strong></p>
+<h1 id="Procedures"><a href="#Procedures" class="headerlink" title="Procedures"></a>Procedures</h1><p>​    现在有这样一个需求，即可以在多个过程之间共享一个多步骤的操作，这里不能用宏，因为宏中不能包含标签，所以我们引入了<strong>procedures</strong>，下面我们给出的spec就像是用procedure代替了macro一样</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">procedure add_to_queue(val=&quot;&quot;) begin</span><br><span class="line">	Add:</span><br><span class="line">		await Len(queue) &lt; MaxQueueSize;</span><br><span class="line">		queue := Append(queue, val);</span><br><span class="line">		return;</span><br><span class="line">end procedure;</span><br><span class="line">process writer = &quot;writer&quot;</span><br><span class="line">begin Write:</span><br><span class="line">	while TRUE do</span><br><span class="line">		call add_to_queue(&quot;msg&quot;);</span><br><span class="line">	end while;</span><br><span class="line">end process;</span><br><span class="line">process reader \in &#123;&quot;r1&quot;, &quot;r2&quot;&#125;</span><br><span class="line">variable current_message = &quot;none&quot;;</span><br><span class="line">begin Read:</span><br><span class="line">	while TRUE do</span><br><span class="line">		await queue /= &lt;&lt;&gt;&gt;;</span><br><span class="line">		current_message := Head(queue);</span><br><span class="line"> 		queue := Tail(queue);</span><br><span class="line"> 		either</span><br><span class="line"> 			skip;</span><br><span class="line"> 		or</span><br><span class="line"> 			NotifyFailure:</span><br><span class="line"> 				current_message := &quot;none&quot;;</span><br><span class="line"> 				call add_to_queue(self);</span><br><span class="line"> 		end either;</span><br><span class="line">	end while;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    运行的话会产生同样的deadlock，procedure和macro的语法是差不多的，但是他之中可以有标签，在procedure中也可以定义局部变量，不过只能用<strong>=</strong>去定义，最后用return来结束这一过程，，但是它没有任何的返回值，然后在过程中我们可以通过<strong>call</strong>来使用程序，被调用的过程必须紧跟在标签、封闭块的结尾、goto或return中</p>
+<p>​    另外就是这个东西必须在宏之后定义，在process之前定义。</p>
+<p>​    <strong>值得注意的是在使用过程集合时，如果其中使用了procedure或者宏的话，也可以使用self</strong></p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>​    该例子主要用来模拟多个客户端共享一些实时更新的资源</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    主要介绍了TLA+在高并发程序中的应用</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>大学生数学竞赛微分相关知识的复习</title>
+    <url>/blog/2021/08/16/%E6%9E%81%E9%99%90/</url>
+    <content><![CDATA[<h1 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h1><h2 id="前导"><a href="#前导" class="headerlink" title="前导"></a>前导</h2><ol>
+<li>不为计算而计算，很多时候是为了便于分析，比如定义$e=\lim_{n\to +\infty}{\sum_{i=1}^n\frac{1}{n!}}$​</li>
+<li>要注意的是抓住主要矛盾，比如计算极限$\lim_{n \to +\infty} \sum_{k=1}^{n}\frac{k^n}{n^n}$</li>
+</ol>
+<h2 id="极限的典型方法"><a href="#极限的典型方法" class="headerlink" title="极限的典型方法"></a>极限的典型方法</h2><ol>
+<li><p>定义，即$\epsilon-\delta$语言</p>
+</li>
+<li><p>四则运算</p>
+</li>
+<li><p>等价无穷小替换（两个重要极限）</p>
+</li>
+<li><p>L’ Hospital法则，注意使用条件</p>
+</li>
+<li><p>夹逼定理</p>
+</li>
+<li><p>单调有界收敛定理</p>
+</li>
+<li><p>Taylor展开</p>
+</li>
+<li><p>Stolz定理</p>
+<p>设${x_n}$严格单调增加，且$\lim_{n \to \infty}x_n=+\infty$,若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则有$\lim_{n \to \infty}\frac{y_n}{x_n}=a$</p>
+<p>设$x_n$严格单调，且$\lim_{n \to \infty}x_n=0,\lim_{n \to\infty}y_n=0$，若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则$\lim_{n\to\infty}\frac{y_n}{x_n}=a$</p>
+</li>
+</ol>
+<h2 id="典型例题"><a href="#典型例题" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
+<li><p>主要比较难以看出来的就是使用夹逼准则的求和极限，这时候大多数时候都需要通过恒等变形和放缩来利用夹逼准则转换成黎曼和，如$\lim_{n \to +\infty} \sum_{k=1}^n \frac{a^\frac{k}{n}}{n+(a-1)k^{-1}}$</p>
+</li>
+<li><p>当含有三角函数和积分时，最佳的做法应该是根据三角函数的有界性将积分做掉，例如$\lim_{x \to+\infty}\sqrt[3]{x}\int_x^{x+1}\frac{sint}{\sqrt[]{t+cost}}dt$</p>
+</li>
+<li><p>对于极限$\lim_{n \to \infty}\sum_{k=0}^n\frac{1}{n+k}$​，有多种不同的做法，这里主要想提一下欧拉常数，即$\lim_{n\to\infty}\sum_{k=1}^n\frac{1}{k}-lnn=\gamma_n$，其中$\lim_{n \to\infty}\gamma_n=C$</p>
+</li>
+<li><p>PPT31页值得再看</p>
+</li>
+<li><p>与积分相结合的极限题目</p>
+<ol>
+<li><p>通过观察转换成Riemann和，下面给几个例子</p>
+<p>​    $\lim\sum_{k=1}^{n-1}(1+\sqrt[]\frac{k}{n})sin\frac{k\pi}{n^2}$</p>
+</li>
+<li><p>利用积分中值定理和微分中值定理进行化简，下面给一个很经典的例子，即</p>
+<ol>
+<li>设f(x)在[0,1]上有连续导数，f(0)=0,f(1)=1,证明:<br>$\lim_{n \to \infty}n(\int_{0}^{1}f(x)dx-\frac{1}{n}\sum_{k=1}^{n}f(\frac{k}{n}))$</li>
+</ol>
+</li>
+<li><p>利用黎曼和进行转化</p>
+<ol>
+<li><img src="/blog/images/例五.jpg" alt></li>
+</ol>
+</li>
+<li><p>在存在k之类和三角函数时可以考虑求递推式，如求$\lim_{x \to 0^+}\frac{\int_0^xsin^k\frac{1}{t}dt}{x},k=1,2,…$</p>
+</li>
+<li><p>然后就是一道代数变形不太好想的题目，即$\lim_{n \to \infty}\sqrt[n+1]{(n+1)!}-\sqrt[n]{n!}$</p>
+</li>
+</ol>
+</li>
+<li><p>单调有界定理队函数和数列统统适用</p>
+</li>
+<li><p>泰勒展开式是一种非常重要的方法，或许可以看作是等价无穷小，这方面的例题很多，需要注意的是$tanx$和$(1+x)^\alpha$的泰勒展开式，将其转化成在0附近，就可以展开，下面给出几个题</p>
+<ol>
+<li>$\lim_{x \to0}\frac{(1+x)^\frac{2}{x}-e^2(1-ln(1+x))}{x}$，该题目需要注意的是在有减法的时候不要随意用等价无穷小！尽量先用泰勒公式展开</li>
+</ol>
+</li>
+<li><p>Stolz定理</p>
+<p>使用stolz定理的关键就在于构造出满足条件的式子，这里PPT上给出的题目基本都是谢惠民上的题目，此处不再赘述</p>
+</li>
+</ol>
+<hr>
+<h1 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h1><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol>
+<li>介值性</li>
+<li>最值性</li>
+</ol>
+<h2 id="典型例题-1"><a href="#典型例题-1" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
+<li>这里的典型例题大多是利用反证法导出矛盾</li>
+</ol>
+<hr>
+<h1 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h1><ol>
+<li><p>导数，单侧导数，微分，偏导数，全微分，方向导数</p>
+</li>
+<li><p>高阶导数的计算，主要利用Leibniz求导公式</p>
+</li>
+<li><p>这里就贴几道让我印象深刻的题目，</p>
+<p>已知$y=\frac{2x}{x^2+1}$，求$y^{(n)}$</p>
+<p>已知$y=\frac{x^n}{(x+1)^2(x+2)^2}$，求$y^{(n)}$</p>
+<p>已知$y=(arcsinx)^2$，求$y^{(n)}(0)$</p>
+<p><img src="/blog/images/例11.jpg" alt></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大学生数学竞赛</category>
+        <category>微分学</category>
+      </categories>
+      <tags>
+        <tag>大学生数学竞赛</tag>
+        <tag>极限</tag>
+        <tag>微分学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（四）</title>
+    <url>/blog/2021/08/26/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    我们在之前已经写过一些比较复杂的规范，但是我们的模式是非常僵化的，用了很多硬编码值，在这一章中，我们将会使用TLC配置来进行简化</p>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>​    我们有时会希望在运行中改变规范的参数，或许是想用小数据找出明显的错误，然后再用大数据找一些别的错误，这个时候需要动态修改TLC的参数，我们可以通过添加CONSTANTS来做到这一点，这是一些定义在模型内而不是规范内的值，可以按照如下方式添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers, TLC</span><br><span class="line">CONSTANTS Capacity, Items, SizeRange, ValueRange</span><br></pre></td></tr></table></figure>
+<p>​    需要注意的是，我们不能在Spec中给常量赋任何值，而是需要<strong>在“Model Overview”页面中的“What Is the Model”中进行赋值</strong>，我们有三种赋值的选择，下面逐一介绍，另外就是我们用<strong>Contants -&gt; val</strong>进行赋值</p>
+<h2 id="Ordinary-Assignment"><a href="#Ordinary-Assignment" class="headerlink" title="Ordinary Assignment"></a>Ordinary Assignment</h2><p>​    我们可以设置TLA+的任何类型作为常量，赋值只需要直接赋值即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Capacity &lt;- 7</span><br><span class="line">ValueRange &lt;- 0..3</span><br><span class="line">SizeRange &lt;- 1..4</span><br><span class="line">Items &lt;- &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Model-Values"><a href="#Model-Values" class="headerlink" title="Model Values"></a>Model Values</h2><p>​    如果我们这样分配的话，这个常量将会变成一个新的类型，并且这个类型只和它自身相等，即使设置了两个相同的值M和N，也有M /= N</p>
+<p>​    由于比较不同的值会认为规范失败，所以使用NULL是一件比较方便的事情</p>
+<h2 id="Sets-of-Model-Values"><a href="#Sets-of-Model-Values" class="headerlink" title="Sets of Model Values"></a>Sets of Model Values</h2><p>​    我们可以指派模型值的集合，这里主要可以用来优化一些由于对称性导致的资源损耗</p>
+<p>​    以背包问题为例，我们给出Items &lt;- [ model value ]{i1, i2, i3}</p>
+<p>​    但是这个时候其实在程序内部有大量的资源损耗，因为这其实是轮换对称的，如果我们告诉TLC轮换对称这一事实的话，程序将会大幅度优化</p>
+<p>​    用对称性往往只需要考虑情况的一半，这会让我们的程序更加高效，但是需要考虑是否安全</p>
+<h2 id="ASSUME"><a href="#ASSUME" class="headerlink" title="ASSUME"></a>ASSUME</h2><p>​    ASSUME是一种针对常量的断言，比如如果已经将Values作为了数字集合，就不希望再将它指派成字符串列表，如果出现这种情况，ASSUME就会阻止spec继续运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONSTANTS Capacity, Items, SizeRange, ValueRange</span><br><span class="line">ASSUME SizeRange \subseteq 1..Capacity</span><br><span class="line">ASSUME Capacity &gt; 0</span><br><span class="line">ASSUME \A v \in ValueRange: v &gt;= 0</span><br><span class="line">ItemParams == [size: SizeRange, value: ValueRange]</span><br><span class="line">ItemSets == [Items -&gt; ItemParams]</span><br></pre></td></tr></table></figure>
+<h3 id="Infinite-Sets"><a href="#Infinite-Sets" class="headerlink" title="Infinite Sets"></a>Infinite Sets</h3><p>​    到目前为止我们用的大多数都是有限集合，但是TLA+也可以指定某些类型的无限集，不能从集合中选择元素，也不能将其分类变量，但是可以用来测试成员资格。如果我们导入了Integers模块，可以得到无限极Int，我们也可以导入模块Naturals，得到自然数集合Nat，那么我们的假设就可以写的更加多样化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ASSUME SizeRange \subseteq 1..Capacity</span><br><span class="line">ASSUME Capacity \in Nat \ &#123;0&#125;</span><br><span class="line">ASSUME ValueRange \subseteq Nat</span><br></pre></td></tr></table></figure>
+<p>​    通过这样写可以让类型更加明晰</p>
+<h1 id="TLC运行时间"><a href="#TLC运行时间" class="headerlink" title="TLC运行时间"></a>TLC运行时间</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>​    来看一下model页下的一些配置</p>
+<p>​    <strong>What Is the Behavior Spec</strong>：关于这里我们一般选择<strong>Temporal Formula</strong>，有时候，如果Pluscal编译失败，他会自动切换到”No Behavior Spec”，有时候我们也可以通过这个模式来测试一些表达式</p>
+<p>​    <strong>What to Check</strong>：Invariants是我们放置安全不变量的地方，剩下的Deadlock和Properties将会在后续介绍</p>
+<p>​    <strong>How to run</strong>：我们可以在这里做一些运行时间的优化来让TLC更快，可以在Toolbox中深入学习这一点</p>
+<p>​    <strong>Additional Definitions</strong>：在这里可以添加一些额外的操作来进行状态约束和定义常量，比如定义F(x) == x*2，然后就可以对常量进行赋值，即C &lt;- F(1)</p>
+<p>​    <strong>State Constraint</strong>：这里放一些在模型中的所有状态下始终为真的表达式，但是和不变量不同，违反状态约束的话模型不会失败，而是会在搜索中删除该状态，TLC不会检查该状态的任何不变量1，也不能确定他的任何未来状态，这个东西的用处打开就是用来裁剪探索空间来更快的检查模型，但是可能会违反不变性</p>
+<p>​    <strong>Definition Override</strong>：这里大概就是根据自己的习惯来进行一些定义，当然还是尽可能的让命名大众化</p>
+<p>​    <strong>TLC Options</strong>：默认情况下我们的检查模式是BFS，可以改成DFS，如果spec不是有限的，这样做会很有用。但是最优的做法是采用状态约束，<strong>Simulation mode</strong>将用随机的轨迹代替有序的搜索，这种方法一般来说没有什么用，但是可以在极大状态空间上对spec进行压力测试</p>
+<h2 id="Error-Traces"><a href="#Error-Traces" class="headerlink" title="Error Traces"></a>Error Traces</h2><p>​    这里主要说一下<strong>Error-Trace Exploration</strong>，在这里可以添加一些表达然后测试它，显然这简直是debug的神器！！！</p>
+<p>​    然后就是primed value，即可以展示某个东西的输出改变了什么，如Op(x, y)’，测试了Op(x, y)输出后改变了什么，注意要加<strong>单引号</strong>，然后就是Op(x’, y)，将会测试在x之后的Op改变了什么</p>
+<h2 id="The-TLC-Module"><a href="#The-TLC-Module" class="headerlink" title="The TLC Module"></a>The TLC Module</h2><p>​    除了第三章的@@和:&gt;，TLC还提供了一些别的操作，可以用来debug</p>
+<h3 id="Print-and-PrintT"><a href="#Print-and-PrintT" class="headerlink" title="Print and PrintT"></a>Print and PrintT</h3><p>​    Print(val, out)用来在User Output打印val和out，然后检查out</p>
+<p>​    PrintT(val)和Print(val, TRUE)是一样的</p>
+<h3 id="Assert"><a href="#Assert" class="headerlink" title="Assert"></a>Assert</h3><p>​    如果val为真，那么Assert(val,out)为真，如果为假的话输出作物，然后如果想要输出的更加明晰，可以利用元组或结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; LET x == 3 y == 5 IN Assert(x &gt; y, &lt;&lt;x, &quot; is more than &quot;, y&gt;&gt;)</span><br><span class="line">The first argument of Assert evaluated to FALSE; the second argument was:</span><br><span class="line">&lt;&lt;3, &quot; is more than &quot;, 5&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>​    当然如果不想这么丑陋，也可以用ToString(_)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; LET x == 3 y == 5 IN Assert(x &gt; y, ToString(x) \o &quot; is more than &quot; \o </span><br><span class="line">ToString(y))</span><br><span class="line">The first argument of Assert evaluated to FALSE; the second argument was:</span><br><span class="line">&quot;3 is more than 5&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Permutations-and-SortSeq"><a href="#Permutations-and-SortSeq" class="headerlink" title="Permutations and SortSeq"></a>Permutations and SortSeq</h3><p>​    Permutations(set) 是集合中的所有可能的顺序，SortSeq(seq, Op(_,_))是基于Op进行排序的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; Permutations(&#123;1, 2, 3&#125;)</span><br><span class="line">&#123; &lt;&lt;1, 2, 3&gt;&gt;, &lt;&lt;1, 3, 2&gt;&gt;, &lt;&lt;2, 1, 3&gt;&gt;, &lt;&lt;2, 3, 1&gt;&gt;, &lt;&lt;3, 1, 2&gt;&gt;, &lt;&lt;3, 2, </span><br><span class="line">1&gt;&gt; &#125;</span><br><span class="line">&gt;&gt; SortSeq(&lt;&lt;1, 2, 3&gt;&gt;, LAMBDA x, y: x &gt; y)</span><br><span class="line">&lt;&lt;3, 2, 1&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h2><p>​    一个规范中可以有多个module，第一个作为主模块，并且是唯一运行的模块，其他模块可以用来为Spec提供新的运算符、值、数据结构导入模块主要有两种方式，即EXTENDS和INSTANCE，前者可以一次性导入多个，后者只能导入一个。导入之前工具箱需要先发现模块，主要有三种方式</p>
+<ol>
+<li>自动知道处于同一文件夹中的所有模块</li>
+<li>通过Preferences &gt; TLA+中添加通用库路径</li>
+<li>右键单击Spec Explorer，为其添加额外的库路径</li>
+</ol>
+<h3 id="EXTENDS"><a href="#EXTENDS" class="headerlink" title="EXTENDS"></a>EXTENDS</h3><p>​    需要注意的就是在添加多个库的时候</p>
+<h3 id="INSTANCE"><a href="#INSTANCE" class="headerlink" title="INSTANCE"></a>INSTANCE</h3><p>​    这个和EXTENDS差不多，但是有四个不同点</p>
+<ol>
+<li>在一个陈述中不能添加多个库</li>
+<li>像操作一样，可以添加前缀LOCAL来让模块私有</li>
+<li>可以命名模块，通过分配操作符来实现这一点，即PT == INSTANCE PT，然后通过PT!OP 来调用PT中的··操作符</li>
+<li>可以导入参数化模块，或者导入定义常量的模块</li>
+</ol>
+<p>下面给出例子</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---- module Point ----</span><br><span class="line">LOCAL INSTANCE Integers</span><br><span class="line">CONSTANTS X, Y</span><br><span class="line">ASSUME X \in Int</span><br><span class="line">ASSUME Y \in Int</span><br><span class="line">Point == &lt;&lt;X, Y&gt;&gt;</span><br><span class="line">Add(x, y) == &lt;&lt;X + x, Y + y&gt;&gt;</span><br><span class="line">====</span><br></pre></td></tr></table></figure>
+<p>然后要给出参数的值，应该用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INSTANCE Point WITH X &lt;- 1, Y &lt;- 2</span><br></pre></td></tr></table></figure>
+<p>值得注意的是，对于导入模块，导入的模块一定不能编译，否则会报错，另外就是之前说的INSTANCE声明模块值，直接用上面的语句即可，即</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P1 == INSTANCE Point WITH X &lt;- 1, Y &lt;- 2</span><br></pre></td></tr></table></figure>
+<p>另外就是所谓的偏向声明，把另外一个当成参数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P1(Y) == INSTANCE Point WITH X &lt;- 1</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要学习了如何使用常量来为同一个spec来创造有区别的模型，然而现在我们还是只能去写单一进程的算法，不过很快就可以写多进程的了</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（六）</title>
+    <url>/blog/2021/09/02/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    到目前为止我们测试的是在一个行为中的任何情况下始终为真的不变量（<strong>invariants</strong>），接下来将会介绍时间属性（<strong>temporal properties</strong>），时间属性是关于行为自身的一些陈述，它给出了更多的可以用来检测的种类，下面给出一些例子</p>
+<ol>
+<li>算法是否始终有效？</li>
+<li>队列中的所有信息都会被处理吗？</li>
+<li>如果系统被扰乱，它能随着时间到达稳定状态吗？</li>
+<li>数据库最终是否兼容？</li>
+</ol>
+<p>​    时间属性更加有力但是也更难被满足，系统给出了关于时间属性的新的错误编码</p>
+<h1 id="Termination"><a href="#Termination" class="headerlink" title="Termination"></a>Termination</h1><p>​    这是最简单的一种时间属性，它要求算法最终必须结束，如果算法在过程中出错或者进入死循环，就会不满足这一点。下面给出一个例子来详细说明</p>
+<p>​    现在在交通灯前有一个车，系统中有两个过程，交通灯轮流为红色和绿色，下面给出Pluscal程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---- MODULE traffic -----</span><br><span class="line">NextColor(c) == CASE c = &quot;red&quot; -&gt; &quot;green&quot;</span><br><span class="line">                  [] c = &quot;green&quot; -&gt; &quot;red&quot;</span><br><span class="line">(*--algorithm traffic</span><br><span class="line">variables</span><br><span class="line">    at_light = TRUE;</span><br><span class="line">    light = &quot;red&quot;;</span><br><span class="line">process light = &quot;light&quot;</span><br><span class="line">begin</span><br><span class="line">    Cycle:</span><br><span class="line">        while at_light do</span><br><span class="line">            light := NextColor(light);</span><br><span class="line">        end while;</span><br><span class="line">end process;</span><br><span class="line">process car = &quot;car&quot;</span><br><span class="line">begin</span><br><span class="line">    Drive:</span><br><span class="line">        when light = &quot;green&quot;;</span><br><span class="line">        at_light := FALSE;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br><span class="line">====</span><br></pre></td></tr></table></figure>
+<p>​    如果不添加时间属性的话，会发现程序运行的非常顺利，然而一旦添加Termination属性，就会发现程序报错，也就是我们前面提到过的<strong>Stuttering</strong></p>
+<h2 id="Stuttering"><a href="#Stuttering" class="headerlink" title="Stuttering"></a>Stuttering</h2><p>​    先说一下TLA+，TLA+的全程是<strong>Temporal Logic of Actions</strong>，即行为的时间逻辑，TLC运作的过程也很简单，即从所有可以运行的标签中选择一个可以运行的去执行。然而，如果没有任何一个标签可以去执行，我们就叫它<strong>stuttering</strong>，在大多数情况，如果没有行为发生，所有事物和之前的相同，stuttering不会起什么作用，但是有一个特殊的情况，即spec一直保持着stuttering的情况，并且不会采取任何的行为，我们认为spec在时间上被冻结了</p>
+<p>​    到目前为止，stuttering并不重要。我们所有的不变量检查都是安全检验，即保证模型不会到达无效状态。但是stuttering是始终在有效状态上的，所以TLC没有理由去尝试stuttering，大多数时间属性所做的是活性检验（<strong>liveness checks</strong>），这保证了系统最终是我期望的形态。在这里，TLC不会停止核查Cycle，所以spec始终不会终止，进而造成了TLC</p>
+<p>​    有时候Stuttering也是有用的，它可以1用来代表服务器崩溃、进程超时或等待的信号永远不会到来。最好TLA+默认一切都有可能崩溃，这样可以检查出更多的错误，如果需要排除stuttering，需要加入fairness</p>
+<p><strong><em>这里说一下stuttering和deadlock的区别，两者定义看起来差不多，似乎都是spec没有可做的行为了，但是其实差别很大，因为导致这种情况出现的原因不同，deadlock是由于await命令阻止了所有进程有下一步行为，但是stuttering是可以有的，但是所产生的行为对前后状态没有区别</em></strong></p>
+<h2 id="Fairness，Weak-and-Strong"><a href="#Fairness，Weak-and-Strong" class="headerlink" title="Fairness，Weak and Strong"></a>Fairness，Weak and Strong</h2><p>​    weak和strong是两种不同的fairness。</p>
+<p>​    weakly fair action指的是如果它被（连续）启用，那么最终一定会发生，我们可以通过定义过程来让其中所有的标签都是weak，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fair process light = &quot;light&quot;</span><br><span class="line">begin</span><br><span class="line"> Cycle:</span><br><span class="line"> 	while at_light do</span><br><span class="line"> 		light := NextColor(light);</span><br><span class="line"> 	end while;</span><br><span class="line">end process;</span><br><span class="line">fair process car = &quot;car&quot;</span><br><span class="line">begin</span><br><span class="line"> Drive:</span><br><span class="line"> 	when light = &quot;green&quot;;</span><br><span class="line"> 	at_light := FALSE;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    仔细分析一下如果只有一个过程是fair的会出现的情况，如果只有light是fair的，那最终灯会转变为绿色，但是车子就不会动了，如果只有car是fair的也是同理的</p>
+<p>​    但是这样依旧会报错，因为有一种情况没有考虑，即如果交通灯始终转换，那么司机的行为将会在能走和不能走之间循环，但是弱公平是保证了可以发生的行为最终一定会发生，即司机卡在了这里</p>
+<p>​    接下来就要引入强公平，强公平指的是如果程序被无限频繁启用，最终就一定会发生，这个发生可以发生在不启用的时间段，我们用fair+定义强公平过程</p>
+<p>​    现在我们最终满足了最后一种情况，并且程序正常运作了</p>
+<h1 id="The-Temporal-Operators"><a href="#The-Temporal-Operators" class="headerlink" title="The Temporal Operators"></a>The Temporal Operators</h1><p>​    首先简要介绍一些操作符，假定P和Q都是布尔表达式</p>
+<h2 id><a href="#" class="headerlink" title="[]"></a>[]</h2><p>​    它的意思是总是（<strong>always</strong>），[]P指的是P对于所有的状态都为真，然后这就是在TLC中的一个类似的设计，即说P是一个常量和说[]P是一个时间属性是一样的，但是前者是后者的一个优化，因为TLC用来检查invariants的算法跑得更快。正因如此用它的情况其实也比较少。</p>
+<p>​    也可以将他和另外的一些运算结合，例如~[]P，表示P至少在一种情况下为假</p>
+<h2 id="lt-gt"><a href="#lt-gt" class="headerlink" title="&lt;&gt;"></a>&lt;&gt;</h2><p>​    它的意思是终于（<strong>eventually</strong>），&lt;&gt;P意味着对于每一种行为，至少有一种情况让P为真</p>
+<p>​    在交通灯的例子中，&lt;&gt;(light = “green”)是可满足的，因为对于每一种行为肯定都存在着这样的时刻语句成立，但是如果改写成下面的样子就不会成立</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">variables</span><br><span class="line">	at_light = TRUE;</span><br><span class="line">	light = &quot;green&quot;;</span><br></pre></td></tr></table></figure>
+<p>​    在这种情况下&lt;&gt;(light = “red”)就是不满足的，因为有着一种情况可以让所有的灯都不为红色</p>
+<p>​    ~&lt;&gt;P表示P恒不为真，注意到这和[]~P其实是一样的</p>
+<p><strong><em>Termination可以用这些表达式来定义</em></strong></p>
+<h2 id="gt"><a href="#gt" class="headerlink" title="~&gt;"></a>~&gt;</h2><p>​    他的意思是导致，P~&gt;Q表示如果一些状态使P为真，那Q一定围在现在或者将来的某些状态为真，就和蕴含差不多，即使P在后来为假，Q也需要发生</p>
+<h2 id="lt-gt-and-lt-gt"><a href="#lt-gt-and-lt-gt" class="headerlink" title="[]&lt;&gt; and &lt;&gt;[]"></a>[]&lt;&gt; and &lt;&gt;[]</h2><p>​    []&lt;&gt;P意味着P总是最终为真，&lt;&gt;[]P意味着P最终总是为真，<del>看起来好费解</del></p>
+<p>​    对于一个有限的spec，这两者的意思是一样的，对于无限的spec，&lt;&gt;[]P意味着这有一些点P变成真并且永远保持为真，而[]&lt;&gt;P表示如果P曾经变成过假，它最终会再变成真，也有这样的等式，[]&lt;&gt;P &lt;=&gt; (~P ~&gt; P)</p>
+<p><strong><em>注意由于&lt;&gt;的原因，在当前的版本下，TLC无法检查带有&lt;&gt;的属性的一部分的变量集的成员的资格，所以需要注意写法</em></strong></p>
+<h1 id="Limitations-of-Liveness"><a href="#Limitations-of-Liveness" class="headerlink" title="Limitations of Liveness"></a>Limitations of Liveness</h1><p>​    事实上，时间属性其实很少需要，大多数时候检查不变量就完全可以了</p>
+<p>​    从实用性的角度来说，它的主要限制之处在于实在是太慢了，TLC使用的核查时间属性的算法和核查不变量的算法是不一样的，前者很慢而且不是并行的</p>
+<p>​    可以将时间属性放在和不变量不同的模块中，这样可以在检查时间属性之前更快的测试不变量，还可以在更小的域上测试活跃度</p>
+<p>​    另外其很重要的一个限制就是不能和对称集结合起来。在TLC跳过冗余状态优化测试集时可能会导致它错过活跃度错误</p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>​    这章的例子是Dekker算法，这是第一个成功让两个线程共享一份资源并且没有竞争条件，并且保证了每一个线程都可以不同时并且不使用任何具体的CPU特征来正常展现更新</p>
+<p>​    和我们之前写过的spec不一样的是，这里的原子行为是单个CPU指令</p>
+<p>​    另外就可以来详细的编写，首先对于其中的过程，思路可以直接模拟，代码见下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS TLC, Integers</span><br><span class="line">CONSTANT Threads</span><br><span class="line">(*--algorithm dekker</span><br><span class="line">variables flag = [t \in Threads |-&gt; FALSE];</span><br><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line"> P1: flag[self] := TRUE;</span><br><span class="line"> \* all threads except self are false</span><br><span class="line"> P2: await \A t \in Threads \ &#123;self&#125;: ~flag[t];</span><br><span class="line"> CS: skip;</span><br><span class="line"> P3: flag[self] := FALSE;</span><br><span class="line"> P4: goto P1;</span><br><span class="line">end process;</span><br><span class="line">end algorithm; *)</span><br></pre></td></tr></table></figure>
+<p>​    然后就是对于其中缓冲区的检查，要求至多有一个进程在缓冲区中，写法很多，可以直译，如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AtMostOneCritical ==</span><br><span class="line"> \/ \A t \in Threads: pc[t] /= &quot;CS&quot;</span><br><span class="line"> \/ \E t \in Threads:</span><br><span class="line"> 	/\ pc[t] = &quot;CS&quot;</span><br><span class="line"> 	/\ \A t2 \in Threads \ &#123;t&#125;: pc[t2] /= &quot;CS&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>​    也可以转化一下，即任意的两个线程，如果都在缓冲区，那么线程相同</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AtMostOneCritical == </span><br><span class="line">	\A t1,t2 \in Threads:</span><br><span class="line">		t1 /= t2 =&gt; ~(pc[t1] = &quot;CS&quot; /\ pc[t2] = &quot;CS&quot;)</span><br></pre></td></tr></table></figure>
+<p>​    要注意的是这里用到了pc，所以需要在编译之后添加到编译内容中</p>
+<p>​    运行之后报错，这是很显然的，因为我们中间没有使用循环，导致两者都翻转之后产生错误</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line"> P1: flag[self] := TRUE;</span><br><span class="line"> P2:</span><br><span class="line"> while \E t \in Threads \ &#123;self&#125;: flag[t] do</span><br><span class="line"> P2_1: flag[self] := FALSE;</span><br><span class="line"> P2_2: flag[self] := TRUE;</span><br><span class="line"> end while;</span><br><span class="line"> CS: skip;</span><br><span class="line"> P3: flag[self] := FALSE;</span><br><span class="line"> P4: goto P1;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    <del>感觉这里写的Dekker算法和我百度的不太一样呢</del></p>
+<p>​    我们以上做的工作是表示它不会deadlock，并且不会因为具有两个线程而产生安全问题，我们也需要展现所有的线程都成功的到达了关键的部分，这时候就要用到之前的时间属性了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Liveness == </span><br><span class="line">	\A t \in Threads:</span><br><span class="line">		&lt;&gt;(pc[t] = &quot;CS&quot;)</span><br></pre></td></tr></table></figure>
+<p>​    但是加进去就会报错，因为此时所有的线程在P2中死循环了，我们将其称之为<strong>livelock</strong></p>
+<p>​    然后才是Dekker大大给出的正确算法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS TLC, Integers</span><br><span class="line">CONSTANT Threads</span><br><span class="line">(*--algorithm dekker</span><br><span class="line">variables</span><br><span class="line">    flag = [t \in Threads |-&gt; FALSE];</span><br><span class="line">    next_thread \in Threads;</span><br><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line">    P1: flag[self] := TRUE;</span><br><span class="line">    P2: </span><br><span class="line">        while \E t \in Threads \ &#123;self&#125;: flag[t] do</span><br><span class="line">          P2_1:</span><br><span class="line">            if next_thread /= self then</span><br><span class="line">            P2_1_1: flag[self] := FALSE;</span><br><span class="line">            P2_1_2: await next_thread = self;</span><br><span class="line">            P2_1_3: flag[self] := TRUE;</span><br><span class="line">            end if;</span><br><span class="line">        end while;</span><br><span class="line">    CS: skip;</span><br><span class="line">    P3: with t \in Threads \ &#123;self&#125; do</span><br><span class="line">            next_thread := t;</span><br><span class="line">        end with;</span><br><span class="line">    P4: goto P1;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*) </span><br></pre></td></tr></table></figure>
+<p>​    不过这个算法是有一定的错误的</p>
+<p>​    首先，如果线程变成三个，就会出错，其中的两个到达CS，但是另外一个没有，这称之为<strong>resource starvation</strong></p>
+<p>​    另一个问题就是他的弹性较差，如果其中一个出错也会导致另外一个出错</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一部分就这样结束了，这意味着第一部分结束了，Pluscal的所有语法都介绍完毕，接下来的第二部分主要是介绍TLA+的应用</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>单调队列和单调栈</title>
+    <url>/blog/2021/08/18/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E5%92%8C%E5%8D%95%E8%B0%83%E6%A0%88/</url>
+    <content><![CDATA[<h1 id="概念简述"><a href="#概念简述" class="headerlink" title="概念简述"></a>概念简述</h1><h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><ol>
+<li><p>单调栈就是在原本的先进后出线性表的基础上满足表中的元素依然是单调的，这就需要我们每次在新元素进栈的时候对栈进行维护，使其仍然保持单调性，下面以单调递增栈为例说明如何维护进栈</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(top&amp;&amp;a[<span class="built_in">stack</span>[top<span class="number">-1</span>]]&gt;a[i])</span><br><span class="line">	top--;</span><br><span class="line"><span class="built_in">stack</span>[top++]=i;</span><br><span class="line"><span class="comment">//比如栈中已经有元素1 2 4，现在3要入栈</span></span><br><span class="line"><span class="comment">//就先把4弹出，然后入栈，即1 2 3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h2><ol>
+<li>单调队列的操作比单调栈要复杂，相比于普通队列，允许在队尾删除以维护单调性，相比于单调栈，他的区别是需要考虑对队头的删除，在队列满的时候删除队头，然后在队列尾继续添加新元素</li>
+</ol>
+<h1 id="区别与联系"><a href="#区别与联系" class="headerlink" title="区别与联系"></a>区别与联系</h1><ol>
+<li>单调队列可以看成是复杂一点的单调栈，所以大多数可以用单调栈的情况没必要用单调队列</li>
+</ol>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="单调栈-1"><a href="#单调栈-1" class="headerlink" title="单调栈"></a>单调栈</h2><ol>
+<li>对于某个元素i，求：<ol>
+<li>左边区间第一个比它小的数或比它大的数</li>
+<li>确定这个元素是否是区间最值</li>
+<li>求右边区间第一个大于或小于他的值</li>
+<li>确定以该元素为最值的最长区间</li>
+</ol>
+</li>
+</ol>
+<h2 id="单调队列-1"><a href="#单调队列-1" class="headerlink" title="单调队列"></a>单调队列</h2><ol>
+<li>可以查询区间最值</li>
+</ol>
+<h1 id="具体题目"><a href="#具体题目" class="headerlink" title="具体题目"></a>具体题目</h1><h2 id="洛谷P6510-奶牛排队"><a href="#洛谷P6510-奶牛排队" class="headerlink" title="洛谷P6510 奶牛排队"></a>洛谷P6510 奶牛排队</h2><p>题目大意：求一段区间的长度，区间满足左端点是区间最小值，右端点是区间最大值，中间的值不能和端点值相同。</p>
+<p>思路：其实可以转换一下题意，每次从右端点开始枚举，当然如果倒过来的话也可以从左端点开始枚举，这是无所谓的，在区间上，右端点一定是最高的，左端点一定是最小的，也就是说我们从后往前数第二个后缀最大值的位置一定要在左端点的左侧，并且是后缀最小值，这时候考虑用两个单调栈来维护</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> stamax[<span class="number">10005</span>], a[<span class="number">10005</span>], stamin[<span class="number">10005</span>], maxtop, mintop;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bis</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;<span class="comment">//二分查找</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="comment">// for (int i = 1; i &lt;= n; i++)</span></span><br><span class="line">    <span class="comment">//     scanf(&quot;%d&quot;, &amp;a[i]);</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">        <span class="keyword">while</span> (maxtop &amp;&amp; a[stamax[maxtop]] &lt; a[i])</span><br><span class="line">            maxtop--;<span class="comment">//单调递减栈，栈顶就是对下面的递增栈进行查找的位置</span></span><br><span class="line">        <span class="keyword">while</span> (mintop &amp;&amp; a[stamin[mintop]] &gt; a[i])</span><br><span class="line">            mintop--;</span><br><span class="line">        <span class="keyword">int</span> k = bis(<span class="number">1</span>, mintop);<span class="comment">//找到其中最靠左的端点，也就是满足条件的最小的</span></span><br><span class="line">        <span class="keyword">if</span> (k != mintop + <span class="number">1</span>)<span class="comment">//如果有满足条件的</span></span><br><span class="line">            ans = (i + <span class="number">1</span> - stamin[k]) &gt; ans ? i + <span class="number">1</span> - stamin[k] : ans;<span class="comment">//更新</span></span><br><span class="line">        stamax[++maxtop] = i;<span class="comment">//分别入栈</span></span><br><span class="line">        stamin[++mintop] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bis</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (stamin[mid] &gt; stamax[maxtop])</span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="洛谷P5788-模板单调栈"><a href="#洛谷P5788-模板单调栈" class="headerlink" title="洛谷P5788 模板单调栈"></a>洛谷P5788 模板单调栈</h2><p>题目大意：给出一列数，求每一个数后第一个大于自身的数的下标</p>
+<p>思路：其实已经很明显了，倒着向前推，用一个单调栈去维护就行了，当然这一道题也可以用类似于并查集的思路，开两个数组，从后往前逐步推，辅助数组的最后一个值为0，然后对于第i个元素，如果小于第i+1个元素，那么辅助数组中的值为i+1，否则往后找第一个大于i+1的元素，即a[b[i+1]]，然后如果还是小于就继续找，和并查集是有点像的，用一个循环就行</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//单调栈</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">3000010</span>], ans[<span class="number">3000010</span>];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[<span class="number">3000010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,top=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(top!=<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[<span class="built_in">stack</span>[top<span class="number">-1</span>]]&gt;a[i])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            top--;</span><br><span class="line">        &#125;<span class="comment">//弹出所有比当前元素小的，维护栈的单调性</span></span><br><span class="line">        <span class="keyword">if</span>(top==<span class="number">0</span>)<span class="comment">//当栈中没有元素时</span></span><br><span class="line">            ans[i] = <span class="number">0</span>;<span class="comment">//说明没有比它大的</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans[i] = <span class="built_in">stack</span>[top - <span class="number">1</span>];<span class="comment">//否则有比它大的，即为栈顶元素，同时栈顶元素一定是第一个比它大的，这样维护了栈的单调性</span></span><br><span class="line">        <span class="built_in">stack</span>[top++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="洛谷P1886-滑动窗口"><a href="#洛谷P1886-滑动窗口" class="headerlink" title="洛谷P1886 滑动窗口"></a>洛谷P1886 滑动窗口</h2><p>题目大意：给定区间长度，求连续区间中的最大值和最小值</p>
+<p>思路：很明显符合单调队列的条件</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//单调栈和单调队列的不同点在于单调队列的队头有可能会更新</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000001</span>], que[<span class="number">1000001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, k, front = <span class="number">0</span>, rear = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (front != rear &amp;&amp; a[que[rear - <span class="number">1</span>]] &gt;= a[i])<span class="comment">//维护单调递增队列，队尾出列</span></span><br><span class="line">            rear--;</span><br><span class="line">        que[rear++] = i;<span class="comment">//将当前位置入列</span></span><br><span class="line">        <span class="keyword">if</span> (que[front] &lt;= i - k)<span class="comment">//判断队头是否过期，将队头出列</span></span><br><span class="line">            front++;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; k - <span class="number">1</span>)<span class="comment">//如果没到达k个，则continue</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[que[front]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    front = <span class="number">0</span>;</span><br><span class="line">    rear = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (front != rear &amp;&amp; a[que[rear - <span class="number">1</span>]] &lt;= a[i])</span><br><span class="line">            rear--;</span><br><span class="line">        que[rear++] = i;</span><br><span class="line">        <span class="keyword">if</span> (que[front] &lt;= i - k)</span><br><span class="line">            front++;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; k - <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[que[front]]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>栈与队列</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>栈与队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并查集</title>
+    <url>/blog/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ol>
+<li>并查集是一种树形的数据结构，主要用来解决不相交集合间的合并和查询的问题，比如可以用它来判断森林中有几棵树、某个结点是否属于某个树</li>
+<li>主要由一个整型数组pre[]和两个函数find()、join()构成</li>
+<li>可以用来求连通分支数</li>
+</ol>
+<h1 id="现实意义"><a href="#现实意义" class="headerlink" title="现实意义"></a>现实意义</h1><h2 id="大概的含义"><a href="#大概的含义" class="headerlink" title="大概的含义"></a>大概的含义</h2><p><strong>以下的有趣的解释摘自CSDN博主酱懵静</strong></p>
+<p><strong>原文链接：</strong><a href="https://blog.csdn.net/the_ZED/article/details/105126583">https://blog.csdn.net/the_ZED/article/details/105126583</a></p>
+<hr>
+<p>故事引入：<br>    话说在江湖中散落着各式各样的大侠，他们怀揣着各自的理想和信仰在江湖中奔波。或是追求武林至尊，或是远离红尘，或是居庙堂之高，或是处江湖之远。尽管大多数人都安分地在做自己，但总有些人会因为彼此的信仰不同而聚众斗殴。因此，江湖上常年乱作一团，纷纷扰扰。<br>    这样长期的混战，难免会打错人，说不定一刀就把拥有和自己相同信仰的队友给杀了。这该如何是好呢？于是，那些有着相同信仰的人们便聚在一起，进而形成了各种各样的门派，比如我们所熟知的“华山派”、“峨嵋派”、“,崆峒派”、“少林寺”、“明教”……这样一来，那些有着相同信仰的人们便聚在一起成为了朋友。以后再遇到要打架的事时，就不会打错人了。    </p>
+<p>​    但是新的问题又来了，原本互不相识的两个人如何辨别是否共属同一门派呢?<br>​    这好办！我们可以先在门派中选举一个“大哥”作为话事人（也就是掌门人，或称教主等）。这样一来，每当要打架的时候，决斗双方先自报家门，说出自己所在门派的教主名称，如果名称相同，就说明是自己人，就不必自相残杀了，否则才能进行决斗。于是，教主下令将整个门派划分为三六九等，使得整个门派内部形成一个严格的等级制度（即树形结构）。教主就是根节点，下面分别是二级、三级、……、N级队员。每个人只需要记住自己的上级名称，以后遇到需要辨别敌友的情况时，只需要一层层往上询问（网上询问）就能知道是否是同道中人了。</p>
+<p>​    以上的教主被称为代表元</p>
+<h2 id="find-函数"><a href="#find-函数" class="headerlink" title="find()函数"></a>find()函数</h2><p>故事引入：<br>    子夜，小昭于骊山下快马送信，发现一头戴竹笠之人立于前方，其形似黑蝠，倒挂于树前，甚惧，正系拔剑之时，只听四周悠悠传来：“如此夜深，姑凉竟敢擅闯明教，何不下坐陪我喝上一盅？”。小昭听闻，后觉此人乃明教四大护法之一的青翼蝠王韦一笑，答道：“在下小昭，乃紫衫龙王之女”。蝠王轻惕，急问道：“尔等既为龙王之女，故同为明教中人。敢问阁下教主大名，若非本教中人，于明教之地肆意走动那可是死罪！”。小昭吓得赶紧打了个电话问龙王：“龙王啊，咱教主叫啥名字来着？”，龙王答道：“吾教主乃张无忌也！”，小昭遂答蝠王：“张无忌！”。蝠王听后，抱拳请礼以让之。<br>    在上面的情境中，小昭向他的上级（紫衫龙王）请示教主名称，龙王在得到申请后也向他的上级（张无忌）请示教主名称，此时由于张无忌就是教主，因此他直接反馈给龙王教主名称是“张无忌”。同理，青翼蝠王也经历了这一请示过程。<br>在并查集中，用于查询各自的教主名字的函数就是我们的find()函数。find(x)的作用是用于查找某个人所在门派的教主，换言之就是用于对某个给定的点x，返回其所属集合的代表。</p>
+<p>实现：</p>
+<p>​    这里我们定义了一个数组pre[]，将每个人进行编号，然后每个编号对应的值是他的上级，如果上级是自己，就说明他是代表元</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(pre[x]!=x)</span><br><span class="line">	&#123;</span><br><span class="line">		x=pre[x];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="join-函数"><a href="#join-函数" class="headerlink" title="join()函数"></a>join()函数</h2><p>故事引入：<br>    虚竹和周芷若是我个人非常喜欢的两个人物，他们的教主分别是玄慈方丈和灭绝师太，但是显然这两个人属于不同门派，但是我又不想看到他们打架。于是，我就去问了下玄慈和灭绝：“你看你们俩都没头发，要不就做朋友吧”。他们俩看在我的面子上同意了，这一同意非同小可，它直接换来了少林和峨眉的永世和平。</p>
+<p>实现：<br>    在上面的情景中，两个已存的不同门派就这样完成了合并。这么重大的变化，要如何实现？要改动多少地方？其实很简单，我对玄慈方丈说：“大师，麻烦你把你的上级改为灭绝师太吧。这样一来，两派原先所有人员的教主就都变成了师太，于是下面的人们也就不会打起来了！反正我们关心的只是连通性，门派内部的结构不要紧的”。玄慈听后立刻就不乐意了：“我靠，凭什么是我变成她手下呀，怎么不反过来？我抗议！”。抗议无效，我安排的，最大。反正谁加入谁效果是一样的，我就随手指定了一个，join()函数的作用就是用来实现这个的。</p>
+<p>join(x,y)的执行逻辑如下：</p>
+<ol>
+<li>寻找 x 的代表元（即教主）；</li>
+<li>寻找 y 的代表元（即教主）；</li>
+<li>如果 x 和 y 不相等，则随便选一个人作为另一个人的上级，如此一来就完成了 x 和 y 的合并。</li>
+</ol>
+<p>join(x,y)的实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int join(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int fx=find(x);</span><br><span class="line">	int fy=find(y);</span><br><span class="line">	if(x!=y)</span><br><span class="line">		pre[x]=y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="压缩并查集路径"><a href="#压缩并查集路径" class="headerlink" title="压缩并查集路径"></a>压缩并查集路径</h1><h2 id="优化find-函数"><a href="#优化find-函数" class="headerlink" title="优化find()函数"></a>优化find()函数</h2><p><strong>现实意义</strong></p>
+<p>两个互不相识的大将夏侯惇和许褚碰面了，他们都互相看不惯，想揍对方。于是按照江湖规矩，先打电话问自己的上级：“你是不是教主？” 上级说：“我不是呀，我的上级是<em>*</em>，我帮你问一下。” 就这样两个人一路问下去，直到最终发现他们的教主都是曹操。具体结构如下：</p>
+<p><img src="/blog/images\并查集2.jpg" alt></p>
+<p>“失礼失礼，原来是自己人，在下军机处前将军夏侯惇!”<br>“幸会幸会，不打不相识嘛，在下军情处上将许褚！”<br>紧接着，两人便高高兴兴地手拉手喝酒去了。<br>“等等等等，两位同学请留步，还有事情没完成呢！”我叫住他俩：“还要做路径压缩！”<br>两人醒悟，夏侯惇赶紧打电话给他的上级郭嘉：“军师啊，我查过了，我们的教主都是曹丞相。不如我们直接拜在丞相手下吧，省得级别太低，以后找起来太麻烦。”郭嘉答道：“所言甚是” 。<br>许褚接着也打电话给刚才拜访过的荀彧，做了同样的事。于是此时，整个曹操阵营的结构如下所示：</p>
+<p><img src="/blog/images/并查集1.png" alt></p>
+<p>这样一来，在刚才查询过程中涉及到的人物就都聚集在了曹操的直接领导下，以后再需要查询教主名称的时候，就只需要询问一级便可得到。所以，在经过一次查询后，整个门派树的高度都将大大降低，路径压缩所实现的功能就是这么个意思。</p>
+<p><strong>实现：</strong></p>
+<p>根据上面的大大给出的精彩的解释，我们只需要在寻找过程中将所有人的直接上级改成代表元即可，这个时候就应该考虑用递归了</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pre[x]==x)</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> pre[x]=find(pre[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>缺点：</strong></p>
+<p>这种方法的缺点就是在第一次寻找的时候没有任何的优化</p>
+<h2 id="加权标记法"><a href="#加权标记法" class="headerlink" title="加权标记法"></a>加权标记法</h2><p><strong>大体含义</strong></p>
+<p>其实就是在额外增加一个rank[]数组，记录每个点在树中的高度，在合并的时候根据权值来决定谁当老大，这里其实只用优化合并的函数</p>
+<p><strong>代码实现：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(rank[fx]&gt;rank[fy])</span><br><span class="line">		pre[fy]=fx;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(rank[fx]==rank[fy]) rank[fy]++;</span><br><span class="line">		pre[fx]=fy;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>并查集的用处，判断是否连通，求连通分量个数</li>
+<li>注意两种优化方法，个人觉得优化find()函数虽然有弊端，但是相对而言开销要小些</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>并查集</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>洛谷P1309，归并排序的使用</title>
+    <url>/blog/2021/08/15/%E6%B4%9B%E8%B0%B7P1309/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>$2×N$ 名编号为 $1∼2N$ 的选手共进行R 轮比赛。每轮比赛开始前，以及所有比赛结束后，都会按照总分从高到低对选手进行一次排名。选手的总分为第一轮开始前的初始分数加上已参加过的所有比赛的得分和。总分相同的，约定编号较小的选手排名靠前。</p>
+<p>每轮比赛的对阵安排与该轮比赛开始前的排名有关：第1名和第2名、第3名和第4名、……、第2<em>K</em>−1名和第2<em>K</em>名、…… 、第2<em>N</em>−1名和第2<em>N</em>名，各进行一场比赛。每场比赛胜者得1分，负者得0分。也就是说除了首轮以外，其它轮比赛的安排均不能事先确定，而是要取决于选手在之前比赛中的表现。</p>
+<p>现给定每个选手的初始分数及其实力值，试计算在R 轮比赛过后，排名第<em>Q</em> 的选手编号是多少。我们假设选手的实力值两两不同，且每场比赛中实力值较高的总能获胜。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行是三个正整数N,R ,Q每两个数之间用一个空格隔开，表示有 2×<em>N</em>名选手、R轮比赛，以及我们关心的名次Q。</p>
+<p>第二行是2×<em>N</em>个非负整数$s_1, s_2, …, s_{2N}$，每两个数之间用一个空格隔开，其中$s_i$表示编号为i的选手的初始分数。 第三行是2×<em>N</em> 个正整数$w_1 , w_2 , …, w_{2N}$，每两个数之间用一个空格隔开，其中$w_i$表示编号为i的选手的实力值。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一个整数，即R<em>R</em> 轮比赛结束后，排名第Q<em>Q</em> 的选手的编号。</p>
+<h1 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h1><p>​    看到该题的首先想法是按照模拟的思路来，用结构体存储，但是问题在于即使利用快排，他的时间效率也非常低，因为在第一次排过之后，序列就基本有序了，这个时候快速排序的效率就会变得很差，事实上，由于得分的性质，导致胜者是有序的，败者是有序的，所以就考虑分别存储，然后将其归并起来，时间效率就大大提高了，最开始那次采用快速排序，但是程序中有bug，所以最后采用了归并排序</p>
+<h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> power;</span><br><span class="line">    <span class="keyword">int</span> scores;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;comp;</span><br><span class="line">comp comps[<span class="number">200020</span>],com,win[<span class="number">100010</span>],lose[<span class="number">100010</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(comp a, comp b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left==right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    mergesort(left, mid);</span><br><span class="line">    mergesort(mid + <span class="number">1</span>, right);</span><br><span class="line">    <span class="keyword">int</span> i = left, j = mid + <span class="number">1</span>, p = left;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid&amp;&amp;j&lt;=right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(cmp(comps[i],comps[j]))</span><br><span class="line">            lose[p++] = comps[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            lose[p++] = comps[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid)</span><br><span class="line">        lose[p++] = comps[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=right)</span><br><span class="line">        lose[p++] = comps[j++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = left; k &lt;= right;k++)</span><br><span class="line">        comps[k] = lose[k];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, r, q,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;r, &amp;q);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span>*n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;comps[i].scores);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span>*n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;comps[i].power),comps[i].id=i;</span><br><span class="line">    mergesort(<span class="number">1</span>, <span class="number">2</span> * n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= r;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        k = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">2</span> * n;j+=<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(comps[j].power&gt;comps[j+<span class="number">1</span>].power)</span><br><span class="line">               &#123; comps[j].scores ++;</span><br><span class="line">                   win[k] = comps[j];</span><br><span class="line">                   lose[k] = comps[j + <span class="number">1</span>];</span><br><span class="line">               &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                comps[j + <span class="number">1</span>].scores ++;</span><br><span class="line">                win[k] = comps[j + <span class="number">1</span>];</span><br><span class="line">                lose[k] = comps[j];</span><br><span class="line">            &#125;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        merge(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, comps[q].id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>,k=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n&amp;&amp;j&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(cmp(win[i],lose[j]))</span><br><span class="line">            comps[k++] = win[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            comps[k++] = lose[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)</span><br><span class="line">        comps[k++] = win[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=n)</span><br><span class="line">        comps[k++] = lose[j++];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(comp a,comp b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.scores!=b.scores)</span><br><span class="line">        <span class="keyword">return</span> a.scores &gt; b.scores;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> a.id &lt; b.id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>归并排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>洛谷P1090，哈夫曼树</title>
+    <url>/blog/2021/08/15/%E6%B4%9B%E8%B0%B7P1090/</url>
+    <content><![CDATA[<h1 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h1><p>​    一堆果子，每次合并两个，需要一定的体力，最后到一个停止，让消耗的体力最大</p>
+<h1 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h1><p>​    这很明显就是哈夫曼树，也就是每次找到两个最小的，然后重复$n$次即可。</p>
+<p>​    另外就是使用优先队列</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="哈夫曼树的思路"><a href="#哈夫曼树的思路" class="headerlink" title="哈夫曼树的思路"></a>哈夫曼树的思路</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 99999999</span></span><br><span class="line"><span class="comment">//long long ans;</span></span><br><span class="line"><span class="keyword">int</span> n, a[<span class="number">10001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>;i++)</span><br><span class="line">        ans += find();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min1 = maxn, min2 = maxn;</span><br><span class="line">    <span class="keyword">int</span> mark1 = <span class="number">1</span>, mark2 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    <span class="keyword">if</span>(a[i]!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;min1)</span><br><span class="line">        &#123;</span><br><span class="line">            min1 = a[i];</span><br><span class="line">            mark1 = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    a[mark1] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    <span class="keyword">if</span>(a[i]!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;min2)</span><br><span class="line">        &#123;</span><br><span class="line">            min2 = a[i];</span><br><span class="line">            mark2 = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    a[mark1] = min1 + a[mark2];</span><br><span class="line">    a[mark2] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> a[mark1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h1><ol>
+<li>对于代码调试，要熟练进行文件读写操作</li>
+<li>对于在序列中选取第k小的数的方法，要熟悉</li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>堆</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>堆</tag>
+        <tag>哈夫曼树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>洛谷P1908，求逆序对</title>
+    <url>/blog/2021/08/15/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/</url>
+    <content><![CDATA[<h1 id="题目概述"><a href="#题目概述" class="headerlink" title="题目概述"></a>题目概述</h1><p>​    给出一列数，共有$n$个，逆序对指的是满足$i&gt;j$并且$a_i&lt;a_j$的数对，求数对的数量</p>
+<h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><h2 id="思路一：归并排序"><a href="#思路一：归并排序" class="headerlink" title="思路一：归并排序"></a>思路一：归并排序</h2><p>​    归并排序的思路就是每次折半分，然后再有一个匹配的过程，然后在匹配之前，左右两部分都已经基本有序，这时候就按照归并排序中匹配的步骤，只是加入了计算逆序对数量的一步，下面给出一个具体的例子，这里复制了洛谷题解中<strong>学无止境</strong>大佬的例子</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在某个时候，左区间：  5 6 7  下标为i</span></span><br><span class="line"><span class="comment">//           右区间：  1 2 9  下标为j</span></span><br><span class="line"><span class="comment">//          </span></span><br><span class="line"><span class="comment">//这个时候我们进行合并：</span></span><br><span class="line"><span class="comment">//step 1：由于 5&gt;1，所以产生了逆序对，这里，我们发现，左区间所有还没有被合并的数都比 1 大，所以1与左区间所有元素共产生了 3 个逆序对(即tot_numleft-i+1对)，统计答案并合并 1 </span></span><br><span class="line"><span class="comment">//step 2：由于 5&gt;2，由上产生了3对逆序对，统计答案并合并 2</span></span><br><span class="line"><span class="comment">//step 3：由于 5&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 4：由于 6&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 5：由于 7&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 6：由于右区间已经结束，正常执行合并左区间剩余，结束</span></span><br><span class="line"><span class="comment">//PS： tot_numleft=3，即左区间总元素个数</span></span><br></pre></td></tr></table></figure>
+<h2 id="思路二：-树状数组"><a href="#思路二：-树状数组" class="headerlink" title="思路二： 树状数组"></a>思路二： 树状数组</h2><h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><ol>
+<li><p>先来简单介绍一下树状数组，下面这张图摘自微信公众号<strong>夜深人静写算法</strong>，讲的非常清晰<img src="/blog/images/树状数组.jpg" alt="树状数组1"></p>
+<p>  其父子关系满足$(y,x):x+lowbit(x)=y$</p>
+<p>  其中数组$A$​表示原数组，数组$C$​表示树状数组，树状数组本身的目的就是让求一段元素的区间和变快，这里数组C的值等于其对应的所有孩子的数据的和，这里可以理解成后缀和</p>
+<p>  则C数组的值为</p>
+<p><img src="/blog/images/树状数组2.jpg" alt="树状数组2"></p>
+</li>
+<li><p>然后是树状数组的两种基本操作，即求和和更新</p>
+<p><strong>求和</strong></p>
+<p>其实求和的思想很简单，用$lowbit(i)$函数表示i的二进制表示的末位是1的位数，由树状数组的定义容易推出递推式，即$sum(i)=sum(i-lowbit(i))+C_i$，现在为了减少空间开销，可以采用递推</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		s+=c[i];</span><br><span class="line">		i-=lowbit(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>更新</strong></p>
+<p>更新的话主要是更新树状数组，由于父子关系，可以从叶子节点逐步向上更新</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">100000</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=maxn)</span><br><span class="line">	&#123;</span><br><span class="line">		c[i]+=v;</span><br><span class="line">		i+=lowbit(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>lowbit(int i)</strong></p>
+<p>最后说一下lowbit函数的实现方法，首先比较常见且简单地就是利用补码，补码可以这样求：写出二进制，从右往左找到第一个1，1右边的不变，左边的依次取反即可，也就是可以这样写</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外一种方法不重要，这里给出代码</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x-x&amp;(x<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><h2 id="归并排序："><a href="#归并排序：" class="headerlink" title="归并排序："></a>归并排序：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500001</span>],tmp[<span class="number">500001</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    mergesort(<span class="number">1</span>, n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(left==right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    mergesort(left, mid);</span><br><span class="line">    mergesort(mid+<span class="number">1</span>, right);</span><br><span class="line">    merge(left, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>,i=left,mid=(left+right)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid&amp;&amp;j&lt;=right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&lt;=a[j])</span><br><span class="line">            tmp[k++] = a[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ans += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid)</span><br><span class="line">        tmp[k++] = a[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=right)</span><br><span class="line">        tmp[k++] = a[j++];</span><br><span class="line">    <span class="keyword">for</span> (k = <span class="number">0</span>, i = left; i &lt;= right;i++,k++)</span><br><span class="line">        a[i] = tmp[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>链式前向星存图</title>
+    <url>/blog/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/</url>
+    <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    链式前向星是一种存放图的数据结构，性能较好，实现起来不算很难，其存放以边为核心</p>
+<h1 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    在了解什么是链式前向星前，我们先说一下什么是前向星。</p>
+<p>​    前向星是一种边集数组，我们将边集数组中的每一条边按起点大小排序，如果起点相同就按终点大小排序，然后再记录下以某点为起点的所有边的权值和起始位置</p>
+<p>​    一般用len记录所有以i为起点的边在数组中的存储长度，用head记录以i为边集在数组中的第一个存储位置</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>如图所示</p>
+<p><img src="/blog/images/例图1.jpg" alt></p>
+<p>输入边的顺序为</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">3</span> <span class="number">4</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">5</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>排完序后得到</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">编号： 	<span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span></span><br><span class="line">起点u：	<span class="number">1</span>  <span class="number">1</span>  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span></span><br><span class="line">终点v：	<span class="number">2</span>  <span class="number">3</span>  <span class="number">5</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">1</span>  <span class="number">5</span></span><br><span class="line">head[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">-1</span>&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><p>​    链式前向星是对前向星的一种优化，因为前向星需要用到排序，时间复杂度较高，而链式前向星可以避免排序</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="边结构体"><a href="#边结构体" class="headerlink" title="边结构体"></a>边结构体</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to,w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> <span class="title">edge</span>[1000];</span></span><br><span class="line"><span class="comment">//edge[i].to表示第i条边的终点，edge[i].next表示与第i条边同起点的下一条边的存储位置，edge[i].w表示这条边的权值</span></span><br><span class="line"><span class="keyword">int</span> head[<span class="number">1000</span>];</span><br><span class="line"><span class="comment">//head数组表示以i为起点的第一条边的存储位置，这里实际上是以i为起点的所有边的最后输入的编号，一般初始化为-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="加边操作"><a href="#加边操作" class="headerlink" title="加边操作"></a>加边操作</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].next=head[u];</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举例如下</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">edge[<span class="number">0</span>].to = <span class="number">2</span>;     edge[<span class="number">0</span>].next = <span class="number">-1</span>;      head[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">1</span>].to = <span class="number">3</span>;     edge[<span class="number">1</span>].next = <span class="number">-1</span>;      head[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">2</span>].to = <span class="number">4</span>;     edge[<span class="number">2</span>],next = <span class="number">-1</span>;      head[<span class="number">3</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">3</span>].to = <span class="number">3</span>;     edge[<span class="number">3</span>].next = <span class="number">0</span>;       head[<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">4</span>].to = <span class="number">1</span>;     edge[<span class="number">4</span>].next = <span class="number">-1</span>;      head[<span class="number">4</span>] = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">5</span>].to = <span class="number">5</span>;     edge[<span class="number">5</span>].next = <span class="number">3</span>;       head[<span class="number">1</span>] = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">6</span>].to = <span class="number">5</span>;     edge[<span class="number">6</span>].next = <span class="number">4</span>;       head[<span class="number">4</span>] = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+<p>从上面容易看出，head储存的是所有数据中最大的，将其当成初始边</p>
+<h3 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h3><p>由于head定位数组本身的性质，这里的遍历最后出现的结果是倒过来的</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=head[i];j!=<span class="number">-1</span>;j=edge[j].next);</span><br><span class="line">    <span class="comment">//这里表示遍历所有以i为起点的边</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>洛谷P1131</p>
+<p>题目大意：给出n个结点的赋权树，给出根节点s，使得s到每个叶子节点的权值相同，需要加上权值的总和</p>
+<p>思路：用链式前向星存边，要想使最后的时间相等，需要从叶子节点逐步向上维护，首先找到当前所有兄弟节点的权值的最大值，然后让每个叶子节点的权值增加，更新答案，然后更新这一部分叶子结点的父节点，逐步向上维护即可</p>
+<p>代码见下</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) (a &gt; b) ? (a) : (b)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> next, to, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> <span class="title">edges</span>[1000002];</span></span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500001</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, s;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">        head[i] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v, w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">        add(u, v, w);</span><br><span class="line">        add(v, u, w);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(s, <span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edges[cnt].to = v;</span><br><span class="line">    edges[cnt].w = w;</span><br><span class="line">    edges[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> v)</span><span class="comment">//s是当前搜索结点，v是其父亲节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[s]; i != <span class="number">-1</span>; i = edges[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[i].to == v)<span class="comment">//因为我们把无向边变成了两条有向边，所以有可能出现这种情况</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        dfs(edges[i].to, s);<span class="comment">//一直搜索到叶子节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> maxn = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[s]; i != <span class="number">-1</span>; i = edges[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[i].to == v)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        maxn = max(edges[i].w, maxn);<span class="comment">//这一个循环用来找所有和当前节点相邻的边中权值最大的</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[s]; i != <span class="number">-1</span>; i = edges[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[i].to == v)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        ans += (maxn - edges[i].w);<span class="comment">//对于每个叶子节点，要想满足条件，只需要更新到当前的maxn即可</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (v == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[v]; i != <span class="number">-1</span>; i = edges[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (edges[i].to == s)</span><br><span class="line">            edges[i].w += maxn;<span class="comment">//用来找到当前结点和其父亲节点的那一条边，更新权值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>图</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>图</tag>
+      </tags>
+  </entry>
+</search>

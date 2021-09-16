@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+
+
+<script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
+
+<div class="musicwyy2" style="position:fixed;left:0px;bottom:0px;z-index:105;opacity: 1; 
+    width: 30px;
+    height: 110px;    font-size: 15px;
+    font-family: 'Long Cang';">
+
+  <button type="button" style="
+    width: 30px;
+    height: 66px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0px;
+    background: #f5f5f5;
+    z-index:200;" onclick="musicChange()"> 播放器</button>
+
+</div> 
+
+
+
+<div class="musicwyy1" style="position:fixed;left:0px;bottom:0px;z-index:100;opacity: 1; 
+    width: 300px;
+    height: 110px;font-size: 0;">
+
+  <div class="aplayer-miniswitcher" style="
+    height: 110px;
+    width: 20px;
+    display: inline-block; overflow: hidden;">
+
+
+
+  </div>
+
+  <div style="
+    width: calc(100% - 30px);
+    height: 110px;
+    display: inline-block;" id="musicZJ">
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4968365&auto=1&height=66"></iframe>
+
+  </div>
+  
+</div>
+<meta name="description" content="关于《Practical TLA+》第一部分Chapter2的阅读笔记以及关于PlusCal的总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Practical TLA+》阅读笔记（二）">
+<meta property="og:url" content="https://yang-shijun.gitee.io/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:description" content="关于《Practical TLA+》第一部分Chapter2的阅读笔记以及关于PlusCal的总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-24T06:51:00.000Z">
+<meta property="article:modified_time" content="2021-08-25T15:12:48.439Z">
+<meta property="article:author" content="杨释钧">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yang-shijun.gitee.io/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/","path":"2021/08/24/《Practical-TLA+》阅读笔记（2）/","title":"《Practical TLA+》阅读笔记（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《Practical TLA+》阅读笔记（二） | 杨释钧的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">杨释钧的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#layout-of-spec"><span class="nav-number">2.1.</span> <span class="nav-text">layout of spec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88expressions%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">表达式（expressions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%EF%BC%88values%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">值（values）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%EF%BC%88sets%EF%BC%89"><span class="nav-number">2.3.1.</span> <span class="nav-text">集合（sets）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%88%96%E5%88%97%E8%A1%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text">元素或列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%EF%BC%88Structures%EF%BC%89"><span class="nav-number">2.3.3.</span> <span class="nav-text">结构（Structures）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">算法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Assignment"><span class="nav-number">2.4.1.</span> <span class="nav-text">Assignment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assert"><span class="nav-number">2.4.2.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skip"><span class="nav-number">2.4.3.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if"><span class="nav-number">2.4.4.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-number">2.4.5.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Macros"><span class="nav-number">2.4.6.</span> <span class="nav-text">Macros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#examples"><span class="nav-number">2.4.7.</span> <span class="nav-text">examples</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complex-Behaviors"><span class="nav-number">2.5.</span> <span class="nav-text">Complex Behaviors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Starting-States"><span class="nav-number">2.5.1.</span> <span class="nav-text">Multiple Starting States</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nondeterministic-Behavior"><span class="nav-number">2.5.2.</span> <span class="nav-text">Nondeterministic Behavior</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨释钧"
+      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">杨释钧</p>
+  <div class="site-description" itemprop="description">欢迎欢迎</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_55101026?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ysjyx7" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="杨释钧">
+      <meta itemprop="description" content="欢迎欢迎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨释钧的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Practical TLA+》阅读笔记（二）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-24 14:51:00" itemprop="dateCreated datePublished" datetime="2021-08-24T14:51:00+08:00">2021-08-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-25 23:12:48" itemprop="dateModified" datetime="2021-08-25T23:12:48+08:00">2021-08-25</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">分布式系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/TLA/" itemprop="url" rel="index"><span itemprop="name">TLA+</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">关于《Practical TLA+》第一部分Chapter2的阅读笔记以及关于PlusCal的总结</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>​    Pluscal是一种可以编译成TLA+的语言，学习Pluscal比直接学习TLA+要简单很多，本章将涵盖除多进程算法和fair process之外的关于Plucal的知识</p>
+<h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="layout-of-spec"><a href="#layout-of-spec" class="headerlink" title="layout of spec"></a>layout of spec</h2><p>先在这里引入以下上一张的程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">----(1)MODULE wire(2)----</span><br><span class="line">EXTENDS Integers \*(3)</span><br><span class="line">(*--algorithm wire \*(4)</span><br><span class="line">	variables (5)</span><br><span class="line">		people =&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[alice |-&gt;5,bob \-&gt;5];</span><br><span class="line">begin \*(6)</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)(4)</span><br><span class="line">==== \*(1)</span><br></pre></td></tr></table></figure>
+<p>我们所有写出的spec都有着以上的格式，即</p>
+<ol>
+<li>必须以MODULE开始，并且其两侧至少有四个’-‘，结尾最后一行也必须有四个‘=’，在这上面和下面的东西都会被忽略，经常会放一些<strong>metadata</strong></li>
+<li>MODULE的名字必须和文件的名字相同</li>
+<li>关键字<strong>EXTENDS</strong>用来加载模块</li>
+<li>*是行注释，(*…*)是块注释，Pluscal放在块注释中，因此解析器会忽略他，整体以<strong>—algorithm name</strong>开头，以<strong>end algorithm;</strong>结束，算法的名字和文件名没有直接关系</li>
+<li>在算法内部用variables声明并初始化变量，变量之间以逗号或分号分隔开</li>
+<li>在begin处开始写算法本身</li>
+</ol>
+<h2 id="表达式（expressions）"><a href="#表达式（expressions）" class="headerlink" title="表达式（expressions）"></a>表达式（expressions）</h2><p>​    在表达式中的只能是值（value）或操作（operator），这里暂时先使用标准库中的操作，到后面我们完全有能力自己写一种操作</p>
+<p>​    现在先介绍一种方式，可以不用运行整段spec就可以检查他的正确性，即<strong>expression evaluator</strong>。我们在model中打开model checking results，其中有窗口<strong>Evaluate Constant Expression</strong>，在expression部分输入表达式，运行后在value处可以给出值。当然这样的话仍然会检查spec，勾选旁边的<strong>No Behavior Spec</strong>选项就可以只运行表达式</p>
+<h2 id="值（values）"><a href="#值（values）" class="headerlink" title="值（values）"></a>值（values）</h2><p>​    在TLA+中有四种基本的值类型，即字符串型、整形、布尔型和模型值。没有浮点型，模型值（<strong>model value</strong>）这里先略过，字符串型必须用被双引号包括。</p>
+<p>​    标准操作如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operations</th>
+<th style="text-align:center">Meaning</th>
+<th style="text-align:center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x=y</td>
+<td style="text-align:center">相等</td>
+<td style="text-align:center">1=2  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x/=y或x#y</td>
+<td style="text-align:center">不相等</td>
+<td style="text-align:center">1/=2  TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">x/\y</td>
+<td style="text-align:center">且</td>
+<td style="text-align:center">TRUE/\FALSE  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x\/y</td>
+<td style="text-align:center">或</td>
+<td style="text-align:center">TRUE\/FALSE  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">x:=y</td>
+<td style="text-align:center">分配</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">~x</td>
+<td style="text-align:center">否定</td>
+<td style="text-align:center">~TRUE  FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>注意区分一下=和:=，在原始的TLA+中只有相等而没有指派，这指的是：如果x没有初始化而想要将其初始化为1或者x已经初始化而想要将其和1作比较，应该用x’=1</em></strong>    <strong><em>然后我们做如下规定，即，如果是第一次使用该变量，=作为初始化使用，在其他情况下，=是相等，:=是分配，例如写变量x=2,y=x,z=(x=y)，将会得到x=2,y=2,z=TRUE</em></strong></p>
+<p>​    当我们导入Integers模块时，我们就得到了运算符号，即<strong>+ - % *</strong>，这里面的整数除法是<strong>\div</strong>，但是不支持十进制除法，另外就是<strong>..</strong>运算符表示列表</p>
+<p>​    然后就是四种构造类型，即<strong>集合（set），元组（tuples）或称序列（sequences），结构（structures），函数（functions）</strong></p>
+<h3 id="集合（sets）"><a href="#集合（sets）" class="headerlink" title="集合（sets）"></a>集合（sets）</h3><p>​    集合很显然，但是要求就是内部的元素类型必须相同，以下是一些基本的运算</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Meanings</th>
+<th style="text-align:center">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x \in set</td>
+<td style="text-align:center">x在集合中</td>
+<td style="text-align:center">1 \in 1..2  TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">x \notin set或~(x \in set)</td>
+<td style="text-align:center">x不在集合中</td>
+<td style="text-align:center">1 \notin 1..2  FALSE</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \subesteq set2</td>
+<td style="text-align:center">子集关系</td>
+<td style="text-align:center">1..2 \subseteg 1..3 TRUE</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \union set2</td>
+<td style="text-align:center">并集</td>
+<td style="text-align:center">1..2 \union 2..3  1..3</td>
+</tr>
+<tr>
+<td style="text-align:center">set1 \intersect set2</td>
+<td style="text-align:center">交集</td>
+<td style="text-align:center">1..2 \intersect 2..3 {2}</td>
+</tr>
+<tr>
+<td style="text-align:center">Cardinality(set)</td>
+<td style="text-align:center">返回元素个数</td>
+<td style="text-align:center">Cardinality(1..2) 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><em>当然需要注意的是其中的交集和并集分别可以写为\cap和\cup</em></strong></p>
+<p>集合中也有两种常见的写法，即<strong>{x \in set: conditional}和{expression: x \in set}</strong></p>
+<h3 id="元素或列表"><a href="#元素或列表" class="headerlink" title="元素或列表"></a>元素或列表</h3><p>​    该种结构的元素有序，并且类型可以不一样，在<strong>&lt;&lt;&gt;&gt;</strong>之间，和数组一样的索引方式，但是是从1开始索引的，我们导入Sequences模块，可以得到一些新的表达式，这里的一些定义感觉和广义表差不多</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Meaning</th>
+<th style="text-align:center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Head(seq)</td>
+<td style="text-align:center">get head of seq</td>
+<td style="text-align:center">Head(&lt;<1,2>&gt;)  1</1,2></td>
+</tr>
+<tr>
+<td style="text-align:center">Tail(seq)</td>
+<td style="text-align:center">get tail of seq</td>
+<td style="text-align:center">Tail(&lt;<1,2,3>&gt;)  &lt;<2,3>&gt;</2,3></1,2,3></td>
+</tr>
+<tr>
+<td style="text-align:center">Append(seq,x)</td>
+<td style="text-align:center">Append</td>
+<td style="text-align:center">Append(&lt;<1,2>&gt;,3)  &lt;<1,2,3>&gt;</1,2,3></1,2></td>
+</tr>
+<tr>
+<td style="text-align:center">seq1 \o seq2</td>
+<td style="text-align:center">Combine</td>
+<td style="text-align:center">&lt;<1>&gt; \o &lt;<2>&gt;  &lt;<1,2>&gt;</1,2></2></1></td>
+</tr>
+<tr>
+<td style="text-align:center">Len(seq)</td>
+<td style="text-align:center">get length of seq</td>
+<td style="text-align:center">Len(&lt;<1,2>&gt;)  2</1,2></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于Tuples和Sequences，如果不需要使用对seq的操作时就声明前者，否则声明后者</p>
+<h3 id="结构（Structures）"><a href="#结构（Structures）" class="headerlink" title="结构（Structures）"></a>结构（Structures）</h3><p>​    结构将值指派给字符串，可以按照如下格式声明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[key1 |-&gt; val1,key2 |-&gt;val2, etc]</span><br></pre></td></tr></table></figure>
+<p>​    可以通过Structures.key1来得到值</p>
+<h2 id="算法结构"><a href="#算法结构" class="headerlink" title="算法结构"></a>算法结构</h2><h3 id="Assignment"><a href="#Assignment" class="headerlink" title="Assignment"></a>Assignment</h3><p>​    采用:=来给一个变量分配一个新的值</p>
+<h3 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h3><p>​    添加模块TLC可以使用断言，添加断言可以通过测试不变量来测试某个表达式是否成立，assert expression</p>
+<h3 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h3><p>​    没有任何操作，可以通过skip来填充我们尚未完成的部分</p>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if condition1 then</span><br><span class="line">	body</span><br><span class="line">elsif condition2 then</span><br><span class="line">	body</span><br><span class="line">else</span><br><span class="line">	body</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure>
+<p>​    if不是唯一的分支结构，其余的将在后面介绍</p>
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while condition do</span><br><span class="line">	body</span><br><span class="line">end while;</span><br></pre></td></tr></table></figure>
+<p>​    这是PlusCal中唯一的循环体</p>
+<h3 id="Macros"><a href="#Macros" class="headerlink" title="Macros"></a>Macros</h3><p>​    可以在begin前使用来变得更简洁一些</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">macro name(arg1,arg2) begin</span><br><span class="line"> \* assignments</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">	name(x,y);</span><br><span class="line">end algorithm;</span><br></pre></td></tr></table></figure>
+<p>​    可以加入分配、断言、判断，但不能是循环，<strong>也不能指配任何变量超过一次（这里不太理解）</strong>，可以引用外部值，也可以指配外部变量，maybe it seems like the function in some programming languege like C. In the next example we can use it to clean our TLA+. <strong>But in fact I don’ t know why visit the element in a structure in this way</strong></p>
+<p><strong><em>ok, as I read again, I realized that the structures and sequences are the same data structures, so in this angle I think this way is right</em></strong></p>
+<h3 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Integers,TLC,Sequences,FiniteSets</span><br><span class="line">(*--algorithm sort</span><br><span class="line">variable</span><br><span class="line">    dustbin = [trash |-&gt;&#123;&#125;,recycle |-&gt;&#123;&#125;],</span><br><span class="line">    count =[trash |-&gt; 0,recycle |-&gt;0],</span><br><span class="line">    capacity =[trash |-&gt; 10,recycle |-&gt;10],</span><br><span class="line">    items = &lt;&lt;</span><br><span class="line">        [type |-&gt; &quot;recycle&quot;, size |-&gt; 5],</span><br><span class="line">        [type |-&gt; &quot;trash&quot;,size |-&gt;5],</span><br><span class="line">        [type |-&gt; &quot;recycle&quot;,size |-&gt;4],</span><br><span class="line">        [type |-&gt;&quot;recycle&quot;,size |-&gt;4]</span><br><span class="line">    &gt;&gt;,</span><br><span class="line">    cur=&quot;&quot;;</span><br><span class="line">macro add_item(type) begin</span><br><span class="line">        capacity[type] := capacity[type] -cur.size;</span><br><span class="line">        dustbin[type] := dustbin[type] \union &#123;cur&#125;;</span><br><span class="line">        count[type] := count[type] + 1;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while items /= &lt;&lt;&gt;&gt; do</span><br><span class="line">    cur := Head(items);</span><br><span class="line">    items := Tail(items);</span><br><span class="line">    if cur.type = &quot;recycle&quot;/\ cur.size&lt;=capacity.recycle then</span><br><span class="line">        add_item(&quot;recycle&quot;);</span><br><span class="line">    elsif cur.type =&quot;trash&quot;/\cur.size&lt;=capacity.trash then</span><br><span class="line">        add_item(&quot;trash&quot;);</span><br><span class="line">    end if;</span><br><span class="line">    end while;</span><br><span class="line">    assert capacity.recycle&gt;=0 /\ capacity.trash&gt;=0;</span><br><span class="line">    assert Cardinality(dustbin.trash) = count.trash;</span><br><span class="line">    assert Cardinality(dustbin.recycle) = count.recycle;</span><br><span class="line">end algorithm*)</span><br><span class="line">=====</span><br></pre></td></tr></table></figure>
+<h2 id="Complex-Behaviors"><a href="#Complex-Behaviors" class="headerlink" title="Complex Behaviors"></a>Complex Behaviors</h2><p>​    其实根据这几天的学习，我们已经能够去写一些很简单的spec了，但是我们需要让这些东西变得更加使用，下面介绍三种基本的方式</p>
+<h3 id="Multiple-Starting-States"><a href="#Multiple-Starting-States" class="headerlink" title="Multiple Starting States"></a>Multiple Starting States</h3><p>​    我们可以采用更加多元化的方式来声明变量，而不是仅仅用赋值号，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(*--algorithm in</span><br><span class="line">variables x \in 1..3;</span><br><span class="line">begin</span><br><span class="line">	assert x&lt;=2;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    可以用来逐个表示集合中的元素，直到x=3退出，也可以用同样的方式再添加一些像y之类的变量，需要提一下的是，TLA+给出了布尔类型的集合BOOLEAN {TRUE,FALSE}。</p>
+<p>​    从上面的论述我们可以知道通过这一点我们可以创造出任意的数，也可以用类似的方式选择出任意的集合、结构和元组。</p>
+<p>​    首先，对于集合，有操作SUBSET set，可以求出集合set的幂集，也有操作UNION {set1,set2,etc}，可以求出多个集合的并集，另外就是set1 \X set2，求出笛卡尔积，可以用它来创造列表的集合，最后就是创造结构的集合，我们采用[key : set]的格式，比如[a : {“a”,”b”}]，表示的就是{[a |-&gt; “a”], [a |-&gt; “b”]}，当然结构中也可以写多个上述的格式，得到的最终形式类似于笛卡尔积，如[a: {“a”, “b”}, b: (1..2)]，当然如果想要保持其中的一个量不变，另一个跟随集合而取，可以写成[key1: set, key2: {val}]</p>
+<p>​    注意以上的东西原则上都是可以混用的，接下来我们重写上面的分类垃圾的例子，来达到随机的效果，<strong>得到列表，用笛卡尔积，得到结构，用多个组合</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">variables</span><br><span class="line">	capacity \in [trash: 1..10, recycle: 1..10],</span><br><span class="line">	bins = [trash |-&gt; &#123;&#125;,recycle |-&gt;&#123;&#125;],</span><br><span class="line">	count =[trash |-&gt; 0,recycle |-&gt; 0],</span><br><span class="line">	item =[type: &#123;&quot;recycle&quot;,&quot;trash&quot;&#125;,size: 1..6],</span><br><span class="line">	items \in item \X item \X item \X item,</span><br><span class="line">	curr =&quot;&quot;;</span><br></pre></td></tr></table></figure>
+<p>​    首先的话这次运行的程序明显比之前要慢很多，因为可能性实在是太多了，还有值得优化的地方，其次就是对于assert，程序出错了</p>
+<p>​    值得优化的地方有很多，比如这里的bins采用的是集合，对于取并集的操作会产生一定的错误，因为{x} \UNION {x}={x}，这就导致了如果我们处理两个完全相同的物品，箱里只加了一次，但是数目加了两次，这就是由于<strong>集合的互异性</strong>造成的，所以如果这里使用列表可以有效地修正这一错误，最终的修改总代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Integers,TLC,Sequences,FiniteSets</span><br><span class="line">(*--algorithm sort</span><br><span class="line">variable</span><br><span class="line">    capacity \in [trash: 1..10, recycle: 1..10],</span><br><span class="line">    dustbin = [trash |-&gt; &lt;&lt;&gt;&gt;,recycle |-&gt;&lt;&lt;&gt;&gt;],</span><br><span class="line">    count =[trash |-&gt; 0,recycle |-&gt; 0],</span><br><span class="line">    item =[type: &#123;&quot;recycle&quot;,&quot;trash&quot;&#125;,size: 1..6],</span><br><span class="line">    items \in item \X item \X item \X item,</span><br><span class="line">    cur =&quot;&quot;;</span><br><span class="line">macro add_item(type) begin</span><br><span class="line">        capacity[type] := capacity[type] -cur.size;</span><br><span class="line">        dustbin[type] := Append(dustbin[type],cur);</span><br><span class="line">        count[type] := count[type] + 1;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while items /= &lt;&lt;&gt;&gt; do</span><br><span class="line">    cur := Head(items);</span><br><span class="line">    items := Tail(items);</span><br><span class="line">    if cur.type = &quot;recycle&quot;/\ cur.size&lt;=capacity.recycle then</span><br><span class="line">        add_item(&quot;recycle&quot;);</span><br><span class="line">    elsif cur.type =&quot;trash&quot;/\cur.size&lt;=capacity.trash then</span><br><span class="line">        add_item(&quot;trash&quot;);</span><br><span class="line">    end if;</span><br><span class="line">    end while;</span><br><span class="line">    assert capacity.recycle&gt;=0 /\ capacity.trash&gt;=0;</span><br><span class="line">    assert Len(dustbin.trash) = count.trash;</span><br><span class="line">    assert Len(dustbin.recycle) = count.recycle;</span><br><span class="line">end algorithm*)</span><br><span class="line">=========</span><br></pre></td></tr></table></figure>
+<h3 id="Nondeterministic-Behavior"><a href="#Nondeterministic-Behavior" class="headerlink" title="Nondeterministic Behavior"></a>Nondeterministic Behavior</h3><p>​    并不是所有的行为都是确定的，在PlusCal中有两个关键字用来模拟不确定性</p>
+<p><strong>Either</strong></p>
+<p>​    大致的语法格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">either</span><br><span class="line">	\* branch 1</span><br><span class="line">or</span><br><span class="line">	\* branch 2</span><br><span class="line">\* ...</span><br><span class="line">or</span><br><span class="line">	\* branch n</span><br><span class="line">end either;</span><br></pre></td></tr></table></figure>
+<p>​    当我们开始核实的时候，TLC将会同时检查所有的分支，可以通过这一点来展示所有的可能情况，但是每种情况都是等可能的，一旦其中有一个让spec无效，都要去修正它，在分支中可以放任何表达式，如果可以让macro有效，可以将either放入macro中</p>
+<p><strong>With</strong></p>
+<p>​    大致的语法格式有两种，见下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with var = value do</span><br><span class="line">	\* body</span><br><span class="line">end with;</span><br><span class="line">\* or</span><br><span class="line">with var \in set do</span><br><span class="line">	\*body</span><br><span class="line">end with;</span><br></pre></td></tr></table></figure>
+<p>​    前一种用法大概是创建了一个临时变量，后面一种情况是不确定性的应用，将会检查集合中的每一个元素所对应的情况，如果集合为空，此处的spec将会停止。</p>
+<p>​    with语句给的是值而不是参照，在书中给了一个比较清晰的例子，即如果x和y是变量，通过写with t \in {x,y} do t := 1来为其重新赋值是不可以的，仅仅只能写 with t \in {x,y} do x := t。</p>
+<p><strong>example</strong></p>
+<p>​    这个问题大概就是说有个人送信到中转站，收信的人可以选择收也可以选择不收，我们直译以下就得到了以下的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Sequences,TLC</span><br><span class="line">(*--algorithm message</span><br><span class="line">variable</span><br><span class="line">    to_send = &lt;&lt;1,2,3&gt;&gt;,</span><br><span class="line">    receiver = &lt;&lt;&gt;&gt;,</span><br><span class="line">    in_transit = &#123;&#125;;</span><br><span class="line">begin</span><br><span class="line">    while Len(receiver) /= 3 do</span><br><span class="line">    if Len(to_send) /= 0 then</span><br><span class="line">        in_transit := in_transit \union &#123;Head(to_send)&#125;;</span><br><span class="line">        to_send := Tail(to_send);</span><br><span class="line">    end if;</span><br><span class="line">    either</span><br><span class="line">        with msg \in in_transit do</span><br><span class="line">            receiver := Append(receiver,msg);    </span><br><span class="line">            in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">        end with;</span><br><span class="line">    or</span><br><span class="line">        skip;</span><br><span class="line">    end either;</span><br><span class="line">    end while;</span><br><span class="line">end algorithm;*)</span><br><span class="line">====</span><br></pre></td></tr></table></figure>
+<p>​    注意如果在最下面加入断言assert receiver = &lt;<1,2,3>&gt;会报错，这个错误是由于高并发造成的，称之为<strong>concurrency bugs</strong>，即送1，收件人没收，然后送2，然后收件人收1，送3，然后收3，2，导致顺序发生变化，所以这里可以加入一个判定，保证在上一封信被收到的时候，下一封信才可以寄出，进而保证了有序性</1,2,3></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">----MODULE test----</span><br><span class="line">EXTENDS Sequences,TLC</span><br><span class="line">(*--algorithm message</span><br><span class="line">variable</span><br><span class="line">    to_send = &lt;&lt;1,2,3&gt;&gt;,</span><br><span class="line">    receiver = &lt;&lt;&gt;&gt;,</span><br><span class="line">    in_transit = &#123;&#125;;</span><br><span class="line">    can_send = TRUE</span><br><span class="line">begin</span><br><span class="line">    while Len(receiver) /= 3 do</span><br><span class="line">    if can_send /\ Len(to_send) /= 0 then</span><br><span class="line">        in_transit := in_transit \union &#123;Head(to_send)&#125;;</span><br><span class="line">        to_send := Tail(to_send);</span><br><span class="line">        can_send := FALSE;</span><br><span class="line">    end if;</span><br><span class="line">    either</span><br><span class="line">        with msg \in in_transit do</span><br><span class="line">            can_send := TRUE;</span><br><span class="line">            receiver := Append(receiver,msg);    </span><br><span class="line">            in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">        end with;</span><br><span class="line">    or</span><br><span class="line">        skip;</span><br><span class="line">    end either;</span><br><span class="line">    end while;</span><br><span class="line">    assert receiver = &lt;&lt;1,2,3&gt;&gt;;</span><br><span class="line">end algorithm;*)</span><br><span class="line">======</span><br></pre></td></tr></table></figure>
+<p>​    但是这样改动也会造成一个问题，就是发出去的信永远都没收到，这样就永远无法寄信，这称之为<strong>liveness bugs</strong>，未来会更加详细的介绍它</p>
+<p>​    当然在现实中也会有一些别的情况，比如信收到了但是邮差却误以为没有收导致报错，只需要在加入either即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">with msg \in in_transit do</span><br><span class="line">	receiver := Append(receiver,msg);</span><br><span class="line">	in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">	either</span><br><span class="line">		can_send := true;</span><br><span class="line">	or</span><br><span class="line">		skip;</span><br><span class="line">	end either;</span><br><span class="line">end with;</span><br></pre></td></tr></table></figure>
+<p>​    但是这样却会报错<strong>Deadlock reached</strong>，这意味着spec进入到了一个玄学阶段，即啥都做不了，这样的一个阶段显然是很容易模拟出来的，关于这样的报错以后也会继续了解</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要讲了PlusCal的一些基础知识，重点在于四种结构及其之间的相互组合和一些算法结构</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杨释钧
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yang-shijun.gitee.io/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/" title="《Practical TLA+》阅读笔记（二）">https://yang-shijun.gitee.io/2021/08/24/《Practical-TLA+》阅读笔记（2）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://www.zhihu.com/people/yang-lao-er-25-83">
+          <span class="icon">
+            <i class="fab fa-zhihu"></i>
+          </span>
+
+          <span class="label">知乎</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343">
+          <span class="icon">
+            <i class="fa fa-book"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/ysjyx7">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="《Practical TLA+》阅读笔记（一）">
+                  <i class="fa fa-chevron-left"></i> 《Practical TLA+》阅读笔记（一）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2021/08/25/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（三）">
+                  《Practical TLA+》阅读笔记（三） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">62k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">57 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
