@@ -73,7 +73,7 @@
 <meta property="og:description" content="关于《Practical TLA+》第一部分Chapter 4阅读笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-26T06:51:00.000Z">
-<meta property="article:modified_time" content="2021-08-27T06:29:00.699Z">
+<meta property="article:modified_time" content="2021-09-22T13:28:27.157Z">
 <meta property="article:author" content="杨释钧">
 <meta name="twitter:card" content="summary">
 
@@ -310,7 +310,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-27 14:29:00" itemprop="dateModified" datetime="2021-08-27T14:29:00+08:00">2021-08-27</time>
+        <time title="修改时间：2021-09-22 21:28:27" itemprop="dateModified" datetime="2021-09-22T21:28:27+08:00">2021-09-22</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -373,7 +373,7 @@
 <p>​    用对称性往往只需要考虑情况的一半，这会让我们的程序更加高效，但是需要考虑是否安全</p>
 <h2 id="ASSUME"><a href="#ASSUME" class="headerlink" title="ASSUME"></a>ASSUME</h2><p>​    ASSUME是一种针对常量的断言，比如如果已经将Values作为了数字集合，就不希望再将它指派成字符串列表，如果出现这种情况，ASSUME就会阻止spec继续运行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CONSTANTS Capacity, Items, SizeRange, ValueRange</span><br><span class="line">ASSUME SizeRange \subseteq 1..Capacity</span><br><span class="line">ASSUME Capacity &gt; 0</span><br><span class="line">ASSUME \A v \in ValueRange: v &gt;= 0</span><br><span class="line">ItemParams == [size: SizeRange, value: ValueRange]</span><br><span class="line">ItemSets == [Items -&gt; ItemParams]</span><br></pre></td></tr></table></figure>
-<h3 id="Infinite-Sets"><a href="#Infinite-Sets" class="headerlink" title="Infinite Sets"></a>Infinite Sets</h3><p>​    到目前为止我们用的大多数都是有限集合，但是TLA+也可以指定某些类型的无限集，不能从集合中选择元素，也不能将其分类变量，但是可以用来测试成员资格。如果我们导入了Integers模块，可以得到无限极Int，我们也可以导入模块Naturals，得到自然数集合Nat，那么我们的假设就可以写的更加多样化</p>
+<h3 id="Infinite-Sets"><a href="#Infinite-Sets" class="headerlink" title="Infinite Sets"></a>Infinite Sets</h3><p>​    到目前为止我们用的大多数都是有限集合，但是TLA+也可以指定某些类型的无限集，不能从集合中选择元素，也不能将其分类变量，但是可以用来测试成员资格。如果我们导入了Integers模块，可以得到无限集Int，我们也可以导入模块Naturals，得到自然数集合Nat，那么我们的假设就可以写的更加多样化</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ASSUME SizeRange \subseteq 1..Capacity</span><br><span class="line">ASSUME Capacity \in Nat \ &#123;0&#125;</span><br><span class="line">ASSUME ValueRange \subseteq Nat</span><br></pre></td></tr></table></figure>
 <p>​    通过这样写可以让类型更加明晰</p>
 <h1 id="TLC运行时间"><a href="#TLC运行时间" class="headerlink" title="TLC运行时间"></a>TLC运行时间</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>​    来看一下model页下的一些配置</p>
@@ -508,8 +508,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（六）">
-                  《Practical TLA+》阅读笔记（六） <i class="fa fa-chevron-right"></i>
+                <a href="/blog/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（五）">
+                  《Practical TLA+》阅读笔记（五） <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
