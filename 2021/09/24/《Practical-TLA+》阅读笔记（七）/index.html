@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+
+
+<script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
+
+<div class="musicwyy2" style="position:fixed;left:0px;bottom:0px;z-index:105;opacity: 1; 
+    width: 30px;
+    height: 110px;    font-size: 15px;
+    font-family: 'Long Cang';">
+
+  <button type="button" style="
+    width: 30px;
+    height: 66px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0px;
+    background: #f5f5f5;
+    z-index:200;" onclick="musicChange()"> 播放器</button>
+
+</div> 
+
+
+
+<div class="musicwyy1" style="position:fixed;left:0px;bottom:0px;z-index:100;opacity: 1; 
+    width: 300px;
+    height: 110px;font-size: 0;">
+
+  <div class="aplayer-miniswitcher" style="
+    height: 110px;
+    width: 20px;
+    display: inline-block; overflow: hidden;">
+
+
+
+  </div>
+
+  <div style="
+    width: calc(100% - 30px);
+    height: 110px;
+    display: inline-block;" id="musicZJ">
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4968365&auto=1&height=66"></iframe>
+
+  </div>
+  
+</div>
+<meta name="description" content="关于《Practical-TLA+》第二部分chapter7阅读笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Practical-TLA+》阅读笔记（七）">
+<meta property="og:url" content="https://yang-shijun.gitee.io/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/index.html">
+<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:description" content="关于《Practical-TLA+》第二部分chapter7阅读笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-24T12:22:06.000Z">
+<meta property="article:modified_time" content="2021-09-25T03:12:04.275Z">
+<meta property="article:author" content="杨释钧">
+<meta property="article:tag" content="分布式系统">
+<meta property="article:tag" content="TLA+">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yang-shijun.gitee.io/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/","path":"2021/09/24/《Practical-TLA+》阅读笔记（七）/","title":"《Practical-TLA+》阅读笔记（七）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《Practical-TLA+》阅读笔记（七） | 杨释钧的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">杨释钧的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%8D%95%E8%BF%9B%E7%A8%8B%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">一个单进程算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Max"><span class="nav-number">1.2.</span> <span class="nav-text">Max</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leftpad"><span class="nav-number">1.3.</span> <span class="nav-text">Leftpad</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">算法的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">多进程算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨释钧"
+      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">杨释钧</p>
+  <div class="site-description" itemprop="description">欢迎欢迎</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_55101026?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ysjyx7" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="杨释钧">
+      <meta itemprop="description" content="欢迎欢迎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨释钧的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《Practical-TLA+》阅读笔记（七）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-24 20:22:06" itemprop="dateCreated datePublished" datetime="2021-09-24T20:22:06+08:00">2021-09-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-25 11:12:04" itemprop="dateModified" datetime="2021-09-25T11:12:04+08:00">2021-09-25</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">分布式系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/TLA/" itemprop="url" rel="index"><span itemprop="name">TLA+</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">关于《Practical-TLA+》第二部分chapter7阅读笔记</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    看标题是和算法相关的。</p>
+<p>​    首先，TLA+中的操作相比于函数，他显然“更强”，这意味着有时候我们可能难以将他，<del>这也是我在敲TLA+时候的一个疑惑</del>，当然很多时候其实很难写出这样的强力操作。</p>
+<p>​    这一章主要是用来<strong>证明</strong>一些算法，注意重点是证明而不是实现。</p>
+<p>​    另外就是有一个前提，就是我们讨论的所有算法最终都会终止。</p>
+<h2 id="一个单进程算法"><a href="#一个单进程算法" class="headerlink" title="一个单进程算法"></a>一个单进程算法</h2><p>​    下面给一个验证这种算法的通用模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">----- MODULE single_process_agrithom ----</span><br><span class="line">EXTENDS \* whatever</span><br><span class="line">Expected(input) == \* ...</span><br><span class="line">Helpers == \* ...</span><br><span class="line">(*--algorithm name</span><br><span class="line">variables</span><br><span class="line">	input \in \* ...</span><br><span class="line">	output; \* ... </span><br><span class="line">	\* helper variables</span><br><span class="line">begin</span><br><span class="line">	\*algorithm implementation</span><br><span class="line">	assert output=Expected(input);</span><br><span class="line">end algorithm; *)</span><br><span class="line">=====</span><br></pre></td></tr></table></figure>
+<p>​    其实代码还是非常清晰明了的。</p>
+<p>​    另外值得注意的是，我们不需要给output赋值，TLC将会创建常量<strong>DefaultInitValue &lt;- [model constant]</strong>，在这里会初始化output，另外这里也可以放一些辅助变量，毕竟在算法中的begin和end之间我们一般是不能定义新变量的。</p>
+<p>​    下面给一个新的例子，<del>就是一个求和，宛如智障</del></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Integers,TLC</span><br><span class="line">add(a,b) == a + b</span><br><span class="line">(*--algorithm add</span><br><span class="line">variables</span><br><span class="line">    in_a \in -5..5,</span><br><span class="line">    in_b \in -5..5,</span><br><span class="line">    output;</span><br><span class="line">begin</span><br><span class="line">    output := in_a+in_b;</span><br><span class="line">    assert output = add(in_a,in_b);</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<h2 id="Max"><a href="#Max" class="headerlink" title="Max"></a>Max</h2><p>​    我们现有的已知求最大值算法就是用<strong>CHOOSE</strong>命令，从所有的里面进行选择，也可以进行循环，Pluscal代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Integers, Sequences, TLC</span><br><span class="line">CONSTANTS IntSet, MaxSeqLen</span><br><span class="line">ASSUME IntSet \subseteq Int</span><br><span class="line">ASSUME MaxSeqLen &gt; 0</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">Max(seq) ==</span><br><span class="line"> LET set == &#123;seq[i]: i \in 1..Len(seq)&#125;</span><br><span class="line"> IN CHOOSE x \in set: \A y \in set: y &lt;= x</span><br><span class="line">AllInputs == PT!SeqOf(IntSet, MaxSeqLen) \ &#123;&lt;&lt;&gt;&gt;&#125;</span><br><span class="line">(*--algorithm max</span><br><span class="line">variables seq \in AllInputs, i = 1, max;</span><br><span class="line">begin</span><br><span class="line"> assert Len(seq) &gt; 0;</span><br><span class="line"> max := seq[1];</span><br><span class="line"> while i &lt;= Len(seq) do</span><br><span class="line"> if max &lt; seq[i] then</span><br><span class="line"> max := seq[i];</span><br><span class="line"> end if;</span><br><span class="line"> i := i + 1;</span><br><span class="line"> end while;</span><br><span class="line"> assert max = Max(seq);</span><br><span class="line">end algorithm; *)</span><br></pre></td></tr></table></figure>
+<p>​    注意其实最开始程序会报错，因为有可能会出现空列表，我们在生成的时候做限制即可。</p>
+<h2 id="Leftpad"><a href="#Leftpad" class="headerlink" title="Leftpad"></a>Leftpad</h2><p>​    其实就是个字符串填充的问题，非常简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">------------------------------ MODULE Leftpad ------------------------------</span><br><span class="line">EXTENDS TLC,Integers,Sequences</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">Leftpad(c, n, str) ==</span><br><span class="line"> LET</span><br><span class="line"> outlength == PT!Max(Len(str), n)</span><br><span class="line"> padlength ==</span><br><span class="line"> CHOOSE padlength \in 0..n:</span><br><span class="line"> padlength + Len(str) = outlength</span><br><span class="line"> IN</span><br><span class="line"> [x \in 1..padlength |-&gt; c] \o str</span><br><span class="line">Characters == &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;</span><br><span class="line">(*--algorithm leftpad</span><br><span class="line">variables</span><br><span class="line"> in_c \in Characters \union &#123;&quot; &quot;&#125;,</span><br><span class="line"> in_n \in 0..6,</span><br><span class="line"> in_str \in PT!SeqOf(Characters, 6),</span><br><span class="line"> output;</span><br><span class="line">begin</span><br><span class="line"> output := in_str;</span><br><span class="line"> while Len(output) &lt; in_n do</span><br><span class="line"> output := &lt;&lt;in_c&gt;&gt; \o output;</span><br><span class="line"> end while;</span><br><span class="line"> assert output = Leftpad(in_c, in_n, in_str);</span><br><span class="line">end algorithm; *)</span><br><span class="line">\* BEGIN TRANSLATION (chksum(pcal) = &quot;42773a97&quot; /\ chksum(tla) = &quot;eaf0c402&quot;)</span><br><span class="line">CONSTANT defaultInitValue</span><br><span class="line">VARIABLES in_c, in_n, in_str, output, pc</span><br><span class="line"></span><br><span class="line">vars == &lt;&lt; in_c, in_n, in_str, output, pc &gt;&gt;</span><br><span class="line"></span><br><span class="line">Init == (* Global variables *)</span><br><span class="line">        /\ in_c \in (Characters \union &#123;&quot; &quot;&#125;)</span><br><span class="line">        /\ in_n \in 0..6</span><br><span class="line">        /\ in_str \in PT!SeqOf(Characters, 6)</span><br><span class="line">        /\ output = defaultInitValue</span><br><span class="line">        /\ pc = &quot;Lbl_1&quot;</span><br><span class="line"></span><br><span class="line">Lbl_1 == /\ pc = &quot;Lbl_1&quot;</span><br><span class="line">         /\ output&#x27; = in_str</span><br><span class="line">         /\ pc&#x27; = &quot;Lbl_2&quot;</span><br><span class="line">         /\ UNCHANGED &lt;&lt; in_c, in_n, in_str &gt;&gt;</span><br><span class="line"></span><br><span class="line">Lbl_2 == /\ pc = &quot;Lbl_2&quot;</span><br><span class="line">         /\ IF Len(output) &lt; in_n</span><br><span class="line">               THEN /\ output&#x27; = &lt;&lt;in_c&gt;&gt; \o output</span><br><span class="line">                    /\ pc&#x27; = &quot;Lbl_2&quot;</span><br><span class="line">               ELSE /\ Assert(output = Leftpad(in_c, in_n, in_str), </span><br><span class="line">                              &quot;Failure of assertion at line 24, column 2.&quot;)</span><br><span class="line">                    /\ pc&#x27; = &quot;Done&quot;</span><br><span class="line">                    /\ UNCHANGED output</span><br><span class="line">         /\ UNCHANGED &lt;&lt; in_c, in_n, in_str &gt;&gt;</span><br><span class="line"></span><br><span class="line">(* Allow infinite stuttering to prevent deadlock on termination. *)</span><br><span class="line">Terminating == pc = &quot;Done&quot; /\ UNCHANGED vars</span><br><span class="line"></span><br><span class="line">Next == Lbl_1 \/ Lbl_2</span><br><span class="line">           \/ Terminating</span><br><span class="line"></span><br><span class="line">Spec == Init /\ [][Next]_vars</span><br><span class="line"></span><br><span class="line">Termination == &lt;&gt;(pc = &quot;Done&quot;)</span><br><span class="line"></span><br><span class="line">\* END TRANSLATION </span><br><span class="line">=============================================================================</span><br><span class="line">\* Modification History</span><br><span class="line">\* Last modified Sat Sep 25 09:35:02 CST 2021 by yx7</span><br><span class="line">\* Created Sat Sep 25 09:14:09 CST 2021 by yx7</span><br></pre></td></tr></table></figure>
+<h1 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h1><p>​    测定算法的正确性是最为简单的，现在我们期望测定算法的性能特征和界限，为了实现这一点，可以加入一些辅助变量，这里以二分查找为例，来检测算法的性能。</p>
+<p>​    其实就是在循环中加一个辅助变量来记录重复的次数<del>感觉好low</del>，这里大概就是去衡量最坏的时间复杂度，最佳时间复杂度和平均时间复杂度难以被衡量，代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Integers,TLC,Sequences</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">OrderedSeqOf(set,n) == </span><br><span class="line">    &#123; seq \in PT!SeqOf(set,n):</span><br><span class="line">      \A x \in 2..Len(seq):</span><br><span class="line">       seq[x]&gt;=seq[x-1]&#125;</span><br><span class="line">Pow2(n) ==</span><br><span class="line">    LET f[x \in 0..n] ==</span><br><span class="line">        IF x = 0</span><br><span class="line">        THEN 1</span><br><span class="line">        ELSE 2*f[x-1]</span><br><span class="line">    IN f[n]</span><br><span class="line">MaxInt == 4</span><br><span class="line">Range(f) == &#123;f[x]: x \in DOMAIN f&#125;</span><br><span class="line">(*--algorithm bs</span><br><span class="line">variables low=1,</span><br><span class="line">          seq \in OrderedSeqOf(1..MaxInt,MaxInt),</span><br><span class="line">          target \in 1..MaxInt,</span><br><span class="line">          high = Len(seq),</span><br><span class="line">          found_index = 0,</span><br><span class="line">          counter = 0;</span><br><span class="line">begin</span><br><span class="line">    Search:</span><br><span class="line">        while low &lt;= high do</span><br><span class="line">            counter := counter + 1;</span><br><span class="line">            with</span><br><span class="line">                mid=(high+low) \div 2</span><br><span class="line">            do</span><br><span class="line">                if seq[mid] = target then</span><br><span class="line">                    found_index := mid;</span><br><span class="line">                    goto Result;</span><br><span class="line">                elsif seq[mid] &gt; target then</span><br><span class="line">                    high := mid-1;</span><br><span class="line">                else</span><br><span class="line">                    low := mid+1;</span><br><span class="line">                end if;</span><br><span class="line">            end with;</span><br><span class="line">        end while;</span><br><span class="line">    Result:</span><br><span class="line">        if Len(seq) &gt; 0 then</span><br><span class="line">            assert Pow2(counter-1) &lt;= Len(seq);</span><br><span class="line">        end if;</span><br><span class="line">        if target \in PT!Range(seq) then</span><br><span class="line">            assert seq[found_index] =target;</span><br><span class="line">        else</span><br><span class="line">            assert found_index = 0;</span><br><span class="line">        end if;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    另外值得一提的是，在计算平均值的时候，有可能超过了设备允许的范围，如果我们加一个求和的判定，就会出错，这里就要沿用另外一种写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with</span><br><span class="line"> lh = high - low,</span><br><span class="line"> m = high - (lh \div 2)</span><br><span class="line">do</span><br></pre></td></tr></table></figure>
+<h1 id="多进程算法"><a href="#多进程算法" class="headerlink" title="多进程算法"></a>多进程算法</h1><p>​    这里其实和单一进程的没有什么区别，为了检查结果为真，我们需要使用前文提到过的<strong>&lt;&gt;[]</strong>，另外就是如果不想让算法中途崩溃，可以使用公平进程</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要就是来验证算法的正确性和另外的一些特性，仅此而已，下一章将会介绍一部分数据结构。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杨释钧
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yang-shijun.gitee.io/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/" title="《Practical-TLA+》阅读笔记（七）">https://yang-shijun.gitee.io/2021/09/24/《Practical-TLA+》阅读笔记（七）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://www.zhihu.com/people/yang-lao-er-25-83">
+          <span class="icon">
+            <i class="fab fa-zhihu"></i>
+          </span>
+
+          <span class="label">知乎</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343">
+          <span class="icon">
+            <i class="fa fa-book"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/ysjyx7">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag"># 分布式系统</a>
+              <a href="/blog/tags/TLA/" rel="tag"># TLA+</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/09/20/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="prev" title="数据处理">
+                  <i class="fa fa-chevron-left"></i> 数据处理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/" rel="next" title="《Practical-TLA+》阅读笔记（八）">
+                  《Practical-TLA+》阅读笔记（八） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">84k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:16</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -65,31 +65,28 @@
   </div>
   
 </div>
-<meta name="description" content="关于动态规划刷题中的一些记录">
+<meta name="description" content="关于判断链表中是否有环的算法总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态规划入门">
-<meta property="og:url" content="https://yang-shijun.gitee.io/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="弗洛依德的兔子与乌龟算法">
+<meta property="og:url" content="https://yang-shijun.gitee.io/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="杨释钧的博客">
-<meta property="og:description" content="关于动态规划刷题中的一些记录">
+<meta property="og:description" content="关于判断链表中是否有环的算法总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916153724707.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916154705058.png">
-<meta property="article:published_time" content="2021-09-16T07:34:10.000Z">
-<meta property="article:modified_time" content="2021-09-16T08:00:42.445Z">
+<meta property="article:published_time" content="2021-09-25T08:22:50.000Z">
+<meta property="article:modified_time" content="2021-09-25T09:20:21.506Z">
 <meta property="article:author" content="杨释钧">
-<meta property="article:tag" content="算法 - 动态规划">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916153724707.png">
 
 
-<link rel="canonical" href="https://yang-shijun.gitee.io/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/">
+<link rel="canonical" href="https://yang-shijun.gitee.io/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/","path":"2021/09/16/动态规划入门/","title":"动态规划入门"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/","path":"2021/09/25/弗洛依德的兔子与乌龟算法/","title":"弗洛依德的兔子与乌龟算法"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>动态规划入门 | 杨释钧的博客</title>
+<title>弗洛依德的兔子与乌龟算法 | 杨释钧的博客</title>
   
 
 
@@ -195,7 +192,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B4%9B%E8%B0%B7P1216"><span class="nav-number">2.</span> <span class="nav-text">洛谷P1216</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="nav-number">2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">输入输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">2.3.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tortoise-and-the-Hare-algorithm"><span class="nav-number">1.</span> <span class="nav-text">Tortoise and the Hare algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%83%B3%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">具体想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">判断是否有环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%8E%AF%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text">求环的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">1.3.3.</span> <span class="nav-text">环的起点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.5.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Brent%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Brent算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">代码如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="nav-number">2.4.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,7 +280,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
@@ -296,7 +293,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          动态规划入门
+          弗洛依德的兔子与乌龟算法
         </h1>
 
         <div class="post-meta-container">
@@ -308,7 +305,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-09-16 15:34:10 / 修改时间：16:00:42" itemprop="dateCreated datePublished" datetime="2021-09-16T15:34:10+08:00">2021-09-16</time>
+      <time title="创建时间：2021-09-25 16:22:50 / 修改时间：17:20:21" itemprop="dateCreated datePublished" datetime="2021-09-25T16:22:50+08:00">2021-09-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,10 +314,6 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/blog/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">动态规划</span></a>
         </span>
     </span>
 
@@ -338,18 +331,18 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>954</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
-            <div class="post-description">关于动态规划刷题中的一些记录</div>
+            <div class="post-description">关于判断链表中是否有环的算法总结</div>
         </div>
       </header>
 
@@ -357,12 +350,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    本篇对动态规划问题进行简单地入门，个人感觉动态规划问题就像是高中所学过的用递推公式求解问题，关键在于找出状态转移方程</p>
-<h1 id="洛谷P1216"><a href="#洛谷P1216" class="headerlink" title="洛谷P1216"></a>洛谷P1216</h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916153724707.png" alt="image-20210916153724707"></p>
-<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916154705058.png" alt="image-20210916154705058"></p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>​    这道题的状态转移方程十分明显，由于希望找到最大路径，而在位置$i,j$，要想达到最大，需要求出它肩上两个距离的最大值，所以状态转移方程为$DP[i][j]=(max(DP[i-1][j-1],DP[i-1][j]))+a[i][j]$</p>
-<p>​    另外就是由于我的max是用宏和三目运算符写的，三目运算符优先级很低，所以不加括号会导致出错</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a,b) (a)&gt;(b)?(a):(b)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">101</span>][<span class="number">101</span>];</span><br><span class="line">    <span class="keyword">int</span> b[<span class="number">101</span>][<span class="number">101</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;r);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i;j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; r;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        b[i][<span class="number">0</span>] += b[i - <span class="number">1</span>][<span class="number">0</span>] + a[i][<span class="number">0</span>];</span><br><span class="line">        <span class="comment">// b[i][i] += b[i - 1][i - 1] + a[i][i];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; r;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            b[i][j] = max(b[i - <span class="number">1</span>][j - <span class="number">1</span>], b[i - <span class="number">1</span>][j]);</span><br><span class="line">            b[i][j] += a[i][j];</span><br><span class="line">            <span class="comment">//值得一提的是这里在我最开始，写的是b[i][j]=max(b[i-1][j-1],b[i-1][j])+a[i][j]</span></span><br><span class="line">            <span class="comment">//然而由于三目运算符优先级低于加法运算，导致一直出错！</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> max1=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r;i++)</span><br><span class="line">    <span class="keyword">if</span>(max1&lt;b[r<span class="number">-1</span>][i])</span><br><span class="line">        max1 = b[r - <span class="number">1</span>][i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, max1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Tortoise-and-the-Hare-algorithm"><a href="#Tortoise-and-the-Hare-algorithm" class="headerlink" title="Tortoise and the Hare algorithm"></a>Tortoise and the Hare algorithm</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>​    其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
+<h2 id="具体想法"><a href="#具体想法" class="headerlink" title="具体想法"></a>具体想法</h2><h3 id="判断是否有环"><a href="#判断是否有环" class="headerlink" title="判断是否有环"></a>判断是否有环</h3><p>​    定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
+<h3 id="求环的长度"><a href="#求环的长度" class="headerlink" title="求环的长度"></a>求环的长度</h3><p>​    p1固定在相遇位置C，移动p2，每次移动1个长度，计数即可</p>
+<h3 id="环的起点"><a href="#环的起点" class="headerlink" title="环的起点"></a>环的起点</h3><p>​    此时将一个指针移到表头结点，另一个指针在相遇节点，然后两者每次均移动一个单位，再次相遇时的位置就是环的起点位置</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>​    其实实现起来也非常简单</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">list</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="built_in">list</span> next;</span><br><span class="line">&#125; * <span class="built_in">list</span>,listnode;</span><br><span class="line"><span class="keyword">int</span> count;</span><br><span class="line"><span class="built_in">list</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(<span class="built_in">list</span> head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">list</span> p, q;</span><br><span class="line">    p = head, q = head;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(q==<span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p==q)</span><br><span class="line">        &#123;</span><br><span class="line">            count = <span class="number">1</span>;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(p!=q)</span><br><span class="line">            &#123;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="comment">//该循环用来求环的长度</span></span><br><span class="line">            p = head;</span><br><span class="line">            <span class="keyword">while</span>(p!=q)</span><br><span class="line">            &#123;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = p;<span class="comment">//该循环用来求环的起点</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">list</span> <span class="title">creat</span><span class="params">()</span></span>;<span class="comment">//创建有环链表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">list</span> head = creat();</span><br><span class="line">    <span class="keyword">if</span>(function(head))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no cycle!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;have cycle!\nlength:%d\nstarting:%d\n&quot;</span>,count,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><del>当然这里我没有数据，也不知道自己随手写的代码对不对</del></strong></p>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>​    空间复杂度：$O(1)$</p>
+<p>​    时间复杂度：$O(m+n)$</p>
+<p>​    这里的分析非常简单，具体的可以看<a href="[弗洛伊德的兔子与乌龟(Floyd’s Tortoise and the Hare algorithm"></a> – Onwaier‘s Blog](<a target="_blank" rel="noopener" href="http://onwaier.com/?p=528">http://onwaier.com/?p=528</a>))</p>
+<h1 id="Brent算法"><a href="#Brent算法" class="headerlink" title="Brent算法"></a>Brent算法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>​    也是一种找环算法，并且比Floyd算法的效率高了一些</p>
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>​    相比于Floyd算法，Brent的兔子移动而乌龟静止，到达传送时间时，乌龟移动到兔子所在的地方，然后传送时间t翻倍，最终如果兔子能够到达终点，则表示不存在环，如果兔子与乌龟相遇则表示有环。根据考虑，首先最开始的时间间隔应该是2，因为环的长度至少为1</p>
+<h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h2><p>​    这里仅仅给出判圈函数的代码吧，然后后面的求长度和求起点和Floyd算法是一样的，不再赘述</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(List head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">list</span> p,q;</span><br><span class="line">	p=head,q=head;</span><br><span class="line">	<span class="keyword">int</span> steps=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> limit =<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>&amp;&amp;q!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		<span class="keyword">if</span>(p==q)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		steps++;</span><br><span class="line">		<span class="keyword">if</span>(steps==limit)</span><br><span class="line">		&#123;</span><br><span class="line">			q=p;</span><br><span class="line">			steps=<span class="number">0</span>;</span><br><span class="line">			limit*=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>​    空间复杂度：$O(1)$</p>
+<p>​    时间复杂度：$O(m+n)$</p>
+<p>​    <strong>这里贴一个Brent算法更快的证明，<a href="[brent算法为什么比floyd算法快_流的博客-CSDN博客_brent算法](https://blog.csdn.net/qq_35688140/article/details/86586035"></a>)</strong></p>
+<p>​    其实思路是非常简单的，首先论证两个算法，乌龟都跑不完一圈，然后论证Brent算法每秒兔子都要多跑一点即可</p>
 
     </div>
 
@@ -398,7 +404,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://yang-shijun.gitee.io/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/" title="动态规划入门">https://yang-shijun.gitee.io/2021/09/16/动态规划入门/</a>
+      <a href="https://yang-shijun.gitee.io/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/" title="弗洛依德的兔子与乌龟算法">https://yang-shijun.gitee.io/2021/09/25/弗洛依德的兔子与乌龟算法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -444,21 +450,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/blog/tags/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 算法 - 动态规划</a>
+              <a href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2021/09/04/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="prev" title="《Introduction to distributed systems》阅读笔记（二）">
-                  <i class="fa fa-chevron-left"></i> 《Introduction to distributed systems》阅读笔记（二）
+                <a href="/blog/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/" rel="prev" title="《Practical-TLA+》阅读笔记（八）">
+                  <i class="fa fa-chevron-left"></i> 《Practical-TLA+》阅读笔记（八）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2021/09/17/2021917-%E5%AD%A6%E9%99%A2%E4%BF%9D%E7%A0%94%E5%AE%A3%E8%AE%B2%E4%BC%9A/" rel="next" title="学院保研宣讲会">
-                  学院保研宣讲会 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

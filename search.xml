@@ -266,7 +266,7 @@
 <p>​    对于谓词，这里指的是值域为布尔值的函数，可以写成如下通用形式</p>
 <script type="math/tex; mode=display">
 P : S \rightarrow boolean</script><p>​    其中S是任意的定义域</p>
-<p>​    感觉这里说的谓词就像是描述某一种属性一样，即满足条件的为$true$，否则为$false$，也因此问哦们可以使用韦恩图来可视化谓词</p>
+<p>​    感觉这里说的谓词就像是描述某一种属性一样，即满足条件的为$true$，否则为$false$，也因此我们可以使用韦恩图来可视化谓词</p>
 <p>​    在计算机科学中，谓词的域通常是程序的状态空间，缩写出的表达式都是布尔表达式，对于状态空间的点，要么为真要么为假</p>
 <h2 id="提升-lifting"><a href="#提升-lifting" class="headerlink" title="提升(lifting)"></a>提升(lifting)</h2><p>​    从现在来看，布尔值和谓词还是有明显区别的，但是如果考虑操作的时候，两者的界限再次模糊。在布尔值上的一些操作都是可以用在谓词上的，他们是不同的操作，但是符号相同，因此有可能产生混淆</p>
 <script type="math/tex; mode=display">
@@ -717,78 +717,6 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with msg \in in_transit do</span><br><span class="line">	receiver := Append(receiver,msg);</span><br><span class="line">	in_transit := in_transit \ &#123;msg&#125;;</span><br><span class="line">	either</span><br><span class="line">		can_send := true;</span><br><span class="line">	or</span><br><span class="line">		skip;</span><br><span class="line">	end either;</span><br><span class="line">end with;</span><br></pre></td></tr></table></figure>
 <p>​    但是这样却会报错<strong>Deadlock reached</strong>，这意味着spec进入到了一个玄学阶段，即啥都做不了，这样的一个阶段显然是很容易模拟出来的，关于这样的报错以后也会继续了解</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要讲了PlusCal的一些基础知识，重点在于四种结构及其之间的相互组合和一些算法结构</p>
-]]></content>
-      <categories>
-        <category>分布式系统</category>
-        <category>TLA+</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《Practical TLA+》阅读笔记（一）</title>
-    <url>/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>​    在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
-<p>​    这样的错误叫做<strong>“specification errors”</strong>，我们可以用一些特殊的语言去找到这种错误，比如<strong>“TLA+”</strong>。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
-<p>​    TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
-<h1 id="CHAPTER-1"><a href="#CHAPTER-1" class="headerlink" title="CHAPTER 1"></a>CHAPTER 1</h1><h2 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>​    两个人在银行有账户，每个账户中有0￥或更多￥，现在这个银行想要添加“电汇”功能，可以相互转账。要求如下：</p>
-<pre><code> 1. 每条电汇必须在银行中的两个不同账户间进行，至少一美元
- 2. 成功的话从发送方中扣除并添加到接收方
- 3. 失败的话两个账户不变
- 4. 电汇可能不会导致出现账户负值
- 5. 多条线路可能同时发生
-</code></pre><p>​    算法应满足以上所有要求</p>
-<h3 id="解决样例"><a href="#解决样例" class="headerlink" title="解决样例"></a>解决样例</h3><p>​    要使用TLA+，首先需要创建新的文件，即<strong>File-&gt;Open Spec-&gt;Add New Spec</strong></p>
-<p>​    然后我们需要保证模块名称和文件名称匹配，否则会报错。TLC    默认只识别最上方横线和最下方双横线之间的内容</p>
-<p>​    接下来是一个比较重要的TLA+的关键字，即<strong>EXTENDS</strong>，由于在这个场景中我们需要进行数字运算，所以导入<strong>Integers</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers  *\单行注释用这个</span><br><span class="line">**注释块用这个**</span><br><span class="line">**导入块之后可以继续写我们的算法框架**</span><br><span class="line">(*--algorithm wire</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    然后我们来进一步具体化，从题目中很显然可以看到两个变量，即人和他们的账户，所以我们需要声明变量，这里假定每个人都有五块钱</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">	variables</span><br><span class="line">		people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[p \in people |-&gt; 5];</span><br><span class="line">		**等同于acc[&quot;alice&quot;]=acc[&quot;bob&quot;]=5**</span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    现在来解释一下上面的代码，people是声明的一个集合，没什么好说的。对于acc，这是一个<strong>函数</strong>，但是不等同于传统的函数，它更接近于一个字典，对于给出的集合中的每一个值，都有一个相应的输出值，在这里的集合是people，元素是p，类似于python中的{“alice”:5,”bob”:5}</p>
-<p>​    接下来我们继续去搭建这条线，可以继续指定变量，最后我们需要的就是设置一些不变量，不管在什么时候都需要为真，这里的”==”是一个<strong>操作</strong>，而不是指的比较，而对于这个常量的表述，就满足了我们上面的所有账户的值非负的要求</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">variables</span><br><span class="line">	peoples=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">	sender=&quot;alice&quot;,</span><br><span class="line">	receiver=&quot;bob&quot;,</span><br><span class="line">	amount=3;</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: acc[p] &gt;= 0</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
-<p>​    现在我们定义好的变量和常量，我们接下来需要在begin和end中间添加相关的算法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender] := acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver] := acc[receiver]+amount;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>​    现在进行一些对上面的解释，如果是第一次给变量分配一个值，需要用=，如果变量已经存在而需要给他分配一个新值，则用:=。上面的Withdraw和Deposit是两个<strong>标签</strong>，这代表着他们之中的部分会同时发生</p>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>​    这里给出的验证方法是通过验证不变量是否正确开始的，我们需要创建一个model，即在<strong>TLC Model Checker</strong>中找到<strong>New Model</strong>，然后在页面的<strong>Invariants</strong>中添加新的核查量即可，接着就可以运行了，由于我们的问题不算复杂，一共经历了如下的过程：</p>
-<pre><code>1. 选择一个可能的初始状态，现在只有一种
-2. 检查初状态的不变量的值，然后如果满足就继续执行**Withdraw**步骤
-3. 检查不变量的值，为真就继续执行
-4. 进行**Deposit**步骤
-5. 检查不变量的值，如果满足的话，就结束
-</code></pre><p>​    如果在这个过程中出现任何错误的话，就会直接跳出程序</p>
-<h3 id="增加初始化"><a href="#增加初始化" class="headerlink" title="增加初始化"></a>增加初始化</h3><p>​    上面的例子显然太简单了，只能有一种对应的输入，我们来增加一些更多的选择</p>
-<ol>
-<li><p>TLA+使用a..b来表示a到b的整数，也就是说可以对上述代码中的amount做如下改变，显然这个时候再次运行model的话会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..6;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当然我们可以通过如下的改动来使他不报错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..acc[sender];</span><br></pre></td></tr></table></figure>
-<p>但是这样明显违背了商家的本意，我们可以假设这是可以接受的，进行更改并确认模型再次通过</p>
-</li>
-</ol>
-<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>​    在Pluscal中，每一个算法在他自己独特的进程中同时发生，每一个进程有着他自己的变量和代码，然后就可以根据下面的方法创建多进程</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">variables</span><br><span class="line">	people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: a[p]&gt;=0</span><br><span class="line">end define;</span><br><span class="line">process Wire \in 1..2</span><br><span class="line">	variables</span><br><span class="line">		sender=&quot;alice&quot;,</span><br><span class="line">		receiver=&quot;bob&quot;,</span><br><span class="line">		amount \in 1..acc[sender];</span><br><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    如果我们重新翻译重新运行上述程序，仍然会报错，由于多进程的缘故，在执行了两次Withdraw后，仍然有可能出错，也就是我们只需要在执行之前做一个判断即可，这就是<strong>if</strong>语句</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then</span><br><span class="line">    	**algorithm**</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    但是这样竟然仍然会报错！这个时候的错误似乎没有那么明显，我们需要在Error-Trace中找到错误原因</p>
-<p>​    打开Error-Trace，他直接从每一步开始给出了错误的原因，这里的bug是因为两个进程同时发生导致的，我们可以将withdraw和check放在一起来防止这种错误的发生</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    这里简单解释一下，对于多进程的同时性，是值得两个进程在同时完成了某一步，在上面那种报错的写法后，第一个进程进行完check后，准备进行withdraw，这个时候acc[sender]的值未改变，所以第二个进程的check也没问题，这样就出错了。而在上述正确的写法中，在进程一的check步骤结束后acc[sender]已经发生改变，第二个进程就会报错</p>
-<p>​    一定要注意理解什么叫做多进程与他的并发性！</p>
-<h3 id="时间属性"><a href="#时间属性" class="headerlink" title="时间属性"></a>时间属性</h3><p>​    现在我们来完成接下来的要求，即如果电汇失败，账户不会改变。我们容易知道有一个更弱的条件，即电汇前后账户总额保持不变。这个不变量和之前的NoOverdrafts不同，他是一个<strong>时间属性</strong></p>
-<p>​    不变量检查是检查每个状态是否有效，而时间属性检查的是算法的每个可能的生命周期，从开始到结束，都遵守所需要的某个规则，我们加上这一点</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people:acc[p]&gt;=0</span><br><span class="line">	EventuallyConsistent == &lt;&gt;[](acc[&quot;alice&quot;]+acc[&quot;bob&quot;]=10)</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
-<p>​    上面的<strong>EventuallyConsistent</strong>和NoOverdrafts差不多，但是以<strong>&lt;&gt;[]</strong>开始，它是一种时间属性的算子，意味着不管算法是怎样的，在最后所给的等式必须为真，但是中间过程的真假是无所谓的，然后我们可以在<strong>Model</strong>中继续加入时间属性来进行验证</p>
-<p>​    运行一下，会发现程序报错，整体的流程上没有什么错误，但是在error-trace的最后有了标签<strong>Stuttering</strong>，这个标签代表着这个过程只是简单地停止了，没有东西阻止他继续应该进行的deposit，他只是自己不再尝试了，<strong><del>这看起来好牵强</del></strong>，但是事实上是有迹可循的，有可能是服务器在步骤之间崩溃，有可能是停电了，也有可能发生了其他的不可预知的情况，这些情况都是以<strong>Stuttering</strong>状态呈现的</p>
-<p>​    然而，对于这种错误，很难有什么比较好的方法去修正，我们可以从以下的几个方面考虑</p>
-<ol>
-<li>我们可以将check、withdraw、deposit合成为一个步骤，减少他们中间的步骤的时间跨度，防止在步骤之间崩溃，但是这导致我们的流程中只有一个标签，实际的运行时间为0，违反了电汇占用任意时间的核心要求</li>
-<li>我们可以明确告诉TLA+，我们的程序不能断断续续，这样做的话我们的spec会通过，但是我们不能实现它，服务器仍会故障</li>
-<li>说服项目经历放宽最终的要求</li>
-<li>尝试不同的实现</li>
-<li>放宽NoOverdrafts要求，事实上在很多地方都是这样做的</li>
-</ol>
-<p>​    很显然更改这样的一个error是非常复杂的，但是目前这里不作为我们的重点考虑</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这一章从一个简单的样例入手，讲述了TLA+的基本概念和一些简单地语法，以及对于model的使用，由于只是一个引入，所以不用花费太多的精力，重点就在于一些全新的概念，另外就是对于多进程大致有了一个印象</p>
 ]]></content>
       <categories>
         <category>分布式系统</category>
@@ -1384,6 +1312,180 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
         <tag>算法</tag>
         <tag>堆</tag>
         <tag>哈夫曼树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Practical TLA+》阅读笔记（一）</title>
+    <url>/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>​    在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
+<p>​    这样的错误叫做<strong>“specification errors”</strong>，我们可以用一些特殊的语言去找到这种错误，比如<strong>“TLA+”</strong>。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
+<p>​    TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
+<h1 id="CHAPTER-1"><a href="#CHAPTER-1" class="headerlink" title="CHAPTER 1"></a>CHAPTER 1</h1><h2 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>​    两个人在银行有账户，每个账户中有0￥或更多￥，现在这个银行想要添加“电汇”功能，可以相互转账。要求如下：</p>
+<pre><code> 1. 每条电汇必须在银行中的两个不同账户间进行，至少一美元
+ 2. 成功的话从发送方中扣除并添加到接收方
+ 3. 失败的话两个账户不变
+ 4. 电汇可能不会导致出现账户负值
+ 5. 多条线路可能同时发生
+</code></pre><p>​    算法应满足以上所有要求</p>
+<h3 id="解决样例"><a href="#解决样例" class="headerlink" title="解决样例"></a>解决样例</h3><p>​    要使用TLA+，首先需要创建新的文件，即<strong>File-&gt;Open Spec-&gt;Add New Spec</strong></p>
+<p>​    然后我们需要保证模块名称和文件名称匹配，否则会报错。TLC    默认只识别最上方横线和最下方双横线之间的内容</p>
+<p>​    接下来是一个比较重要的TLA+的关键字，即<strong>EXTENDS</strong>，由于在这个场景中我们需要进行数字运算，所以导入<strong>Integers</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers  *\单行注释用这个</span><br><span class="line">**注释块用这个**</span><br><span class="line">**导入块之后可以继续写我们的算法框架**</span><br><span class="line">(*--algorithm wire</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    然后我们来进一步具体化，从题目中很显然可以看到两个变量，即人和他们的账户，所以我们需要声明变量，这里假定每个人都有五块钱</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">	variables</span><br><span class="line">		people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[p \in people |-&gt; 5];</span><br><span class="line">		**等同于acc[&quot;alice&quot;]=acc[&quot;bob&quot;]=5**</span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    现在来解释一下上面的代码，people是声明的一个集合，没什么好说的。对于acc，这是一个<strong>函数</strong>，但是不等同于传统的函数，它更接近于一个字典，对于给出的集合中的每一个值，都有一个相应的输出值，在这里的集合是people，元素是p，类似于python中的{“alice”:5,”bob”:5}</p>
+<p>​    接下来我们继续去搭建这条线，可以继续指定变量，最后我们需要的就是设置一些不变量，不管在什么时候都需要为真，这里的”==”是一个<strong>操作</strong>，而不是指的比较，而对于这个常量的表述，就满足了我们上面的所有账户的值非负的要求</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">variables</span><br><span class="line">	peoples=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">	sender=&quot;alice&quot;,</span><br><span class="line">	receiver=&quot;bob&quot;,</span><br><span class="line">	amount=3;</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: acc[p] &gt;= 0</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
+<p>​    现在我们定义好的变量和常量，我们接下来需要在begin和end中间添加相关的算法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender] := acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver] := acc[receiver]+amount;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>​    现在进行一些对上面的解释，如果是第一次给变量分配一个值，需要用=，如果变量已经存在而需要给他分配一个新值，则用:=。上面的Withdraw和Deposit是两个<strong>标签</strong>，这代表着他们之中的部分会同时发生</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>​    这里给出的验证方法是通过验证不变量是否正确开始的，我们需要创建一个model，即在<strong>TLC Model Checker</strong>中找到<strong>New Model</strong>，然后在页面的<strong>Invariants</strong>中添加新的核查量即可，接着就可以运行了，由于我们的问题不算复杂，一共经历了如下的过程：</p>
+<pre><code>1. 选择一个可能的初始状态，现在只有一种
+2. 检查初状态的不变量的值，然后如果满足就继续执行**Withdraw**步骤
+3. 检查不变量的值，为真就继续执行
+4. 进行**Deposit**步骤
+5. 检查不变量的值，如果满足的话，就结束
+</code></pre><p>​    如果在这个过程中出现任何错误的话，就会直接跳出程序</p>
+<h3 id="增加初始化"><a href="#增加初始化" class="headerlink" title="增加初始化"></a>增加初始化</h3><p>​    上面的例子显然太简单了，只能有一种对应的输入，我们来增加一些更多的选择</p>
+<ol>
+<li><p>TLA+使用a..b来表示a到b的整数，也就是说可以对上述代码中的amount做如下改变，显然这个时候再次运行model的话会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..6;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当然我们可以通过如下的改动来使他不报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">amount \in 1..acc[sender];</span><br></pre></td></tr></table></figure>
+<p>但是这样明显违背了商家的本意，我们可以假设这是可以接受的，进行更改并确认模型再次通过</p>
+</li>
+</ol>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>​    在Pluscal中，每一个算法在他自己独特的进程中同时发生，每一个进程有着他自己的变量和代码，然后就可以根据下面的方法创建多进程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">variables</span><br><span class="line">	people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: a[p]&gt;=0</span><br><span class="line">end define;</span><br><span class="line">process Wire \in 1..2</span><br><span class="line">	variables</span><br><span class="line">		sender=&quot;alice&quot;,</span><br><span class="line">		receiver=&quot;bob&quot;,</span><br><span class="line">		amount \in 1..acc[sender];</span><br><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    如果我们重新翻译重新运行上述程序，仍然会报错，由于多进程的缘故，在执行了两次Withdraw后，仍然有可能出错，也就是我们只需要在执行之前做一个判断即可，这就是<strong>if</strong>语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then</span><br><span class="line">    	**algorithm**</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    但是这样竟然仍然会报错！这个时候的错误似乎没有那么明显，我们需要在Error-Trace中找到错误原因</p>
+<p>​    打开Error-Trace，他直接从每一步开始给出了错误的原因，这里的bug是因为两个进程同时发生导致的，我们可以将withdraw和check放在一起来防止这种错误的发生</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
+<p>​    这里简单解释一下，对于多进程的同时性，是值得两个进程在同时完成了某一步，在上面那种报错的写法后，第一个进程进行完check后，准备进行withdraw，这个时候acc[sender]的值未改变，所以第二个进程的check也没问题，这样就出错了。而在上述正确的写法中，在进程一的check步骤结束后acc[sender]已经发生改变，第二个进程就会报错</p>
+<p>​    一定要注意理解什么叫做多进程与他的并发性！</p>
+<h3 id="时间属性"><a href="#时间属性" class="headerlink" title="时间属性"></a>时间属性</h3><p>​    现在我们来完成接下来的要求，即如果电汇失败，账户不会改变。我们容易知道有一个更弱的条件，即电汇前后账户总额保持不变。这个不变量和之前的NoOverdrafts不同，他是一个<strong>时间属性</strong></p>
+<p>​    不变量检查是检查每个状态是否有效，而时间属性检查的是算法的每个可能的生命周期，从开始到结束，都遵守所需要的某个规则，我们加上这一点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people:acc[p]&gt;=0</span><br><span class="line">	EventuallyConsistent == &lt;&gt;[](acc[&quot;alice&quot;]+acc[&quot;bob&quot;]=10)</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
+<p>​    上面的<strong>EventuallyConsistent</strong>和NoOverdrafts差不多，但是以<strong>&lt;&gt;[]</strong>开始，它是一种时间属性的算子，意味着不管算法是怎样的，在最后所给的等式必须为真，但是中间过程的真假是无所谓的，然后我们可以在<strong>Model</strong>中继续加入时间属性来进行验证</p>
+<p>​    运行一下，会发现程序报错，整体的流程上没有什么错误，但是在error-trace的最后有了标签<strong>Stuttering</strong>，这个标签代表着这个过程只是简单地停止了，没有东西阻止他继续应该进行的deposit，他只是自己不再尝试了，<strong><del>这看起来好牵强</del></strong>，但是事实上是有迹可循的，有可能是服务器在步骤之间崩溃，有可能是停电了，也有可能发生了其他的不可预知的情况，这些情况都是以<strong>Stuttering</strong>状态呈现的</p>
+<p>​    然而，对于这种错误，很难有什么比较好的方法去修正，我们可以从以下的几个方面考虑</p>
+<ol>
+<li>我们可以将check、withdraw、deposit合成为一个步骤，减少他们中间的步骤的时间跨度，防止在步骤之间崩溃，但是这导致我们的流程中只有一个标签，实际的运行时间为0，违反了电汇占用任意时间的核心要求</li>
+<li>我们可以明确告诉TLA+，我们的程序不能断断续续，这样做的话我们的spec会通过，但是我们不能实现它，服务器仍会故障</li>
+<li>说服项目经历放宽最终的要求</li>
+<li>尝试不同的实现</li>
+<li>放宽NoOverdrafts要求，事实上在很多地方都是这样做的</li>
+</ol>
+<p>​    很显然更改这样的一个error是非常复杂的，但是目前这里不作为我们的重点考虑</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这一章从一个简单的样例入手，讲述了TLA+的基本概念和一些简单地语法，以及对于model的使用，由于只是一个引入，所以不用花费太多的精力，重点就在于一些全新的概念，另外就是对于多进程大致有了一个印象</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《Practical-TLA+》阅读笔记（七）</title>
+    <url>/blog/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    看标题是和算法相关的。</p>
+<p>​    首先，TLA+中的操作相比于函数，他显然“更强”，这意味着有时候我们可能难以将他，<del>这也是我在敲TLA+时候的一个疑惑</del>，当然很多时候其实很难写出这样的强力操作。</p>
+<p>​    这一章主要是用来<strong>证明</strong>一些算法，注意重点是证明而不是实现。</p>
+<p>​    另外就是有一个前提，就是我们讨论的所有算法最终都会终止。</p>
+<h2 id="一个单进程算法"><a href="#一个单进程算法" class="headerlink" title="一个单进程算法"></a>一个单进程算法</h2><p>​    下面给一个验证这种算法的通用模板</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----- MODULE single_process_agrithom ----</span><br><span class="line">EXTENDS \* whatever</span><br><span class="line">Expected(input) == \* ...</span><br><span class="line">Helpers == \* ...</span><br><span class="line">(*--algorithm name</span><br><span class="line">variables</span><br><span class="line">	input \in \* ...</span><br><span class="line">	output; \* ... </span><br><span class="line">	\* helper variables</span><br><span class="line">begin</span><br><span class="line">	\*algorithm implementation</span><br><span class="line">	assert output=Expected(input);</span><br><span class="line">end algorithm; *)</span><br><span class="line">=====</span><br></pre></td></tr></table></figure>
+<p>​    其实代码还是非常清晰明了的。</p>
+<p>​    另外值得注意的是，我们不需要给output赋值，TLC将会创建常量<strong>DefaultInitValue &lt;- [model constant]</strong>，在这里会初始化output，另外这里也可以放一些辅助变量，毕竟在算法中的begin和end之间我们一般是不能定义新变量的。</p>
+<p>​    下面给一个新的例子，<del>就是一个求和，宛如智障</del></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers,TLC</span><br><span class="line">add(a,b) == a + b</span><br><span class="line">(*--algorithm add</span><br><span class="line">variables</span><br><span class="line">    in_a \in -5..5,</span><br><span class="line">    in_b \in -5..5,</span><br><span class="line">    output;</span><br><span class="line">begin</span><br><span class="line">    output := in_a+in_b;</span><br><span class="line">    assert output = add(in_a,in_b);</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<h2 id="Max"><a href="#Max" class="headerlink" title="Max"></a>Max</h2><p>​    我们现有的已知求最大值算法就是用<strong>CHOOSE</strong>命令，从所有的里面进行选择，也可以进行循环，Pluscal代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers, Sequences, TLC</span><br><span class="line">CONSTANTS IntSet, MaxSeqLen</span><br><span class="line">ASSUME IntSet \subseteq Int</span><br><span class="line">ASSUME MaxSeqLen &gt; 0</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">Max(seq) ==</span><br><span class="line"> LET set == &#123;seq[i]: i \in 1..Len(seq)&#125;</span><br><span class="line"> IN CHOOSE x \in set: \A y \in set: y &lt;= x</span><br><span class="line">AllInputs == PT!SeqOf(IntSet, MaxSeqLen) \ &#123;&lt;&lt;&gt;&gt;&#125;</span><br><span class="line">(*--algorithm max</span><br><span class="line">variables seq \in AllInputs, i = 1, max;</span><br><span class="line">begin</span><br><span class="line"> assert Len(seq) &gt; 0;</span><br><span class="line"> max := seq[1];</span><br><span class="line"> while i &lt;= Len(seq) do</span><br><span class="line"> if max &lt; seq[i] then</span><br><span class="line"> max := seq[i];</span><br><span class="line"> end if;</span><br><span class="line"> i := i + 1;</span><br><span class="line"> end while;</span><br><span class="line"> assert max = Max(seq);</span><br><span class="line">end algorithm; *)</span><br></pre></td></tr></table></figure>
+<p>​    注意其实最开始程序会报错，因为有可能会出现空列表，我们在生成的时候做限制即可。</p>
+<h2 id="Leftpad"><a href="#Leftpad" class="headerlink" title="Leftpad"></a>Leftpad</h2><p>​    其实就是个字符串填充的问题，非常简单</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">------------------------------ MODULE Leftpad ------------------------------</span><br><span class="line">EXTENDS TLC,Integers,Sequences</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">Leftpad(c, n, str) ==</span><br><span class="line"> LET</span><br><span class="line"> outlength == PT!Max(Len(str), n)</span><br><span class="line"> padlength ==</span><br><span class="line"> CHOOSE padlength \in 0..n:</span><br><span class="line"> padlength + Len(str) = outlength</span><br><span class="line"> IN</span><br><span class="line"> [x \in 1..padlength |-&gt; c] \o str</span><br><span class="line">Characters == &#123;&quot;a&quot;, &quot;b&quot;, &quot;c&quot;&#125;</span><br><span class="line">(*--algorithm leftpad</span><br><span class="line">variables</span><br><span class="line"> in_c \in Characters \union &#123;&quot; &quot;&#125;,</span><br><span class="line"> in_n \in 0..6,</span><br><span class="line"> in_str \in PT!SeqOf(Characters, 6),</span><br><span class="line"> output;</span><br><span class="line">begin</span><br><span class="line"> output := in_str;</span><br><span class="line"> while Len(output) &lt; in_n do</span><br><span class="line"> output := &lt;&lt;in_c&gt;&gt; \o output;</span><br><span class="line"> end while;</span><br><span class="line"> assert output = Leftpad(in_c, in_n, in_str);</span><br><span class="line">end algorithm; *)</span><br><span class="line">\* BEGIN TRANSLATION (chksum(pcal) = &quot;42773a97&quot; /\ chksum(tla) = &quot;eaf0c402&quot;)</span><br><span class="line">CONSTANT defaultInitValue</span><br><span class="line">VARIABLES in_c, in_n, in_str, output, pc</span><br><span class="line"></span><br><span class="line">vars == &lt;&lt; in_c, in_n, in_str, output, pc &gt;&gt;</span><br><span class="line"></span><br><span class="line">Init == (* Global variables *)</span><br><span class="line">        /\ in_c \in (Characters \union &#123;&quot; &quot;&#125;)</span><br><span class="line">        /\ in_n \in 0..6</span><br><span class="line">        /\ in_str \in PT!SeqOf(Characters, 6)</span><br><span class="line">        /\ output = defaultInitValue</span><br><span class="line">        /\ pc = &quot;Lbl_1&quot;</span><br><span class="line"></span><br><span class="line">Lbl_1 == /\ pc = &quot;Lbl_1&quot;</span><br><span class="line">         /\ output&#x27; = in_str</span><br><span class="line">         /\ pc&#x27; = &quot;Lbl_2&quot;</span><br><span class="line">         /\ UNCHANGED &lt;&lt; in_c, in_n, in_str &gt;&gt;</span><br><span class="line"></span><br><span class="line">Lbl_2 == /\ pc = &quot;Lbl_2&quot;</span><br><span class="line">         /\ IF Len(output) &lt; in_n</span><br><span class="line">               THEN /\ output&#x27; = &lt;&lt;in_c&gt;&gt; \o output</span><br><span class="line">                    /\ pc&#x27; = &quot;Lbl_2&quot;</span><br><span class="line">               ELSE /\ Assert(output = Leftpad(in_c, in_n, in_str), </span><br><span class="line">                              &quot;Failure of assertion at line 24, column 2.&quot;)</span><br><span class="line">                    /\ pc&#x27; = &quot;Done&quot;</span><br><span class="line">                    /\ UNCHANGED output</span><br><span class="line">         /\ UNCHANGED &lt;&lt; in_c, in_n, in_str &gt;&gt;</span><br><span class="line"></span><br><span class="line">(* Allow infinite stuttering to prevent deadlock on termination. *)</span><br><span class="line">Terminating == pc = &quot;Done&quot; /\ UNCHANGED vars</span><br><span class="line"></span><br><span class="line">Next == Lbl_1 \/ Lbl_2</span><br><span class="line">           \/ Terminating</span><br><span class="line"></span><br><span class="line">Spec == Init /\ [][Next]_vars</span><br><span class="line"></span><br><span class="line">Termination == &lt;&gt;(pc = &quot;Done&quot;)</span><br><span class="line"></span><br><span class="line">\* END TRANSLATION </span><br><span class="line">=============================================================================</span><br><span class="line">\* Modification History</span><br><span class="line">\* Last modified Sat Sep 25 09:35:02 CST 2021 by yx7</span><br><span class="line">\* Created Sat Sep 25 09:14:09 CST 2021 by yx7</span><br></pre></td></tr></table></figure>
+<h1 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h1><p>​    测定算法的正确性是最为简单的，现在我们期望测定算法的性能特征和界限，为了实现这一点，可以加入一些辅助变量，这里以二分查找为例，来检测算法的性能。</p>
+<p>​    其实就是在循环中加一个辅助变量来记录重复的次数<del>感觉好low</del>，这里大概就是去衡量最坏的时间复杂度，最佳时间复杂度和平均时间复杂度难以被衡量，代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers,TLC,Sequences</span><br><span class="line">PT == INSTANCE PT</span><br><span class="line">OrderedSeqOf(set,n) == </span><br><span class="line">    &#123; seq \in PT!SeqOf(set,n):</span><br><span class="line">      \A x \in 2..Len(seq):</span><br><span class="line">       seq[x]&gt;=seq[x-1]&#125;</span><br><span class="line">Pow2(n) ==</span><br><span class="line">    LET f[x \in 0..n] ==</span><br><span class="line">        IF x = 0</span><br><span class="line">        THEN 1</span><br><span class="line">        ELSE 2*f[x-1]</span><br><span class="line">    IN f[n]</span><br><span class="line">MaxInt == 4</span><br><span class="line">Range(f) == &#123;f[x]: x \in DOMAIN f&#125;</span><br><span class="line">(*--algorithm bs</span><br><span class="line">variables low=1,</span><br><span class="line">          seq \in OrderedSeqOf(1..MaxInt,MaxInt),</span><br><span class="line">          target \in 1..MaxInt,</span><br><span class="line">          high = Len(seq),</span><br><span class="line">          found_index = 0,</span><br><span class="line">          counter = 0;</span><br><span class="line">begin</span><br><span class="line">    Search:</span><br><span class="line">        while low &lt;= high do</span><br><span class="line">            counter := counter + 1;</span><br><span class="line">            with</span><br><span class="line">                mid=(high+low) \div 2</span><br><span class="line">            do</span><br><span class="line">                if seq[mid] = target then</span><br><span class="line">                    found_index := mid;</span><br><span class="line">                    goto Result;</span><br><span class="line">                elsif seq[mid] &gt; target then</span><br><span class="line">                    high := mid-1;</span><br><span class="line">                else</span><br><span class="line">                    low := mid+1;</span><br><span class="line">                end if;</span><br><span class="line">            end with;</span><br><span class="line">        end while;</span><br><span class="line">    Result:</span><br><span class="line">        if Len(seq) &gt; 0 then</span><br><span class="line">            assert Pow2(counter-1) &lt;= Len(seq);</span><br><span class="line">        end if;</span><br><span class="line">        if target \in PT!Range(seq) then</span><br><span class="line">            assert seq[found_index] =target;</span><br><span class="line">        else</span><br><span class="line">            assert found_index = 0;</span><br><span class="line">        end if;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
+<p>​    另外值得一提的是，在计算平均值的时候，有可能超过了设备允许的范围，如果我们加一个求和的判定，就会出错，这里就要沿用另外一种写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with</span><br><span class="line"> lh = high - low,</span><br><span class="line"> m = high - (lh \div 2)</span><br><span class="line">do</span><br></pre></td></tr></table></figure>
+<h1 id="多进程算法"><a href="#多进程算法" class="headerlink" title="多进程算法"></a>多进程算法</h1><p>​    这里其实和单一进程的没有什么区别，为了检查结果为真，我们需要使用前文提到过的<strong>&lt;&gt;[]</strong>，另外就是如果不想让算法中途崩溃，可以使用公平进程</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一章主要就是来验证算法的正确性和另外的一些特性，仅此而已，下一章将会介绍一部分数据结构。</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+      <tags>
+        <tag>分布式系统</tag>
+        <tag>TLA+</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《Practical-TLA+》阅读笔记（八）</title>
+    <url>/blog/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    这一章主要就是讲了在spec中如何加入数据结构，主要是需要在文件外面写一些modules，感觉就跟写个类差不多，先定义结点，再定义操作。</p>
+<p>​    在TLA+中，所有的数据结构都用函数或结构实现，首先以链表<strong>LinkedLists</strong>为例，首先需要定义每一个结点，也有数据域和指针域，指针的关系我们用如下的操作来表示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PointerMaps(Nodes) == [Nodes -&gt; Nodes]</span><br></pre></td></tr></table></figure>
+<p>​    <del>虽然感觉这样定义有点怪怪的</del>，但是先暂时这样定义吧，然后我们定义最后的结点，即需要NULL的概念</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONSTANT NULL</span><br><span class="line">LOCAL INSTANCE TLC</span><br><span class="line">PointerMaps(Nodes) == [Nodes -&gt; Nodes \union &#123;NULL&#125;]</span><br><span class="line">LinkedLists(Nodes) == </span><br><span class="line">	IF NULL \in Nodes THEN Assert(FALSE,&quot;NULL cannot be in Nodes&quot;) ELSE \*...</span><br></pre></td></tr></table></figure>
+<p>​    然后就是这样定义单链表有可能会出现二义性，例如出现每个元素的指向都为空的情况，为了避免发生，我们需要一个判断</p>
+<p>​    接下来就是我们需要找到表头结点，因为我们目前已经给出的都是结构，所以可以通过一系列操作转化成序列，也就是可以有如下的写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\* PointerMap is an element of PointerMaps</span><br><span class="line">isLinkedList(PointerMap) ==</span><br><span class="line"> LET</span><br><span class="line"> nodes == DOMAIN PointerMap</span><br><span class="line"> all_seqs == [1..Cardinality(nodes) -&gt; nodes]</span><br><span class="line"> IN \E ordering \in all_seqs:</span><br><span class="line"> \* each node points to the next node in the ordering</span><br><span class="line"> /\ \A i \in 1..Len(ordering)-1:</span><br><span class="line"> PointerMap[ordering[i]] = ordering[i+1]</span><br><span class="line"> \* all nodes in the mapping appear in the ordering</span><br><span class="line"> /\ \A n \in nodes:</span><br><span class="line"> \E i \in 1..Len(ordering):</span><br><span class="line"> ordering[i] = n</span><br><span class="line">LinkedLists(Nodes) ==</span><br><span class="line"> IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line"> &#123;pm \in PointerMaps(Nodes) : isLinkedList(pm)&#125;</span><br></pre></td></tr></table></figure>
+<p>​    但是现在我们想得到的是更小的链表，可以对LinkedLists(Nodes)做如下改动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LinkedLists(Nodes) ==</span><br><span class="line"> IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line"> LET</span><br><span class="line"> node_subsets == (SUBSET Nodes \ &#123;&#123;&#125;&#125;)</span><br><span class="line"> pointer_maps_sets == &#123;PointerMaps(subn): subn \in node_subsets&#125;</span><br><span class="line"> \* pointer_maps_sets is a set of set of functions,</span><br><span class="line"> \* so we need to union them all together</span><br><span class="line"> all_pointer_maps == UNION pointer_maps_sets</span><br><span class="line"> IN &#123;pm \in all_pointer_maps : isLinkedList(pm)&#125;</span><br></pre></td></tr></table></figure>
+<p>​    接下来我们可以介绍一下双向链表，这个时候，谁是第一个已经无所谓了，因此有如下写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ring(LL) == (DOMAIN LL = Range(LL))</span><br><span class="line">First(LL) ==</span><br><span class="line"> IF Ring(LL)</span><br><span class="line"> THEN CHOOSE node \in DOMAIN LL:</span><br><span class="line"> TRUE</span><br><span class="line"> ELSE CHOOSE node \in DOMAIN LL:</span><br><span class="line"> node \notin Range(LL)</span><br></pre></td></tr></table></figure>
+<p>​    其实还是感觉这部分稍微有点费解，因为很多逻辑表达式的使用要让人反应很久，最后附上链表部分的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---------------------------- MODULE LinkedLists ----------------------------</span><br><span class="line">CONSTANT NULL</span><br><span class="line"></span><br><span class="line">LOCAL INSTANCE FiniteSets \* For Cardinality</span><br><span class="line">LOCAL INSTANCE Sequences</span><br><span class="line">LOCAL INSTANCE TLC \* For Assert</span><br><span class="line">LOCAL INSTANCE Integers \* For a..b</span><br><span class="line"></span><br><span class="line">LOCAL PointerMaps(Nodes) == [Nodes -&gt; Nodes \union &#123;NULL&#125;]</span><br><span class="line"></span><br><span class="line">LOCAL Range(f) == &#123;f[x]: x \in DOMAIN f&#125;</span><br><span class="line"></span><br><span class="line">LOCAL isLinkedList(PointerMap) ==</span><br><span class="line">  LET </span><br><span class="line">    nodes == DOMAIN PointerMap</span><br><span class="line">    all_seqs == [1..Cardinality(nodes) -&gt; nodes]</span><br><span class="line">  IN \E ordering \in all_seqs:</span><br><span class="line">       /\ \A i \in 1..Len(ordering) - 1:</span><br><span class="line">         PointerMap[ordering[i]] = ordering[i+1]</span><br><span class="line">       /\ nodes \subseteq Range(ordering)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LinkedLists(Nodes) == </span><br><span class="line">  IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line">  LET </span><br><span class="line">    node_subsets == (SUBSET Nodes \ &#123;&#123;&#125;&#125;)</span><br><span class="line">    pointer_maps_sets == &#123;PointerMaps(subn): subn \in node_subsets&#125;</span><br><span class="line"></span><br><span class="line">    all_pointer_maps == UNION pointer_maps_sets</span><br><span class="line">  IN &#123;pm \in all_pointer_maps : isLinkedList(pm)&#125;</span><br><span class="line"></span><br><span class="line">Cyclic(LL) == NULL \notin Range(LL)</span><br><span class="line">Ring(LL) == DOMAIN LL = Range(LL)</span><br><span class="line"></span><br><span class="line">First(LL) == </span><br><span class="line">  IF Ring(LL)</span><br><span class="line">  THEN CHOOSE node \in DOMAIN LL: </span><br><span class="line">        TRUE</span><br><span class="line">  ELSE CHOOSE node \in DOMAIN LL: </span><br><span class="line">        node \notin Range(LL)</span><br><span class="line"></span><br><span class="line">=============================================================================</span><br></pre></td></tr></table></figure>
+<h1 id="有效性"><a href="#有效性" class="headerlink" title="有效性"></a>有效性</h1><p>​    其实到现在很多时候还是不适应Pluscal的一些语法，感觉和常规的编程语言差了太多，比如这里要求证明在一个链表中有可能存在一个结点有两个父母，我的初步想法就是做循环，记录每一个自变量对应的值即可，但是这里就直接用了存在量词，其实就是直接把自然语言翻译成逻辑命题即可，直接看代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---- MODULE main ----</span><br><span class="line">EXTENDS TLC, Integers, FiniteSets, Sequences</span><br><span class="line">CONSTANTS Nodes, NULL</span><br><span class="line">INSTANCE LinkedLists WITH NULL &lt;- NULL</span><br><span class="line">AllLinkedLists == LinkedLists(Nodes)</span><br><span class="line">CycleImpliesTwoParents(ll) ==</span><br><span class="line"> Cyclic(ll) &lt;=&gt;</span><br><span class="line"> \E n \in DOMAIN ll:</span><br><span class="line"> Cardinality(&#123;p \in DOMAIN ll: ll[p] = n&#125;) = 2</span><br><span class="line">Valid ==</span><br><span class="line"> /\ \A ll \in AllLinkedLists:</span><br><span class="line"> /\ Assert(CycleImpliesTwoParents(ll), &lt;&lt;&quot;Counterexample:&quot;, ll&gt;&gt;)</span><br><span class="line"> ========</span><br></pre></td></tr></table></figure>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>​    这里给的例子是Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>​    其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
+<h2 id="具体想法"><a href="#具体想法" class="headerlink" title="具体想法"></a>具体想法</h2><h3 id="判断是否有环"><a href="#判断是否有环" class="headerlink" title="判断是否有环"></a>判断是否有环</h3><p>​    定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
+<h3 id="求环的长度"><a href="#求环的长度" class="headerlink" title="求环的长度"></a>求环的长度</h3><p>​    p1固定在相遇位置C，移动p2，每次移动1个长度，计数即可</p>
+<h3 id="环的起点"><a href="#环的起点" class="headerlink" title="环的起点"></a>环的起点</h3><p>​    此时将一个指针移到表头结点，另一个指针在相遇节点，然后两者每次均移动一个单位，再次相遇时的位置就是环的起点位置</p>
+<h3 id="简单证明"><a href="#简单证明" class="headerlink" title="简单证明"></a>简单证明</h3><p>​    其实这个证明总体还是比较简单，设变量去分析即可，这里借鉴了博客<a href="[算法-floyd判环(圈"></a>算法 | 祁宏涛 (qht1003077897.github.io)](<a href="https://qht1003077897.github.io/2017/07/03/算法-floyd判断链表是否有环/">https://qht1003077897.github.io/2017/07/03/算法-floyd判断链表是否有环/</a>))</p>
+<h2 id="Pluscal代码如下"><a href="#Pluscal代码如下" class="headerlink" title="Pluscal代码如下"></a>Pluscal代码如下</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">------------------------------ MODULE example ------------------------------</span><br><span class="line">EXTENDS TLC</span><br><span class="line">CONSTANTS Nodes,NULL</span><br><span class="line">INSTANCE LinkedLists_1</span><br><span class="line">(*--fair algorithm hare</span><br><span class="line">variables</span><br><span class="line">    ll \in LinkedLists(Nodes),</span><br><span class="line">    tortoise = First(ll),</span><br><span class="line">    hare = tortoise;</span><br><span class="line">macro advance(pointer) begin</span><br><span class="line">    pointer := ll[pointer];</span><br><span class="line">    if(pointer = NULL) then</span><br><span class="line">        assert ~Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">    end if;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while TRUE do</span><br><span class="line">        advance(tortoise);</span><br><span class="line">        advance(hare);</span><br><span class="line">        advance(hare);</span><br><span class="line">        if(tortoise = hare) then</span><br><span class="line">            assert Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">        end if;</span><br><span class="line">    end while;</span><br><span class="line">end algorithm;*)</span><br><span class="line">=============</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    本章其实内容还是比较基本的，根据链表的设计来讨论如何设计数据结构。</p>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>TLA+</category>
+      </categories>
+      <tags>
+        <tag>分布式系统</tag>
+        <tag>TLA+</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>弗洛依德的兔子与乌龟算法</title>
+    <url>/blog/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="Tortoise-and-the-Hare-algorithm"><a href="#Tortoise-and-the-Hare-algorithm" class="headerlink" title="Tortoise and the Hare algorithm"></a>Tortoise and the Hare algorithm</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>​    其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
+<h2 id="具体想法"><a href="#具体想法" class="headerlink" title="具体想法"></a>具体想法</h2><h3 id="判断是否有环"><a href="#判断是否有环" class="headerlink" title="判断是否有环"></a>判断是否有环</h3><p>​    定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
+<h3 id="求环的长度"><a href="#求环的长度" class="headerlink" title="求环的长度"></a>求环的长度</h3><p>​    p1固定在相遇位置C，移动p2，每次移动1个长度，计数即可</p>
+<h3 id="环的起点"><a href="#环的起点" class="headerlink" title="环的起点"></a>环的起点</h3><p>​    此时将一个指针移到表头结点，另一个指针在相遇节点，然后两者每次均移动一个单位，再次相遇时的位置就是环的起点位置</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>​    其实实现起来也非常简单</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">list</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="built_in">list</span> next;</span><br><span class="line">&#125; * <span class="built_in">list</span>,listnode;</span><br><span class="line"><span class="keyword">int</span> count;</span><br><span class="line"><span class="built_in">list</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(<span class="built_in">list</span> head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">list</span> p, q;</span><br><span class="line">    p = head, q = head;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(q==<span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p==q)</span><br><span class="line">        &#123;</span><br><span class="line">            count = <span class="number">1</span>;</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(p!=q)</span><br><span class="line">            &#123;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;<span class="comment">//该循环用来求环的长度</span></span><br><span class="line">            p = head;</span><br><span class="line">            <span class="keyword">while</span>(p!=q)</span><br><span class="line">            &#123;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = p;<span class="comment">//该循环用来求环的起点</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">list</span> <span class="title">creat</span><span class="params">()</span></span>;<span class="comment">//创建有环链表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">list</span> head = creat();</span><br><span class="line">    <span class="keyword">if</span>(function(head))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no cycle!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;have cycle!\nlength:%d\nstarting:%d\n&quot;</span>,count,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><del>当然这里我没有数据，也不知道自己随手写的代码对不对</del></strong></p>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>​    空间复杂度：$O(1)$</p>
+<p>​    时间复杂度：$O(m+n)$</p>
+<p>​    这里的分析非常简单，具体的可以看<a href="[弗洛伊德的兔子与乌龟(Floyd’s Tortoise and the Hare algorithm"></a> – Onwaier‘s Blog](<a href="http://onwaier.com/?p=528">http://onwaier.com/?p=528</a>))</p>
+<h1 id="Brent算法"><a href="#Brent算法" class="headerlink" title="Brent算法"></a>Brent算法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>​    也是一种找环算法，并且比Floyd算法的效率高了一些</p>
+<h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><p>​    相比于Floyd算法，Brent的兔子移动而乌龟静止，到达传送时间时，乌龟移动到兔子所在的地方，然后传送时间t翻倍，最终如果兔子能够到达终点，则表示不存在环，如果兔子与乌龟相遇则表示有环。根据考虑，首先最开始的时间间隔应该是2，因为环的长度至少为1</p>
+<h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h2><p>​    这里仅仅给出判圈函数的代码吧，然后后面的求长度和求起点和Floyd算法是一样的，不再赘述</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">function</span><span class="params">(List head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">list</span> p,q;</span><br><span class="line">	p=head,q=head;</span><br><span class="line">	<span class="keyword">int</span> steps=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> limit =<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>&amp;&amp;q!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p=p-&gt;next;</span><br><span class="line">		<span class="keyword">if</span>(p==q)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		steps++;</span><br><span class="line">		<span class="keyword">if</span>(steps==limit)</span><br><span class="line">		&#123;</span><br><span class="line">			q=p;</span><br><span class="line">			steps=<span class="number">0</span>;</span><br><span class="line">			limit*=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>​    空间复杂度：$O(1)$</p>
+<p>​    时间复杂度：$O(m+n)$</p>
+<p>​    <strong>这里贴一个Brent算法更快的证明，<a href="[brent算法为什么比floyd算法快_流的博客-CSDN博客_brent算法](https://blog.csdn.net/qq_35688140/article/details/86586035"></a>)</strong></p>
+<p>​    其实思路是非常简单的，首先论证两个算法，乌龟都跑不完一圈，然后论证Brent算法每秒兔子都要多跑一点即可</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
