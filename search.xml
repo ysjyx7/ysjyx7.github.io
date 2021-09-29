@@ -1527,4 +1527,340 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux基础知识——关于Shell</title>
+    <url>/blog/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/</url>
+    <content><![CDATA[<h1 id="Shell简介"><a href="#Shell简介" class="headerlink" title="Shell简介"></a>Shell简介</h1><p>​    Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
+<h1 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h1><h2 id="一些基本的操作列举"><a href="#一些基本的操作列举" class="headerlink" title="一些基本的操作列举"></a>一些基本的操作列举</h2><ol>
+<li>如果随便输入东西，会报错。</li>
+<li>使用方向键上下可以查询<strong>命令历史</strong></li>
+<li>方向键左右可以改变光标位置</li>
+<li>需要注意的是，由于Windows发布较晚，导致很多快捷键不能在Linux中使用，因为他们很有可能已经有了别的作用</li>
+<li>“焦点跟随鼠标”和“鼠标跟随焦点”两种策略</li>
+<li><strong>date</strong>命令可以显示时间</li>
+<li><strong>cal</strong>命令可以显示当前月的日历</li>
+<li>另外就是使用快捷键<strong>Ctrl+Alt+F1~F6</strong>可以进入字符界面，<strong>Ctrl+Alt+F7</strong>可以返回GUI</li>
+<li><strong>df</strong>命令可以查看当前磁盘可用空间，<strong>free</strong>可以查看可用内存容量</li>
+<li>另外就是可以用<strong>Ctrl+D</strong>或者<strong>exit</strong>关闭终端对话</li>
+</ol>
+<h2 id="导航方面的命令"><a href="#导航方面的命令" class="headerlink" title="导航方面的命令"></a>导航方面的命令</h2><ol>
+<li>首先需要明确Linux的文件系统树和Windows是差不多的，都是采用的树状结构</li>
+<li><strong>pwd</strong>可以显示当前的工作目录</li>
+<li><strong>ls</strong>命令可以列出当前工作目录中的文件和子目录</li>
+<li><strong>cd</strong>命令可以更改当前工作目录，可以用绝对路径或相对路径，绝对路径很显然，而对于相对路径，用了两种表示法，即用<strong>.</strong>，表示当前目录，用<strong>..</strong>表示父目录，另外就是很多时候可以直接忽略掉<strong>./</strong></li>
+<li>另外需要说一下Linux的一些特点，即<strong>没有文件拓展名</strong>，另外就是以点开头的文件是默认被隐藏的，ls命令在不使用<strong>ls -a</strong>的情况下不会显示</li>
+<li>下面给一些cd命令的便捷写法<ul>
+<li><strong>cd</strong>，切换到主目录</li>
+<li><strong>cd -</strong>，切换回前一个工作目录</li>
+<li><strong>cd ~user_name</strong>，切换到用户名的主目录</li>
+</ul>
+</li>
+</ol>
+<h2 id="探索Linux系统时遇到的命令"><a href="#探索Linux系统时遇到的命令" class="headerlink" title="探索Linux系统时遇到的命令"></a>探索Linux系统时遇到的命令</h2><h3 id="重探ls命令"><a href="#重探ls命令" class="headerlink" title="重探ls命令"></a>重探ls命令</h3><ol>
+<li><p><strong>ls /usr</strong>，指定列出某目录下的内容</p>
+</li>
+<li><p><strong>ls ~ /usr</strong>，指定列出多目录下的内容</p>
+</li>
+<li><p><strong>ls -l</strong>显示时间等更详细的内容</p>
+</li>
+<li><p>选项与参数</p>
+<ul>
+<li><p>大致格式，<strong>command -options arguments</strong>，所以上面的l就类似于一个选项</p>
+</li>
+<li><p>这些选项可以直接组合，例如<strong>ls -lt</strong>，其中t选项用来依照文件修改时间对输出结果进行排序</p>
+</li>
+<li><p>也可以在后面加入长选项<strong>—reverse</strong>，可以以降序排列输出结果</p>
+</li>
+<li><p>下面的表格给出了常用的ls命令选项</p>
+</li>
+<li><p>| 选项                | 描述                               |<br>| —————————- | ————————————————— |<br>| -a,—all            | 列出所有的文件包括隐藏文件         |<br>| -A,—almost-all     | 不列出.和..                        |<br>| -d,-directory       | 列出该目录的详细信息               |<br>| -F,—classify       | 在每个列出的名称后加入类型指示符   |<br>| -h,—human-readable | 不以字节为单位显示长格式的输出结果 |<br>| -l                  | 以长格式显示输出                   |<br>| -r,—reverse        | 降序排列，而通常ls以升序排列       |<br>| -S                  | 按文件大小输出                     |</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h3><p>​    主要用来确定文件的类型，<strong>file filename</strong>，万物皆文件！</p>
+<h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><p>​    该命令可以用来查看文本文件，即<strong>less filename</strong>，进入文件后有一些比较好用的命令</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b</td>
+<td>后翻一页</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>前翻一页</td>
+</tr>
+<tr>
+<td>上方向键</td>
+<td>向后一行</td>
+</tr>
+<tr>
+<td>下方向键</td>
+<td>向前一行</td>
+</tr>
+<tr>
+<td>G</td>
+<td>跳转到文件末尾</td>
+</tr>
+<tr>
+<td>g或1G</td>
+<td>跳转到文件开头</td>
+</tr>
+<tr>
+<td>/characters</td>
+<td>向前搜索</td>
+</tr>
+<tr>
+<td>n</td>
+<td>重复上一次搜索</td>
+</tr>
+<tr>
+<td>h</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出文件或者说less命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="另外的一些知识"><a href="#另外的一些知识" class="headerlink" title="另外的一些知识"></a>另外的一些知识</h3><ol>
+<li>关于复制粘贴，使用鼠标的话，双击可以复制文件名，单击中键可以粘贴到命令中</li>
+</ol>
+<h2 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>​    这部分将会讲述很多非常灵活与使用的东西</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>​    使用Shell过程中要使用非常多的文件名，所以就提供了一种特殊字符，即通配符，用来进行匹配，感觉就跟正则表达式差不多</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配任意多个字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配任意单个字符</td>
+</tr>
+<tr>
+<td>[characters]</td>
+<td>匹配字符集合characters中的任意单个字符</td>
+</tr>
+<tr>
+<td>[!characters]</td>
+<td>匹配不属于该字符集合中的任意单个字符</td>
+</tr>
+<tr>
+<td>[[:class:]]</td>
+<td>匹配属于字符类class中的任意单个字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    下面是一些常用的字符类</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符类</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td>任意匹配单个字母数字字符</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>任意匹配单个字母</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>任意匹配单个数字</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>任意匹配单个小写字母</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>任意匹配单个大写字母</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    在GUI中也可以使用通配符</p>
+<h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ol>
+<li><p>mkdir，在当前目录下创建新目录，并且可以一次创建多个</p>
+</li>
+<li><p>cp，主要用来复制，有两种用法</p>
+<ul>
+<li><p><strong>cp item1 item2</strong>，将item1复制到item2</p>
+</li>
+<li><p><strong>cp item… directory</strong>，将多个文件或目录item复制到directory中</p>
+</li>
+<li><p>下表给出了cp命令中常用的选项</p>
+</li>
+<li><p>| 选项             | 含义                                                         |<br>| ———————— | —————————————————————————————— |<br>| -a,—archive     | 复制文件和目录及其包括所有权与权限在内的所有属性             |<br>| -i,—interactive | 在覆盖已有文件之前，提醒用户确认                             |<br>| -r,—recursive   | 递归复制目录及其内容                                         |<br>| -u,—update      | 从一个目录复制到另外一个目录时，只复制目标目录中不存在或更新的文件 |<br>| -v,—verbose     | 在进行复制时显示相关的信息                                   |</p>
+</li>
+</ul>
+</li>
+<li><p>mv，用于移动和重命名文件，和cp命令的用法大同小异</p>
+<ul>
+<li><strong>mv item1 item2</strong></li>
+<li><strong>mv item… directory</strong></li>
+<li>他的选项相比于cp命令，少了-a和-i</li>
+</ul>
+</li>
+<li><p>rm，删除文件和目录</p>
+<ul>
+<li><p><strong>rm item…</strong></p>
+</li>
+<li><p>常用选项如下</p>
+</li>
+<li><p>| 选项             | 含义                         |<br>| ———————— | —————————————— |<br>| -i,—interactive | 请求用户确认                 |<br>| -r,—recursive   | 递归删除目录                 |<br>| -f,—force       | 忽略不存在的文件             |<br>| -v,—verbose     | 在执行删除操作时显示相关信息 |</p>
+</li>
+<li><p>要小心使用rm命令，因为Linux并没有提供还原的命令</p>
+</li>
+</ul>
+</li>
+<li><p>ln，用来创建硬链接和符号链接</p>
+<ul>
+<li><strong>ln file link</strong>，创建硬链接</li>
+<li><strong>ln -s item link</strong>，创建符号链接</li>
+</ul>
+</li>
+</ol>
+<p><strong><em>这里说一下两种链接，硬链接有两个重要限制，一是不能引用所在文件系统之外的文件，即不能跨物理设备，二是不能引用目录。而符号链接克服了硬链接的限制，创建了一种特别类型的文件，内含一个指针，和Windows下的快捷方式比较像，就和引用指针比较类似，文件至少有一个硬链接，因为文件名都是通过硬链接创建的</em></strong></p>
+<p>​    另外对于判断硬链接和文件其实是同一个这个问题，其实可以用<strong>ls -i</strong>命令，系统为i结点分配了一系列的磁盘块，然后将i结点和名称关联在一起，这个命令可以显示这种信息</p>
+<p>​    <strong><em>关于软硬连接这方面以后有时间了要再看看</em></strong></p>
+]]></content>
+      <categories>
+        <category>Linux学习</category>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Linux学习</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区间dp</title>
+    <url>/blog/2021/09/27/%E5%8C%BA%E9%97%B4dp/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​    区间dp就是在区间上进行动态规划，求一段区间上的最优解。即通过循环来合并小区间的最优解进而得到大区间上的最优解。</p>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>​    结合注释，模板应该很容易看懂</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> len = <span class="number">1</span>;len&lt;=n;len++)<span class="comment">//枚举区间长度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j+len&lt;=n;j++)<span class="comment">//枚举区间起点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ends=j+len<span class="number">-1</span>;<span class="comment">//通过当前区间起点和长度计算区间终点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=j;i&lt;ends;i++)<span class="comment">//枚举断点</span></span><br><span class="line">            dp[j][ends]=max(dp[j][ends],dp[j][i]+dp[i+<span class="number">1</span>][ends]+w[i][ends])</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//上面的dp[i][j]表示区间长度从i到j对应的值</span></span><br></pre></td></tr></table></figure>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="洛谷P1880-石子合并"><a href="#洛谷P1880-石子合并" class="headerlink" title="洛谷P1880 石子合并"></a>洛谷P1880 石子合并</h2><h3 id="题目如下"><a href="#题目如下" class="headerlink" title="题目如下"></a>题目如下</h3><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210928134212729.png" alt="image-20210928134212729"></p>
+<h3 id="简要思路"><a href="#简要思路" class="headerlink" title="简要思路"></a>简要思路</h3><p>​    感觉区间dp更多的就像是一种套路，然后其中比较难的题目大概就是有环，以及如何去将$O(n^3)$优化到$O(n^2)$的想法</p>
+<p>​    首先先来处理这个环，其实对于这个环状结构，如果我们想要枚举所有的区间，只需要让所有数据在当前结尾再重复一遍即可，然后其实状态转移方程就非常明显了，即</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">dp[j][ends]=max(dp[j][ends],dp[j][i]+dp[i+<span class="number">1</span>][ends]+w[j][ends])</span><br></pre></td></tr></table></figure>
+<p>​    对于这里的$w[j][ends]$，其实指的就是添加断点后，要将两个区间中的合并所增加的质量，为了避免在这里再增加一次循环，我们可以利用前缀和的方法，来在输入的过程中将所有的和给保存起来即可，详见代码</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: ysj </span></span><br><span class="line"><span class="comment"> * @Date: 2021-09-27 19:43:47 </span></span><br><span class="line"><span class="comment"> * @Last Modified by: ysj</span></span><br><span class="line"><span class="comment"> * @Last Modified time: 2021-09-27 20:21:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//区间dp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> min(a,b) ((a)&lt;(b)?(a):(b))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a,b) ((a)&gt;(b)?(a):(b))</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">105</span>];</span><br><span class="line"><span class="comment">// int dpmin[205][205];</span></span><br><span class="line"><span class="comment">// int dpmax[202][202];</span></span><br><span class="line"><span class="keyword">int</span> sum[<span class="number">205</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">int</span> dpmin[<span class="number">205</span>][<span class="number">205</span>];</span><br><span class="line">    <span class="keyword">int</span> dpmax[<span class="number">202</span>][<span class="number">202</span>];</span><br><span class="line">    <span class="built_in">memset</span>(dpmin, <span class="number">1000000</span>, <span class="keyword">sizeof</span>(dpmin));</span><br><span class="line">    <span class="built_in">memset</span>(dpmax, INT_MIN, <span class="keyword">sizeof</span>(dpmax));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">        sum[i] = sum[i - <span class="number">1</span>] + a[i];</span><br><span class="line">        dpmin[i][i] = <span class="number">0</span>;</span><br><span class="line">        dpmax[i][i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum[i + n] = sum[i + n - <span class="number">1</span>] + a[i];</span><br><span class="line">        dpmin[i + n][i + n] = <span class="number">0</span>;</span><br><span class="line">        dpmax[i + n][i + n] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">1</span>; len &lt;= n;len++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j + len &lt;= <span class="number">2</span> * n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> ends = len + j - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = j; i &lt; ends;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                dpmin[j][ends] = min(dpmin[j][ends], (dpmin[j][i] + dpmin[i + <span class="number">1</span>][ends] + sum[ends] - sum[j - <span class="number">1</span>]));</span><br><span class="line">                dpmax[j][ends] = max(dpmax[j][ends], dpmax[j][i] + dpmax[i + <span class="number">1</span>][ends] + sum[ends] - sum[j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ansmin = <span class="number">100000</span>;</span><br><span class="line">    <span class="keyword">int</span> ansmax = INT_MIN;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ansmax&lt;dpmax[i][i+n<span class="number">-1</span>])</span><br><span class="line">            ansmax = dpmax[i][i + n<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(ansmin&gt;dpmin[i][i+n<span class="number">-1</span>])</span><br><span class="line">            ansmin = dpmin[i][i + n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n%d&quot;</span>, ansmin, ansmax);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="洛谷P1063-能量锁链"><a href="#洛谷P1063-能量锁链" class="headerlink" title="洛谷P1063 能量锁链"></a>洛谷P1063 能量锁链</h2><h3 id="题目如下-1"><a href="#题目如下-1" class="headerlink" title="题目如下"></a>题目如下</h3><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210928140031556.png" alt="image-20210928140031556"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>​    又是一个循环区间上的dp，需要注意的是，这里面所有的珠子在合并之后头部是区间最开始的头部，尾部是区间最后的尾部，所以其实这里是不需要借助前缀和数组来找到划分区间过程中增加的能量的，所以还是需要仔细分析读题。</p>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: ysj </span></span><br><span class="line"><span class="comment"> * @Date: 2021-09-27 20:25:30 </span></span><br><span class="line"><span class="comment"> * @Last Modified by: ysj</span></span><br><span class="line"><span class="comment"> * @Last Modified time: 2021-09-27 21:14:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//区间dp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a, b) ((a) &gt; (b) ? (a) : (b))</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">202</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">205</span>][<span class="number">205</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]), a[n + i] = a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i][i] = <span class="number">0</span>;</span><br><span class="line">        dp[i + n][i + n] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">2</span>; len &lt;= n; len++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j + len &lt;= <span class="number">2</span> * n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> ends = j + len - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = j; i &lt; ends; i++)</span><br><span class="line">                dp[j][ends] = max(dp[j][ends], dp[j][i] + dp[i + <span class="number">1</span>][ends] + a[j] * a[i + <span class="number">1</span>] * a[ends + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ansmax = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ansmax = max(ansmax, dp[i][i + n - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ansmax);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="时间优化"><a href="#时间优化" class="headerlink" title="时间优化"></a>时间优化</h1><h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>​    注意到，我们在找寻最佳分割点的时候浪费了较多的时间，所以其实我们可以在查找的时候将最优分割点保存下来，进而优化时间效率</p>
+<h2 id="理论：四边形不等式"><a href="#理论：四边形不等式" class="headerlink" title="理论：四边形不等式"></a>理论：四边形不等式</h2><p>​    主要用来寻找$s[i][j]$与其他分割点的关系，其中$s[i][j]$表示从$i$到$j$的最优分割点。</p>
+<p>​    四边形不等式指的是如果某东西满足$a&lt;b\leqslant c&lt;d$，并且$f[a][c]+f[b][d]\leqslant f[a][d]+f[b][c]$，则称其满足四边形不等式，可以形象理解为两个交叉区间的和不超过小区间和大区间的和</p>
+<p>​    另外需要给出所谓的区间包含的单调性这一概念，即如果对于$i\leqslant i^<code>&lt;j \leqslant j^</code>$，有$f[i^<code>][j]\leqslant f[i][j^</code>]$，则称其具有区间包含的单调性</p>
+<p>​    然后四边形不等式优化有三步，对于这样的一个状态转移方程$dp[i][j]=min_{k=i}^{j-1}\{dp[i][k]+dp[k+1][j]+w[i][j]\}$，首先第一步，证明$w[i][j]$满足四边形不等式且具有区间包含的单调性，第二部证明$dp[i][j]$满足四边形不等式，第三步，设$s[i][j]=k$，表示区间$[i,j]$，的最优分割点为$k$，证明，$s[i][j-1]\leqslant s[i][j] \leqslant s[i+1][j]$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>​    以之前的合并石子为例</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000+10</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[MAXN][MAXN],s[MAXN][MAXN],cnt[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;cnt[i]),cnt[i]=cnt[i<span class="number">-1</span>]+cnt[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        dp[i][i]=<span class="number">0</span>;s[i][i]=i; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=<span class="number">0x7fffffff</span>;</span><br><span class="line">            <span class="keyword">int</span> te;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=s[i][j<span class="number">-1</span>];k&lt;=s[i+<span class="number">1</span>][j];k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp&gt;dp[i][k]+dp[k+<span class="number">1</span>][j]+cnt[j]-cnt[i<span class="number">-1</span>])&#123;</span><br><span class="line">                    temp=dp[i][k]+dp[k+<span class="number">1</span>][j]+cnt[j]-cnt[i<span class="number">-1</span>];</span><br><span class="line">                    te=k;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i][j]=temp;</span><br><span class="line">            s[i][j]=te;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;dp[<span class="number">1</span>][n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    print();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之Shell（二）</title>
+    <url>/blog/2021/09/29/Linux%E4%B9%8BShell%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="和命令打交道"><a href="#和命令打交道" class="headerlink" title="和命令打交道"></a>和命令打交道</h1><h2 id="命令的含义"><a href="#命令的含义" class="headerlink" title="命令的含义"></a>命令的含义</h2><ol>
+<li>可执行程序</li>
+<li>Shell中的内建命令，如cd命令</li>
+<li>Shell函数，也就是一些脚本</li>
+<li>别名，即我们在其他命令基础上自定义的一些命令</li>
+</ol>
+<h2 id="识别命令"><a href="#识别命令" class="headerlink" title="识别命令"></a>识别命令</h2><ol>
+<li><strong>type</strong>可以显示命令类型，<strong>type command</strong></li>
+<li><strong>which</strong>可以显示可执行文件的位置，只适用于可执行文件，否则有可能会出现错误</li>
+</ol>
+<h2 id="获取命令文档"><a href="#获取命令文档" class="headerlink" title="获取命令文档"></a>获取命令文档</h2><ol>
+<li><strong>help</strong>，获取Shell内建命令的帮助信息，另外就是在命令语法中，<strong>|</strong>表示项与项之间是互斥关系，而方括号表示这些项是可选的</li>
+<li><strong>—help</strong>，在命令后面的长参数，显示该命令所支持的语法和选项的相关描述</li>
+<li><strong>man</strong>，该命令主要用于浏览针对命令行的手册，<strong>man program</strong>，另外就是这里的<strong>man</strong>命令和<strong>less</strong>命令的操作是一样的，被分为了若干节，如果需要查询具体某一小节，可以在man后面加数字，man的-k选项和apropos命令有着一样的功能</li>
+<li><strong>apropos</strong>，后面跟关键字，可以根据关键字匹配手册中的内容，可惜就是比较粗糙而已</li>
+<li><strong>whatis</strong>，用来显示手册页的简述</li>
+<li><strong>info</strong>，可以用来显示程序的info条目</li>
+</ol>
+<h2 id="创建自己的命令"><a href="#创建自己的命令" class="headerlink" title="创建自己的命令"></a>创建自己的命令</h2><ol>
+<li>首先，可以通过在不同命令之间输入分号来一次性输入多条命令</li>
+<li>大概的格式就是<strong>alias foo=’cd /usr; ls; cd -‘</strong>，这是一个示例，模板大概就是<strong>alias name=’string’</strong>，另外就是建议首先使用type命令查询该名称是否被使用</li>
+<li><strong>unalias name</strong>可以用来删除自定义命令</li>
+<li>不过要注意这里创建的都是临时变量，在关闭Shell时这些设置会自动取消</li>
+</ol>
+<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><p>​    这一部分主要用来讲述如何修改输出结果的去处和输入结果的来源</p>
+<h2 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h2><p>​    要想不让输出出现在屏幕上，可以用重定向操作符<strong>&gt;</strong>，后面跟上文件名即可，就将输出保存到了后面的文件中，另外根据相应的介绍，我们可以通过<strong>&gt; filename</strong>来创建空文件。</p>
+<p>​    另外可以通过<strong>&gt;&gt;</strong>来让输出加在文件的尾部</p>
+<h2 id="标准错误重定向"><a href="#标准错误重定向" class="headerlink" title="标准错误重定向"></a>标准错误重定向</h2><ol>
+<li>首先要知道的是标准错误重定向没有专门的重定向操作符，我们需要引用文件描述符，在文件流中，通常用0、1和2分别描述标准输入、标准输出和标准错误，即使用<strong>2&gt;</strong>可以重定向标准错误</li>
+<li>将标准输出和标准错误定向到同一个文件中，只需要进行两次重定向，新版本的Bash提供了这样一种方法来定义，即<strong>ls -l /bin/usr &amp;&gt; ls-output,txt</strong>，追加的话只需要将其中的<strong>&gt;</strong>改成<strong>&gt;&gt;</strong>即可</li>
+<li>丢弃用不着的输出结果，我们只需要将其定向到<strong>/dev/null</strong>文件即可，该文件是一个系统设备，可以接收输入结果而不做任何处理</li>
+</ol>
+<h2 id="标准输入重定向"><a href="#标准输入重定向" class="headerlink" title="标准输入重定向"></a>标准输入重定向</h2><ol>
+<li><strong>cat</strong>命令，用来读取一个或多个文件并将其复制到标准输出，就是<strong>cat filename…</strong>，另外如果只输入cat，我们可以输入文件名，然后通过Ctrl+D，告诉cat已经到达了文件末尾</li>
+<li>如果我们想要通过键盘输入并且将内容加到文件中，可以使用<strong>cat &gt; filename</strong>，这里大概进行了复合操作</li>
+<li>另外可以通过<strong>&lt;</strong>来修改标准输入方式</li>
+</ol>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>​    管道大概是一个非常形象的词语了，首先有操作符<strong>|</strong>，可以将一个命令的标准输出传给另一个命令的标准输入，<strong>command1 | command2</strong>，值得一提的是，之前学过的<strong>less</strong>命令可以实现标准输入，可以以浏览文件的形式查询标准输入</p>
+<h3 id="排序列表"><a href="#排序列表" class="headerlink" title="排序列表"></a>排序列表</h3><p>​    sort命令可以用来对文件进行排序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls /bin /usr/bin | sort | less</span><br></pre></td></tr></table></figure>
+<p>​    另外就是要注意<strong>&gt;</strong>和<strong>|</strong>之间的差异，前者将命令与文件连接在一起，后者将一个命令的输出结果和另一个命令的输出结果连接在一起</p>
+<h3 id="另外的一些命令"><a href="#另外的一些命令" class="headerlink" title="另外的一些命令"></a>另外的一些命令</h3><ol>
+<li><p><strong>uniq</strong>命令，通常和sort命令结合使用，用来忽略或报告重复行，也可以使用-d选项来查看有哪些重复行</p>
+</li>
+<li><p><strong>wc</strong>命令，用来统计文件中换行符、单词和字节的数量</p>
+</li>
+<li><p><strong>grep</strong>命令，输出与模式匹配的行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">grep pattern filename</span><br></pre></td></tr></table></figure>
+<p>选项-i忽略字母大小写，选项-v只输出不匹配指定模式的行</p>
+</li>
+<li><p><strong>head/tail</strong>，输出文件的开头/结尾部分，行数可以通过选项-n来调整，另外值得一提的就是tail通过加入-f选项可以实时观察文件，该过程用Ctrl+C结束</p>
+</li>
+<li><p><strong>tee</strong>，从标准输入中读取内容，复制到标准输出和其他文件中</p>
+</li>
+</ol>
+<h1 id="一些有趣特性"><a href="#一些有趣特性" class="headerlink" title="一些有趣特性"></a>一些有趣特性</h1><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>​    在执行命令之前，Bash会执行一些替换操作，之前的像*这样的字符有很多含义，会对其进行扩展。</p>
+<p>​    这里我们说一下<strong>echo</strong>命令，该命令将其文本参数输出到标准输出，但是如果后面跟通配符的话，不会输出通配符，因为执行之前通配符就被扩展了</p>
+<h3 id="路径名扩展"><a href="#路径名扩展" class="headerlink" title="路径名扩展"></a>路径名扩展</h3><p>​    通配符的工作机制被称为路径名扩展，echo后面可以跟相应的组合</p>
+<h3 id="浪纹线扩展"><a href="#浪纹线扩展" class="headerlink" title="浪纹线扩展"></a>浪纹线扩展</h3><p>​    其实代表的就是主目录</p>
+<h3 id="算术扩展"><a href="#算术扩展" class="headerlink" title="算术扩展"></a>算术扩展</h3><p>​    形式为<strong>$((expression))</strong>，可以当作计算器来使用</p>
+<h3 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h3><p>​    </p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
