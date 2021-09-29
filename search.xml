@@ -1852,7 +1852,15 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
 <h3 id="路径名扩展"><a href="#路径名扩展" class="headerlink" title="路径名扩展"></a>路径名扩展</h3><p>​    通配符的工作机制被称为路径名扩展，echo后面可以跟相应的组合</p>
 <h3 id="浪纹线扩展"><a href="#浪纹线扩展" class="headerlink" title="浪纹线扩展"></a>浪纹线扩展</h3><p>​    其实代表的就是主目录</p>
 <h3 id="算术扩展"><a href="#算术扩展" class="headerlink" title="算术扩展"></a>算术扩展</h3><p>​    形式为<strong>$((expression))</strong>，可以当作计算器来使用</p>
-<h3 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h3><p>​    </p>
+<h3 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h3><p>​    花括号扩展可以包含一个前导和一个后继，主要得到的是各个字符串，当然也可以嵌套</p>
+<p>​    最大的作用就是创建文件或目录列表</p>
+<h3 id="参数扩展"><a href="#参数扩展" class="headerlink" title="参数扩展"></a>参数扩展</h3><p>​    有各种各样的参数，但是如果打错了参数，输出为空</p>
+<h3 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h3><p>​    <strong>echo $(cmd)</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>​    这里主要提供一些有选择的禁止不需要的扩展的方法</p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>​    将文本放在双引号中，一切的特殊字符将会失去特殊含义，但是<strong>参数扩展、算术扩展、命令替换仍然可用</strong></p>
+<p>​    这样可以处理文件名中有空格的情况</p>
+<p>​    另外就是将文本放在单引号中可以禁止一切扩展的发生</p>
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>​    在希望使用如$的单个字符时，要用转义，另外就是一些控制码，此略</p>
 ]]></content>
       <categories>
         <category>Linux</category>
