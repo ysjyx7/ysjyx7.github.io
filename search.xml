@@ -1871,4 +1871,94 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux之Shell的高级应用</title>
+    <url>/blog/2021/09/30/Linux%E4%B9%8BShell%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="高级键盘技巧"><a href="#高级键盘技巧" class="headerlink" title="高级键盘技巧"></a>高级键盘技巧</h1><h2 id="编辑命令行"><a href="#编辑命令行" class="headerlink" title="编辑命令行"></a>编辑命令行</h2><p>​    这一部分主要基于<strong>Readline</strong>库，介绍了一些可以提高效率的特性</p>
+<h3 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h3><ol>
+<li>Ctrl+A，将光标移动到行首</li>
+<li>Ctrl+E，将光标移动到行尾</li>
+<li>Alt+F，将光标向前移动一个单词</li>
+<li>Alt+B，将光标向后移动一个单词</li>
+<li>Ctrl+L，清除屏幕，将光标移动到左上角</li>
+</ol>
+<h3 id="修改文本"><a href="#修改文本" class="headerlink" title="修改文本"></a>修改文本</h3><ol>
+<li>Ctrl+T，将光标处字符与其之前的字符对调</li>
+<li>Alt+T，将光标处单词与其之前的单词对调</li>
+<li>Alt+L，将从光标处到单词结尾的字符转换成小写</li>
+<li>Alt+U，转换成大写</li>
+</ol>
+<h3 id="剪切和粘贴文本"><a href="#剪切和粘贴文本" class="headerlink" title="剪切和粘贴文本"></a>剪切和粘贴文本</h3><ol>
+<li>Ctrl+K，剪切从光标处到行尾的文本</li>
+<li>Ctrl+U，剪切从光标处到行首的文本</li>
+<li>Alt+D，剪切从光标处到当前单词结尾的文本</li>
+<li>Alt+空格，剪切从光标处到当前单词开头的文本，如果已位于开头，剪切上一个文本</li>
+<li>Ctrl+Y，将缓冲区内的文本粘贴到光标处</li>
+</ol>
+<h2 id="补全功能"><a href="#补全功能" class="headerlink" title="补全功能"></a>补全功能</h2><p>​    较常用的是路径名补全，只需要按下<strong>Tab</strong>键即可，如果有多个文件的话，不会触发自动补全的功能</p>
+<p>​    然后介绍两个常用的组合键，即<strong>Alt+$</strong>，用来显示补全结果，当然连续两次Tab键也可以，另外就是<strong>Alt+*</strong>，可以插入所有可能的补全结果</p>
+<h2 id="命令历史记录"><a href="#命令历史记录" class="headerlink" title="命令历史记录"></a>命令历史记录</h2><h3 id="搜索历史记录"><a href="#搜索历史记录" class="headerlink" title="搜索历史记录"></a>搜索历史记录</h3><p>​    可以通过命令<strong>history</strong>来查看近期使用过的命令</p>
+<p>​    另外就是关于增量搜索，使用<strong>Ctrl+R</strong>组合键，可以进行搜索，然后使用回车键可以直接执行该命令，或者使用<strong>Ctrl+J</strong>可以将该命令复制到当前命令行</p>
+<h3 id="历史扩展"><a href="#历史扩展" class="headerlink" title="历史扩展"></a>历史扩展</h3><p>​    通过在<strong>!</strong>之后加上数字可以插入某条历史记录，另外也可以通过<strong>script file</strong>命令将会话记录到指定文件</p>
+<h1 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h1><h2 id="属主、属组、其他用户"><a href="#属主、属组、其他用户" class="headerlink" title="属主、属组、其他用户"></a>属主、属组、其他用户</h2><p>​    如果某文件属于某个用户，该用户（<strong>属主</strong>）具有访问权，用户反过来可以属于由一个或多个用户组成的组（<strong>属组</strong>），可以使用<strong>id</strong>命令查看用户身份信息，可以查询到uid和gid两个数字</p>
+<h2 id="读取、写入和执行"><a href="#读取、写入和执行" class="headerlink" title="读取、写入和执行"></a>读取、写入和执行</h2><p>​    我们使用ls命令查看文件时，前面十个字符是文件属性，第一个是文件类型，剩下九个是文件模式，分别是文件属主、文件属组、其他用户的读取、写入、执行权限，详情可以看书</p>
+<h3 id="修改文件模式"><a href="#修改文件模式" class="headerlink" title="修改文件模式"></a>修改文件模式</h3><p>​    chmod命令可以修改文件模式，只有文件属主或超级用户才能做到这一点，我们可以用八进制或符号来表示文件模式，该命令的板子大概就是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 600 foo.txt</span><br></pre></td></tr></table></figure>
+<p>​    这里用的就是八进制来表示文件模式，其实道理是非常显然的</p>
+<p>​    符号表示法详情看书吧</p>
+<p>​    另外也可以使用GUI来修改文件和陌路的权限，右击即可</p>
+<h2 id="改变用户身份"><a href="#改变用户身份" class="headerlink" title="改变用户身份"></a>改变用户身份</h2><h3 id="su——以其他用户的身份启用Shell"><a href="#su——以其他用户的身份启用Shell" class="headerlink" title="su——以其他用户的身份启用Shell"></a>su——以其他用户的身份启用Shell</h3><ol>
+<li>使用su [-[l]] [user]来更改用户</li>
+<li>使用su -来变成超级用户</li>
+<li>exit可以退出超级用户模式</li>
+<li>su -c ‘command’将命令传入新shell执行</li>
+</ol>
+<h3 id="sudo——和su基本差不多"><a href="#sudo——和su基本差不多" class="headerlink" title="sudo——和su基本差不多"></a>sudo——和su基本差不多</h3><p>​    相比于su命令，sudo基本类似，然是有另外一些重要功能，它不需要启用新Shell，只需要输入自己的密码来进行认证即可</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>​    这一章需要等到多人合作的时候再看一下如何设置权限</p>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><ol>
+<li>通过ps命令查看进程，不过输出非常简单</li>
+<li>添加选项x，显示所有的进程，通过该选项显示出来的东西多了一个新列，表示进程状态</li>
+<li>另外一个常用的选项是aux，可以输出更多的进程信息</li>
+<li>ps命令仅仅是显示查看的那一刻的进程，而使用<strong>top</strong>命令可以动态查看进程，默认每三秒更新一次</li>
+</ol>
+<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><ol>
+<li><p>使用Ctrl+C来中断进程</p>
+</li>
+<li><p>注意到如果启动了一个新的程序，Shell可能是不会接收新的输入的，这个时候可以考虑用上述方法关闭，也可以考虑将其置于后台，在最开始命令结尾加上&amp;即可</p>
+</li>
+<li><p>可以使用jobs命令来查看作业列表</p>
+</li>
+<li><p>容易发现Ctrl+C对后台进程无效，我们可以使用fg命令加上作业参数来返回</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fg %1</span><br></pre></td></tr></table></figure>
+<p>注意上面有一个百分号</p>
+</li>
+<li><p>如果我们仅仅只是想要停止进程，可以在前台使用Ctrl+Z组合键，然后可以使用<strong>bg</strong>命令加上作业参数来让程序在后台运行</p>
+</li>
+</ol>
+<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><ol>
+<li><p>信号是系统与程序之间的通信途径之一，当终端接收到其中某个组合键时，向前台发送信号，程序监听信号并做出相应的操作</p>
+</li>
+<li><p>kill命令，用来向进程发送信号</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kill -signal PID..</span><br></pre></td></tr></table></figure>
+<p>如果不带选项的话，默认终止程序</p>
+</li>
+<li><p>killall，用来向多个进程发送信号</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">killall [-u user] [-signal] name ...</span><br></pre></td></tr></table></figure>
+<p>killall和kill命令在向不属于自己的进程发信号时必须有超级用户权限</p>
+</li>
+</ol>
+<h2 id="关闭系统"><a href="#关闭系统" class="headerlink" title="关闭系统"></a>关闭系统</h2><ol>
+<li>这里介绍四个命令，都可以有序的终止所有进程，即halt，poweroff，reboot，shutdown</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    现在到这里，我们基本涉及到了Linux的Shell的很多基本命令，接下来会有更多丰富多彩的用法</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
