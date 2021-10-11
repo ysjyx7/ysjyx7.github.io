@@ -3370,7 +3370,60 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">treenode* <span class="title">left_rotate</span><span class="params">(treenode* root,treenode *x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    treenode *y = x-&gt;right;</span><br><span class="line">    x-&gt;right = y-&gt;left;</span><br><span class="line">    <span class="keyword">if</span>(y-&gt;left!=<span class="literal">NULL</span>)</span><br><span class="line">        y-&gt;left-&gt;p = x;</span><br><span class="line">    y-&gt;p = x-&gt;p;</span><br><span class="line">    <span class="keyword">if</span>(x-&gt;p==<span class="literal">NULL</span>)</span><br><span class="line">        root = y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x==x-&gt;p-&gt;left)</span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;p-&gt;left = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        x-&gt;p-&gt;right = y;</span><br><span class="line">    &#125;</span><br><span class="line">    y-&gt;left = x;</span><br><span class="line">    x-&gt;p = y;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    时间复杂度：$O(1)$</p>
 <h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>​    插入的话，我们是要将新的子结点置为红色进行插入，至于为什么要置为红色，因为这个时候，红黑树的五条特性，我们只违背了第四条，这个时候只需要根据第四条进行调整就可以将其维护成红黑树，但是一旦被置为黑色，第三、四、五条性质都有可能被违背，这个时候维护起来就非常的复杂了</p>
-<p>​    现在先说一下插入</p>
+<p>​    现在先说一下插入结点的算法，其实整体插入和二叉搜索树是非常像的，主要就是需要在最后加入一个调整的算法。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">treenode* <span class="title">insert</span><span class="params">(treenode* root,treenode *z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    treenode *y = <span class="literal">NULL</span>;</span><br><span class="line">    treenode *x = root;</span><br><span class="line">    <span class="keyword">while</span>(x!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        y = x;</span><br><span class="line">        <span class="keyword">if</span>(x-&gt;key&lt;z-&gt;key)</span><br><span class="line">        &#123;</span><br><span class="line">            x = x-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            x = x-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    z-&gt;p = y;</span><br><span class="line">    <span class="keyword">if</span>(y==<span class="literal">NULL</span>)</span><br><span class="line">        root = z;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(z-&gt;key&lt;y-&gt;key)</span><br><span class="line">    &#123;</span><br><span class="line">        y-&gt;left = z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        y-&gt;right = z;</span><br><span class="line">    z-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">    z-&gt;right = <span class="literal">NULL</span>;<span class="comment">//注意按照算法导论中的说法，其实这里应该是要指向建立好的nil虚点，不过个人感觉指向空问题不大</span></span><br><span class="line">    z-&gt;color = RED;</span><br><span class="line">    root=insert_fixup(root, z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    接下来就是红黑树算法的重点，也就是如何将一个不是红黑树的二叉树修正到红黑树，《算法导论》上将其分为三种情况并给出了相应证明，这里给出三种情况，由于对称性，只考虑当前结点为左孩子的情况。</p>
+<ol>
+<li><p>当叔结点为红色时，不满足性质四，只需要更改颜色即可，如下图所示</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/2020052711592256.png" alt="img"></p>
+</li>
+<li><p>否则，如果当前插入结点是右孩子，需要进行一次左旋，转换到情况三，如下图所示</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527115946139.png" alt="img"></p>
+</li>
+<li><p>然后情况三就是当前插入结点是左孩子，那么更改父亲和爷爷的颜色之后右旋以下即可，如下图所示</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/2020052712000897.png" alt="img"></p>
+<p><strong><em>以上图片均来源于博客<a href="https://blog.csdn.net/xiaofeng10330111/article/details/106080394?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163393090616780262522686%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163393090616780262522686&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-106080394.first_rank_v2_pc_rank_v29&amp;utm_term=%E7%BA%A2%E9%BB%91%E6%A0%91&amp;spm=1018.2226.3001.4187">对红黑树的认识总结</a>  侵删</em></strong></p>
+</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">treenode* <span class="title">insert_fixup</span><span class="params">(treenode *root,treenode* z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(z-&gt;p-&gt;color==RED)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(z-&gt;p==z-&gt;p-&gt;p-&gt;left)</span><br><span class="line">        &#123;</span><br><span class="line">            treenode *y = z-&gt;p-&gt;p-&gt;right;</span><br><span class="line">            <span class="keyword">if</span>(y-&gt;color==RED)<span class="comment">//第一种情况，叔叔的颜色为红，这个时候不满足性质四，更改颜色即可</span></span><br><span class="line">            &#123;</span><br><span class="line">                z-&gt;p-&gt;color = BLACK;</span><br><span class="line">                z-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                y-&gt;color = BLACK;</span><br><span class="line">                z = z-&gt;p-&gt;p;<span class="comment">//然后让z指针指向爷爷结点</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(z==z-&gt;p-&gt;right)<span class="comment">//否则的话来到第二种情况，即叔结点为黑色并且它为右孩子，这个时候可以旋转后转化为</span></span><br><span class="line">            &#123;                     <span class="comment">//情况三</span></span><br><span class="line">                z = z-&gt;p;</span><br><span class="line">                root = left_rotate(root, z);</span><br><span class="line">            &#125;</span><br><span class="line">            z-&gt;p-&gt;color = BLACK;<span class="comment">//情况三</span></span><br><span class="line">            z-&gt;p-&gt;p-&gt;color = RED;<span class="comment">//情况三，这里由于要作旋转，所以改颜色</span></span><br><span class="line">            root=right_rotate(root, z-&gt;p-&gt;p);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span><span class="comment">//镜像对称的一种情况，此处不再赘述</span></span><br><span class="line">        &#123;</span><br><span class="line">            treenode *y = z-&gt;p-&gt;p-&gt;left;</span><br><span class="line">            <span class="keyword">if</span>(y-&gt;color==RED)</span><br><span class="line">            &#123;</span><br><span class="line">                z-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                z-&gt;p-&gt;color = BLACK;</span><br><span class="line">                y-&gt;color = BLACK;</span><br><span class="line">                z = z-&gt;p-&gt;p;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(z==z-&gt;p-&gt;left)</span><br><span class="line">            &#123;</span><br><span class="line">                z = z-&gt;p;</span><br><span class="line">                root = right_rotate(root, z);</span><br><span class="line">            &#125;</span><br><span class="line">            z-&gt;p-&gt;color = BLACK;</span><br><span class="line">            z-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">            root = left_rotate(root, z-&gt;p-&gt;p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>​    首先红黑树的删除也是基于二叉搜索树的删除过程来的，先给出和删除差不多的主要代码。</p>
+<p>​    首先有一个移植操作，代码主要思路和上面一模一样。<del>现在我的Typora已经要卡成狗屎了，剩下部分主要贴图和文字说明吧</del></p>
+<p>​    对于删除操作，我们需要有一个临时变量来记录删除前$y$的颜色，如果是黑色的话就需要进行调整，因为这样的话有可能一次违背性质1、2、4，看起来违背性质1似乎有点奇怪，这是因为如果是黑色，会导致$y$的所有祖先的黑高发生变化，这个时候视为将$y$的黑色过渡给了它的子结点，那么子结点就变成了个奇怪的颜色，<del>虽然这样搞怪怪的</del></p>
+<p>​    下面我们需要修正这几条违背的性质，这里直接贴图吧，《算法导论》上给了严格的证明，<del>但是Typora真的要撑不住了</del></p>
+<p>​    先来给出初步调整，主要用来维护性质一</p>
+<ol>
+<li>如果要删除的结点为a，他只有一个子结点b</li>
+</ol>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527143854463.png" alt="img"></p>
+<ol>
+<li><p>如果要删除的结点a有两个子结点并且它的后继就是右结点</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527143927784.png" alt="img"></p>
+<p>如果c为黑色，需要给d加一个颜色以维护性质五，这个时候需要关注d，因为可能不满足性质一</p>
+</li>
+<li><p>如果要删除的结点a有两个子结点并且后继不是右结点</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527144006994.png" alt="img"></p>
+<p>这个时候关注的变成了c</p>
+</li>
+</ol>
+<p>​    接下来要进行二次调整，维护剩下的错误</p>
+<ol>
+<li><p>如果关注结点的兄弟结点为红色</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527144734352.png" alt="img"></p>
+<p>先左旋，再改色，此时关注结点不变。</p>
+</li>
+<li><p>如果关注结点是a，它的兄弟和兄弟的左右结点都是黑色的</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527144824243.png" alt="img"></p>
+</li>
+<li><p>如果关注节点是 a，它的兄弟节点 c 是黑色，c 的左子节点 d 是红色，c 的右子节点 e 是黑色</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527144857249.png" alt="img"></p>
+</li>
+<li><p>如果关注节点 a 的兄弟节点 c 是黑色的，并且 c 的右子节点是红色的</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20200527144922149.png" alt="img"></p>
+</li>
+</ol>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>​    红黑树总的来说算是一个基本的平衡树，效率较好，但是个人感觉没有AVL的操作容易实现和理解，另外就是由于篇幅原因，最终删除部分写的很草率，而删除部分恰好是最难的…但是这个图画的还是非常好的，<del>虽然不是我画的</del>，图片摘自<a href="https://blog.csdn.net/xiaofeng10330111/article/details/106080394?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163393090616780262522686%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163393090616780262522686&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-106080394.first_rank_v2_pc_rank_v29&amp;utm_term=%E7%BA%A2%E9%BB%91%E6%A0%91&amp;spm=1018.2226.3001.4187">对红黑树的认识总结</a></p>
+<p>​    代码我应该会单独写一篇文章发出去，另外插入和删除部分可以参看<strong>《算法导论》</strong>，里面的证明是非常详细的</p>
 ]]></content>
       <categories>
         <category>数据结构</category>
@@ -3379,6 +3432,21 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
       <tags>
         <tag>数据结构</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于数论的一道小题目</title>
+    <url>/blog/2021/10/11/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA%E7%9A%84%E4%B8%80%E9%81%93%E5%B0%8F%E9%A2%98%E7%9B%AE/</url>
+    <content><![CDATA[<p>​    昨天一个上海交大的大佬问了我一道算法题，大概的意思就是，给出一个整数$n$，一个素数$p$，求出$n!$中包含因子$p$的数量。这个题目乍一看很简单，只需要先用一个循环算出$n!$，再用一个循环算出答案即可。但是我们没想到的是，交大的题目竟然会给一群刚学C++没几天的新生卡时长，这样计算运算时间太长，所有测试集都过不了，<del>不亏是交大</del>，那接下来只能从数学的角度对题目进行化简了。</p>
+<p>​    其实另外的思路也很简单，只需要统计$1$~$n$中所有数包含质因子$p$的数量即可，我们注意到其实$n/p$就是$1$到$n$中出现过的$p$的倍数个数，所以其实$p$本身是给最终的答案贡献了这么多个值，然后还有$p$的次方数，也会贡献一定的量，我们需要考虑一下这个量具体是多少。仔细一想好像是$k\times (int)(\frac {n}{p^k})$，然后累加起来，但是这样其实就重复了，因为$p$的前$k-1$次方已经被计算过一次了，所以每次其实只需要加上$\frac {n}{p^k}$即可，所以最终我们可以得到答案为$ans=\frac{n}{p}+\frac{n}{p^2}+…+\frac{n}{p^k}$，并且$\frac{n}{p^{k+1}}=0$，具体代码就不写了，太简单了。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
 </search>
