@@ -3499,7 +3499,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>数据处理与可视化</title>
     <url>/blog/2021/10/12/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
     <content><![CDATA[<h1 id="NumPy"><a href="#NumPy" class="headerlink" title="NumPy"></a>NumPy</h1><p>​    首先列表可以完成数组操作，但是在数据量大的时候速度很慢，所以这里采用NumPy拓展库完成数组操作。</p>
 <p>​    NumPy提供两种基本对象，即<strong>ndarray</strong>和<strong>ufunc</strong>，前者是存储单一数据类型的多维数组，后者是能够对数组进行处理的通用函数。</p>
