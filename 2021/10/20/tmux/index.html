@@ -73,7 +73,7 @@
 <meta property="og:description" content="关于Tmux的介绍与使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-20T12:47:29.000Z">
-<meta property="article:modified_time" content="2021-10-20T13:13:06.975Z">
+<meta property="article:modified_time" content="2021-10-24T00:54:51.103Z">
 <meta property="article:author" content="杨释钧">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Tmux">
@@ -304,10 +304,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-10-20 20:47:29 / 修改时间：21:13:06" itemprop="dateCreated datePublished" datetime="2021-10-20T20:47:29+08:00">2021-10-20</time>
+      <time title="创建时间：2021-10-20 20:47:29" itemprop="dateCreated datePublished" datetime="2021-10-20T20:47:29+08:00">2021-10-20</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-24 08:54:51" itemprop="dateModified" datetime="2021-10-24T08:54:51+08:00">2021-10-24</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -336,7 +342,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>808</span>
+      <span>838</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -360,13 +366,13 @@
 <h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><p>​    要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
 <h2 id="前缀键"><a href="#前缀键" class="headerlink" title="前缀键"></a>前缀键</h2><p>​    快捷键的前缀键为<strong>Ctrl+b</strong>，只有这样才能够使快捷键生效，<strong>Ctrl+b+?</strong>可以查看帮助文档</p>
 <h2 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h2><ol>
-<li><strong>tmux new -s \<name></name></strong>可以创建新的会话，每个会话都有编号0，1，2……</li>
+<li><strong>tmux new -s name</strong>可以创建新的会话，每个会话都有编号0，1，2……</li>
 <li><strong>tmux detach</strong>可以让当前会话与窗口分离，快捷键为<strong>Ctrl+b d</strong></li>
 <li><strong>tmux ls</strong>可以查看当前所有的会话，快捷键为<strong>Ctrl+b s</strong></li>
-<li><strong>tmux attach -t \<name></name></strong>可以重新接入某个已经存在的会话</li>
-<li><strong>tmux kill-session -t \<name></name></strong>可以关闭某个会话</li>
-<li><strong>tmux switch -t \<name></name></strong>可以用来切换会话</li>
-<li><strong>tmux rename-session -t \<num> \<name></name></num></strong>可以用来重命名，快捷键为<strong>Ctrl+b $</strong></li>
+<li><strong>tmux attach -t name</strong>可以重新接入某个已经存在的会话</li>
+<li><strong>tmux kill-session -t name</strong>可以关闭某个会话</li>
+<li><strong>tmux switch -t name</strong>可以用来切换会话</li>
+<li><strong>tmux rename-session -t num name</strong>可以用来重命名，快捷键为<strong>Ctrl+b $</strong></li>
 </ol>
 <h1 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h1><h2 id="窗格操作"><a href="#窗格操作" class="headerlink" title="窗格操作"></a>窗格操作</h2><ol>
 <li><strong>tmux split-window</strong>划分上下两个窗格，加参数<strong>-h</strong>划分左右，左右快捷键为<strong>%</strong>，上下快捷键为<strong>“</strong></li>
@@ -375,10 +381,10 @@
 <li>还有一些快捷键，比如<strong>x</strong>关闭当前窗格，<strong>!</strong>拆分出当前窗格，<strong>z</strong>全屏显示当前窗格，<strong>q</strong>显示当前窗格编号</li>
 </ol>
 <h2 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h2><ol>
-<li><strong>tmux new-window -n <name\></name\></strong>新建窗口</li>
-<li><strong>tmux select-window -t \<name></name></strong>切换窗口</li>
-<li><strong>tmux rename-window <name\></name\></strong>为当前窗口起名或重命名</li>
-<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>\<num\></num\></strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，<strong>,</strong>窗口重命名</li>
+<li><strong>tmux new-window -n name</strong>新建窗口</li>
+<li><strong>tmux select-window -t name</strong>切换窗口</li>
+<li><strong>tmux rename-window name</strong>为当前窗口起名或重命名</li>
+<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>num</strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，<strong>,</strong>窗口重命名</li>
 </ol>
 <p><strong><em>注意：所有的快捷键都必须先按前缀键</em></strong></p>
 <p><strong><em>参考：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">http://www.ruanyifeng.com/blog/2019/10/tmux.html</a></em></strong></p>
