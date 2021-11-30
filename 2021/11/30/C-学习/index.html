@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+
+
+<script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
+
+<div class="musicwyy2" style="position:fixed;left:0px;bottom:0px;z-index:105;opacity: 1; 
+    width: 30px;
+    height: 110px;    font-size: 15px;
+    font-family: 'Long Cang';">
+
+  <button type="button" style="
+    width: 30px;
+    height: 66px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0px;
+    background: #f5f5f5;
+    z-index:200;" onclick="musicChange()"> 播放器</button>
+
+</div> 
+
+
+
+<div class="musicwyy1" style="position:fixed;left:0px;bottom:0px;z-index:100;opacity: 1; 
+    width: 300px;
+    height: 110px;font-size: 0;">
+
+  <div class="aplayer-miniswitcher" style="
+    height: 110px;
+    width: 20px;
+    display: inline-block; overflow: hidden;">
+
+
+
+  </div>
+
+  <div style="
+    width: calc(100% - 30px);
+    height: 110px;
+    display: inline-block;" id="musicZJ">
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4968365&auto=1&height=66"></iframe>
+
+  </div>
+  
+</div>
+<meta name="description" content="关于准备csp过程中学到的一些C++知识的总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++学习">
+<meta property="og:url" content="https://yang-shijun.gitee.io/2021/11/30/C-%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:description" content="关于准备csp过程中学到的一些C++知识的总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-30T02:42:51.000Z">
+<meta property="article:modified_time" content="2021-11-30T08:48:10.655Z">
+<meta property="article:author" content="杨释钧">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yang-shijun.gitee.io/2021/11/30/C-%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/11/30/C-%E5%AD%A6%E4%B9%A0/","path":"2021/11/30/C-学习/","title":"C++学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++学习 | 杨释钧的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">杨释钧的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sort"><span class="nav-number">2.1.</span> <span class="nav-text">sort</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pair"><span class="nav-number">3.1.</span> <span class="nav-text">pair</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector"><span class="nav-number">3.2.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">3.3.</span> <span class="nav-text">map</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="杨释钧"
+      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">杨释钧</p>
+  <div class="site-description" itemprop="description">欢迎欢迎</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_55101026?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ysjyx7" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/11/30/C-%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="杨释钧">
+      <meta itemprop="description" content="欢迎欢迎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨释钧的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-30 10:42:51 / 修改时间：16:48:10" itemprop="dateCreated datePublished" datetime="2021-11-30T10:42:51+08:00">2021-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">关于准备csp过程中学到的一些C++知识的总结</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>前言</h1>
+<p>​	首先这段时间一直比较忙，自从上次更新到现在大概过了一个多月，期间准备了大学生数学竞赛，同时参与了阿里的miniob比赛，后者基本上就是抱着竞赛驱动学习的想法去的，<s>其实是自己太菜，拿不了奖</s>，也算是初步接触了一下数据库和编译的一些知识，另外由于oceanbase是用C++实现的，也算是对阅读大项目源码有了一点认知，过段时间或许会写一下参赛总结，复盘一下这学期我都做了些什么，以及未来一段时间的打算，不过我会先把之前那个写了一半的flex&amp;bison写完😂</p>
+<p>​	另外就是这学期选了马光志老师的C++程序设计语言，虽然这门课基本上学的都是C++的精髓，即面向对象编程的这种思想，但是感觉目前是用不上的。目前在准备这周末的csp考试，这里就简单总结一下刷题的时候用到的stl的一些东西，先把C++当成带stl的C来用吧😂</p>
+<h1>algorithm</h1>
+<h2 id="sort">sort</h2>
+<p>​	首先需要介绍的就是algoirthm类里的快速排序，函数原型如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span> <span class="params">(RandomAccessIterator first, RandomAccessIterator last, Compare comp)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>​	第一个和第二个参数分别是起始地址和终止地址，第三个参数可以自定义排序方法，也可以省略，这个时候按默认从小到大排序，下面看两个例子。</p>
+<p>​	第一个例子，缺省第三个参数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    <span class="comment">//sort函数第三个参数采用默认从小到大</span></span><br><span class="line"> 　   <span class="keyword">int</span> a[]=&#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">3</span>&#125;;</span><br><span class="line"> 　　 <span class="built_in">sort</span>(a,a+<span class="number">5</span>);</span><br><span class="line"> 　　　<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line"> 　　　 　　cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;     </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>​	这里输出的就是从小到大排序后的数组。</p>
+<p>​	第二个例子，自定义排序方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">　　<span class="comment">//sort函数第三个参数自己定义，实现从大到小 </span></span><br><span class="line">　　　　<span class="keyword">int</span> a[]=&#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">3</span>&#125;;</span><br><span class="line">　　　　　　<span class="built_in">sort</span>(a,a+<span class="number">5</span>,cmp);</span><br><span class="line">　　　　　　　<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">　　　　　　　　　cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;     </span><br><span class="line">&#125;</span><br><span class="line">　　　　　　　　　<span class="comment">//自定义函数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">　　　<span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>容器</h1>
+<h2 id="pair">pair</h2>
+<p>​	<strong>pair不是容器</strong>，是一个结构模板，但是感觉功能上和vector、map差不多，就一起放在这里了。</p>
+<p>​	pair是将两个数据合成一个，主要成员变量为first和second，在头文件utility中，定义如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>,<span class="keyword">class</span> <span class="title">T2</span>&gt;</span> <span class="class"><span class="keyword">struct</span> <span class="title">pair</span></span></span><br></pre></td></tr></table></figure>
+<p>​	参数为两个数据的类型。</p>
+<p>​	创建pair对象时<strong>必须提供两个类型</strong>，并且<strong>不必相同</strong>，可以在定义的时候进行初始化，见下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;string, string&gt; anon;        <span class="comment">// 创建一个空对象anon，两个元素类型都是string</span></span><br><span class="line"><span class="function">pair&lt;string, <span class="keyword">int</span>&gt; <span class="title">word_count</span><span class="params">(<span class="string">&quot;hello&quot;</span>,<span class="number">5</span>)</span></span>;     <span class="comment">// 创建一个空对象 word_count, 两个元素类型分别是string和int类型</span></span><br></pre></td></tr></table></figure>
+<p>​	下面是pair的一些相关操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="keyword">int</span> ,<span class="keyword">double</span>&gt; p1;</span><br><span class="line">p1.first = <span class="number">1</span>,p1.second = <span class="number">2.5</span>;<span class="comment">//通过这样访问成员</span></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;string,string&gt; Author;<span class="comment">//因为每次定义一个新的非常繁琐，所以一般会用typedef</span></span><br><span class="line">Author lry=std::<span class="built_in">make_dir</span>(<span class="string">&quot;nb&quot;</span>,<span class="string">&quot;nb&quot;</span>); <span class="comment">//可以用make_dir构造一个新的pair</span></span><br><span class="line">std::string s1,s2;</span><br><span class="line">std::<span class="built_in">tie</span>(s1,s2)=<span class="built_in">getau</span>();<span class="comment">//在某些清况函数会以pair对象作为返回值时，可以直接通过std::tie进行接收</span></span><br><span class="line"><span class="function">Author <span class="title">getau</span><span class="params">(String s1,String s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> std::<span class="built_in">make_dir</span>(s1,s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​	另外了解pair的一个契机是在刷csp的题的时候，我用我自定义的结构体和cmp函数进行排序超时，然后在网上看别人的写法，发现用pair不会超时，要用sort对pair数组进行排序的话，可以缺省cmp，剩下的和结构体排序完全一样。</p>
+<p>​	关于为什么那道题会TLE，最开始去看了sort的源码，发现缺省第三个参数的时候会默认使用inline constexpr operator &lt;这样一个内联重载，而在C++课上了解到，这两种方法是可以提升性能的，于是去改了我的代码，但是仍然过不了…</p>
+<p>​	<em><strong>在这里也算是复习一下这两个知识</strong></em></p>
+<ol>
+<li>对于inline，我们知道，在函数调用时，要先在栈上为形参和局部变量分配空间，然后将实参值复制给形参，再将函数返回地址放入栈，而再return后这样一个过程会倒着来一遍，这样就会造成一定的时间消耗，我们在定义函数的时候可以使用关键字<strong>inline</strong>来修饰，**当编译器处理调用内联函数的语句时，不会将该语句编译成函数调用的指令，而是直接将整个函数体的代码插入调用语句处，就像整个函数体在调用处被重写了一遍一样。**其实还是一个典型的用空间换时间的做法，下面是要注意的几点：
+<ol>
+<li>一般只是将那种只有几条指令的函数作为内联函数。</li>
+<li>在调用内联函数前必须出现内联函数的定义。</li>
+</ol>
+</li>
+<li>对于constexpr，它可以用来修饰变量、构造函数、函数，要求函数的返回值和参数必须是字面值，有两个主要作用，一是让编译器在编译期对表达式进行一定的优化，例如计算值之类的，二是如果传进来的不是字面值，不会报错，而是会在程序运行的时候进行计算。</li>
+</ol>
+<h2 id="vector">vector</h2>
+<p>​	在头文件vector中定义，优点感觉主要就是可以自己动态调整。</p>
+<p>​	声明和初始化有以下几个方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; a ;                                <span class="comment">//声明一个int型向量a</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>)</span> </span>;                            <span class="comment">//声明一个初始大小为10的向量</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>, <span class="number">1</span>)</span> </span>;                         <span class="comment">//声明一个初始大小为10且初始值都为1的向量</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a)</span> </span>;                             <span class="comment">//声明并用向量a初始化向量b</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a.begin(), a.begin()+<span class="number">3</span>)</span> </span>;        <span class="comment">//将a向量中从第0个到第2个(共3个)作为向量b的初始值</span></span><br><span class="line"><span class="comment">//也可以直接用数组对它初始化</span></span><br><span class="line"><span class="keyword">int</span> n[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(n,n+<span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(&amp;n[<span class="number">1</span>],&amp;a[<span class="number">4</span>])</span></span>;</span><br></pre></td></tr></table></figure>
+<p>​	可以用类似于数组的方法对他进行访问，也可以使用迭代器。</p>
+<p>​	下面贴一些基本操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&gt;. a.<span class="built_in">size</span>()                 <span class="comment">//获取向量中的元素个数</span></span><br><span class="line"><span class="number">2</span>&gt;. a.<span class="built_in">empty</span>()                <span class="comment">//判断向量是否为空</span></span><br><span class="line"><span class="number">3</span>&gt;. a.<span class="built_in">clear</span>()                <span class="comment">//清空向量中的元素</span></span><br><span class="line"><span class="number">4</span>&gt;. 复制</span><br><span class="line">    a = b ;            <span class="comment">//将b向量复制到a向量中</span></span><br><span class="line"><span class="number">5</span>&gt;. 比较</span><br><span class="line">    保持 ==、!=、&gt;、&gt;=、&lt;、&lt;= 的惯有含义 ;</span><br><span class="line">    如: a == b ;    <span class="comment">//a向量与b向量比较, 相等则返回1</span></span><br><span class="line"><span class="number">6</span>&gt;. 插入 - insert</span><br><span class="line">    ①、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">1000</span>);            <span class="comment">//将1000插入到向量a的起始位置前</span></span><br><span class="line">    ②、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">3</span>, <span class="number">1000</span>) ;        <span class="comment">//将1000分别插入到向量元素位置的0-2处(共3个元素)</span></span><br><span class="line">    ③、 <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">5</span>, <span class="number">1</span>)</span> </span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">10</span>)</span> </span>;</span><br><span class="line">        b.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(), a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>()) ;        <span class="comment">//将a.begin(), a.end()之间的全部元素插入到b.begin()前</span></span><br><span class="line"><span class="number">7</span>&gt;. 删除 - erase</span><br><span class="line">    ①、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>()) ;                     <span class="comment">//将起始位置的元素删除</span></span><br><span class="line">    ②、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">begin</span>()+<span class="number">3</span>) ;        <span class="comment">//将(b.begin(), b.begin()+3)之间的元素删除</span></span><br><span class="line"><span class="number">8</span>&gt;. 交换 - swap</span><br><span class="line">    b.<span class="built_in">swap</span>(a) ;            <span class="comment">//a向量与b向量进行交换</span></span><br></pre></td></tr></table></figure>
+<p>​	然后就是也可以声明高维向量，例如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;<span class="built_in">b</span>(<span class="number">10</span>,vector&lt;<span class="keyword">int</span>&gt;(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="map">map</h2>
+<p>​	map中存放键值对，并且其中自建红黑树，数据有序。在头文件map种定义</p>
+<p>​	下面给出map构造和插入的用法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="keyword">int</span>,string&gt; Student;<span class="comment">//构造一个map</span></span><br><span class="line"><span class="comment">//下面是插入元素方法</span></span><br><span class="line"><span class="comment">//第一种是用insert函数插入pair</span></span><br><span class="line">Student.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>,string&gt;(<span class="number">000</span>,<span class="string">&quot;zero&quot;</span>));</span><br><span class="line"><span class="comment">//第二种是用insert函数插入value_type数据</span></span><br><span class="line">Student.<span class="built_in">insert</span>(map&lt;<span class="keyword">int</span>,string&gt;::<span class="built_in">value_type</span>(<span class="number">001</span>,<span class="string">&quot;one&quot;</span>));</span><br><span class="line"><span class="comment">//第三种是用数组方式插入，即键值对</span></span><br><span class="line">Student[<span class="number">123</span>]=<span class="string">&quot;lry&quot;</span></span><br><span class="line"><span class="comment">//注意，前两种方式一样，但是由于互异性，存在关键字的时候不能再插入，但是第三种是直接覆盖当前的值。所以这里涉及到插入是否成功，而insert函数返回值是一个pair，其第一个变量是一个map的迭代器，第二个变量反应是否成功。</span></span><br><span class="line">Insert_Pair = Student.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">1</span>, <span class="string">&quot;student_one&quot;</span>));  </span><br><span class="line"><span class="keyword">if</span>(Insert_Pair.second == <span class="literal">true</span>)  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Insert Successfully&quot;</span>&lt;&lt;endl;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;Insert Failure&quot;</span>&lt;&lt;endl; </span><br><span class="line"><span class="comment">//另外，可以用size()方法得到map大小</span></span><br><span class="line"><span class="keyword">int</span> Size=Student.<span class="built_in">size</span>();</span><br></pre></td></tr></table></figure>
+<p>​	然后是遍历与查找，遍历有三种方法，前两种使用迭代器，这里先略过了，等以后有时间回来补充，另外是用数组，这是很显然的。查找也主要有三种方法，第一种，用count判定关键字是否出现，第二种，用<strong>find</strong>函数定位数据出现的位置，返回迭代器，第三种，利用lower_bound函数和lpper_bound函数得到查找关键字的上下界，如果两个迭代器相等，那么就没有这个关键字。</p>
+<p>​	然后用clear()函数清空map，用empty()函数判断是否为空。</p>
+<p>​	数据删除用erase()函数，下面给出例子，来源于网络</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span>  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">       map&lt;<span class="keyword">int</span>, string&gt; mapStudent;  </span><br><span class="line">       mapStudent.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">1</span>, <span class="string">&quot;student_one&quot;</span>));  </span><br><span class="line">       mapStudent.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">2</span>, <span class="string">&quot;student_two&quot;</span>));  </span><br><span class="line">       mapStudent.<span class="built_in">insert</span>(pair&lt;<span class="keyword">int</span>, string&gt;(<span class="number">3</span>, <span class="string">&quot;student_three&quot;</span>));  </span><br><span class="line">       <span class="comment">//如果你要演示输出效果，请选择以下的一种，你看到的效果会比较好  </span></span><br><span class="line">       <span class="comment">//如果要删除1,用迭代器删除  </span></span><br><span class="line">       map&lt;<span class="keyword">int</span>, string&gt;::iterator iter;  </span><br><span class="line">       iter = mapStudent.<span class="built_in">find</span>(<span class="number">1</span>);  </span><br><span class="line">       mapStudent.<span class="built_in">erase</span>(iter);  </span><br><span class="line">       <span class="comment">//如果要删除1，用关键字删除  </span></span><br><span class="line">       <span class="keyword">int</span> n = mapStudent.<span class="built_in">erase</span>(<span class="number">1</span>);<span class="comment">//如果删除了会返回1，否则返回0  </span></span><br><span class="line">       <span class="comment">//用迭代器，成片的删除  </span></span><br><span class="line">       <span class="comment">//一下代码把整个map清空  </span></span><br><span class="line">       mapStudent.<span class="built_in">earse</span>(mapStudent.<span class="built_in">begin</span>(), mapStudent.<span class="built_in">end</span>());  </span><br><span class="line">       <span class="comment">//成片删除要注意的是，也是STL的特性，删除区间是一个前闭后开的集合  </span></span><br><span class="line">     <span class="comment">//自个加上遍历代码，打印输出吧  </span></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>​	最后提一下map的排序，因为我们之前已经说过，map里面的数据有序，但是这是因为上面用到的关键字都是常用类型，本身支持小于号运算，但是如果关键字是自定义结构体，我们就需要重载小于号，来实现插入，如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagStudentInfo</span>  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">       <span class="keyword">int</span>      nID;  </span><br><span class="line">       string   strName;  </span><br><span class="line">       <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (tagStudentInfo <span class="keyword">const</span>&amp; _A) <span class="keyword">const</span>  </span><br><span class="line">       &#123;  </span><br><span class="line">              <span class="comment">//这个函数指定排序策略，按nID排序，如果nID相等的话，按strName排序  </span></span><br><span class="line">              <span class="keyword">if</span>(nID &lt; _A.nID)  <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">              <span class="keyword">if</span>(nID == _A.nID) <span class="keyword">return</span> strName.<span class="built_in">compare</span>(_A.strName) &lt; <span class="number">0</span>;  </span><br><span class="line">              <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       &#125;  </span><br><span class="line">&#125;StudentInfo, *PStudentInfo;  <span class="comment">//学生信息  </span></span><br></pre></td></tr></table></figure>
+<p>​	其实很多东西和vector是差不多的</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杨释钧
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yang-shijun.gitee.io/2021/11/30/C-%E5%AD%A6%E4%B9%A0/" title="C++学习">https://yang-shijun.gitee.io/2021/11/30/C-学习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://www.zhihu.com/people/yang-lao-er-25-83">
+          <span class="icon">
+            <i class="fab fa-zhihu"></i>
+          </span>
+
+          <span class="label">知乎</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343">
+          <span class="icon">
+            <i class="fa fa-book"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/ysjyx7">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/11/05/flex/" rel="prev" title="flex&bison">
+                  <i class="fa fa-chevron-left"></i> flex&bison
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">188k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+
+  
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/blog/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
