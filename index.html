@@ -394,10 +394,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-11-05 09:23:16 / 修改时间：10:35:47" itemprop="dateCreated datePublished" datetime="2021-11-05T09:23:16+08:00">2021-11-05</time>
+      <time title="创建时间：2021-11-05 09:23:16" itemprop="dateCreated datePublished" datetime="2021-11-05T09:23:16+08:00">2021-11-05</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 19:18:43" itemprop="dateModified" datetime="2021-11-30T19:18:43+08:00">2021-11-30</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -437,13 +443,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>大致工作模式</h1>
-<p>​	对于语法分析，主要包括词法分析和语法分析两个部分，前者用来将输入分割成一个个有意义的词块，即为<strong>记号（token）</strong>，后者用来确定这些记号彼此之间如何关联。</p>
-<p>​	例如表达式<strong>alpha=beta+gamma</strong>，词法分析器将其分割为alpha、=、beta、+、gamma、；这些记号，而语法分析确定了beta+gamma是一个表达式，其值被赋给alpha</p>
-<h1>词法分析flex</h1>
-<p>​	flex文件主要包含三个部分，每部分之间用**%%<strong>隔开，第一个部分包含声明和选项设置，其中</strong>%{<strong>和</strong>%}**之间的部分被照抄到C文件开头部分；第二个部分包含模式和对应的动作，模式一般用正则表达式描述，对应的动作就是C代码，为了防止出错，尽量放在大括号里；最后一部分也是C代码，是主程序。</p>
-<p>​	当程序需要一个记号的时候，会调用yylex()来读取一小部分的的输入然后返回相应的记号，这时候每个记号都由记号编号和记号值组成，记号编号是随机确定的，bison在创建语法分析器的时候自动从258开始指派</p>
-
+          <p>关于编译原理中的语法分析和词法分析的简要介绍</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2021/11/05/flex/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
