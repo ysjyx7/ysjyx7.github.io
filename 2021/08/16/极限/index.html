@@ -72,8 +72,8 @@
 <meta property="og:site_name" content="杨释钧的博客">
 <meta property="og:description" content="关于极限的定义和常见计算方法的复盘，以及相关的例题的解答">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yang-shijun.gitee.io/blog/images/例五.jpg">
-<meta property="og:image" content="https://yang-shijun.gitee.io/blog/images/例11.jpg">
+<meta property="og:image" content="https://yang-shijun.gitee.io/blog/images%5C%E4%BE%8B%E4%BA%94.jpg">
+<meta property="og:image" content="https://yang-shijun.gitee.io/blog/images%5C%E4%BE%8B11.jpg">
 <meta property="article:published_time" content="2021-08-16T14:03:00.000Z">
 <meta property="article:modified_time" content="2021-08-17T11:02:41.184Z">
 <meta property="article:author" content="杨释钧">
@@ -81,7 +81,7 @@
 <meta property="article:tag" content="极限">
 <meta property="article:tag" content="微分学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yang-shijun.gitee.io/blog/images/例五.jpg">
+<meta name="twitter:image" content="https://yang-shijun.gitee.io/blog/images%5C%E4%BE%8B%E4%BA%94.jpg">
 
 
 <link rel="canonical" href="https://yang-shijun.gitee.io/2021/08/16/%E6%9E%81%E9%99%90/">
@@ -197,7 +197,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%AF%BC"><span class="nav-number">1.1.</span> <span class="nav-text">前导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B8%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">极限的典型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">典型例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD"><span class="nav-number">2.</span> <span class="nav-text">连续</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98-1"><span class="nav-number">2.2.</span> <span class="nav-text">典型例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">导数</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%AF%BC"><span class="nav-number">1.1.</span> <span class="nav-text">前导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E7%9A%84%E5%85%B8%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">极限的典型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">典型例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">连续</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98-v2"><span class="nav-number">2.2.</span> <span class="nav-text">典型例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">导数</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -252,6 +252,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -365,90 +366,123 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h1><h2 id="前导"><a href="#前导" class="headerlink" title="前导"></a>前导</h2><ol>
+        <h1>极限</h1>
+<h2 id="前导">前导</h2>
+<ol>
 <li>不为计算而计算，很多时候是为了便于分析，比如定义$e=\lim_{n\to +\infty}{\sum_{i=1}^n\frac{1}{n!}}$​</li>
-<li>要注意的是抓住主要矛盾，比如计算极限$\lim_{n \to +\infty} \sum_{k=1}^{n}\frac{k^n}{n^n}$</li>
+<li>要注意的是抓住主要矛盾，比如计算极限$\lim_{n \to +\infty} \sum_{k=1}<sup>{n}\frac{k</sup>n}{n^n}$</li>
 </ol>
-<h2 id="极限的典型方法"><a href="#极限的典型方法" class="headerlink" title="极限的典型方法"></a>极限的典型方法</h2><ol>
-<li><p>定义，即$\epsilon-\delta$语言</p>
+<h2 id="极限的典型方法">极限的典型方法</h2>
+<ol>
+<li>
+<p>定义，即$\epsilon-\delta$语言</p>
 </li>
-<li><p>四则运算</p>
+<li>
+<p>四则运算</p>
 </li>
-<li><p>等价无穷小替换（两个重要极限）</p>
+<li>
+<p>等价无穷小替换（两个重要极限）</p>
 </li>
-<li><p>L’ Hospital法则，注意使用条件</p>
+<li>
+<p>L’ Hospital法则，注意使用条件</p>
 </li>
-<li><p>夹逼定理</p>
+<li>
+<p>夹逼定理</p>
 </li>
-<li><p>单调有界收敛定理</p>
+<li>
+<p>单调有界收敛定理</p>
 </li>
-<li><p>Taylor展开</p>
+<li>
+<p>Taylor展开</p>
 </li>
-<li><p>Stolz定理</p>
+<li>
+<p>Stolz定理</p>
 <p>设${x_n}$严格单调增加，且$\lim_{n \to \infty}x_n=+\infty$,若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则有$\lim_{n \to \infty}\frac{y_n}{x_n}=a$</p>
 <p>设$x_n$严格单调，且$\lim_{n \to \infty}x_n=0,\lim_{n \to\infty}y_n=0$，若$\lim_{n\to\infty}\frac{y_{n+1}-y_n}{x_{n+1}-x_n}=a$，则$\lim_{n\to\infty}\frac{y_n}{x_n}=a$</p>
 </li>
 </ol>
-<h2 id="典型例题"><a href="#典型例题" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
-<li><p>主要比较难以看出来的就是使用夹逼准则的求和极限，这时候大多数时候都需要通过恒等变形和放缩来利用夹逼准则转换成黎曼和，如$\lim_{n \to +\infty} \sum_{k=1}^n \frac{a^\frac{k}{n}}{n+(a-1)k^{-1}}$</p>
-</li>
-<li><p>当含有三角函数和积分时，最佳的做法应该是根据三角函数的有界性将积分做掉，例如$\lim_{x \to+\infty}\sqrt[3]{x}\int_x^{x+1}\frac{sint}{\sqrt[]{t+cost}}dt$</p>
-</li>
-<li><p>对于极限$\lim_{n \to \infty}\sum_{k=0}^n\frac{1}{n+k}$​，有多种不同的做法，这里主要想提一下欧拉常数，即$\lim_{n\to\infty}\sum_{k=1}^n\frac{1}{k}-lnn=\gamma_n$，其中$\lim_{n \to\infty}\gamma_n=C$</p>
-</li>
-<li><p>PPT31页值得再看</p>
-</li>
-<li><p>与积分相结合的极限题目</p>
+<h2 id="典型例题">典型例题</h2>
 <ol>
-<li><p>通过观察转换成Riemann和，下面给几个例子</p>
-<p>​    $\lim\sum_{k=1}^{n-1}(1+\sqrt[]\frac{k}{n})sin\frac{k\pi}{n^2}$</p>
+<li>
+<p>主要比较难以看出来的就是使用夹逼准则的求和极限，这时候大多数时候都需要通过恒等变形和放缩来利用夹逼准则转换成黎曼和，如$\lim_{n \to +\infty} \sum_{k=1}^n \frac{a<sup>\frac{k}{n}}{n+(a-1)k</sup>{-1}}$</p>
 </li>
-<li><p>利用积分中值定理和微分中值定理进行化简，下面给一个很经典的例子，即</p>
+<li>
+<p>当含有三角函数和积分时，最佳的做法应该是根据三角函数的有界性将积分做掉，例如$\lim_{x \to+\infty}\sqrt[3]{x}\int_x^{x+1}\frac{sint}{\sqrt[]{t+cost}}dt$</p>
+</li>
+<li>
+<p>对于极限$\lim_{n \to \infty}\sum_{k=0}<sup>n\frac{1}{n+k}$​，有多种不同的做法，这里主要想提一下欧拉常数，即$\lim_{n\to\infty}\sum_{k=1}</sup>n\frac{1}{k}-lnn=\gamma_n$，其中$\lim_{n \to\infty}\gamma_n=C$</p>
+</li>
+<li>
+<p>PPT31页值得再看</p>
+</li>
+<li>
+<p>与积分相结合的极限题目</p>
 <ol>
-<li>设f(x)在[0,1]上有连续导数，f(0)=0,f(1)=1,证明:<br>$\lim_{n \to \infty}n(\int_{0}^{1}f(x)dx-\frac{1}{n}\sum_{k=1}^{n}f(\frac{k}{n}))$</li>
+<li>
+<p>通过观察转换成Riemann和，下面给几个例子</p>
+<p>​	$\lim\sum_{k=1}<sup>{n-1}(1+\sqrt[]\frac{k}{n})sin\frac{k\pi}{n</sup>2}$</p>
+</li>
+<li>
+<p>利用积分中值定理和微分中值定理进行化简，下面给一个很经典的例子，即</p>
+<ol>
+<li>设f(x)在[0,1]上有连续导数，f(0)=0,f(1)=1,证明:<br>
+$\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\frac{k}{n}))$</li>
 </ol>
 </li>
-<li><p>利用黎曼和进行转化</p>
+<li>
+<p>利用黎曼和进行转化</p>
 <ol>
-<li><img src="/blog/images/例五.jpg" alt></li>
+<li><img src="/blog/images%5C%E4%BE%8B%E4%BA%94.jpg" alt></li>
 </ol>
 </li>
-<li><p>在存在k之类和三角函数时可以考虑求递推式，如求$\lim_{x \to 0^+}\frac{\int_0^xsin^k\frac{1}{t}dt}{x},k=1,2,…$</p>
+<li>
+<p>在存在k之类和三角函数时可以考虑求递推式，如求$\lim_{x \to 0<sup>+}\frac{\int_0</sup>xsin^k\frac{1}{t}dt}{x},k=1,2,…$</p>
 </li>
-<li><p>然后就是一道代数变形不太好想的题目，即$\lim_{n \to \infty}\sqrt[n+1]{(n+1)!}-\sqrt[n]{n!}$</p>
+<li>
+<p>然后就是一道代数变形不太好想的题目，即$\lim_{n \to \infty}\sqrt[n+1]{(n+1)!}-\sqrt[n]{n!}$</p>
 </li>
 </ol>
 </li>
-<li><p>单调有界定理队函数和数列统统适用</p>
+<li>
+<p>单调有界定理队函数和数列统统适用</p>
 </li>
-<li><p>泰勒展开式是一种非常重要的方法，或许可以看作是等价无穷小，这方面的例题很多，需要注意的是$tanx$和$(1+x)^\alpha$的泰勒展开式，将其转化成在0附近，就可以展开，下面给出几个题</p>
+<li>
+<p>泰勒展开式是一种非常重要的方法，或许可以看作是等价无穷小，这方面的例题很多，需要注意的是$tanx$和$(1+x)^\alpha$的泰勒展开式，将其转化成在0附近，就可以展开，下面给出几个题</p>
 <ol>
-<li>$\lim_{x \to0}\frac{(1+x)^\frac{2}{x}-e^2(1-ln(1+x))}{x}$，该题目需要注意的是在有减法的时候不要随意用等价无穷小！尽量先用泰勒公式展开</li>
+<li>$\lim_{x \to0}\frac{(1+x)<sup>\frac{2}{x}-e</sup>2(1-ln(1+x))}{x}$，该题目需要注意的是在有减法的时候不要随意用等价无穷小！尽量先用泰勒公式展开</li>
 </ol>
 </li>
-<li><p>Stolz定理</p>
+<li>
+<p>Stolz定理</p>
 <p>使用stolz定理的关键就在于构造出满足条件的式子，这里PPT上给出的题目基本都是谢惠民上的题目，此处不再赘述</p>
 </li>
 </ol>
 <hr>
-<h1 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h1><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol>
+<h1>连续</h1>
+<h2 id="性质">性质</h2>
+<ol>
 <li>介值性</li>
 <li>最值性</li>
 </ol>
-<h2 id="典型例题-1"><a href="#典型例题-1" class="headerlink" title="典型例题"></a>典型例题</h2><ol>
+<h2 id="典型例题-v2">典型例题</h2>
+<ol>
 <li>这里的典型例题大多是利用反证法导出矛盾</li>
 </ol>
 <hr>
-<h1 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h1><ol>
-<li><p>导数，单侧导数，微分，偏导数，全微分，方向导数</p>
+<h1>导数</h1>
+<ol>
+<li>
+<p>导数，单侧导数，微分，偏导数，全微分，方向导数</p>
 </li>
-<li><p>高阶导数的计算，主要利用Leibniz求导公式</p>
+<li>
+<p>高阶导数的计算，主要利用Leibniz求导公式</p>
 </li>
-<li><p>这里就贴几道让我印象深刻的题目，</p>
-<p>已知$y=\frac{2x}{x^2+1}$，求$y^{(n)}$</p>
-<p>已知$y=\frac{x^n}{(x+1)^2(x+2)^2}$，求$y^{(n)}$</p>
-<p>已知$y=(arcsinx)^2$，求$y^{(n)}(0)$</p>
-<p><img src="/blog/images/例11.jpg" alt></p>
+<li>
+<p>这里就贴几道让我印象深刻的题目，</p>
+<p>已知$y=\frac{2x}{x<sup>2+1}$，求$y</sup>{(n)}$</p>
+<p>已知$y=\frac{x<sup>n}{(x+1)</sup>2(x+2)<sup>2}$，求$y</sup>{(n)}$</p>
+<p>已知$y=(arcsinx)<sup>2$，求$y</sup>{(n)}(0)$</p>
+<p><img src="/blog/images%5C%E4%BE%8B11.jpg" alt></p>
 </li>
 </ol>
 
@@ -581,14 +615,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">188k</span>
+    <span title="站点总字数">208k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">3:09</span>
   </span>
 </div>
 <div class="busuanzi-count">

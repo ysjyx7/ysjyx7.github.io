@@ -191,7 +191,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CHAPTER-1"><span class="nav-number">2.</span> <span class="nav-text">CHAPTER 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.</span> <span class="nav-text">第一个例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%A0%B7%E4%BE%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">解决样例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.1.4.</span> <span class="nav-text">增加初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.6.</span> <span class="nav-text">时间属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">CHAPTER 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="nav-number">2.1.</span> <span class="nav-text">第一个例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%A0%B7%E4%BE%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">解决样例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">2.1.3.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.1.4.</span> <span class="nav-text">增加初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.6.</span> <span class="nav-text">时间属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -246,6 +246,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -359,60 +360,73 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>​    在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
-<p>​    这样的错误叫做<strong>“specification errors”</strong>，我们可以用一些特殊的语言去找到这种错误，比如<strong>“TLA+”</strong>。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
-<p>​    TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
-<h1 id="CHAPTER-1"><a href="#CHAPTER-1" class="headerlink" title="CHAPTER 1"></a>CHAPTER 1</h1><h2 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>​    两个人在银行有账户，每个账户中有0￥或更多￥，现在这个银行想要添加“电汇”功能，可以相互转账。要求如下：</p>
-<pre><code> 1. 每条电汇必须在银行中的两个不同账户间进行，至少一美元
- 2. 成功的话从发送方中扣除并添加到接收方
- 3. 失败的话两个账户不变
- 4. 电汇可能不会导致出现账户负值
- 5. 多条线路可能同时发生
-</code></pre><p>​    算法应满足以上所有要求</p>
-<h3 id="解决样例"><a href="#解决样例" class="headerlink" title="解决样例"></a>解决样例</h3><p>​    要使用TLA+，首先需要创建新的文件，即<strong>File-&gt;Open Spec-&gt;Add New Spec</strong></p>
-<p>​    然后我们需要保证模块名称和文件名称匹配，否则会报错。TLC    默认只识别最上方横线和最下方双横线之间的内容</p>
-<p>​    接下来是一个比较重要的TLA+的关键字，即<strong>EXTENDS</strong>，由于在这个场景中我们需要进行数字运算，所以导入<strong>Integers</strong></p>
+        <h1>简要介绍</h1>
+<p>​	在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
+<p>​	这样的错误叫做**“specification errors”<strong>，我们可以用一些特殊的语言去找到这种错误，比如</strong>&quot;TLA+&quot;**。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
+<p>​	TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
+<h1>CHAPTER 1</h1>
+<h2 id="第一个例子">第一个例子</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>​	两个人在银行有账户，每个账户中有0￥或更多￥，现在这个银行想要添加“电汇”功能，可以相互转账。要求如下：</p>
+<pre><code>1. 每条电汇必须在银行中的两个不同账户间进行，至少一美元
+2. 成功的话从发送方中扣除并添加到接收方
+3. 失败的话两个账户不变
+4. 电汇可能不会导致出现账户负值
+5. 多条线路可能同时发生
+</code></pre>
+<p>​    算法应满足以上所有要求</p>
+<h3 id="解决样例">解决样例</h3>
+<p>​	要使用TLA+，首先需要创建新的文件，即<strong>File-&gt;Open Spec-&gt;Add New Spec</strong></p>
+<p>​	然后我们需要保证模块名称和文件名称匹配，否则会报错。TLC	默认只识别最上方横线和最下方双横线之间的内容</p>
+<p>​	接下来是一个比较重要的TLA+的关键字，即<strong>EXTENDS</strong>，由于在这个场景中我们需要进行数字运算，所以导入<strong>Integers</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Integers  *\单行注释用这个</span><br><span class="line">**注释块用这个**</span><br><span class="line">**导入块之后可以继续写我们的算法框架**</span><br><span class="line">(*--algorithm wire</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    然后我们来进一步具体化，从题目中很显然可以看到两个变量，即人和他们的账户，所以我们需要声明变量，这里假定每个人都有五块钱</p>
+<p>​	然后我们来进一步具体化，从题目中很显然可以看到两个变量，即人和他们的账户，所以我们需要声明变量，这里假定每个人都有五块钱</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">	variables</span><br><span class="line">		people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[p \in people |-&gt; 5];</span><br><span class="line">		**等同于acc[&quot;alice&quot;]=acc[&quot;bob&quot;]=5**</span><br><span class="line">begin</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    现在来解释一下上面的代码，people是声明的一个集合，没什么好说的。对于acc，这是一个<strong>函数</strong>，但是不等同于传统的函数，它更接近于一个字典，对于给出的集合中的每一个值，都有一个相应的输出值，在这里的集合是people，元素是p，类似于python中的{“alice”:5,”bob”:5}</p>
-<p>​    接下来我们继续去搭建这条线，可以继续指定变量，最后我们需要的就是设置一些不变量，不管在什么时候都需要为真，这里的”==”是一个<strong>操作</strong>，而不是指的比较，而对于这个常量的表述，就满足了我们上面的所有账户的值非负的要求</p>
+<p>​	现在来解释一下上面的代码，people是声明的一个集合，没什么好说的。对于acc，这是一个<strong>函数</strong>，但是不等同于传统的函数，它更接近于一个字典，对于给出的集合中的每一个值，都有一个相应的输出值，在这里的集合是people，元素是p，类似于python中的{“alice”:5,“bob”:5}</p>
+<p>​	接下来我们继续去搭建这条线，可以继续指定变量，最后我们需要的就是设置一些不变量，不管在什么时候都需要为真，这里的&quot;==&quot;是一个<strong>操作</strong>，而不是指的比较，而对于这个常量的表述，就满足了我们上面的所有账户的值非负的要求</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">variables</span><br><span class="line">	peoples=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">	sender=&quot;alice&quot;,</span><br><span class="line">	receiver=&quot;bob&quot;,</span><br><span class="line">	amount=3;</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: acc[p] &gt;= 0</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
-<p>​    现在我们定义好的变量和常量，我们接下来需要在begin和end中间添加相关的算法</p>
+<p>​	现在我们定义好的变量和常量，我们接下来需要在begin和end中间添加相关的算法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender] := acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver] := acc[receiver]+amount;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>​    现在进行一些对上面的解释，如果是第一次给变量分配一个值，需要用=，如果变量已经存在而需要给他分配一个新值，则用:=。上面的Withdraw和Deposit是两个<strong>标签</strong>，这代表着他们之中的部分会同时发生</p>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>​    这里给出的验证方法是通过验证不变量是否正确开始的，我们需要创建一个model，即在<strong>TLC Model Checker</strong>中找到<strong>New Model</strong>，然后在页面的<strong>Invariants</strong>中添加新的核查量即可，接着就可以运行了，由于我们的问题不算复杂，一共经历了如下的过程：</p>
+<p>​	现在进行一些对上面的解释，如果是第一次给变量分配一个值，需要用=，如果变量已经存在而需要给他分配一个新值，则用:=。上面的Withdraw和Deposit是两个<strong>标签</strong>，这代表着他们之中的部分会同时发生</p>
+<h3 id="验证">验证</h3>
+<p>​	这里给出的验证方法是通过验证不变量是否正确开始的，我们需要创建一个model，即在<strong>TLC Model Checker</strong>中找到<strong>New Model</strong>，然后在页面的<strong>Invariants</strong>中添加新的核查量即可，接着就可以运行了，由于我们的问题不算复杂，一共经历了如下的过程：</p>
 <pre><code>1. 选择一个可能的初始状态，现在只有一种
 2. 检查初状态的不变量的值，然后如果满足就继续执行**Withdraw**步骤
 3. 检查不变量的值，为真就继续执行
 4. 进行**Deposit**步骤
 5. 检查不变量的值，如果满足的话，就结束
-</code></pre><p>​    如果在这个过程中出现任何错误的话，就会直接跳出程序</p>
-<h3 id="增加初始化"><a href="#增加初始化" class="headerlink" title="增加初始化"></a>增加初始化</h3><p>​    上面的例子显然太简单了，只能有一种对应的输入，我们来增加一些更多的选择</p>
+</code></pre>
+<p>​    如果在这个过程中出现任何错误的话，就会直接跳出程序</p>
+<h3 id="增加初始化">增加初始化</h3>
+<p>​	上面的例子显然太简单了，只能有一种对应的输入，我们来增加一些更多的选择</p>
 <ol>
-<li><p>TLA+使用a..b来表示a到b的整数，也就是说可以对上述代码中的amount做如下改变，显然这个时候再次运行model的话会报错</p>
+<li>
+<p>TLA+使用a…b来表示a到b的整数，也就是说可以对上述代码中的amount做如下改变，显然这个时候再次运行model的话会报错</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amount \in 1..6;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>当然我们可以通过如下的改动来使他不报错</p>
+<li>
+<p>当然我们可以通过如下的改动来使他不报错</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amount \in 1..acc[sender];</span><br></pre></td></tr></table></figure>
 <p>但是这样明显违背了商家的本意，我们可以假设这是可以接受的，进行更改并确认模型再次通过</p>
 </li>
 </ol>
-<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>​    在Pluscal中，每一个算法在他自己独特的进程中同时发生，每一个进程有着他自己的变量和代码，然后就可以根据下面的方法创建多进程</p>
+<h3 id="多进程">多进程</h3>
+<p>​	在Pluscal中，每一个算法在他自己独特的进程中同时发生，每一个进程有着他自己的变量和代码，然后就可以根据下面的方法创建多进程</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS Intergers</span><br><span class="line">(*--algorithm wire</span><br><span class="line">variables</span><br><span class="line">	people=&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">	acc=[p \in people |-&gt; 5];</span><br><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people: a[p]&gt;=0</span><br><span class="line">end define;</span><br><span class="line">process Wire \in 1..2</span><br><span class="line">	variables</span><br><span class="line">		sender=&quot;alice&quot;,</span><br><span class="line">		receiver=&quot;bob&quot;,</span><br><span class="line">		amount \in 1..acc[sender];</span><br><span class="line">begin</span><br><span class="line">	Withdraw:</span><br><span class="line">		acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br></pre></td></tr></table></figure>
-<p>​    如果我们重新翻译重新运行上述程序，仍然会报错，由于多进程的缘故，在执行了两次Withdraw后，仍然有可能出错，也就是我们只需要在执行之前做一个判断即可，这就是<strong>if</strong>语句</p>
+<p>​	如果我们重新翻译重新运行上述程序，仍然会报错，由于多进程的缘故，在执行了两次Withdraw后，仍然有可能出错，也就是我们只需要在执行之前做一个判断即可，这就是<strong>if</strong>语句</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then</span><br><span class="line">    	**algorithm**</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    但是这样竟然仍然会报错！这个时候的错误似乎没有那么明显，我们需要在Error-Trace中找到错误原因</p>
-<p>​    打开Error-Trace，他直接从每一步开始给出了错误的原因，这里的bug是因为两个进程同时发生导致的，我们可以将withdraw和check放在一起来防止这种错误的发生</p>
+<p>​	但是这样竟然仍然会报错！这个时候的错误似乎没有那么明显，我们需要在Error-Trace中找到错误原因</p>
+<p>​	打开Error-Trace，他直接从每一步开始给出了错误的原因，这里的bug是因为两个进程同时发生导致的，我们可以将withdraw和check放在一起来防止这种错误的发生</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin</span><br><span class="line">CheckFunds:</span><br><span class="line">	if amount&lt;=acc[sender] then acc[sender]:=acc[sender]-amount;</span><br><span class="line">	Deposit:</span><br><span class="line">		acc[receiver]:=acc[receiver]-amount;</span><br><span class="line">    end if;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    这里简单解释一下，对于多进程的同时性，是值得两个进程在同时完成了某一步，在上面那种报错的写法后，第一个进程进行完check后，准备进行withdraw，这个时候acc[sender]的值未改变，所以第二个进程的check也没问题，这样就出错了。而在上述正确的写法中，在进程一的check步骤结束后acc[sender]已经发生改变，第二个进程就会报错</p>
-<p>​    一定要注意理解什么叫做多进程与他的并发性！</p>
-<h3 id="时间属性"><a href="#时间属性" class="headerlink" title="时间属性"></a>时间属性</h3><p>​    现在我们来完成接下来的要求，即如果电汇失败，账户不会改变。我们容易知道有一个更弱的条件，即电汇前后账户总额保持不变。这个不变量和之前的NoOverdrafts不同，他是一个<strong>时间属性</strong></p>
-<p>​    不变量检查是检查每个状态是否有效，而时间属性检查的是算法的每个可能的生命周期，从开始到结束，都遵守所需要的某个规则，我们加上这一点</p>
+<p>​	这里简单解释一下，对于多进程的同时性，是值得两个进程在同时完成了某一步，在上面那种报错的写法后，第一个进程进行完check后，准备进行withdraw，这个时候acc[sender]的值未改变，所以第二个进程的check也没问题，这样就出错了。而在上述正确的写法中，在进程一的check步骤结束后acc[sender]已经发生改变，第二个进程就会报错</p>
+<p>​	一定要注意理解什么叫做多进程与他的并发性！</p>
+<h3 id="时间属性">时间属性</h3>
+<p>​	现在我们来完成接下来的要求，即如果电汇失败，账户不会改变。我们容易知道有一个更弱的条件，即电汇前后账户总额保持不变。这个不变量和之前的NoOverdrafts不同，他是一个<strong>时间属性</strong></p>
+<p>​	不变量检查是检查每个状态是否有效，而时间属性检查的是算法的每个可能的生命周期，从开始到结束，都遵守所需要的某个规则，我们加上这一点</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define</span><br><span class="line">	NoOverdrafts == \A p \in people:acc[p]&gt;=0</span><br><span class="line">	EventuallyConsistent == &lt;&gt;[](acc[&quot;alice&quot;]+acc[&quot;bob&quot;]=10)</span><br><span class="line">end define;</span><br></pre></td></tr></table></figure>
-<p>​    上面的<strong>EventuallyConsistent</strong>和NoOverdrafts差不多，但是以<strong>&lt;&gt;[]</strong>开始，它是一种时间属性的算子，意味着不管算法是怎样的，在最后所给的等式必须为真，但是中间过程的真假是无所谓的，然后我们可以在<strong>Model</strong>中继续加入时间属性来进行验证</p>
-<p>​    运行一下，会发现程序报错，整体的流程上没有什么错误，但是在error-trace的最后有了标签<strong>Stuttering</strong>，这个标签代表着这个过程只是简单地停止了，没有东西阻止他继续应该进行的deposit，他只是自己不再尝试了，<strong><del>这看起来好牵强</del></strong>，但是事实上是有迹可循的，有可能是服务器在步骤之间崩溃，有可能是停电了，也有可能发生了其他的不可预知的情况，这些情况都是以<strong>Stuttering</strong>状态呈现的</p>
-<p>​    然而，对于这种错误，很难有什么比较好的方法去修正，我们可以从以下的几个方面考虑</p>
+<p>​	上面的<strong>EventuallyConsistent</strong>和NoOverdrafts差不多，但是以**&lt;&gt;[]<strong>开始，它是一种时间属性的算子，意味着不管算法是怎样的，在最后所给的等式必须为真，但是中间过程的真假是无所谓的，然后我们可以在</strong>Model**中继续加入时间属性来进行验证</p>
+<p>​	运行一下，会发现程序报错，整体的流程上没有什么错误，但是在error-trace的最后有了标签<strong>Stuttering</strong>，这个标签代表着这个过程只是简单地停止了，没有东西阻止他继续应该进行的deposit，他只是自己不再尝试了，<strong><s>这看起来好牵强</s></strong>，但是事实上是有迹可循的，有可能是服务器在步骤之间崩溃，有可能是停电了，也有可能发生了其他的不可预知的情况，这些情况都是以<strong>Stuttering</strong>状态呈现的</p>
+<p>​	然而，对于这种错误，很难有什么比较好的方法去修正，我们可以从以下的几个方面考虑</p>
 <ol>
 <li>我们可以将check、withdraw、deposit合成为一个步骤，减少他们中间的步骤的时间跨度，防止在步骤之间崩溃，但是这导致我们的流程中只有一个标签，实际的运行时间为0，违反了电汇占用任意时间的核心要求</li>
 <li>我们可以明确告诉TLA+，我们的程序不能断断续续，这样做的话我们的spec会通过，但是我们不能实现它，服务器仍会故障</li>
@@ -421,7 +435,8 @@
 <li>放宽NoOverdrafts要求，事实上在很多地方都是这样做的</li>
 </ol>
 <p>​    很显然更改这样的一个error是非常复杂的，但是目前这里不作为我们的重点考虑</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这一章从一个简单的样例入手，讲述了TLA+的基本概念和一些简单地语法，以及对于model的使用，由于只是一个引入，所以不用花费太多的精力，重点就在于一些全新的概念，另外就是对于多进程大致有了一个印象</p>
+<h3 id="总结">总结</h3>
+<p>​	这一章从一个简单的样例入手，讲述了TLA+的基本概念和一些简单地语法，以及对于model的使用，由于只是一个引入，所以不用花费太多的精力，重点就在于一些全新的概念，另外就是对于多进程大致有了一个印象</p>
 
     </div>
 
@@ -547,14 +562,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">188k</span>
+    <span title="站点总字数">208k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">3:09</span>
   </span>
 </div>
 <div class="busuanzi-count">

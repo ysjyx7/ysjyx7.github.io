@@ -191,7 +191,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Termination"><span class="nav-number">2.</span> <span class="nav-text">Termination</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stuttering"><span class="nav-number">2.1.</span> <span class="nav-text">Stuttering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fairness%EF%BC%8CWeak-and-Strong"><span class="nav-number">2.2.</span> <span class="nav-text">Fairness，Weak and Strong</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Temporal-Operators"><span class="nav-number">3.</span> <span class="nav-text">The Temporal Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-gt"><span class="nav-number">3.2.</span> <span class="nav-text">&lt;&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt"><span class="nav-number">3.3.</span> <span class="nav-text">~&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lt-gt-and-lt-gt"><span class="nav-number">3.4.</span> <span class="nav-text">[]&lt;&gt; and &lt;&gt;[]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Limitations-of-Liveness"><span class="nav-number">4.</span> <span class="nav-text">Limitations of Liveness</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example"><span class="nav-number">5.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Termination</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stuttering"><span class="nav-number">2.1.</span> <span class="nav-text">Stuttering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fairness%EF%BC%8CWeak-and-Strong"><span class="nav-number">2.2.</span> <span class="nav-text">Fairness，Weak and Strong</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">The Temporal Operators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-v2"><span class="nav-number">3.2.</span> <span class="nav-text">&lt;&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-v3"><span class="nav-number">3.3.</span> <span class="nav-text">~&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#and"><span class="nav-number">3.4.</span> <span class="nav-text">[]&lt;&gt; and &lt;&gt;[]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Limitations of Liveness</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -246,6 +246,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -353,67 +354,79 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    到目前为止我们测试的是在一个行为中的任何情况下始终为真的不变量（<strong>invariants</strong>），接下来将会介绍时间属性（<strong>temporal properties</strong>），时间属性是关于行为自身的一些陈述，它给出了更多的可以用来检测的种类，下面给出一些例子</p>
+        <h1>简述</h1>
+<p>​	到目前为止我们测试的是在一个行为中的任何情况下始终为真的不变量（<strong>invariants</strong>），接下来将会介绍时间属性（<strong>temporal properties</strong>），时间属性是关于行为自身的一些陈述，它给出了更多的可以用来检测的种类，下面给出一些例子</p>
 <ol>
 <li>算法是否始终有效？</li>
 <li>队列中的所有信息都会被处理吗？</li>
 <li>如果系统被扰乱，它能随着时间到达稳定状态吗？</li>
 <li>数据库最终是否兼容？</li>
 </ol>
-<p>​    时间属性更加有力但是也更难被满足，系统给出了关于时间属性的新的错误编码</p>
-<h1 id="Termination"><a href="#Termination" class="headerlink" title="Termination"></a>Termination</h1><p>​    这是最简单的一种时间属性，它要求算法最终必须结束，如果算法在过程中出错或者进入死循环，就会不满足这一点。下面给出一个例子来详细说明</p>
-<p>​    现在在交通灯前有一个车，系统中有两个过程，交通灯轮流为红色和绿色，下面给出Pluscal程序</p>
+<p>​	时间属性更加有力但是也更难被满足，系统给出了关于时间属性的新的错误编码</p>
+<h1>Termination</h1>
+<p>​	这是最简单的一种时间属性，它要求算法最终必须结束，如果算法在过程中出错或者进入死循环，就会不满足这一点。下面给出一个例子来详细说明</p>
+<p>​	现在在交通灯前有一个车，系统中有两个过程，交通灯轮流为红色和绿色，下面给出Pluscal程序</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---- MODULE traffic -----</span><br><span class="line">NextColor(c) == CASE c = &quot;red&quot; -&gt; &quot;green&quot;</span><br><span class="line">                  [] c = &quot;green&quot; -&gt; &quot;red&quot;</span><br><span class="line">(*--algorithm traffic</span><br><span class="line">variables</span><br><span class="line">    at_light = TRUE;</span><br><span class="line">    light = &quot;red&quot;;</span><br><span class="line">process light = &quot;light&quot;</span><br><span class="line">begin</span><br><span class="line">    Cycle:</span><br><span class="line">        while at_light do</span><br><span class="line">            light := NextColor(light);</span><br><span class="line">        end while;</span><br><span class="line">end process;</span><br><span class="line">process car = &quot;car&quot;</span><br><span class="line">begin</span><br><span class="line">    Drive:</span><br><span class="line">        when light = &quot;green&quot;;</span><br><span class="line">        at_light := FALSE;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*)</span><br><span class="line">====</span><br></pre></td></tr></table></figure>
-<p>​    如果不添加时间属性的话，会发现程序运行的非常顺利，然而一旦添加Termination属性，就会发现程序报错，也就是我们前面提到过的<strong>Stuttering</strong></p>
-<h2 id="Stuttering"><a href="#Stuttering" class="headerlink" title="Stuttering"></a>Stuttering</h2><p>​    先说一下TLA+，TLA+的全程是<strong>Temporal Logic of Actions</strong>，即行为的时间逻辑，TLC运作的过程也很简单，即从所有可以运行的标签中选择一个可以运行的去执行。然而，如果没有任何一个标签可以去执行，我们就叫它<strong>stuttering</strong>，在大多数情况，如果没有行为发生，所有事物和之前的相同，stuttering不会起什么作用，但是有一个特殊的情况，即spec一直保持着stuttering的情况，并且不会采取任何的行为，我们认为spec在时间上被冻结了</p>
-<p>​    到目前为止，stuttering并不重要。我们所有的不变量检查都是安全检验，即保证模型不会到达无效状态。但是stuttering是始终在有效状态上的，所以TLC没有理由去尝试stuttering，大多数时间属性所做的是活性检验（<strong>liveness checks</strong>），这保证了系统最终是我期望的形态。在这里，TLC不会停止核查Cycle，所以spec始终不会终止，进而造成了TLC</p>
-<p>​    有时候Stuttering也是有用的，它可以1用来代表服务器崩溃、进程超时或等待的信号永远不会到来。最好TLA+默认一切都有可能崩溃，这样可以检查出更多的错误，如果需要排除stuttering，需要加入fairness</p>
-<p><strong><em>这里说一下stuttering和deadlock的区别，两者定义看起来差不多，似乎都是spec没有可做的行为了，但是其实差别很大，因为导致这种情况出现的原因不同，deadlock是由于await命令阻止了所有进程有下一步行为，但是stuttering是可以有的，但是所产生的行为对前后状态没有区别</em></strong></p>
-<h2 id="Fairness，Weak-and-Strong"><a href="#Fairness，Weak-and-Strong" class="headerlink" title="Fairness，Weak and Strong"></a>Fairness，Weak and Strong</h2><p>​    weak和strong是两种不同的fairness。</p>
-<p>​    weakly fair action指的是如果它被（连续）启用，那么最终一定会发生，我们可以通过定义过程来让其中所有的标签都是weak，如下</p>
+<p>​	如果不添加时间属性的话，会发现程序运行的非常顺利，然而一旦添加Termination属性，就会发现程序报错，也就是我们前面提到过的<strong>Stuttering</strong></p>
+<h2 id="Stuttering">Stuttering</h2>
+<p>​	先说一下TLA+，TLA+的全程是<strong>Temporal Logic of Actions</strong>，即行为的时间逻辑，TLC运作的过程也很简单，即从所有可以运行的标签中选择一个可以运行的去执行。然而，如果没有任何一个标签可以去执行，我们就叫它<strong>stuttering</strong>，在大多数情况，如果没有行为发生，所有事物和之前的相同，stuttering不会起什么作用，但是有一个特殊的情况，即spec一直保持着stuttering的情况，并且不会采取任何的行为，我们认为spec在时间上被冻结了</p>
+<p>​	到目前为止，stuttering并不重要。我们所有的不变量检查都是安全检验，即保证模型不会到达无效状态。但是stuttering是始终在有效状态上的，所以TLC没有理由去尝试stuttering，大多数时间属性所做的是活性检验（<strong>liveness checks</strong>），这保证了系统最终是我期望的形态。在这里，TLC不会停止核查Cycle，所以spec始终不会终止，进而造成了TLC</p>
+<p>​	有时候Stuttering也是有用的，它可以1用来代表服务器崩溃、进程超时或等待的信号永远不会到来。最好TLA+默认一切都有可能崩溃，这样可以检查出更多的错误，如果需要排除stuttering，需要加入fairness</p>
+<p><em><strong>这里说一下stuttering和deadlock的区别，两者定义看起来差不多，似乎都是spec没有可做的行为了，但是其实差别很大，因为导致这种情况出现的原因不同，deadlock是由于await命令阻止了所有进程有下一步行为，但是stuttering是可以有的，但是所产生的行为对前后状态没有区别</strong></em></p>
+<h2 id="Fairness，Weak-and-Strong">Fairness，Weak and Strong</h2>
+<p>​	weak和strong是两种不同的fairness。</p>
+<p>​	weakly fair action指的是如果它被（连续）启用，那么最终一定会发生，我们可以通过定义过程来让其中所有的标签都是weak，如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fair process light = &quot;light&quot;</span><br><span class="line">begin</span><br><span class="line"> Cycle:</span><br><span class="line"> 	while at_light do</span><br><span class="line"> 		light := NextColor(light);</span><br><span class="line"> 	end while;</span><br><span class="line">end process;</span><br><span class="line">fair process car = &quot;car&quot;</span><br><span class="line">begin</span><br><span class="line"> Drive:</span><br><span class="line"> 	when light = &quot;green&quot;;</span><br><span class="line"> 	at_light := FALSE;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    仔细分析一下如果只有一个过程是fair的会出现的情况，如果只有light是fair的，那最终灯会转变为绿色，但是车子就不会动了，如果只有car是fair的也是同理的</p>
-<p>​    但是这样依旧会报错，因为有一种情况没有考虑，即如果交通灯始终转换，那么司机的行为将会在能走和不能走之间循环，但是弱公平是保证了可以发生的行为最终一定会发生，即司机卡在了这里</p>
-<p>​    接下来就要引入强公平，强公平指的是如果程序被无限频繁启用，最终就一定会发生，这个发生可以发生在不启用的时间段，我们用fair+定义强公平过程</p>
-<p>​    现在我们最终满足了最后一种情况，并且程序正常运作了</p>
-<h1 id="The-Temporal-Operators"><a href="#The-Temporal-Operators" class="headerlink" title="The Temporal Operators"></a>The Temporal Operators</h1><p>​    首先简要介绍一些操作符，假定P和Q都是布尔表达式</p>
-<h2 id><a href="#" class="headerlink" title="[]"></a>[]</h2><p>​    它的意思是总是（<strong>always</strong>），[]P指的是P对于所有的状态都为真，然后这就是在TLC中的一个类似的设计，即说P是一个常量和说[]P是一个时间属性是一样的，但是前者是后者的一个优化，因为TLC用来检查invariants的算法跑得更快。正因如此用它的情况其实也比较少。</p>
-<p>​    也可以将他和另外的一些运算结合，例如~[]P，表示P至少在一种情况下为假</p>
-<h2 id="lt-gt"><a href="#lt-gt" class="headerlink" title="&lt;&gt;"></a>&lt;&gt;</h2><p>​    它的意思是终于（<strong>eventually</strong>），&lt;&gt;P意味着对于每一种行为，至少有一种情况让P为真</p>
-<p>​    在交通灯的例子中，&lt;&gt;(light = “green”)是可满足的，因为对于每一种行为肯定都存在着这样的时刻语句成立，但是如果改写成下面的样子就不会成立</p>
+<p>​	仔细分析一下如果只有一个过程是fair的会出现的情况，如果只有light是fair的，那最终灯会转变为绿色，但是车子就不会动了，如果只有car是fair的也是同理的</p>
+<p>​	但是这样依旧会报错，因为有一种情况没有考虑，即如果交通灯始终转换，那么司机的行为将会在能走和不能走之间循环，但是弱公平是保证了可以发生的行为最终一定会发生，即司机卡在了这里</p>
+<p>​	接下来就要引入强公平，强公平指的是如果程序被无限频繁启用，最终就一定会发生，这个发生可以发生在不启用的时间段，我们用fair+定义强公平过程</p>
+<p>​	现在我们最终满足了最后一种情况，并且程序正常运作了</p>
+<h1>The Temporal Operators</h1>
+<p>​	首先简要介绍一些操作符，假定P和Q都是布尔表达式</p>
+<h2 id>[]</h2>
+<p>​	它的意思是总是（<strong>always</strong>），[]P指的是P对于所有的状态都为真，然后这就是在TLC中的一个类似的设计，即说P是一个常量和说[]P是一个时间属性是一样的，但是前者是后者的一个优化，因为TLC用来检查invariants的算法跑得更快。正因如此用它的情况其实也比较少。</p>
+<p>​	也可以将他和另外的一些运算结合，例如~[]P，表示P至少在一种情况下为假</p>
+<h2 id="-v2">&lt;&gt;</h2>
+<p>​	它的意思是终于（<strong>eventually</strong>），&lt;&gt;P意味着对于每一种行为，至少有一种情况让P为真</p>
+<p>​	在交通灯的例子中，&lt;&gt;(light = “green”)是可满足的，因为对于每一种行为肯定都存在着这样的时刻语句成立，但是如果改写成下面的样子就不会成立</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">variables</span><br><span class="line">	at_light = TRUE;</span><br><span class="line">	light = &quot;green&quot;;</span><br></pre></td></tr></table></figure>
-<p>​    在这种情况下&lt;&gt;(light = “red”)就是不满足的，因为有着一种情况可以让所有的灯都不为红色</p>
-<p>​    ~&lt;&gt;P表示P恒不为真，注意到这和[]~P其实是一样的</p>
-<p><strong><em>Termination可以用这些表达式来定义</em></strong></p>
-<h2 id="gt"><a href="#gt" class="headerlink" title="~&gt;"></a>~&gt;</h2><p>​    他的意思是导致，P~&gt;Q表示如果一些状态使P为真，那Q一定围在现在或者将来的某些状态为真，就和蕴含差不多，即使P在后来为假，Q也需要发生</p>
-<h2 id="lt-gt-and-lt-gt"><a href="#lt-gt-and-lt-gt" class="headerlink" title="[]&lt;&gt; and &lt;&gt;[]"></a>[]&lt;&gt; and &lt;&gt;[]</h2><p>​    []&lt;&gt;P意味着P总是最终为真，&lt;&gt;[]P意味着P最终总是为真，<del>看起来好费解</del></p>
-<p>​    对于一个有限的spec，这两者的意思是一样的，对于无限的spec，&lt;&gt;[]P意味着这有一些点P变成真并且永远保持为真，而[]&lt;&gt;P表示如果P曾经变成过假，它最终会再变成真，也有这样的等式，[]&lt;&gt;P &lt;=&gt; (~P ~&gt; P)</p>
-<p><strong><em>注意由于&lt;&gt;的原因，在当前的版本下，TLC无法检查带有&lt;&gt;的属性的一部分的变量集的成员的资格，所以需要注意写法</em></strong></p>
-<h1 id="Limitations-of-Liveness"><a href="#Limitations-of-Liveness" class="headerlink" title="Limitations of Liveness"></a>Limitations of Liveness</h1><p>​    事实上，时间属性其实很少需要，大多数时候检查不变量就完全可以了</p>
-<p>​    从实用性的角度来说，它的主要限制之处在于实在是太慢了，TLC使用的核查时间属性的算法和核查不变量的算法是不一样的，前者很慢而且不是并行的</p>
-<p>​    可以将时间属性放在和不变量不同的模块中，这样可以在检查时间属性之前更快的测试不变量，还可以在更小的域上测试活跃度</p>
-<p>​    另外其很重要的一个限制就是不能和对称集结合起来。在TLC跳过冗余状态优化测试集时可能会导致它错过活跃度错误</p>
-<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p>​    这章的例子是Dekker算法，这是第一个成功让两个线程共享一份资源并且没有竞争条件，并且保证了每一个线程都可以不同时并且不使用任何具体的CPU特征来正常展现更新</p>
-<p>​    和我们之前写过的spec不一样的是，这里的原子行为是单个CPU指令</p>
-<p>​    另外就可以来详细的编写，首先对于其中的过程，思路可以直接模拟，代码见下</p>
+<p>​	在这种情况下&lt;&gt;(light = “red”)就是不满足的，因为有着一种情况可以让所有的灯都不为红色</p>
+<p>​	<sub>&lt;&gt;P表示P恒不为真，注意到这和[]</sub>P其实是一样的</p>
+<p><em><strong>Termination可以用这些表达式来定义</strong></em></p>
+<h2 id="-v3">~&gt;</h2>
+<p>​	他的意思是导致，P~&gt;Q表示如果一些状态使P为真，那Q一定围在现在或者将来的某些状态为真，就和蕴含差不多，即使P在后来为假，Q也需要发生</p>
+<h2 id="and">[]&lt;&gt; and &lt;&gt;[]</h2>
+<p>​	[]&lt;&gt;P意味着P总是最终为真，&lt;&gt;[]P意味着P最终总是为真，<s>看起来好费解</s></p>
+<p>​	对于一个有限的spec，这两者的意思是一样的，对于无限的spec，&lt;&gt;[]P意味着这有一些点P变成真并且永远保持为真，而[]&lt;&gt;P表示如果P曾经变成过假，它最终会再变成真，也有这样的等式，[]&lt;&gt;P &lt;=&gt; (~P ~&gt; P)</p>
+<p><em><strong>注意由于&lt;&gt;的原因，在当前的版本下，TLC无法检查带有&lt;&gt;的属性的一部分的变量集的成员的资格，所以需要注意写法</strong></em></p>
+<h1>Limitations of Liveness</h1>
+<p>​	事实上，时间属性其实很少需要，大多数时候检查不变量就完全可以了</p>
+<p>​	从实用性的角度来说，它的主要限制之处在于实在是太慢了，TLC使用的核查时间属性的算法和核查不变量的算法是不一样的，前者很慢而且不是并行的</p>
+<p>​	可以将时间属性放在和不变量不同的模块中，这样可以在检查时间属性之前更快的测试不变量，还可以在更小的域上测试活跃度</p>
+<p>​	另外其很重要的一个限制就是不能和对称集结合起来。在TLC跳过冗余状态优化测试集时可能会导致它错过活跃度错误</p>
+<h1>Example</h1>
+<p>​	这章的例子是Dekker算法，这是第一个成功让两个线程共享一份资源并且没有竞争条件，并且保证了每一个线程都可以不同时并且不使用任何具体的CPU特征来正常展现更新</p>
+<p>​	和我们之前写过的spec不一样的是，这里的原子行为是单个CPU指令</p>
+<p>​	另外就可以来详细的编写，首先对于其中的过程，思路可以直接模拟，代码见下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS TLC, Integers</span><br><span class="line">CONSTANT Threads</span><br><span class="line">(*--algorithm dekker</span><br><span class="line">variables flag = [t \in Threads |-&gt; FALSE];</span><br><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line"> P1: flag[self] := TRUE;</span><br><span class="line"> \* all threads except self are false</span><br><span class="line"> P2: await \A t \in Threads \ &#123;self&#125;: ~flag[t];</span><br><span class="line"> CS: skip;</span><br><span class="line"> P3: flag[self] := FALSE;</span><br><span class="line"> P4: goto P1;</span><br><span class="line">end process;</span><br><span class="line">end algorithm; *)</span><br></pre></td></tr></table></figure>
-<p>​    然后就是对于其中缓冲区的检查，要求至多有一个进程在缓冲区中，写法很多，可以直译，如</p>
+<p>​	然后就是对于其中缓冲区的检查，要求至多有一个进程在缓冲区中，写法很多，可以直译，如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AtMostOneCritical ==</span><br><span class="line"> \/ \A t \in Threads: pc[t] /= &quot;CS&quot;</span><br><span class="line"> \/ \E t \in Threads:</span><br><span class="line"> 	/\ pc[t] = &quot;CS&quot;</span><br><span class="line"> 	/\ \A t2 \in Threads \ &#123;t&#125;: pc[t2] /= &quot;CS&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>​    也可以转化一下，即任意的两个线程，如果都在缓冲区，那么线程相同</p>
+<p>​	也可以转化一下，即任意的两个线程，如果都在缓冲区，那么线程相同</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AtMostOneCritical == </span><br><span class="line">	\A t1,t2 \in Threads:</span><br><span class="line">		t1 /= t2 =&gt; ~(pc[t1] = &quot;CS&quot; /\ pc[t2] = &quot;CS&quot;)</span><br></pre></td></tr></table></figure>
-<p>​    要注意的是这里用到了pc，所以需要在编译之后添加到编译内容中</p>
-<p>​    运行之后报错，这是很显然的，因为我们中间没有使用循环，导致两者都翻转之后产生错误</p>
+<p>​	要注意的是这里用到了pc，所以需要在编译之后添加到编译内容中</p>
+<p>​	运行之后报错，这是很显然的，因为我们中间没有使用循环，导致两者都翻转之后产生错误</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line"> P1: flag[self] := TRUE;</span><br><span class="line"> P2:</span><br><span class="line"> while \E t \in Threads \ &#123;self&#125;: flag[t] do</span><br><span class="line"> P2_1: flag[self] := FALSE;</span><br><span class="line"> P2_2: flag[self] := TRUE;</span><br><span class="line"> end while;</span><br><span class="line"> CS: skip;</span><br><span class="line"> P3: flag[self] := FALSE;</span><br><span class="line"> P4: goto P1;</span><br><span class="line">end process;</span><br></pre></td></tr></table></figure>
-<p>​    <del>感觉这里写的Dekker算法和我百度的不太一样呢</del></p>
-<p>​    我们以上做的工作是表示它不会deadlock，并且不会因为具有两个线程而产生安全问题，我们也需要展现所有的线程都成功的到达了关键的部分，这时候就要用到之前的时间属性了</p>
+<p>​	<s>感觉这里写的Dekker算法和我百度的不太一样呢</s></p>
+<p>​	我们以上做的工作是表示它不会deadlock，并且不会因为具有两个线程而产生安全问题，我们也需要展现所有的线程都成功的到达了关键的部分，这时候就要用到之前的时间属性了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Liveness == </span><br><span class="line">	\A t \in Threads:</span><br><span class="line">		&lt;&gt;(pc[t] = &quot;CS&quot;)</span><br></pre></td></tr></table></figure>
-<p>​    但是加进去就会报错，因为此时所有的线程在P2中死循环了，我们将其称之为<strong>livelock</strong></p>
-<p>​    然后才是Dekker大大给出的正确算法</p>
+<p>​	但是加进去就会报错，因为此时所有的线程在P2中死循环了，我们将其称之为<strong>livelock</strong></p>
+<p>​	然后才是Dekker大大给出的正确算法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">EXTENDS TLC, Integers</span><br><span class="line">CONSTANT Threads</span><br><span class="line">(*--algorithm dekker</span><br><span class="line">variables</span><br><span class="line">    flag = [t \in Threads |-&gt; FALSE];</span><br><span class="line">    next_thread \in Threads;</span><br><span class="line">fair process thread \in Threads</span><br><span class="line">begin</span><br><span class="line">    P1: flag[self] := TRUE;</span><br><span class="line">    P2: </span><br><span class="line">        while \E t \in Threads \ &#123;self&#125;: flag[t] do</span><br><span class="line">          P2_1:</span><br><span class="line">            if next_thread /= self then</span><br><span class="line">            P2_1_1: flag[self] := FALSE;</span><br><span class="line">            P2_1_2: await next_thread = self;</span><br><span class="line">            P2_1_3: flag[self] := TRUE;</span><br><span class="line">            end if;</span><br><span class="line">        end while;</span><br><span class="line">    CS: skip;</span><br><span class="line">    P3: with t \in Threads \ &#123;self&#125; do</span><br><span class="line">            next_thread := t;</span><br><span class="line">        end with;</span><br><span class="line">    P4: goto P1;</span><br><span class="line">end process;</span><br><span class="line">end algorithm;*) </span><br></pre></td></tr></table></figure>
-<p>​    不过这个算法是有一定的错误的</p>
-<p>​    首先，如果线程变成三个，就会出错，其中的两个到达CS，但是另外一个没有，这称之为<strong>resource starvation</strong></p>
-<p>​    另一个问题就是他的弹性较差，如果其中一个出错也会导致另外一个出错</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    这一部分就这样结束了，这意味着第一部分结束了，Pluscal的所有语法都介绍完毕，接下来的第二部分主要是介绍TLA+的应用</p>
+<p>​	不过这个算法是有一定的错误的</p>
+<p>​	首先，如果线程变成三个，就会出错，其中的两个到达CS，但是另外一个没有，这称之为<strong>resource starvation</strong></p>
+<p>​	另一个问题就是他的弹性较差，如果其中一个出错也会导致另外一个出错</p>
+<h1>总结</h1>
+<p>​	这一部分就这样结束了，这意味着第一部分结束了，Pluscal的所有语法都介绍完毕，接下来的第二部分主要是介绍TLA+的应用</p>
 
     </div>
 
@@ -539,14 +552,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">188k</span>
+    <span title="站点总字数">208k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">3:09</span>
   </span>
 </div>
 <div class="busuanzi-count">
