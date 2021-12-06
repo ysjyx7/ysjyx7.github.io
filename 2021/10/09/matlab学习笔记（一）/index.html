@@ -72,14 +72,14 @@
 <meta property="og:site_name" content="杨释钧的博客">
 <meta property="og:description" content="本文主要记录matlab的一些基本语法和知识点，该部分主要参考matlab官方文档">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yang-shijun.gitee.io/blog/C:/Users/yx7/AppData/Roaming/Typora/typora-user-images/image-20211009204238532.png">
+<meta property="og:image" content="https://yang-shijun.gitee.io/blog/C:%5CUsers%5Cyx7%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211009204238532.png">
 <meta property="article:published_time" content="2021-10-09T12:15:13.000Z">
 <meta property="article:modified_time" content="2021-10-10T06:54:52.258Z">
 <meta property="article:author" content="杨释钧">
 <meta property="article:tag" content="数学建模">
 <meta property="article:tag" content="matlab学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yang-shijun.gitee.io/blog/C:/Users/yx7/AppData/Roaming/Typora/typora-user-images/image-20211009204238532.png">
+<meta name="twitter:image" content="https://yang-shijun.gitee.io/blog/C:%5CUsers%5Cyx7%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211009204238532.png">
 
 
 <link rel="canonical" href="https://yang-shijun.gitee.io/2021/10/09/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
@@ -195,7 +195,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">语言基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">输入命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">matlab快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E6%95%B0%E7%BB%84-1"><span class="nav-number">2.1.</span> <span class="nav-text">矩阵和数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95"><span class="nav-number">2.2.</span> <span class="nav-text">数组索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">工作区变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%92%8C%E5%AD%97%E7%AC%A6"><span class="nav-number">2.4.</span> <span class="nav-text">文本和字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%92%8C%E4%B8%89%E7%BB%B4%E5%9B%BE"><span class="nav-number">2.6.</span> <span class="nav-text">二维图和三维图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%92%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">2.7.</span> <span class="nav-text">编程和脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E5%92%8C%E6%96%87%E6%A1%A3"><span class="nav-number">2.8.</span> <span class="nav-text">帮助和文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%B9%BB%E6%96%B9%E7%9F%A9%E9%98%B5"><span class="nav-number">2.9.</span> <span class="nav-text">矩阵和幻方矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.10.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4-1"><span class="nav-number">2.11.</span> <span class="nav-text">输入命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">2.12.</span> <span class="nav-text">索引</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">语言基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">输入命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">matlab快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E6%95%B0%E7%BB%84-v2"><span class="nav-number">2.1.</span> <span class="nav-text">矩阵和数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95"><span class="nav-number">2.2.</span> <span class="nav-text">数组索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">工作区变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%92%8C%E5%AD%97%E7%AC%A6"><span class="nav-number">2.4.</span> <span class="nav-text">文本和字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%92%8C%E4%B8%89%E7%BB%B4%E5%9B%BE"><span class="nav-number">2.6.</span> <span class="nav-text">二维图和三维图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%92%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">2.7.</span> <span class="nav-text">编程和脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E5%92%8C%E6%96%87%E6%A1%A3"><span class="nav-number">2.8.</span> <span class="nav-text">帮助和文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%B9%BB%E6%96%B9%E7%9F%A9%E9%98%B5"><span class="nav-number">2.9.</span> <span class="nav-text">矩阵和幻方矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">2.10.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4-v2"><span class="nav-number">2.11.</span> <span class="nav-text">输入命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">2.12.</span> <span class="nav-text">索引</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -345,7 +345,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.9k</span>
+      <span>4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -364,19 +364,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="语言基础知识"><a href="#语言基础知识" class="headerlink" title="语言基础知识"></a>语言基础知识</h1><h2 id="输入命令"><a href="#输入命令" class="headerlink" title="输入命令"></a>输入命令</h2><ol>
-<li><p>可以通过在命令行输入语句来初始化变量，如</p>
+        <h1>语言基础知识</h1>
+<h2 id="输入命令"><a class="header-anchor" href="#输入命令">¶</a>输入命令</h2>
+<ol>
+<li>
+<p>可以通过在命令行输入语句来初始化变量，如</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>创建了变量a，将其添加到工作区，也可以进行一些基本运算，对表达式在未指定输出变量时，会将其存储到ans中。如果语句以分号结束，则会执行计算，<strong>但不在命令行窗口显示输出</strong>。要在多行上输入多个关键字，要用<strong>Shift+Enter</strong>，当然也可以使用<strong>，</strong>来在同一行对多个语句分隔。要清除命令行中的命令而不执行，用<strong>Esc</strong>键，也可以选用部分代码进行执行。</p>
+<p>创建了变量a，将其添加到工作区，也可以进行一些基本运算，对表达式在未指定输出变量时，会将其存储到ans中。如果语句以分号结束，则会执行计算，<strong>但不在命令行窗口显示输出</strong>。要在多行上输入多个关键字，要用<strong>Shift+Enter</strong>，当然也可以使用**，<strong>来在同一行对多个语句分隔。要清除命令行中的命令而不执行，用</strong>Esc**键，也可以选用部分代码进行执行。</p>
 </li>
-<li><p>这部分有一些常用函数，如<strong>ans</strong>——显示最近计算的答案，<strong>clc</strong>——清空命令行窗口，<strong>diary</strong>——将命令行窗口文本记录到日志文件中。以上三个是我觉得比较常用的，<del>虽然我到现在还没用过matlab</del>。然后diary filename可以将生成的日志保存到该文件中，记得在保存完后使用<strong>diary off</strong>关闭文件。</p>
+<li>
+<p>这部分有一些常用函数，如<strong>ans</strong>——显示最近计算的答案，<strong>clc</strong>——清空命令行窗口，<strong>diary</strong>——将命令行窗口文本记录到日志文件中。以上三个是我觉得比较常用的，<s>虽然我到现在还没用过matlab</s>。然后diary filename可以将生成的日志保存到该文件中，记得在保存完后使用<strong>diary off</strong>关闭文件。</p>
 </li>
-<li><p>现在说一些小细节，例如用省略号<strong>…</strong>可以将语句延续到下一行，注意需要与前面的内容之间有空格，如下</p>
+<li>
+<p>现在说一些小细节，例如用省略号**…**可以将语句延续到下一行，注意需要与前面的内容之间有空格，如下</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a=<span class="number">1</span><span class="number">-2</span>+<span class="number">3</span> ...</span><br><span class="line"><span class="number">-4</span></span><br><span class="line">&gt;&gt;<span class="number">-2</span></span><br></pre></td></tr></table></figure>
 <p>调用函数和之前学过的C语言完全一样，然后这里可以查找函数，点击命令行窗口中的如下按钮即可</p>
-<p><img src="/blog/C:/Users\yx7\AppData\Roaming\Typora\typora-user-images\image-20211009204238532.png" alt="image-20211009204238532"></p>
+<p><img src="/blog/C:%5CUsers%5Cyx7%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211009204238532.png" alt="image-20211009204238532"></p>
 <p>然后就可以通过搜索查找自己想要的字体了。</p>
-<p>在输入包含函数的语句的时候，可以使用快捷键<strong>Ctrl+Alt+-&gt;</strong>查看函数的更多参数。</p>
+<p>在输入包含函数的语句的时候，可以使用快捷键**Ctrl+Alt±&gt;**查看函数的更多参数。</p>
 <p>关于命名，可以用<strong>exist</strong>或<strong>switch</strong>命令来查看当前拟用名是否被使用，如果一不小心命了一个有冲突的名字，应该使用<strong>clear</strong>来将其删除。</p>
 <p>针对空格，一方面，运算符读取对空格不敏感，另一方面，空格可以和逗号交错使用来定义行向量。</p>
 <p>如果不需要函数的任何输出，并且输入都是字符串常量，可以有如下简写：</p>
@@ -384,118 +389,162 @@
 <p>但是如果不是的话，就必须用标准的语法。</p>
 <p><strong>disp</strong>函数用来展示参数的值。</p>
 </li>
-<li><p>感觉这部分剩下的比较多的都是关于主题的配置，有空可以多琢磨以下<strong>预设</strong>选项。</p>
+<li>
+<p>感觉这部分剩下的比较多的都是关于主题的配置，有空可以多琢磨以下<strong>预设</strong>选项。</p>
 </li>
-<li><p><strong>magic()</strong>函数可用来生成矩阵。</p>
+<li>
+<p>**magic()**函数可用来生成矩阵。</p>
 </li>
-<li><p>使用<strong>Ctrl+C</strong>停止执行matlab命令。</p>
+<li>
+<p>使用<strong>Ctrl+C</strong>停止执行matlab命令。</p>
 </li>
-<li><p>剩下的一些东西应该不是很重要，有关于<strong>主题设置</strong>方面的疑问可以查询<strong>输入命令</strong>文档。</p>
+<li>
+<p>剩下的一些东西应该不是很重要，有关于<strong>主题设置</strong>方面的疑问可以查询<strong>输入命令</strong>文档。</p>
 </li>
 </ol>
-<h2 id="矩阵和数组"><a href="#矩阵和数组" class="headerlink" title="矩阵和数组"></a>矩阵和数组</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
-<li><p>zeros，创建全0数组</p>
+<h2 id="矩阵和数组"><a class="header-anchor" href="#矩阵和数组">¶</a>矩阵和数组</h2>
+<h3 id="函数"><a class="header-anchor" href="#函数">¶</a>函数</h3>
+<ol>
+<li>
+<p>zeros，创建全0数组</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X=zeros //X=0</span><br><span class="line">X=zeros(n) //n*n</span><br><span class="line">X=zeros(sz1,..,szN) //返回一个N维矩阵</span><br><span class="line">X=zeros(sz) //返回由0组成的数组，大小由sz决定</span><br><span class="line">X=(_,&#x27;like&#x27;,p) //返回一个与p类似的由零值组成的数组，和p数据类型相同</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>ones，创建全1数组，和上面那个完全一样</p>
+<li>
+<p>ones，创建全1数组，和上面那个完全一样</p>
 </li>
 </ol>
 <hr>
-<p><strong><em>这里给个分割线，现在打算去看快速入门，不看完整文档了</em></strong></p>
+<p><em><strong>这里给个分割线，现在打算去看快速入门，不看完整文档了</strong></em></p>
 <hr>
-<h1 id="matlab快速入门"><a href="#matlab快速入门" class="headerlink" title="matlab快速入门"></a>matlab快速入门</h1><h2 id="矩阵和数组-1"><a href="#矩阵和数组-1" class="headerlink" title="矩阵和数组"></a>矩阵和数组</h2><ol>
-<li><p>数组创建有三种方式，分别如下，很显然的</p>
+<h1>matlab快速入门</h1>
+<h2 id="矩阵和数组-v2"><a class="header-anchor" href="#矩阵和数组-v2">¶</a>矩阵和数组</h2>
+<ol>
+<li>
+<p>数组创建有三种方式，分别如下，很显然的</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>]</span><br><span class="line">a=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line">//也可以用<span class="built_in">ones</span>等函数进行创建</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>matlab允许用单一运算符对整个矩阵运算，见下</p>
+<li>
+<p>matlab允许用单一运算符对整个矩阵运算，见下</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; a+<span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">    <span class="number">11</span>    <span class="number">12</span>    <span class="number">13</span></span><br><span class="line">    <span class="number">14</span>    <span class="number">15</span>    <span class="number">16</span></span><br><span class="line">    <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">&gt;&gt; <span class="built_in">sin</span>(a)</span><br><span class="line"></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">    <span class="number">0.8415</span>    <span class="number">0.9093</span>    <span class="number">0.1411</span></span><br><span class="line">   <span class="number">-0.7568</span>   <span class="number">-0.9589</span>   <span class="number">-0.2794</span></span><br><span class="line">    <span class="number">0.6570</span>    <span class="number">0.9894</span>    <span class="number">0.4121</span></span><br></pre></td></tr></table></figure>
-<p>用单引号<strong>‘</strong>对矩阵进行转置，<strong>inv()</strong>用来创建当前矩阵逆矩阵，然后<strong>*</strong>运算符可执行矩阵乘法。这里矩阵乘法得到的矩阵为浮点型，用<strong>format long/short</strong>可以改变浮点型的长度，<del>但是在新版本matlab中似乎是整形矩阵</del>。如果要将矩阵中的每个元素相乘，用<strong>.*</strong>运算符，当然，在<strong>.</strong>后面跟别的像除法和幂的运算符可以有各自运算。</p>
+<p>用单引号**'<em><em>对矩阵进行转置，<strong>inv()<strong>用来创建当前矩阵逆矩阵，然后</strong></strong></em>运算符可执行矩阵乘法。这里矩阵乘法得到的矩阵为浮点型，用</em><em>format long/short</em><em>可以改变浮点型的长度，<s>但是在新版本matlab中似乎是整形矩阵</s>。如果要将矩阵中的每个元素相乘，用</em>*.*<strong>运算符，当然，在</strong>.**后面跟别的像除法和幂的运算符可以有各自运算。</p>
 </li>
-<li><p><strong>串联</strong>是连接数组成为更大数组的过程，中间用<strong>,</strong>是水平串联，用<strong>;</strong>是垂直串联</p>
+<li>
+<p><strong>串联</strong>是连接数组成为更大数组的过程，中间用**,<strong>是水平串联，用</strong>;**是垂直串联</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A=[a,a]</span><br><span class="line"></span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A=[a;a]</span><br><span class="line"></span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>对于<strong>复数</strong>，用<strong>i</strong>或<strong>j</strong>表示虚部</p>
+<li>
+<p>对于<strong>复数</strong>，用<strong>i</strong>或<strong>j</strong>表示虚部</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; p=<span class="number">3</span>+<span class="number">5</span><span class="built_in">j</span></span><br><span class="line"></span><br><span class="line">p =</span><br><span class="line"></span><br><span class="line">  <span class="number">3.000000000000000</span> + <span class="number">5.000000000000000</span><span class="built_in">j</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="数组索引"><a href="#数组索引" class="headerlink" title="数组索引"></a>数组索引</h2><ol>
-<li><p>常用的直接指定行列下标，<strong>A(I,j)</strong></p>
+<h2 id="数组索引"><a class="header-anchor" href="#数组索引">¶</a>数组索引</h2>
+<ol>
+<li>
+<p>常用的直接指定行列下标，<strong>A(I,j)</strong></p>
 </li>
-<li><p>另外可以以列序为主序</p>
+<li>
+<p>另外可以以列序为主序</p>
 </li>
-<li><p>如果引用范围超了，会报错，但是如果对范围外的进行赋值，会自动扩充，另外可以用<strong>:</strong>引用多个数组元素，如</p>
+<li>
+<p>如果引用范围超了，会报错，但是如果对范围外的进行赋值，会自动扩充，另外可以用**😗*引用多个数组元素，如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A(1:3,2)//引用第一行到第三行的第二列元素</span><br><span class="line">A(3,:)//d单独的冒号指定这一维中的所有元素，例如选择第三行的所有列</span><br><span class="line">//然后可以用start:step:end创建等间距向量值</span><br><span class="line">//如果省略step的话，默认步长为1</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="工作区变量"><a href="#工作区变量" class="headerlink" title="工作区变量"></a>工作区变量</h2><ol>
+<h2 id="工作区变量"><a class="header-anchor" href="#工作区变量">¶</a>工作区变量</h2>
+<ol>
 <li>用<strong>whos</strong>命令可以查看工作区的内容</li>
 <li>用<strong>save</strong>命令可以保存工作区变量，用<strong>load</strong>命令可以将mat文件中的数据还原到工作区</li>
 </ol>
-<h2 id="文本和字符"><a href="#文本和字符" class="headerlink" title="文本和字符"></a>文本和字符</h2><ol>
-<li><p>当处理文本时，将字符序列括在双引号中，可以将文本赋给变量，如果文本包含双引号，在定义中需要用两个双引号，如下：</p>
+<h2 id="文本和字符"><a class="header-anchor" href="#文本和字符">¶</a>文本和字符</h2>
+<ol>
+<li>
+<p>当处理文本时，将字符序列括在双引号中，可以将文本赋给变量，如果文本包含双引号，在定义中需要用两个双引号，如下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q = <span class="string">&quot;Something &quot;&quot;quoted&quot;&quot; and something else.&quot;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>直接用+可以将字符串或字符添加到当前字符串末尾</p>
+<li>
+<p>直接用+可以将字符串或字符添加到当前字符串末尾</p>
 </li>
-<li><p>可以用类似的方法创建字符串数组，使用<strong>strlength()</strong>可以求出所有的字符串长度</p>
+<li>
+<p>可以用类似的方法创建字符串数组，使用**strlength()**可以求出所有的字符串长度</p>
 </li>
-<li><p>字符表示的数据并不对应到文本，这个时候可以用<strong>‘’</strong>包含数据内容</p>
+<li>
+<p>字符表示的数据并不对应到文本，这个时候可以用**‘’**包含数据内容</p>
 </li>
 </ol>
-<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><ol>
+<h2 id="调用函数"><a class="header-anchor" href="#调用函数">¶</a>调用函数</h2>
+<ol>
 <li>这部分内容和之前学过的编程语言完全一样</li>
-<li>提到了<strong>max()</strong>函数、<strong>disp()</strong>函数和<strong>clc</strong>函数</li>
+<li>提到了**max()**函数、<strong>disp()<strong>函数和</strong>clc</strong>函数</li>
 </ol>
-<h2 id="二维图和三维图"><a href="#二维图和三维图" class="headerlink" title="二维图和三维图"></a>二维图和三维图</h2><ol>
-<li>使用<strong>plot(x,y)</strong>可以绘制二维图，不过更确切的说，这样画出的是散点图，可以用<strong>xlabel(‘’)</strong>和<strong>ylabel(‘’)</strong>来标记轴，用<strong>title(‘’)</strong>添加标题，可以给plot函数添加第三个参数来设置绘制的格式，例如添加’r—‘，其中r表示红色，—表示线条</li>
+<h2 id="二维图和三维图"><a class="header-anchor" href="#二维图和三维图">¶</a>二维图和三维图</h2>
+<ol>
+<li>使用**plot(x,y)<strong>可以绘制二维图，不过更确切的说，这样画出的是散点图，可以用</strong>xlabel(‘’)<strong>和</strong>ylabel(‘’)<strong>来标记轴，用</strong>title(‘’)**添加标题，可以给plot函数添加第三个参数来设置绘制的格式，例如添加’r–'，其中r表示红色，–表示线条</li>
 <li>另外就是每次调用绘图函数的时候，matla图窗b都会清空图床。可以用<strong>hold on</strong>将绘图添加到现有。使用hold off可以清空图窗</li>
-<li>三维绘图通常显示由二元函数定义的曲面图，要先使用<strong>meshgrid</strong>在此函数域中创建一组点，然后用<strong>surf(X,Y,Z)</strong>创建曲面图</li>
-<li>使用<strong>subplot()</strong>函数可以在同一窗口的不同子区域显示多个绘图，前两个参数表示每行每列中的绘图数，第三个输入指定绘图是否处于活动状态，感觉更像是由第三个输入指定位置</li>
+<li>三维绘图通常显示由二元函数定义的曲面图，要先使用<strong>meshgrid</strong>在此函数域中创建一组点，然后用**surf(X,Y,Z)**创建曲面图</li>
+<li>使用**subplot()**函数可以在同一窗口的不同子区域显示多个绘图，前两个参数表示每行每列中的绘图数，第三个输入指定绘图是否处于活动状态，感觉更像是由第三个输入指定位置</li>
 </ol>
-<h2 id="编程和脚本"><a href="#编程和脚本" class="headerlink" title="编程和脚本"></a>编程和脚本</h2><ol>
-<li><p>使用<strong>edit</strong>加上文件名可以创建脚本，使用%添加注释，然后就在这个文件里面写matlab代码即可，文件后缀名为m，然后就是文档里提出如果后缀名改为mlx，可以将其改成实时脚本，<del>虽然并不知道有什么用</del></p>
+<h2 id="编程和脚本"><a class="header-anchor" href="#编程和脚本">¶</a>编程和脚本</h2>
+<ol>
+<li>
+<p>使用<strong>edit</strong>加上文件名可以创建脚本，使用%添加注释，然后就在这个文件里面写matlab代码即可，文件后缀名为m，然后就是文档里提出如果后缀名改为mlx，可以将其改成实时脚本，<s>虽然并不知道有什么用</s></p>
 </li>
-<li><p>针对循环语句，matlab中用for，例如如下的例子</p>
+<li>
+<p>针对循环语句，matlab中用for，例如如下的例子</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">100</span>;</span><br><span class="line">f(<span class="number">1</span>) = <span class="number">1</span>;</span><br><span class="line">f(<span class="number">2</span>) = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">3</span>:N</span><br><span class="line">    f(n) = f(n<span class="number">-1</span>) + f(n<span class="number">-2</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">f(<span class="number">1</span>:<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>然后就是条件表达式，如下</p>
+<li>
+<p>然后就是条件表达式，如下</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">num = randi(<span class="number">100</span>)</span><br><span class="line"><span class="keyword">if</span> num &lt; <span class="number">34</span></span><br><span class="line">   sz = <span class="string">&#x27;low&#x27;</span></span><br><span class="line"><span class="keyword">elseif</span> num &lt; <span class="number">67</span></span><br><span class="line">   sz = <span class="string">&#x27;medium&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   sz = <span class="string">&#x27;high&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="帮助和文档"><a href="#帮助和文档" class="headerlink" title="帮助和文档"></a>帮助和文档</h2><p>​    如下</p>
+<h2 id="帮助和文档"><a class="header-anchor" href="#帮助和文档">¶</a>帮助和文档</h2>
+<p>​	如下</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">doc <span class="built_in">mean</span> <span class="comment">%在单独的窗口打开函数文档</span></span><br><span class="line"><span class="built_in">mean</span>(  <span class="comment">%此时会提示相应函数语法</span></span><br><span class="line">help <span class="built_in">mean</span>  <span class="comment">%在命令行窗口中打开函数简明文档</span></span><br></pre></td></tr></table></figure>
-<h2 id="矩阵和幻方矩阵"><a href="#矩阵和幻方矩阵" class="headerlink" title="矩阵和幻方矩阵"></a>矩阵和幻方矩阵</h2><ol>
-<li><p>创建矩阵的方法很多，可以输入明确列表，可以从外界文件加载，可以通过内置函数生成矩阵，也可以自己写函数创建。</p>
+<h2 id="矩阵和幻方矩阵"><a class="header-anchor" href="#矩阵和幻方矩阵">¶</a>矩阵和幻方矩阵</h2>
+<ol>
+<li>
+<p>创建矩阵的方法很多，可以输入明确列表，可以从外界文件加载，可以通过内置函数生成矩阵，也可以自己写函数创建。</p>
 </li>
-<li><p>可以用<strong>sum()</strong>函数对矩阵的每一行进行求和，用<strong>diag()</strong>函数可以获取矩阵主对角线上的元素，<strong>fliplr()</strong>函数原本用于图形的从左到右翻转，也可以用来翻转矩阵。</p>
+<li>
+<p>可以用**sum()<strong>函数对矩阵的每一行进行求和，用</strong>diag()**函数可以获取矩阵主对角线上的元素，**fliplr()**函数原本用于图形的从左到右翻转，也可以用来翻转矩阵。</p>
 </li>
-<li><p><strong>magic()</strong>函数可以生成任意大小的幻方矩阵，另外就是可以通过指定行列顺序来对矩阵进行变换，例如</p>
+<li>
+<p>**magic()**函数可以生成任意大小的幻方矩阵，另外就是可以通过指定行列顺序来对矩阵进行变换，例如</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; B=A([<span class="number">1</span> <span class="number">3</span> <span class="number">2</span> <span class="number">4</span>],[<span class="number">1</span> <span class="number">2</span> <span class="number">4</span> <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">B =</span><br><span class="line"></span><br><span class="line">    <span class="number">16</span>     <span class="number">3</span>    <span class="number">13</span>     <span class="number">2</span></span><br><span class="line">     <span class="number">9</span>     <span class="number">6</span>    <span class="number">12</span>     <span class="number">7</span></span><br><span class="line">     <span class="number">5</span>    <span class="number">10</span>     <span class="number">8</span>    <span class="number">11</span></span><br><span class="line">     <span class="number">4</span>    <span class="number">15</span>     <span class="number">1</span>    <span class="number">14</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>然后就是可以通过上文提到的函数生成基本矩阵，比如<strong>zeros</strong>，<strong>ones</strong>，<strong>rand</strong>，<strong>randn</strong>，其中后面两个分别生成均匀分布的随机元素和正态分布的随即元素</p>
+<li>
+<p>然后就是可以通过上文提到的函数生成基本矩阵，比如<strong>zeros</strong>，<strong>ones</strong>，<strong>rand</strong>，<strong>randn</strong>，其中后面两个分别生成均匀分布的随机元素和正态分布的随即元素</p>
 </li>
 </ol>
-<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><ol>
+<h2 id="表达式"><a class="header-anchor" href="#表达式">¶</a>表达式</h2>
+<ol>
 <li>matlab的表达式基本都涉及矩阵</li>
-<li>可以用<strong>[]</strong>进行构造表</li>
+<li>可以用**[]**进行构造表</li>
 <li>matlab给了很多初等函数和高等函数，可以用help elfun查看初等函数，用help specfun查看高等函数</li>
 </ol>
-<h2 id="输入命令-1"><a href="#输入命令-1" class="headerlink" title="输入命令"></a>输入命令</h2><ol>
+<h2 id="输入命令-v2"><a class="header-anchor" href="#输入命令-v2">¶</a>输入命令</h2>
+<ol>
 <li>主要说的是<strong>format</strong>函数，用来控制显示的数值格式</li>
 </ol>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ol>
-<li><p>下标这块内容在前面已经记录过了</p>
+<h2 id="索引"><a class="header-anchor" href="#索引">¶</a>索引</h2>
+<ol>
+<li>
+<p>下标这块内容在前面已经记录过了</p>
 </li>
-<li><p><strong>:</strong>运算符可以用来引用部分矩阵，可以用来获取非单位间距的行向量</p>
+<li>
+<p>**😗*运算符可以用来引用部分矩阵，可以用来获取非单位间距的行向量</p>
 </li>
-<li><p>串联之前也提过了</p>
+<li>
+<p>串联之前也提过了</p>
 </li>
-<li><p>要想删除行和列，可以用方括号为指定行赋值，如</p>
+<li>
+<p>要想删除行和列，可以用方括号为指定行赋值，如</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A(:,<span class="number">2</span>)=[]</span><br><span class="line">A =</span><br><span class="line">    <span class="number">16</span>     <span class="number">2</span>    <span class="number">13</span></span><br><span class="line">     <span class="number">5</span>    <span class="number">11</span>     <span class="number">8</span></span><br><span class="line">     <span class="number">9</span>     <span class="number">7</span>    <span class="number">12</span></span><br><span class="line">     <span class="number">4</span>    <span class="number">14</span>     <span class="number">1</span></span><br><span class="line">&gt;&gt; A(<span class="number">2</span>,:)=[]</span><br><span class="line">A =</span><br><span class="line">    <span class="number">16</span>     <span class="number">2</span>    <span class="number">13</span></span><br><span class="line">     <span class="number">9</span>     <span class="number">7</span>    <span class="number">12</span></span><br><span class="line">     <span class="number">4</span>    <span class="number">14</span>     <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>如果想要删除某个元素，结果不再是矩阵，但是可以通过单一下标进行删除，并将结果重构为一个行向量。例如</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">ans</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="number">16</span>     <span class="number">5</span>     <span class="number">9</span>     <span class="number">4</span></span><br><span class="line">     <span class="number">3</span>    <span class="number">10</span>     <span class="number">6</span>    <span class="number">15</span></span><br><span class="line">     <span class="number">2</span>    <span class="number">11</span>     <span class="number">7</span>    <span class="number">14</span></span><br><span class="line">    <span class="number">13</span>     <span class="number">8</span>    <span class="number">12</span>     <span class="number">1</span></span><br><span class="line">&gt;&gt; <span class="built_in">ans</span>(<span class="number">9</span>:<span class="number">10</span>)=[]</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="number">16</span>     <span class="number">3</span>     <span class="number">2</span>    <span class="number">13</span>     <span class="number">5</span>    <span class="number">10</span>    <span class="number">11</span>     <span class="number">8</span>     <span class="number">7</span>    <span class="number">12</span>     <span class="number">4</span>    <span class="number">15</span>    <span class="number">14</span>     <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>对于逻辑下标，假定X是一个普通矩阵，L是一个由某个逻辑运算生成的同等大小的矩阵，由X(L)指定X的元素，其中L元素非0。这里提到了几个函数，比如<strong>isfinite(x)</strong>，对于有限项，该值为1，否则为0。还有<strong>std(x)</strong>，用来求标准差。还有<strong>isprime(x)</strong>，判断是否为素数。还有<strong>find</strong>函数，返回行向量，用来确定与逻辑条件相符的数组元素的索引。</p>
+<li>
+<p>对于逻辑下标，假定X是一个普通矩阵，L是一个由某个逻辑运算生成的同等大小的矩阵，由X(L)指定X的元素，其中L元素非0。这里提到了几个函数，比如<strong>isfinite(x)</strong>，对于有限项，该值为1，否则为0。还有<strong>std(x)</strong>，用来求标准差。还有<strong>isprime(x)</strong>，判断是否为素数。还有<strong>find</strong>函数，返回行向量，用来确定与逻辑条件相符的数组元素的索引。</p>
 </li>
 </ol>
 
@@ -627,14 +676,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">198k</span>
+    <span title="站点总字数">216k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:01</span>
+    <span title="站点阅读时长">3:17</span>
   </span>
 </div>
 <div class="busuanzi-count">

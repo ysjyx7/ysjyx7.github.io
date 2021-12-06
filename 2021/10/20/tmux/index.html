@@ -193,7 +193,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">启动与退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E9%94%AE"><span class="nav-number">2.3.</span> <span class="nav-text">前缀键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">会话管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">高级操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">窗格操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">窗口管理</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">启动与退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E9%94%AE"><span class="nav-number">2.3.</span> <span class="nav-text">前缀键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">会话管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">高级操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">窗格操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">窗口管理</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -343,7 +343,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>838</span>
+      <span>869</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -362,11 +362,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    为什么要学习Tmux呢？<del>因为我今天在编译Linux内核的时候因为花费时间太长而没有事干</del>，主要是为了能够同时运行多个命令行程序</p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
-<h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><p>​    要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
-<h2 id="前缀键"><a href="#前缀键" class="headerlink" title="前缀键"></a>前缀键</h2><p>​    快捷键的前缀键为<strong>Ctrl+b</strong>，只有这样才能够使快捷键生效，<strong>Ctrl+b+?</strong>可以查看帮助文档</p>
-<h2 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h2><ol>
+        <h1>前言</h1>
+<p>​	为什么要学习Tmux呢？<s>因为我今天在编译Linux内核的时候因为花费时间太长而没有事干</s>，主要是为了能够同时运行多个命令行程序</p>
+<h1>基本用法</h1>
+<h2 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
+<h2 id="启动与退出"><a class="header-anchor" href="#启动与退出">¶</a>启动与退出</h2>
+<p>​	要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
+<h2 id="前缀键"><a class="header-anchor" href="#前缀键">¶</a>前缀键</h2>
+<p>​	快捷键的前缀键为<strong>Ctrl+b</strong>，只有这样才能够使快捷键生效，**Ctrl+b+?**可以查看帮助文档</p>
+<h2 id="会话管理"><a class="header-anchor" href="#会话管理">¶</a>会话管理</h2>
+<ol>
 <li><strong>tmux new -s name</strong>可以创建新的会话，每个会话都有编号0，1，2……</li>
 <li><strong>tmux detach</strong>可以让当前会话与窗口分离，快捷键为<strong>Ctrl+b d</strong></li>
 <li><strong>tmux ls</strong>可以查看当前所有的会话，快捷键为<strong>Ctrl+b s</strong></li>
@@ -375,20 +381,23 @@
 <li><strong>tmux switch -t name</strong>可以用来切换会话</li>
 <li><strong>tmux rename-session -t num name</strong>可以用来重命名，快捷键为<strong>Ctrl+b $</strong></li>
 </ol>
-<h1 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h1><h2 id="窗格操作"><a href="#窗格操作" class="headerlink" title="窗格操作"></a>窗格操作</h2><ol>
-<li><strong>tmux split-window</strong>划分上下两个窗格，加参数<strong>-h</strong>划分左右，左右快捷键为<strong>%</strong>，上下快捷键为<strong>“</strong></li>
-<li><strong>tmux select-pane</strong>移动窗格光标，加参数<strong>-U -D -L -R</strong>分别向上下左右移动，方向键也可以直接切换</li>
+<h1>高级操作</h1>
+<h2 id="窗格操作"><a class="header-anchor" href="#窗格操作">¶</a>窗格操作</h2>
+<ol>
+<li><strong>tmux split-window</strong>划分上下两个窗格，加参数**-h<strong>划分左右，左右快捷键为</strong>%<strong>，上下快捷键为</strong>&quot;**</li>
+<li><strong>tmux select-pane</strong>移动窗格光标，加参数**-U -D -L -R**分别向上下左右移动，方向键也可以直接切换</li>
 <li><strong>tmux swap-pane</strong>交换窗格位置，参数与上面一样</li>
-<li>还有一些快捷键，比如<strong>x</strong>关闭当前窗格，<strong>!</strong>拆分出当前窗格，<strong>z</strong>全屏显示当前窗格，<strong>q</strong>显示当前窗格编号</li>
+<li>还有一些快捷键，比如<strong>x</strong>关闭当前窗格，**!**拆分出当前窗格，<strong>z</strong>全屏显示当前窗格，<strong>q</strong>显示当前窗格编号</li>
 </ol>
-<h2 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h2><ol>
+<h2 id="窗口管理"><a class="header-anchor" href="#窗口管理">¶</a>窗口管理</h2>
+<ol>
 <li><strong>tmux new-window -n name</strong>新建窗口</li>
 <li><strong>tmux select-window -t name</strong>切换窗口</li>
 <li><strong>tmux rename-window name</strong>为当前窗口起名或重命名</li>
-<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>num</strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，<strong>,</strong>窗口重命名</li>
+<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>num</strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，**,**窗口重命名</li>
 </ol>
-<p><strong><em>注意：所有的快捷键都必须先按前缀键</em></strong></p>
-<p><strong><em>参考：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">http://www.ruanyifeng.com/blog/2019/10/tmux.html</a></em></strong></p>
+<p><em><strong>注意：所有的快捷键都必须先按前缀键</strong></em></p>
+<p><em><strong>参考：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">http://www.ruanyifeng.com/blog/2019/10/tmux.html</a></strong></em></p>
 
     </div>
 
@@ -518,14 +527,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">198k</span>
+    <span title="站点总字数">216k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:01</span>
+    <span title="站点阅读时长">3:17</span>
   </span>
 </div>
 <div class="busuanzi-count">
