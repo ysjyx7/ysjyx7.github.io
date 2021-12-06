@@ -320,7 +320,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <h3 id="静态变量"><a class="header-anchor" href="#静态变量">¶</a>静态变量</h3>
 <p>​	用static在函数外部定义的为模块静态变量，可通过单目运算符::访问，而用static在函数内部定义的是局部静态变量，下面给一个例子</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> x, y; <span class="comment">//模块静态变量x、y定义，默认初始值均为0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span>&#123;    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> y;       <span class="comment">//局部静态变量y定义， 初始值y=0</span></span><br><span class="line">    <span class="keyword">return</span>  ::y+x+y;<span class="comment">//分别访问模块静态变量y,模块静态变量x,局部静态变量y</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<h3 id="几个保留字"><a class="header-anchor" href="#几个保留字">¶</a>几个保留字</h3>
+<h3 id="几个关键字"><a class="header-anchor" href="#几个关键字">¶</a>几个关键字</h3>
 <p>​	这里主要讲的是const，constexpr，volatile，inline</p>
 <p>​	首先对于<strong>const</strong>和<strong>constexpr</strong>，两者都是修饰只读变量，但是const没有区分这是编译期常量还是运行期常量，而constexpr会让编译器将当前变量当成编译期常量，也就是让编译器在编译时就可以对表达式进行一定的优化。const修饰成员函数表示该函数不会修改类的状态，而constexpr不能修饰成员函数，只能作为函数返回值类型，表示该函数返回的是一个编译时确定的值，而如果用constexpr修饰函数，返回值<strong>不一定是编译期常量</strong>，编译器会根据实际情况进行操作。</p>
 <p>​	具体用constexpr修饰的函数，有以下几点注意事项：</p>
@@ -419,6 +419,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 </li>
 </ol>
 <h1>类</h1>
+<h2 id="基本注意事项"><a class="header-anchor" href="#基本注意事项">¶</a>基本注意事项</h2>
 <ol>
 <li>
 <p>联合也是类</p>
@@ -464,6 +465,25 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 </li>
 <li>
 <p>用常量对象做实参，优先调用参数为**无址引用&amp;&amp;<strong>的构造函数，用变量等做实参，优先调用参数为</strong>&amp;**的构造函数。</p>
+</li>
+</ol>
+<h2 id="成员和成员指针"><a class="header-anchor" href="#成员和成员指针">¶</a>成员和成员指针</h2>
+<ol>
+<li>
+<p>首先成员指针是成员相对于对象首地址的偏移量，不是真正的代表地址的指针，因此成员指针不能移动，也不能进行类型转换，否则会出现各种各样的问题</p>
+</li>
+<li>
+<p>关键字<strong>mutable</strong>，说明该变量将永远处于易变状态，并且不能用于修饰静态成员，或许应该结合const来使用：在成员函数后加const修饰this指向对象，表示不会改变对象，但是如果想要改变对象中的某个值，将该成员用mutable修饰即可。<strong>const和volatile是影响重载的</strong>，而volatile只能修改非只读变量，主要还是去体会<strong>这些关键字实际上修饰的都是this</strong>，const volatile 😰</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PRODUCT</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span>* name;			<span class="comment">//产品名称</span></span><br><span class="line">    <span class="keyword">int</span>  price;			<span class="comment">//产品价格</span></span><br><span class="line">    <span class="keyword">int</span>  quantity;			<span class="comment">//产品数量</span></span><br><span class="line">    <span class="keyword">mutable</span> <span class="keyword">int</span> count;		<span class="comment">//产品查询次数</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">PRODUCT</span>(<span class="keyword">const</span> <span class="keyword">char</span>* n, <span class="keyword">int</span> m, <span class="keyword">int</span> p);</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">buy</span><span class="params">(<span class="keyword">int</span> money)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span>&amp; p, <span class="keyword">int</span>&amp; q)</span><span class="keyword">const</span></span>;</span><br><span class="line">    ~<span class="built_in">PRODUCT</span>(<span class="keyword">void</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PRODUCT::get</span><span class="params">(<span class="keyword">int</span> &amp;p, <span class="keyword">int</span> &amp;q)</span><span class="keyword">const</span></span>&#123;<span class="comment">//const  PRODUCT *const this</span></span><br><span class="line">    p=price;       q=quantity; <span class="comment">//当前对象为const对象，故其成员不能被修改</span></span><br><span class="line">    count++;    		<span class="comment">//但count为mutable成员，可以修改</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>对于静态数据成员，在类里声明，在类外面只定义一次，通常用来描述这个类整体的一种信息，不能定义成位段成员，函数中的局部类不能定义静态数据成员</p>
+</li>
+<li>
+<p>对于静态函数成员，没有this参数，在类内部声明或定义，所以不能是析构函数、构造函数、虚函数等等带有this参数的函数，其参数表后不能出现const这样的修饰符，但是返回值可以用这些修饰，在类外定义的时候不需要再用static修饰</p>
+</li>
+<li>
+<p>静态成员指针是指向类的静态成员的指针，和普通指针没什么区别，但是和普通成员指针有区别，前者存放地址，后者存放偏移，所以静态成员指针也可以强制类型转换</p>
 </li>
 </ol>
 ]]></content>
@@ -5541,5 +5561,10 @@ $(RM) $*.o</p>
         <tag>Linux</tag>
         <tag>makefile</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>C++学习（三）</title>
+    <url>/blog/2021/12/06/C-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
