@@ -5738,4 +5738,367 @@ $(RM) $*.o</p>
         <tag>C++</tag>
       </tags>
   </entry>
+  <entry>
+    <title>基本知识和组合逻辑</title>
+    <url>/blog/2021/12/15/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%92%8C%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91/</url>
+    <content><![CDATA[<h1>基础知识</h1>
+<h2 id="进制"><a class="header-anchor" href="#进制">¶</a>进制</h2>
+<ol>
+<li>二进制的三种编码，原码、补码、反码，注意反码计算的时候如果符号位有进位，需要将其进到最低位</li>
+<li>二进制小数转换成十进制采用乘二取整</li>
+</ol>
+<h2 id="编码"><a class="header-anchor" href="#编码">¶</a>编码</h2>
+<ol>
+<li>
+<p>8421码对0-9进行编码，和其对应的二进制一样，应注意和二进制的区别，如${(28)}<em>{10}={(11100)}</em>{2}={(00101000)}_{8421}$</p>
+</li>
+<li>
+<p>2421码的0-4和8421码一样，5-9是从1011开始的，其实就是${(a_3a_2a_1a_0)}<em>{2421}={(2<em>a_3+4</em>a_2+2<em>a_1+1</em>a_0)}</em>{2421}$，另外2421码是一种对9的自补编码，即将某数对应的2421码按位取反就能得到对9的补数的2421码</p>
+</li>
+<li>
+<p>余3码是在8421码的基础上每一个加0011得到的，也是对9的自补编码，注意计算和的时候需要对结果进行修正，<strong>即如果没有进位，需要对结果减3，如果有进位，需要对结果加3</strong></p>
+</li>
+<li>
+<p>格雷码，任意两位相邻的十进制数，格雷码仅有一位不同，转换规则如下</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214104457671.png" alt="image-20211214104457671"></p>
+</li>
+<li>
+<p>奇偶校验码由两部分组成，即信息位和奇偶检验位，奇校验是让信息位和检验位中有奇数个1，偶校验是让他们之中有偶数个1</p>
+</li>
+</ol>
+<h1>逻辑代数基础</h1>
+<h2 id="基本知识"><a class="header-anchor" href="#基本知识">¶</a>基本知识</h2>
+<p><strong>大部分都可以掠过，就写一些比较重要的</strong></p>
+<ol>
+<li>
+<p>代入规则，代入的是整体</p>
+</li>
+<li>
+<p>反演规则，即将所有的全部改变，要注意运算符的优先级</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190404052.png" alt="image-20211214190404052"></p>
+</li>
+<li>
+<p>对偶规则，和反演规则差不多，但是只有把或变与，把与变或，然后把0变1，把1变0，主要是利用对偶规则去简化问题</p>
+</li>
+<li>
+<p>在多个变量异或时，<strong>若有奇数个变量为1，则最终结果为1，否则为0</strong>，同或运算和异或运算是完全反着来的</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190435855.png" alt="image-20211214190435855"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190449623.png" alt="image-20211214190449623"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190457305.png" alt="image-20211214190457305"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190505248.png" alt="image-20211214190505248"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190511856.png" alt="image-20211214190511856"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214190519862.png" alt="image-20211214190519862"></p>
+<h2 id="逻辑表达式的变换"><a class="header-anchor" href="#逻辑表达式的变换">¶</a>逻辑表达式的变换</h2>
+<h3 id="最大项和最小项"><a class="header-anchor" href="#最大项和最小项">¶</a>最大项和最小项</h3>
+<ol>
+<li>最小项指的就是包含$n$个变量的与项的式子，可以是变量本身或其反变量，只能出现一次，记为$m_i$，其中下标$i$一般指的是按变量顺序将最小项中的原变量用1表示，反变量用0表示，得到的二进制数就是$i$的值，相邻最小项指的是两个最小项中仅有一个变量互反，剩余全部相同，有如下性质：
+<ul>
+<li>只有一种取值使其为真</li>
+<li>两个不同最小项相与为0</li>
+<li>所有最小项或起来为1</li>
+<li>n个变量构成的最小项有n个相邻最小项</li>
+</ul>
+</li>
+<li>最大项和最小项相对，只是把与项改成了或项，记为$M_i$，其中$i$的取值是按照变量顺序，让原变量为0，反变量为1，得到的二进制数，所有的性质都是最小项的对偶版本，此略</li>
+<li>最大项和最小项有互补关系，即$\overline{m_i}=M_i$</li>
+<li>标准与或表达式和标准或与表达式指的就是用最小项和最大项进行表示</li>
+</ol>
+<h3 id="代数化简法"><a class="header-anchor" href="#代数化简法">¶</a>代数化简法</h3>
+<ol>
+<li>
+<p>要求标准与或表达式，其实就是先将其化成一般与或表达式，然后利用$X=X(Y+\overline)$，</p>
+</li>
+<li>
+<p>要求标准或与表达式，先将其转化成一般或与表达式，然后用$X=(X+Y)(X+\overline{Y})$</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214192958032.png" alt="image-20211214192958032"></p>
+<p>注意其中的$A+BC=(A+B)(A+C)$</p>
+</li>
+</ol>
+<h3 id="真值表法"><a class="header-anchor" href="#真值表法">¶</a>真值表法</h3>
+<p>​	真值表法思路其实很简单，但是就是麻烦</p>
+<p>​	首先先将真值表列出来，然后找到让函数值为1的变量取值，这些其实就是该函数的标准与或表达式中的最小项。或与表达式完全相对，此略</p>
+<h2 id="逻辑表达式的化简"><a class="header-anchor" href="#逻辑表达式的化简">¶</a>逻辑表达式的化简</h2>
+<h3 id="代数法"><a class="header-anchor" href="#代数法">¶</a>代数法</h3>
+<ol>
+<li>
+<p>最简与或表达式，要求表达式中的与项个数最少，同时每个与项中的变量数最少，主要利用以下几个定理</p>
+<ul>
+<li><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214194348279.png" alt="image-20211214194348279"></li>
+<li><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214194412848.png" alt="image-20211214194412848"></li>
+<li><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214194546430.png" alt="image-20211214194546430"></li>
+<li><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214194630824.png" alt="image-20211214194630824"></li>
+</ul>
+</li>
+<li>
+<p>或与表达式的化简，和与或表达式是对偶的，这里可以参考<strong>两次对偶法</strong>：</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214194953100.png" alt="image-20211214194953100"></p>
+</li>
+</ol>
+<h3 id="卡诺图化简法"><a class="header-anchor" href="#卡诺图化简法">¶</a>卡诺图化简法</h3>
+<ol>
+<li>
+<p>卡诺图中每一个方格代表一个最小项，几何图形上处在相邻、相对、相重位置的小方格所代表的最小项为相邻最小项</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214200418696.png" alt="image-20211214200418696"></p>
+</li>
+<li>
+<p>在卡诺图上可以直观的找到相邻最小项合并</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214201220847.png" alt="image-20211214201220847"></p>
+</li>
+<li>
+<p>蕴含项：与或表达式中的与项。质蕴含项：该蕴含项不是其他蕴含项的子集，对应的就是函数卡诺图中不能被更大的圈包围的圈。必要质蕴含项：包含至少一个函数不被其他质蕴含项包括的最小项</p>
+</li>
+<li>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214201848460.png" alt="image-20211214201848460"></p>
+</li>
+<li>
+<p>上面给出的是求最简与或表达式，要求最简或与表达式，需要使用两次取反法</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214203605776.png" alt="image-20211214203605776"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214203632586.png" alt="image-20211214203632586"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214203704627.png" alt="image-20211214203704627"></p>
+</li>
+</ol>
+<h1>组合逻辑电路</h1>
+<p>​	组合逻辑电路是电路输出仅仅取决于当前输入的电路</p>
+<h2 id="组合逻辑电路分析"><a class="header-anchor" href="#组合逻辑电路分析">¶</a>组合逻辑电路分析</h2>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214210738145.png" alt="image-20211214210738145"></p>
+<h2 id="组合逻辑电路设计"><a class="header-anchor" href="#组合逻辑电路设计">¶</a>组合逻辑电路设计</h2>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211214211157279.png" alt="image-20211214211157279"></p>
+<p>​	一般其实更多的是列出真值表，写出标准与或表达式，然后用卡诺图去化简。</p>
+<p>​	有一个名词是<strong>无关项</strong>，用意大概存在某种现实情况使得当前最小项的取值是无所谓的，这个时候的输出函数的值是多少都无所谓，通常记为<strong>d</strong>，通常可以给无关项一些特定的值，来让逻辑表达式更加简洁，如问题<strong>判断余3码表示的0-9的数是否是合数</strong>，中间显然有一些最小项是无关项，这个时候给他们一些特定的值，可以更加简洁</p>
+<p>​	还有一种更常见的题目是多输出的组合逻辑电路的设计，这种一般都是要通过代数化简，让多个输出之间有共享的部分，从而减少使用的逻辑门的数量</p>
+<p>​	另外，在设计的时候，相关的输出函数大概率会需要原变量的反变量，这个时候直接取反在效率上会比较低，所以可以使用相关的代数处理，来使用与非门或或非门来进行取反</p>
+<h2 id="组合逻辑电路的险象"><a class="header-anchor" href="#组合逻辑电路的险象">¶</a>组合逻辑电路的险象</h2>
+<p>​	主要是因为时间延迟造成的问题</p>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<p>​	竞争现象指的是输入信号经过不同的路径到达输出端的时间长短有先有后，非临界竞争指的是不会产生错误输出的竞争，临界竞争指的是会产生错误输出的竞争，<strong>险象</strong>指的是由竞争导致出现的错误信号，是一种瞬态现象，表现为输出端产生不应该有的尖脉冲，<strong>静态现象</strong>指的是输入变化而输出不应该发生变化的情况下出现的短暂错误，<strong>动态险象</strong>指的是输入变化而输出应该发生变化的情况下出现的短暂错误，同时也有0型险象和1型险象的区别</p>
+<h3 id="判断"><a class="header-anchor" href="#判断">¶</a>判断</h3>
+<p>​	主要有代数法和卡诺图法。</p>
+<p>​	代数法指的就是先查看函数中是否同时存在原变量和它的反变量，然后再看是否能通过对其它变量赋特殊值来让函数中出现$X+\overline{X}$或$X*\overline{X}$的形式。</p>
+<p>​	当逻辑表达式是与或表达式的时候，用卡诺图会更简单一些，大概就是画出卡诺图后，看一下各与项对应的卡诺全是否有相切的，如果有，就可能出现险象</p>
+<h3 id="消除"><a class="header-anchor" href="#消除">¶</a>消除</h3>
+<ol>
+<li>
+<p>可以增加冗余项，主要思路是首先找出当其余的变量取值为几时会产生哪种类型的险象，然后通过增加该变量的冗余项，使得取该值时不发生这种险象就行</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215103459231.png" alt="image-20211215103459231"></p>
+<p>另外也可以使用卡诺图，即在相切的地方加圈。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215103650220.png" alt="image-20211215103650220"></p>
+</li>
+<li>
+<p>增加惯性延时环节，略</p>
+</li>
+<li>
+<p>选通法，略</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数字逻辑</category>
+      </categories>
+      <tags>
+        <tag>数字逻辑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时序逻辑</title>
+    <url>/blog/2021/12/15/%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91/</url>
+    <content><![CDATA[<h1>触发器</h1>
+<p>​	触发器是一种具有记忆功能的电子器件</p>
+<h2 id="特点"><a class="header-anchor" href="#特点">¶</a>特点</h2>
+<ol>
+<li>有两个互补的输出端$Q$和$\overline{Q}$</li>
+<li>有两个稳定状态，通常将$Q=1$和$\overline{Q}=0$称为1状态，另外那个称为0状态，当输入信号不变的时候输出信号也不变</li>
+<li>在一定输入信号的作用下，触发器可以从一个稳定状态转移到另外一个稳定状态，现态称为输入信号作用前的状态，用$Q_n$和$\overline{Q_n}$表示，简记的时候n可以省略；而次态称为输入信号作用后的状态，用$Q_{n+1}$和$\overline{Q_{n+1}}$，次态是现态和输入的函数</li>
+</ol>
+<h2 id="R-S触发器"><a class="header-anchor" href="#R-S触发器">¶</a>R-S触发器</h2>
+<ol>
+<li>
+<p>用与非门构成的R-S触发器功能</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215113756407.png" alt="image-20211215113756407"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215205315799.png" alt="image-20211215205315799"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215205531531.png" alt="image-20211215205531531"></p>
+<p>用或非门实现的R-S触发器和用与非门实现的是完全对称的</p>
+</li>
+</ol>
+<h2 id="几种常用的时钟控制触发器"><a class="header-anchor" href="#几种常用的时钟控制触发器">¶</a>几种常用的时钟控制触发器</h2>
+<p>​	由时钟脉冲控制状态转移的时刻，由输入信号确定转换状态</p>
+<h3 id="时钟控制R-S触发器"><a class="header-anchor" href="#时钟控制R-S触发器">¶</a>时钟控制R-S触发器</h3>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215210532150.png" alt="image-20211215210532150"></p>
+<p>​	大概就是时钟脉冲没过来的时候，控制端G3和G4输出始终为1，然后时钟脉冲过来的时候输出输入时候的R和S</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215210747575.png" alt="image-20211215210747575"></p>
+<p><strong>缺点</strong>：输入信号存在约束条件，R和S不能同时为1；在时钟作用期间，会发生空翻</p>
+<h3 id="钟控D触发器"><a class="header-anchor" href="#钟控D触发器">¶</a>钟控D触发器</h3>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215211039238.png" alt="image-20211215211039238"></p>
+<p>​	输入信号D会被转换成一组互补信号</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215211345146.png" alt="image-20211215211345146"></p>
+<p>​	也就是说它的状态变化仅取决于输入信号D</p>
+<h3 id="J-K触发器"><a class="header-anchor" href="#J-K触发器">¶</a>J-K触发器</h3>
+<p>​	J，K触发器是在输出的地方接线再到最开始的与非门，这样利用两个输出互补的特点来解决输入限制的问题。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215211629291.png" alt="image-20211215211629291"></p>
+<p>​	其工作原理如下</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215212151167.png" alt="image-20211215212151167"></p>
+<h3 id="T触发器"><a class="header-anchor" href="#T触发器">¶</a>T触发器</h3>
+<p>​	T触发器是将J-K触发器的JK两端连起来，这样就构成了T触发器，如下</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215212420692.png" alt="image-20211215212420692"></p>
+<p>​	功能如下：</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211215212628393.png" alt="image-20211215212628393"></p>
+<h3 id="空翻现象"><a class="header-anchor" href="#空翻现象">¶</a>空翻现象</h3>
+<p>​	空翻指的是在同一个时钟脉冲作用期间触发器状态发生两次或两次以上变化的现象，或许是要求在一个时钟脉冲作用的时候，输出只能改变一次。为了防止这种现象的出现，可以考虑使用<strong>主从式结构</strong>或者<strong>维持阻塞结构</strong>，应注意这两种结构并不改变触发器的逻辑功能</p>
+<ol>
+<li>主从J-K触发器，下降沿触发，每个时钟周期只翻转一次，抗干扰能力差，对时钟脉冲宽度要求严格</li>
+</ol>
+<h1>同步时序逻辑电路</h1>
+<p>​	**特点：**电路中有统一的定时信号，存储器件采用时钟控制触发器，电路状态在时钟脉冲控制下同时发生转换，即电路状态的改变依赖于输入信号和时钟脉冲信号。</p>
+<p>​	这里的现态指的是时钟脉冲作用前的状态，次态指的是时钟脉冲作用后的状态，对时钟的宽度和频率都有要求。</p>
+<p>​	如果时序逻辑电路的输出是电路输入和电路状态的函数，那么称为<strong>Mealy</strong>型电路，而如果电路的输出仅仅是电路状态的函数，则是<strong>Moore</strong>型电路</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216183200617.png" alt="image-20211216183200617"></p>
+<p>​	同步时序逻辑电路可以用三组逻辑函数表达式表述，即输出函数表达式，指的是输出Z的表达式；激励函数表达式，又称为控制函数表达式，是存储电路输入（即触发器输入）和电路外部输入以及电路状态的表达式；次态函数表达式，用来反映该电路次态与激励函数和电路现态之间的关系，和触发器类型有关。</p>
+<p>​	也可以用状态表表示，即<img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216184145567.png" alt="image-20211216184145567"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216184204801.png" alt="image-20211216184204801"></p>
+<p>​	也可以用<strong>状态图</strong>去描述</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216184356123.png" alt="image-20211216184356123"></p>
+<h2 id="同步时序逻辑电路分析"><a class="header-anchor" href="#同步时序逻辑电路分析">¶</a>同步时序逻辑电路分析</h2>
+<p>​	主要有表格法和代数分析法两种</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216184551743.png" alt="image-20211216184551743"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216184708705.png" alt="image-20211216184708705"></p>
+<p>​	这部分主要是要靠刷题，知识点就这两部分</p>
+<h2 id="同步时序逻辑电路设计"><a class="header-anchor" href="#同步时序逻辑电路设计">¶</a>同步时序逻辑电路设计</h2>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216185339405.png" alt="image-20211216185339405"></p>
+<h3 id="第一步"><a class="header-anchor" href="#第一步">¶</a>第一步</h3>
+<p>​	第一步是形成原始状态图和原始状态表</p>
+<p>​	先考虑电路是Mealy型还是Moore型，然后设立初始状态，然后根据需要记忆的信息增加新的状态，最后确定各时刻的输出值</p>
+<h3 id="第二步"><a class="header-anchor" href="#第二步">¶</a>第二步</h3>
+<p>​	第二步是进行状态化简，主要介绍<strong>隐含表法</strong></p>
+<p>​	先来介绍几个概念</p>
+<ol>
+<li>等效，即对于状态表中的两个状态，对于任意可能的输入序列，分别从这两个状态出发，得到的输出序列是一样的，那么就称这两个状态是等效的，那对于两个状态，如果要等效的话，<strong>首先需要满足对于相同的输入，输出是相同的，然后再去看次态</strong></li>
+<li>等效类，是若干彼此等效的状态构成的集合，最大等效类指的是不能被其他等效类包含的等效类</li>
+</ol>
+<p>​    到这里其实思路就比较明显了，对原始状态表化简就是找到所有的最大等效类，将其当作一个状态即可</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216191631712.png" alt="image-20211216191631712"></p>
+<p>​	隐含表是一个直角三角形阶梯网络，表中每一个方格代表一个状态对，<strong>纵、横向网格数为n-1，纵掐头横去尾。</strong></p>
+<p>​	找等效对有两种方法，即顺序比较和关联比较。顺序比较就是按照在隐含表中从上到下从左到右的顺序对照原始状态表依次对所有的状态对进行比较，并将检查结果标注在隐含表对应方格内；关联比较是对那些在顺序比较的时候没有判断的再进一步判断</p>
+<h3 id="第三步"><a class="header-anchor" href="#第三步">¶</a>第三步</h3>
+<p>​	第三步是状态编码，是指给最小化状态表中用字母或数字表示的状态，指定一个二进制代码，形成二进制状态表。状态编码也称状态分配，或者状态赋值。</p>
+<p>​	主要完成以下两个工作：</p>
+<ol>
+<li>确定状态编码的长度</li>
+<li>寻找更佳的状态分配方案</li>
+</ol>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216194001086.png" alt="image-20211216194001086"></p>
+<p>​	<strong>相邻分配法</strong>：在选择状态编码时，尽可能使激励函数和输出函数在卡诺图上的1方格处在相邻位置</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211216201129171.png" alt="image-20211216201129171"></p>
+<p>​	最开始其实没有明白这一步是在干什么，后来仔细研究例题，发现，这个应该就是用二进制去对各个状态进行编码，因为我们最开始得到的状态应该都是A、B、C、D这种，然后可以用两位二进制数去描述这四种状态，所以需要按照着三种规则进行编码，当然，如果本身题目比较简单，很容易用二进制数去表示，这一步就可以省略了</p>
+<h3 id="第四步"><a class="header-anchor" href="#第四步">¶</a>第四步</h3>
+<p>​	最后其实就是根据我们之前得到的状态表，以及触发器的功能表得到激励函数和输出函数的真值表，可以考虑使用卡诺图进行化简</p>
+<h1>异步时序逻辑电路</h1>
+<p>​	异步时序逻辑电路中没有统一的时钟脉冲信号，电路状态的改变是外部信号直接作用的结果，其中存储元件的状态改变不一定同时发生，可能出现非稳定状态</p>
+<h2 id="脉冲异步时序逻辑电路"><a class="header-anchor" href="#脉冲异步时序逻辑电路">¶</a>脉冲异步时序逻辑电路</h2>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217141748085.png" alt="image-20211217141748085"></p>
+<p>​	输入信号为脉冲信号，脉冲信号的宽度和间隔有一定要求，同时，<strong>不允许两个及以上输入端同时出现脉冲</strong>，Mealy型输出信号通常为脉冲信号，而Moore型通常为电平信号，其电路的分析方法和同步时序逻辑电路基本一致，注意分析的时候可以排除两个及以上输入端同时出现脉冲或输入端没有脉冲信号的情况</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217142149046.png" alt="image-20211217142149046"></p>
+<p>​	其电路设计和同步时序逻辑也大体相同，但是应注意，当有多个输入信号的时候，只需要考虑其中仅有一个脉冲即可，在确定激励函数和输出函数时，可将两个或两个以上的输入当成无关条件处理</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217143632176.png" alt="image-20211217143632176"></p>
+<h2 id="电平异步时序逻辑电路"><a class="header-anchor" href="#电平异步时序逻辑电路">¶</a>电平异步时序逻辑电路</h2>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217145626507.png" alt="image-20211217145626507"></p>
+<p>​	不允许多个输入信号同时变化，而每次输入信号变化引起的相应需要完全结束才允许输入信号再次变化</p>
+<p>​	可以用逻辑方程组描述，也可以用<strong>流程表</strong>描述，其实和之前的状态表还蛮像的</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217150812519.png" alt="image-20211217150812519"></p>
+<p>​	这里引入的一个新的概念，即总态和总态表，总态是指电路输入与电路二次状态的组合，记作**(x,y)**，总态图是反应总态之间转移关系及相应输出的一种有向图</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217160724759.png" alt="image-20211217160724759"></p>
+<h3 id="分析"><a class="header-anchor" href="#分析">¶</a>分析</h3>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211217162952207.png" alt="image-20211217162952207"></p>
+<h3 id="竞争"><a class="header-anchor" href="#竞争">¶</a>竞争</h3>
+<p>​	由于电路中存在延迟时间，所以会产生竞争，非临界竞争指的是竞争的结果最终能到达预定的稳态，临界竞争指的是达不到的。</p>
+<h1>常用的一些电路</h1>
+<h2 id="组合逻辑"><a class="header-anchor" href="#组合逻辑">¶</a>组合逻辑</h2>
+<ol>
+<li>
+<p>四位并行加法器74283</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220205135324.png" alt="image-20211220205135324"></p>
+<p>注意二进制加法和减法的转化</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220205731182.png" alt="image-20211220205731182"></p>
+</li>
+<li>
+<p>二进制译码器，能将n个变量变换成$2^n$个输出函数，并且输出函数与输入变量组成的最小项具有对应关系</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220210323341.png" alt="image-20211220210323341"></p>
+<p>使能输入端为有效电平时，对应每一组输入代码，仅一个输出端为有效电平，其余输出端为无效电平。 <strong>注意这里的有效电平可以是高电平也可以是低电平</strong></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220211033890.png" alt="image-20211220211033890"></p>
+</li>
+<li>
+<p>二-十进制译码器</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220211903611.png" alt="image-20211220211903611"></p>
+<p>其实就是输入的8421码对应的十进制是多少，输出的对应为0，如果输入的8421码不合法的话，则输出均为1</p>
+</li>
+<li>
+<p>数字显示译码器</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220212745491.png" alt="image-20211220212745491"></p>
+</li>
+<li>
+<p>二-十进制编码器，主要功能是将十进制数字0~9编码成4位二进制码，没有芯片，估计不考</p>
+</li>
+<li>
+<p>优先编码器，可以识别输入信号的优先级别，选中优先级别最高的进行编码，实现优先权管理。<strong>也就是说，可以有多个输入信号同时为有效信号</strong></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211220213127122.png" alt="image-20211220213127122"></p>
+<p>其实没有很看明白这个真值表的含义。</p>
+</li>
+<li>
+<p>多路选择器，是一种多路输入、单路输出的组合逻辑电路</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221184346743.png" alt="image-20211221184346743"></p>
+<p>一般有$2^{n}$个输入和一个输出的电路需要有$n$个控制端</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221184521827.png" alt="image-20211221184521827"></p>
+<p>一种比较常见的题目是给出最小项之和的表达式，用多路选择器实现，这个时候如果对多路选择器没有要求的话，那么直接用即可，如果有要求，比如只能用四位的，那么可以考虑选择两个变元作为选择端，然后对表达式进行化简，得到的形式是这两个变元及其反变元和其他表达式的与项，然后把其他表达式的与项作为输入端即可。</p>
+</li>
+<li>
+<p>多路分配器，是一种单输入多输出的器件</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221191419001.png" alt="image-20211221191419001"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221191403580.png" alt="image-20211221191403580"></p>
+<p>大概就是说选择端选择哪一个，就将输入端的值输出过去，剩下的输入端全都是0</p>
+</li>
+</ol>
+<h2 id="时序逻辑"><a class="header-anchor" href="#时序逻辑">¶</a>时序逻辑</h2>
+<ol>
+<li>
+<p>集成计数器，具有计数、保存、清除、预置功能。</p>
+<ul>
+<li>
+<p>同步计数器</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221192629020.png" alt="image-20211221192629020"></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221192850894.png" alt="image-20211221192850894"></p>
+<p>比较常见的题目是要用这个器件构成模小于16计数器</p>
+<p>当然也可以用来设计模大于16的计数器，只需要将多个4位计数器级联即可</p>
+</li>
+<li>
+<p>异步计数器，74290</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221195329029.png" alt="image-20211221195329029"></p>
+<p>感觉这个东西的功能很复杂，</p>
+<ul>
+<li>
+<p>异步清零功能，当$R_{9A}*R_{9B}=0$且$R_{0A}=R_{0B}=1$时输出端置0.</p>
+</li>
+<li>
+<p>异步置9功能，只需要$R_{9A}=R_{9B}=1$就行</p>
+</li>
+<li>
+<p>计数功能，需要满足$R_{9A}*R_{9B}=0$并且$R_{0A}*R_{0B}=0$，将脉冲加到CPA端，从$Q_A$输出，实现模二加法。如果加到CPB端，则从$Q_D、Q_C、Q_B$，实现模五加法。要实现模十加法，采用如下两种解法，分别是8421码和5421码</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221200159115.png" alt="image-20211221200159115"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>集成寄存器</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211221200626857.png" alt="image-20211221200626857"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数字逻辑</category>
+      </categories>
+      <tags>
+        <tag>数字逻辑</tag>
+      </tags>
+  </entry>
 </search>
