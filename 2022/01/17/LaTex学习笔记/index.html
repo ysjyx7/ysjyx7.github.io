@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118153313014.png">
 <meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118165745075.png">
 <meta property="article:published_time" content="2022-01-17T05:39:31.000Z">
-<meta property="article:modified_time" content="2022-02-23T12:06:33.767Z">
+<meta property="article:modified_time" content="2022-02-23T12:25:37.130Z">
 <meta property="article:author" content="杨释钧">
 <meta property="article:tag" content="数学建模">
 <meta property="article:tag" content="LaTex">
@@ -332,7 +332,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-02-23 20:06:33" itemprop="dateModified" datetime="2022-02-23T20:06:33+08:00">2022-02-23</time>
+        <time title="修改时间：2022-02-23 20:25:37" itemprop="dateModified" datetime="2022-02-23T20:25:37+08:00">2022-02-23</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -362,7 +362,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.7k</span>
+      <span>9.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -388,7 +388,7 @@
 <h2 id="文件结构"><a class="header-anchor" href="#文件结构">¶</a>文件结构</h2>
 <p>​	先看一下LaTeX的程序结构</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;&#125;</span><br><span class="line">% 导言区</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">% 正文</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<p>​	LaTex源代码以**\documentclass{}<strong>开头，指定了</strong>文档类**，在导言区中通常会用**\usepackage<strong>命令调用</strong>宏包**，并进行相关设置</p>
+<p>​	LaTex源代码以\documentclass{}开头，指定了<strong>文档类</strong>，在导言区中通常会用\usepackage命令调用<strong>宏包</strong>，并进行相关设置</p>
 <h2 id="部分概念"><a class="header-anchor" href="#部分概念">¶</a>部分概念</h2>
 <p>​	先来看第一个LaTeX程序</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">    ``Hello World!&#x27;&#x27; from \LaTeX</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
@@ -399,12 +399,12 @@
 <p>​	有的命令还会对其后所有命令产生作用，这个时候需要使用<strong>分组</strong>，用花括号表示，在分组中使用的命令只会影响到分组</p>
 <p>​	文档类规定了LaTeX源代码生成文档的性质，主要有如下几种</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220117141536478.png" alt="image-20220117141536478"></p>
-<p>​	主要命令是**\documentclass[可选参数]{文档类型}**，这里的可选参数主要是关于整个文档全局的一些设置</p>
-<p>​	宏包就是一系列的拓展，相关命令是**\usepackage[可选参数]{包名}**，可以通过使用逗号隔开来一次调用多个宏包</p>
+<p>​	主要命令是\documentclass[可选参数]{文档类型}，这里的可选参数主要是关于整个文档全局的一些设置</p>
+<p>​	宏包就是一系列的拓展，相关命令是\usepackage[可选参数]{包名}，可以通过使用逗号隔开来一次调用多个宏包</p>
 <h2 id="文件组织方式"><a class="header-anchor" href="#文件组织方式">¶</a>文件组织方式</h2>
 <p>​	在撰写很长的文章的时候，可以将每章内容单独写在独立文件中</p>
-<p>​	可以用**\include{}<strong>命令来插入文件，使用绝对路径或相对路径都行，不过这个命令会在读入文件之前另起一页，如果不需要的话可以使用</strong>\input{}**命令。</p>
-<p>​	在导言区可以使用**\includeonly{}**命令来组织文件，只有花括号中出现的文件才能在后续进行插入。</p>
+<p>​	可以用\include{}命令来插入文件，使用绝对路径或相对路径都行，不过这个命令会在读入文件之前另起一页，如果不需要的话可以使用\input{}命令。</p>
+<p>​	在导言区可以使用\includeonly{}命令来组织文件，只有花括号中出现的文件才能在后续进行插入。</p>
 <p>​	最后介绍一个宏包<strong>syntonly</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;syntonly&#125;</span><br><span class="line">\syntonly</span><br></pre></td></tr></table></figure>
 <p>​	这样会只编译而不生成LaTeX文件，速度会比较快</p>
@@ -412,7 +412,7 @@
 <h2 id="字符"><a class="header-anchor" href="#字符">¶</a>字符</h2>
 <h3 id="常见字符"><a class="header-anchor" href="#常见字符">¶</a>常见字符</h3>
 <p>​	在源文件中，空格和tab键被视为空格，连续多个空格被视为一个空格。</p>
-<p>​	行末的换行符也会被视为空格，而连续两个换行符则是分段，也可以使用**\par**进行换行。</p>
+<p>​	行末的换行符也会被视为空格，而连续两个换行符则是分段，也可以使用\par进行换行。</p>
 <p>​	采用**%**作为注释。</p>
 <p>​	特殊字符有对应的作用，需要用反斜线进行转义，而两个反斜线被定义成了手动换行的命令，<strong>\textbackslash</strong>输入了反斜线。</p>
 <p>​	在进行英文论写作的时候，经常会出现连体字符，可以在两个单字符之间加入一对大括号来避免这一点</p>
@@ -485,14 +485,14 @@
 <p>​	在列宽部分，LaTeX有着明显的不足，可以用array包来让p列对齐</p>
 <p>​	tarbularx环境给出了X列参数，是为每一列平均分配了一个宽度，然后再用array包来实现也可以</p>
 <h3 id="横线"><a class="header-anchor" href="#横线">¶</a>横线</h3>
-<p>​	<strong>\hline</strong>可以用来画横线，**\cline{i-j}**可以用来绘制跨越部分单元格的横线，比较常用的还有一种三线表，如下</p>
+<p>​	\hline可以用来画横线，\cline{i-j}可以用来绘制跨越部分单元格的横线，比较常用的还有一种三线表，如下</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220117212429652.png" alt="image-20220117212429652"></p>
-<p>​	由<strong>booktabs</strong>宏包支持三线表，用**\toprule**、<strong>\midrule</strong>、<strong>\bottomrule</strong>分别绘制三根线，以及和cline对应的cmidrule</p>
+<p>​	由<strong>booktabs</strong>宏包支持三线表，用\toprule、\midrule、\bottomrule分别绘制三根线，以及和cline对应的cmidrule</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;tabular&#125;&#123;cccc&#125;</span><br><span class="line">\toprule</span><br><span class="line">&amp; \multicolumn&#123;3&#125;&#123;c&#125;&#123;Numbers&#125; \\</span><br><span class="line">\cmidrule&#123;2-4&#125;</span><br><span class="line">&amp; 1 &amp; 2 &amp; 3 \\</span><br><span class="line">\midrule</span><br><span class="line">Alphabet &amp; A &amp; B &amp; C \\</span><br><span class="line">Roman &amp; I &amp; II&amp; III \\</span><br><span class="line">\bottomrule</span><br><span class="line">\end&#123;tabular&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="合并单元格"><a class="header-anchor" href="#合并单元格">¶</a>合并单元格</h3>
-<p>​	横向合并单元格用**\multicolumn{n}{column-spec}{item}**</p>
+<p>​	横向合并单元格用\multicolumn{n}{column-spec}{item}</p>
 <p>​	其中n为要合并的列数，column-spec为合并后的格式，item是合并后的值</p>
-<p>​	纵向合并单元格用**\multirow{n}{width}{item}**命令</p>
+<p>​	纵向合并单元格用\multirow{n}{width}{item}命令</p>
 <p>​	感觉纵向合并一般的格式就是该怎么写怎么写，没被合并的正常用双斜线断行</p>
 <h3 id="嵌套表格"><a class="header-anchor" href="#嵌套表格">¶</a>嵌套表格</h3>
 <p>​	嵌套表格主要是实现了拆分单元格的效果，此处略过，需要注意的是在嵌套的表格的列格式部分需要使用@{}来保证可以对齐</p>
@@ -501,7 +501,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\renewcommand\arraystretch&#123;1.8&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="图片"><a class="header-anchor" href="#图片">¶</a>图片</h2>
 <p>​	需要借助<strong>graphicx</strong>宏包辅助进行</p>
-<p>​	然后用**\includegraphics[options]{filename}<strong>来加载图片，也提供了</strong>\graphicspath{{figures}{logo}}**命令，使用这个路径下的图片可以不写路径</p>
+<p>​	然后用\includegraphics[options]{filename}来加载图片，也提供了\graphicspath{{figures}{logo}}命令，使用这个路径下的图片可以不写路径</p>
 <p>​	然后是加载图片的options可以用键值对</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220117224725182.png" alt="image-20220117224725182"></p>
 <h2 id="盒子"><a class="header-anchor" href="#盒子">¶</a>盒子</h2>
@@ -512,18 +512,18 @@
 <p>​	第一个命令生成一个基本的水平盒子，内容只有一行，不允许分段</p>
 <p>​	第二个命令可以生成可选参数相关的盒子，可设置宽度和对齐方式</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\fbox&#123;...&#125;</span><br><span class="line">\framebox[width][align]&#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>​	上面两个命令生成的是有边框版本，可以用**\setlength{}{length}**命令更改边框宽度</p>
+<p>​	上面两个命令生成的是有边框版本，可以用\setlength{}{length}命令更改边框宽度</p>
 <h3 id="垂直盒子"><a class="header-anchor" href="#垂直盒子">¶</a>垂直盒子</h3>
 <p>​	有两种方式可以实现能够换行的盒子</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\parbox[⟨align⟩][⟨height⟩][⟨inner-align⟩]&#123;⟨width⟩&#125;&#123;…&#125;</span><br><span class="line">\begin&#123;minipage&#125;[⟨align⟩][⟨height⟩][⟨inner-align⟩]&#123;⟨width⟩&#125;</span><br><span class="line">…</span><br><span class="line">\end&#123;minipage&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="标尺盒子"><a class="header-anchor" href="#标尺盒子">¶</a>标尺盒子</h3>
-<p>​	<strong>\rule</strong>命令用来实现一个实心的矩形</p>
+<p>​	\rule命令用来实现一个实心的矩形</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\rule[⟨raise⟩]&#123;⟨width⟩&#125;&#123;⟨height⟩&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="浮动体"><a class="header-anchor" href="#浮动体">¶</a>浮动体</h2>
 <p>​	浮动体主要就是说某个表格或者图片太大了，给他浮动浮动，自带的有table和figure两种，一般来说前者放表格，后者放图片，带一个位置参数</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220117230545534.png" alt="image-20220117230545534"></p>
 <h3 id="浮动体的标题"><a class="header-anchor" href="#浮动体的标题">¶</a>浮动体的标题</h3>
-<p>​	使用**\caption**命令加标题，可以自动标号，和session命令差不多</p>
+<p>​	使用\caption命令加标题，可以自动标号，和session命令差不多</p>
 <h3 id="并排和子图标"><a class="header-anchor" href="#并排和子图标">¶</a>并排和子图标</h3>
 <p>​	主要使用双斜线来排版</p>
 <p>​	对于命名的话，要给每个图片单独命名，即下面的效果</p>
@@ -532,18 +532,18 @@
 <p>​	要实现下面的效果，需要用到subfig宏包</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220117231003061.png" alt="image-20220117231003061"></p>
 <h1>排版数学公式</h1>
-<p>​	主要需要用到<strong>amsmath</strong>宏包</p>
+<p>​	主要需要用到amsmath宏包</p>
 <h2 id="公式排版基础"><a class="header-anchor" href="#公式排版基础">¶</a>公式排版基础</h2>
 <p>​	首先是行内公式和行间公式的概念</p>
 <p>​	行内公式由一对$$包括</p>
-<p>​	行间公式由<strong>equation</strong>环境包括，这个环境自动给公式生成了一个编号，可以使用前文提到的交叉引用，也可以用**\tag**命令来手动更改编号，如果要使用不带编号的，可以将公式用\[和\]包裹，也可以用displaymath环境，也可以用equation*环境</p>
+<p>​	行间公式由<strong>equation</strong>环境包括，这个环境自动给公式生成了一个编号，可以使用前文提到的交叉引用，也可以用\tag命令来手动更改编号，如果要使用不带编号的，可以将公式用\[和\]包裹，也可以用displaymath环境，也可以用equation环境</p>
 <p>​	行间公式的对齐和编号位置等性质由文档类选项控制，其fleqn选项令行间公式左对齐，leqno选项令编号放在公式左边</p>
 <h2 id="数学模式"><a class="header-anchor" href="#数学模式">¶</a>数学模式</h2>
 <p>​	当开始打公式的时候就进入了数学模式，有如下特点</p>
 <ol>
-<li>空格被忽略，间距由符号性质决定，如果需要间距的话需要人为使用**\quad<strong>和</strong>\qquad**命令</li>
+<li>空格被忽略，间距由符号性质决定，如果需要间距的话需要人为使用\quad和\qquad命令</li>
 <li>不允许有空行，也不能使用双斜线手动换行</li>
-<li>所有字母都被当作变量，如果要输入正文的话，需要使用**\text**命令</li>
+<li>所有字母都被当作变量，如果要输入正文的话，需要使用\text命令</li>
 </ol>
 <h2 id="数学符号"><a class="header-anchor" href="#数学符号">¶</a>数学符号</h2>
 <p>​	数学符号由<strong>amssymb</strong>宏包提供，主要用到以下几种</p>
@@ -555,35 +555,35 @@
 <p>上下标还是一样的用^和_表示，导数符号是’</p>
 </li>
 <li>
-<p>分式采用命令**\frac{}{}<strong>，但是这个命令在行内公式的时候打出来的很小，可以用</strong>\dfrac<strong>和</strong>\tfrac**来使其正常显示，而使用它打印行间公式的时候会变小</p>
+<p>分式采用命令\frac{}{}，但是这个命令在行内公式的时候打出来的很小，可以用\dfrac和\tfrac来使其正常显示，而使用它打印行间公式的时候会变小</p>
 </li>
 <li>
-<p>根式采用命令**\sqrt[n]{…}**，打印n次方根</p>
+<p>根式采用命令\sqrt[n]{…}，打印n次方根</p>
 </li>
 <li>
-<p>二项式结构采用命令**\binom{}{}**</p>
+<p>二项式结构采用命令\binom{}{}</p>
 </li>
 <li>
-<p>不等关系用**\ne**，大于等于**\ge**，小于等于**\le**，约等于**\approx**，等价**\equiv**，正比**\propto**，也可以用**\stackrel{}{}**命令来自定义二元关系符，用于将一个符号叠加到原来的二元关系符上</p>
+<p>不等关系用\ne，大于等于\ge，小于等于\le，约等于\approx，等价\equiv，正比\propto，也可以用\stackrel{}{}命令来自定义二元关系符，用于将一个符号叠加到原来的二元关系符上</p>
 </li>
 <li>
 <p>乘号 × (\times)、除号 ÷ (\div)、点乘 · (\cdot)、加减号 ± (\pm) / ∓ (\mp) ，还有一些算子，比如哈密尔顿算子\nabla，偏导\partial，还有一些带上下限的运算符，基本和mathjex一致，如下</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118093942604.png" alt="image-20220118093942604"></p>
 <p>对于取模运算符，有\bmod和\pmod两个运算符，主要用法如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$a\bmod b \\</span><br><span class="line">x\equiv a \pmod&#123;b&#125;$</span><br></pre></td></tr></table></figure>
-<p>当然也可以使用**\DeclareMathOperator{}{}**来自定义，带星号为定义带上下限的运算符</p>
+<p>当然也可以使用\DeclareMathOperator{}{}来自定义，带星号为定义带上下限的运算符</p>
 </li>
 <li>
-<p>巨算符，比如积分**\int**，其行内公式和行间公式的形状有一定的区别，可以使用\limits命令和\nolimits命令来调整，前者调整的类似于求和，后者调整的类似于积分，<strong>\substack</strong>命令能够在下限写多行表达式，而subarray环境甚至可以调整位置，即选择cl</p>
+<p>巨算符，比如积分\int，其行内公式和行间公式的形状有一定的区别，可以使用\limits命令和\nolimits命令来调整，前者调整的类似于求和，后者调整的类似于积分，\substack命令能够在下限写多行表达式，而subarray环境甚至可以调整位置，即选择cl</p>
 </li>
 <li>
-<p>可以为某个符号添加重音，例如向量可以用**\vec{r}**表示，也可以用\overbrace 和 \underbrace 命令用来生成上/下括号</p>
+<p>可以为某个符号添加重音，例如向量可以用\vec{r}表示，也可以用\overbrace 和 \underbrace 命令用来生成上/下括号</p>
 </li>
 <li>
-<p>感觉箭头功能比较强大的应该是**\leftarrow[下标]{上标}<strong>和</strong>\xrightarrow**命令，长度可伸展，可以为其添加上下标</p>
+<p>感觉箭头功能比较强大的应该是\leftarrow[下标]{上标}和\xrightarrow命令，长度可伸展，可以为其添加上下标</p>
 </li>
 <li>
-<p>括号和定界符，小中大括号都是一样的，不过要注意大括号需要转义，尖括号是**\langle<strong>和</strong>\rangle**，在编辑行间公式的时候可以使用**\left<strong>和</strong>\right<strong>命令来自动调整公式大小，当然也可以使用</strong>\bigl**等命令生成固定大小的，这时候不用成对出现，而且可以换行</p>
+<p>括号和定界符，小中大括号都是一样的，不过要注意大括号需要转义，尖括号是\langle和\rangle，在编辑行间公式的时候可以使用\left和\right命令来自动调整公式大小，当然也可以使用\bigl等命令生成固定大小的，这时候不用成对出现，而且可以换行</p>
 </li>
 </ol>
 <h2 id="多行公式"><a class="header-anchor" href="#多行公式">¶</a>多行公式</h2>
@@ -608,17 +608,17 @@
 <p>​	负间距可以用来生成多重积分号，但是可以直接用**\iint<strong>和</strong>\iiint**来生成多重积分号</p>
 <p>​	关于字体和大小，可以参考下面这张图</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118112924034.png" alt="image-20220118112924034"></p>
-<p>​	要想给字体加粗，可以用**\boldsymbol**命令来在公式内部直接切换</p>
+<p>​	要想给字体加粗，可以用\boldsymbol命令来在公式内部直接切换</p>
 <h2 id="定理环境"><a class="header-anchor" href="#定理环境">¶</a>定理环境</h2>
 <h3 id="定理环境-v2"><a class="header-anchor" href="#定理环境-v2">¶</a>定理环境</h3>
-<p>​	基本命令为**\newtheorem{theorem env}{title}[section-level]**</p>
-<p>​	或者使用**\newtheorem{theorem env}[counter]{title}**</p>
+<p>​	基本命令为\newtheorem{theorem env}{title}[section-level]</p>
+<p>​	或者使用\newtheorem{theorem env}[counter]{title}</p>
 <p>​	上面两个命令的可选参数是定理的序号，如果没有的话就默认使用和定理环境同名的计数器</p>
 <p>​	就相当于自己定义了一个环境，在环境中加入相关的正文</p>
 <p>​	如果想要修改定理环境的格式的话，可以使用amsthm宏包</p>
 <h3 id="证明环境"><a class="header-anchor" href="#证明环境">¶</a>证明环境</h3>
 <p>​	proof环境用于排版定理的证明过程</p>
-<p>​	然后他会在右下角加一个方框，如果是一个不带编号的公式，方框符号会另起一行，这个时候可以用**\qedhere**使方框放在公式末尾</p>
+<p>​	然后他会在右下角加一个方框，如果是一个不带编号的公式，方框符号会另起一行，这个时候可以用\qedhere使方框放在公式末尾</p>
 <h3 id="符号表"><a class="header-anchor" href="#符号表">¶</a>符号表</h3>
 <p>​	原文档第九节是一些常用的排版符号表</p>
 <h1>排版样式设定</h1>
@@ -627,33 +627,33 @@
 <p>​	修改字体的命令如上面两组，前面一组修改后面所有的字符，而后者更加常用</p>
 <p>​	修改字号的命令可以参考下图</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118153313014.png" alt="image-20220118153313014"></p>
-<p>​	图中也给出了标准文档类中的字号大小，主要是为了考虑命令**\fontsize{size}{base line-skip}**，size为字号，base line-skip为基础行距</p>
+<p>​	图中也给出了标准文档类中的字号大小，主要是为了考虑命令\fontsize{size}{base line-skip}，size为字号，base line-skip为基础行距</p>
 <p>​	使用一些常见的字体宏包可以整体改变字体</p>
 <h2 id="文字装饰和强调"><a class="header-anchor" href="#文字装饰和强调">¶</a>文字装饰和强调</h2>
-<p>​	可以使用**\underline{}<strong>命令生成下划线，但是会出现一些问题，也无法换行，而</strong>ulem<strong>宏包提供了</strong>\uline**命令，可以生成能够自动换行的下划线</p>
-<p>​	<strong>\emph</strong>命令内内容变成斜体</p>
+<p>​	可以使用\underline{}命令生成下划线，但是会出现一些问题，也无法换行，而<strong>ulem</strong>宏包提供了\uline命令，可以生成能够自动换行的下划线</p>
+<p>​	\emph命令内内容变成斜体</p>
 <h2 id="段落格式和间距"><a class="header-anchor" href="#段落格式和间距">¶</a>段落格式和间距</h2>
 <h3 id="长度和长度变量"><a class="header-anchor" href="#长度和长度变量">¶</a>长度和长度变量</h3>
 <p>​	有时候会用到弹性长度，如12pt plus 2pt minus 3pt，表示可以到14也可以到9</p>
-<p>​	LaTeX本身预定义了很多长度变量，如果要自定义的话应该使用**\newlength{\length command}**。可以用如下两个命令进行操作</p>
+<p>​	LaTeX本身预定义了很多长度变量，如果要自定义的话应该使用\newlength{\length command}。可以用如下两个命令进行操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\setlength&#123;\⟨length command⟩&#125;&#123;⟨length⟩&#125;%赋值</span><br><span class="line">\addtolength&#123;\⟨length command⟩&#125;&#123;⟨length⟩&#125;%增加</span><br></pre></td></tr></table></figure>
 <h3 id="行距"><a class="header-anchor" href="#行距">¶</a>行距</h3>
-<p>​	在导言区使用**\linespread{factor}**，其中的factor指的是基础行距</p>
-<p>​	如果要局部的改变某个段落的行距，则需要在上一条命令后面使用**\selectfont**来让其立刻生效</p>
+<p>​	在导言区使用\linespread{factor}，其中的factor指的是基础行距</p>
+<p>​	如果要局部的改变某个段落的行距，则需要在上一条命令后面使用\selectfont来让其立刻生效</p>
 <p>​	字号的改变是立即生效的，而行距的改变是直到文字分段时才会生效的</p>
 <h3 id="段落格式"><a class="header-anchor" href="#段落格式">¶</a>段落格式</h3>
 <p>​	看下列命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\setlength&#123;\leftskip&#125;&#123;⟨length⟩&#125;%左缩进</span><br><span class="line">\setlength&#123;\rightskip&#125;&#123;⟨length⟩&#125;%右缩进</span><br><span class="line">\setlength&#123;\parindent&#125;&#123;⟨length⟩&#125;%首行缩进</span><br><span class="line">\setlength&#123;\parskip&#125;&#123;length&#125;%垂直间距</span><br></pre></td></tr></table></figure>
-<p>​	上面是设置长度，然后用**\indent**来设置缩进</p>
+<p>​	上面是设置长度，然后用\indent来设置缩进</p>
 <p>​	由于LaTeX本身默认在chapter和section等章节命令之后第一段不缩进，如果要取消的话，需要调用indentfirst宏包</p>
 <h3 id="水平间距"><a class="header-anchor" href="#水平间距">¶</a>水平间距</h3>
-<p>​	如果要在文中插入额外的水平间距，则应该使用命令**\hspace{length}**</p>
-<p>​	命令**\stretch{n}<strong>可以生成一个特殊的弹性长度，参数n为权重，，其基础长度是0pt，但是可以无限延伸，直到占满可用的空间。如果一行中出现了多个这样的命令，则可用空间按照每一个</strong>\stretch<strong>命令的权重进行分配，命令</strong>\fill<strong>相当于</strong>\stretch{1}**</p>
+<p>​	如果要在文中插入额外的水平间距，则应该使用命令\hspace{length}</p>
+<p>​	命令\stretch{n}可以生成一个特殊的弹性长度，参数n为权重，，其基础长度是0pt，但是可以无限延伸，直到占满可用的空间。如果一行中出现了多个这样的命令，则可用空间按照每一个\stretch命令的权重进行分配，命令\fill相当于\stretch{1}</p>
 <h3 id="垂直间距"><a class="header-anchor" href="#垂直间距">¶</a>垂直间距</h3>
-<p>​	各种东西之间的垂直间距是预设的，如果想要人为增加两个段落之间的间距，可以使用命令**\vspace{}**，这里也可以用上文中的那个\stretch命令</p>
+<p>​	各种东西之间的垂直间距是预设的，如果想要人为增加两个段落之间的间距，可以使用命令\vspace{}，这里也可以用上文中的那个\stretch命令</p>
 <h2 id="页面和分栏"><a class="header-anchor" href="#页面和分栏">¶</a>页面和分栏</h2>
 <h3 id="设置页面参数"><a class="header-anchor" href="#设置页面参数">¶</a>设置页面参数</h3>
-<p>​	主要是使用<strong>geometry</strong>宏包，命令就是**\grometry{grometry-settings}**，设置一般是以键值对的形式来组织，比如，Word的页面设置一般是A4纸张，上下1英寸，左右1.25英寸，那么可以做出类似的设置</p>
+<p>​	主要是使用<strong>geometry</strong>宏包，命令就是\grometry{grometry-settings}，设置一般是以键值对的形式来组织，比如，Word的页面设置一般是A4纸张，上下1英寸，左右1.25英寸，那么可以做出类似的设置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\usepackage[hmargin=1.25in,vmargin=1in]&#123;geometry&#125;</span><br><span class="line">% or</span><br><span class="line">\usepackage[left=1.25in,right=1.25in,top=1in,bottom=1in]&#123;geometry&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="垂直对齐"><a class="header-anchor" href="#垂直对齐">¶</a>垂直对齐</h3>
 <p>​	如果文档有大量的图表，采用默认的垂直分散对齐会造成某些页面的垂直间距过宽，这里有另一种策略，即将页面内容向顶部对齐</p>
@@ -661,12 +661,12 @@
 <h3 id="分栏"><a class="header-anchor" href="#分栏">¶</a>分栏</h3>
 <p>​	应该用不到吧</p>
 <h2 id="页眉页脚"><a class="header-anchor" href="#页眉页脚">¶</a>页眉页脚</h2>
-<p>​	使用**\pagestyle{}**来修改样式</p>
-<p>​	使用**\thispagestyle{}**来修改本页的</p>
+<p>​	使用\pagestyle{}来修改样式</p>
+<p>​	使用\thispagestyle{}来修改本页的</p>
 <p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220118165745075.png" alt="image-20220118165745075"></p>
 <p>​	这是四类页眉页脚的样式</p>
-<p>​	**\pagenumbering{}**命令可以修改页码的样式，主要是页码数字类型</p>
-<p>​	<strong>fancyhdr</strong>宏包可以改善页眉页脚，其自定义了样式名称fancy，可以先用**\pagestyle{fancy}**命令</p>
+<p>​	\pagenumbering{}命令可以修改页码的样式，主要是页码数字类型</p>
+<p>​	<strong>fancyhdr</strong>宏包可以改善页眉页脚，其自定义了样式名称fancy，可以先用\pagestyle{fancy}命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\fancyhf[⟨position⟩]&#123;…&#125;</span><br><span class="line">\fancyhead[⟨position⟩]&#123;…&#125;</span><br><span class="line">\fancyfoot[⟨position⟩]&#123;…&#125;</span><br></pre></td></tr></table></figure>
 <p>​	position为LCR和OE的组合</p>
 
@@ -798,14 +798,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">254k</span>
+    <span title="站点总字数">253k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:51</span>
+    <span title="站点阅读时长">3:50</span>
   </span>
 </div>
 <div class="busuanzi-count">
