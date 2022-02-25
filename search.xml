@@ -2907,14 +2907,14 @@ $$<br>
 <h2 id="优化find-函数"><a class="header-anchor" href="#优化find-函数">¶</a>优化find()函数</h2>
 <p><strong>现实意义</strong></p>
 <p>两个互不相识的大将夏侯惇和许褚碰面了，他们都互相看不惯，想揍对方。于是按照江湖规矩，先打电话问自己的上级：“你是不是教主？” 上级说：“我不是呀，我的上级是***，我帮你问一下。” 就这样两个人一路问下去，直到最终发现他们的教主都是曹操。具体结构如下：</p>
-<p><img src="/blog/%5Cimages%5C%E5%B9%B6%E6%9F%A5%E9%9B%862.jpg" alt></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523922.png" alt="找掌门人"></p>
 <p>“失礼失礼，原来是自己人，在下军机处前将军夏侯惇!”<br>
 “幸会幸会，不打不相识嘛，在下军情处上将许褚！”<br>
 紧接着，两人便高高兴兴地手拉手喝酒去了。<br>
 “等等等等，两位同学请留步，还有事情没完成呢！”我叫住他俩：“还要做路径压缩！”<br>
 两人醒悟，夏侯惇赶紧打电话给他的上级郭嘉：“军师啊，我查过了，我们的教主都是曹丞相。不如我们直接拜在丞相手下吧，省得级别太低，以后找起来太麻烦。”郭嘉答道：“所言甚是” 。<br>
 许褚接着也打电话给刚才拜访过的荀彧，做了同样的事。于是此时，整个曹操阵营的结构如下所示：</p>
-<p><img src="/blog/images%5C%E5%B9%B6%E6%9F%A5%E9%9B%861.png" alt></p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523911.png" alt="路径压缩"></p>
 <p>这样一来，在刚才查询过程中涉及到的人物就都聚集在了曹操的直接领导下，以后再需要查询教主名称的时候，就只需要询问一级便可得到。所以，在经过一次查询后，整个门派树的高度都将大大降低，路径压缩所实现的功能就是这么个意思。</p>
 <p><strong>实现：</strong></p>
 <p>根据上面的大大给出的精彩的解释，我们只需要在寻找过程中将所有人的直接上级改成代表元即可，这个时候就应该考虑用递归了</p>
@@ -3652,6 +3652,10 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <h2 id="作为流处理"><a class="header-anchor" href="#作为流处理">¶</a>作为流处理</h2>
 <p>​	需要包含头文件<strong>sstream</strong></p>
 <p>​	用<strong>istringstream</strong>和<strong>ostringstream</strong>作为输入输出，用法和cin与cout对应</p>
+<h2 id="与数值类型的转换"><a class="header-anchor" href="#与数值类型的转换">¶</a>与数值类型的转换</h2>
+<p>​	可以用sscanf函数，比如有一个String类型的值s，形如&quot;1+2i&quot;，要取出这个复数的实部和虚部，可以用如下方法。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sscanf</span>(s.<span class="built_in">c_str</span>(),<span class="string">&quot;%d+%di&quot;</span>,&amp;a,&amp;b);</span><br></pre></td></tr></table></figure>
+<p>​	而要将数值类型转换成string类型，可以使用**to_string()**函数</p>
 <h1>容器</h1>
 <h2 id="迭代器"><a class="header-anchor" href="#迭代器">¶</a>迭代器</h2>
 <p>​	感觉迭代器是个类似于指针的东西，由于容器遍历时很多地方都用到了迭代器，所以这里先简单介绍一下，以vector为例，其实其他的都是一样的</p>
@@ -6646,6 +6650,37 @@ $(RM) $*.o</p>
   <entry>
     <title>树状数组</title>
     <url>/blog/2022/02/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1>背景</h1>
+<p>​	一般对于数组而言，我们可能会经常进行单点修改和求某个区间和的操作，如果不做任何处理，那显然前者时间复杂度为$O(1)$，后者为$O(n)$，而如果用前缀和进行维护，后者时间复杂度就变成了$O(1)$，但是在单点修改的时候，由于要对前缀和数组进行维护，时间复杂度就变成了$O(n)$。</p>
+<p>​	树状数组是一种折衷的方案，在大多数情况下可以让这两种操作的时间复杂度达到$log(n)$</p>
+<h1>主要思路</h1>
+<p>​	事实上在求数组的区间和的时候，可以考虑用另外一个数组去维护一系列小区间，然后将这些小区间组合成想要的大区间即可得到区间和。当然这样做显然是需要一种很好的思路的。</p>
+<p>​	树状数组利用二进制来进行维护。我们以11为例，11的二进制数是1011，那么就可以通过如下方式求前11项的和，即</p>
+<p>$((0000)_2,(1000)_2]+((1000)_2,(1010)_2]+((1010)_2,(1011)_2]$</p>
+<p>​	关于上面的三个区间的得到，其实是每次都去掉二进制数最右边那个1的一个循环过程。</p>
+<p>​	我们定义二进制数最右边的1连带着后面的0为$lowbit(x)$，然后考虑用$C_i$去维护区间$(A_i-lowbit(A_i),A_i]$，显然根据二进制的性质，最终合并的区间数是要小于$log_2n$的。</p>
+<p>​	之所以叫树状数组，是因为它每次更新的时候，就像是一个爬树的过程，具体的树形结构如下：</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-df001651925903a86ab640482b78c2d6_1440w.jpg" alt="img"></p>
+<p>​	比如以一个二进制数$(100110)_2$为例，更改了这个下标对应的值，需要对应更改包围这个值的对应区间值，从最小的开始找，首先是$((100100)_2,(100110)_2]$，然后是$((100110)_2,(101000)_2]$，然后依次向上找。</p>
+<p>​	这个过程实际上就是，<strong>每一步从右边起，把连续的1都变成0，然后把左边的一个0变成1</strong>，实质上，这里面每一步都加了一个$lowbit(x)$</p>
+<h1>代码实现</h1>
+<p>​	目前来看最重要的函数应该是$lowbit(x)$。先回顾一下，这个函数的作用是求出x的二进制数中最靠右的1及其右边的0的这样一个值。显然如果按照正常的思路进行演算的时候会产生额外的时间开销，但是事实上我们有一个更加精妙的计算方法，即<strong>lowbit(x)=x&amp;(-x)</strong>。</p>
+<p>​	这个方法的利用了补码的特点，即按位取反再加一，比如1000…，求负后得到的还是1000…，而这个1前面的每一位都对应相反，因此再进行按位与即可。</p>
+<p>​	接下来就可以使用这个函数来进行相应的操作了</p>
+<h2 id="单点修改"><a class="header-anchor" href="#单点修改">¶</a>单点修改</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> tree[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=i;pos&lt;MAXN;pos+=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		tree[pos]+=x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="求前n-项和"><a class="header-anchor" href="#求前n-项和">¶</a>求前n 项和</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=n;pos;pos-=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		ans+=tree[pos];</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区间查询"><a class="header-anchor" href="#区间查询">¶</a>区间查询</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">quer</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">query</span>(b)-<span class="built_in">query</span>(a<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>特殊数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>特殊数据结构</tag>
+      </tags>
   </entry>
 </search>
