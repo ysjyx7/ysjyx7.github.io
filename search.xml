@@ -3687,7 +3687,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; a ;                                <span class="comment">//声明一个int型向量a</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>)</span> </span>;                            <span class="comment">//声明一个初始大小为10的向量</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>, <span class="number">1</span>)</span> </span>;                         <span class="comment">//声明一个初始大小为10且初始值都为1的向量</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a)</span> </span>;                             <span class="comment">//声明并用向量a初始化向量b</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a.begin(), a.begin()+<span class="number">3</span>)</span> </span>;        <span class="comment">//将a向量中从第0个到第2个(共3个)作为向量b的初始值</span></span><br><span class="line"><span class="comment">//也可以直接用数组对它初始化</span></span><br><span class="line"><span class="keyword">int</span> n[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(n,n+<span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(&amp;n[<span class="number">1</span>],&amp;a[<span class="number">4</span>])</span></span>;</span><br></pre></td></tr></table></figure>
 <p>​	可以用类似于数组的方法对他进行访问，也可以使用迭代器。</p>
 <p>​	下面贴一些基本操作</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>&gt;. a.<span class="built_in">size</span>()                 <span class="comment">//获取向量中的元素个数</span></span><br><span class="line"><span class="number">2</span>&gt;. a.<span class="built_in">empty</span>()                <span class="comment">//判断向量是否为空</span></span><br><span class="line"><span class="number">3</span>&gt;. a.<span class="built_in">clear</span>()                <span class="comment">//清空向量中的元素</span></span><br><span class="line"><span class="number">4</span>&gt;. 复制</span><br><span class="line">    a = b ;            <span class="comment">//将b向量复制到a向量中</span></span><br><span class="line"><span class="number">5</span>&gt;. 比较</span><br><span class="line">    保持 ==、!=、&gt;、&gt;=、&lt;、&lt;= 的惯有含义 ;</span><br><span class="line">    如: a == b ;    <span class="comment">//a向量与b向量比较, 相等则返回1</span></span><br><span class="line"><span class="number">6</span>&gt;. 插入 - insert</span><br><span class="line">    ①、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">1000</span>);            <span class="comment">//将1000插入到向量a的起始位置前</span></span><br><span class="line">    ②、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">3</span>, <span class="number">1000</span>) ;        <span class="comment">//将1000分别插入到向量元素位置的0-2处(共3个元素)</span></span><br><span class="line">    ③、 <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">5</span>, <span class="number">1</span>)</span> </span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">10</span>)</span> </span>;</span><br><span class="line">        b.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(), a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>()) ;        <span class="comment">//将a.begin(), a.end()之间的全部元素插入到b.begin()前</span></span><br><span class="line"><span class="number">7</span>&gt;. 删除 - erase</span><br><span class="line">    ①、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>()) ;                     <span class="comment">//将起始位置的元素删除</span></span><br><span class="line">    ②、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">begin</span>()+<span class="number">3</span>) ;        <span class="comment">//将(b.begin(), b.begin()+3)之间的元素删除</span></span><br><span class="line"><span class="number">8</span>&gt;. 交换 - swap</span><br><span class="line">    b.<span class="built_in">swap</span>(a) ;            <span class="comment">//a向量与b向量进行交换</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>&gt;. a.<span class="built_in">size</span>()                 <span class="comment">//获取向量中的元素个数</span></span><br><span class="line"><span class="number">2</span>&gt;. a.<span class="built_in">empty</span>()                <span class="comment">//判断向量是否为空</span></span><br><span class="line"><span class="number">3</span>&gt;. a.<span class="built_in">clear</span>()                <span class="comment">//清空向量中的元素</span></span><br><span class="line"><span class="number">4</span>&gt;. 复制</span><br><span class="line">    a = b ;            <span class="comment">//将b向量复制到a向量中</span></span><br><span class="line"><span class="number">5</span>&gt;. 比较</span><br><span class="line">    保持 ==、!=、&gt;、&gt;=、&lt;、&lt;= 的惯有含义 ;</span><br><span class="line">    如: a == b ;    <span class="comment">//a向量与b向量比较, 相等则返回1</span></span><br><span class="line"><span class="number">6</span>&gt;. 插入 - insert</span><br><span class="line">    ①、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">1000</span>);            <span class="comment">//将1000插入到向量a的起始位置前</span></span><br><span class="line">    ②、 a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>(), <span class="number">3</span>, <span class="number">1000</span>) ;        <span class="comment">//将1000分别插入到向量元素位置的0-2处(共3个元素)</span></span><br><span class="line">    ③、 <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">5</span>, <span class="number">1</span>)</span> </span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">10</span>)</span> </span>;</span><br><span class="line">        b.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(), a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>()) ;        <span class="comment">//将a.begin(), a.end()之间的全部元素插入到b.begin()前</span></span><br><span class="line"><span class="number">7</span>&gt;. 删除 - erase</span><br><span class="line">    ①、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>()) ;                     <span class="comment">//将起始位置的元素删除</span></span><br><span class="line">    ②、 b.<span class="built_in">erase</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">begin</span>()+<span class="number">3</span>) ;        <span class="comment">//将(b.begin(), b.begin()+3)之间的元素删除</span></span><br><span class="line"><span class="number">8</span>&gt;. 交换 - swap</span><br><span class="line">    b.<span class="built_in">swap</span>(a) ;            <span class="comment">//a向量与b向量进行交换</span></span><br><span class="line"><span class="number">9</span>&gt;. 清空</span><br><span class="line">    b.<span class="built_in">swap</span>(vector&lt;<span class="keyword">int</span>&gt; ());</span><br></pre></td></tr></table></figure>
 <p>​	然后就是也可以声明高维向量，例如</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;<span class="built_in">b</span>(<span class="number">10</span>,vector&lt;<span class="keyword">int</span>&gt;(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
 <p>​	另外可以用algorithm头文件中的快排对vector进行排序，不过不知道为什么自定义cmp函数有时候会报错，感觉还是重载运算符更保险一点，<strong>注意这种cmp函数和重载运算符一般都要定义成inline</strong></p>
@@ -3703,6 +3703,9 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <p>​	最后提一下map的排序，因为我们之前已经说过，map里面的数据有序，但是这是因为上面用到的关键字都是常用类型，本身支持小于号运算，但是如果关键字是自定义结构体，我们就需要重载小于号，来实现插入，如下</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagStudentInfo</span>  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">       <span class="keyword">int</span>      nID;  </span><br><span class="line">       string   strName;  </span><br><span class="line">       <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (tagStudentInfo <span class="keyword">const</span>&amp; _A) <span class="keyword">const</span>  </span><br><span class="line">       &#123;  </span><br><span class="line">              <span class="comment">//这个函数指定排序策略，按nID排序，如果nID相等的话，按strName排序  </span></span><br><span class="line">              <span class="keyword">if</span>(nID &lt; _A.nID)  <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">              <span class="keyword">if</span>(nID == _A.nID) <span class="keyword">return</span> strName.<span class="built_in">compare</span>(_A.strName) &lt; <span class="number">0</span>;  </span><br><span class="line">              <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">       &#125;  </span><br><span class="line">&#125;StudentInfo, *PStudentInfo;  <span class="comment">//学生信息  </span></span><br></pre></td></tr></table></figure>
 <p>​	其实很多东西和vector是差不多的</p>
+<h2 id="unordered-map"><a class="header-anchor" href="#unordered-map">¶</a>unordered_map</h2>
+<p>​	map基于红黑树实现，而unordered_map基于哈希表。</p>
+<p>​	因此，在需要保留一组不同的元素或者不需要遍历的时候用unorder_map，在需要有序数据的时候用map。即查找问题用前者，有顺序要求的时候用后者。</p>
 <h2 id="stack"><a class="header-anchor" href="#stack">¶</a>stack</h2>
 <p>​	包含在stack头文件中，用法和其他容器类似</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">stack&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">s.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">s.<span class="built_in">top</span>();</span><br><span class="line">s.<span class="built_in">pop</span>();</span><br><span class="line">s.<span class="built_in">empty</span>();</span><br><span class="line">s.<span class="built_in">size</span>();</span><br></pre></td></tr></table></figure>
@@ -3710,6 +3713,10 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <h2 id="set"><a class="header-anchor" href="#set">¶</a>set</h2>
 <p>​	包含在set头文件中，是一个内部自动有序并且不含重复元素的容器，也就是在插入时进行自动的排列去重</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">set&lt;<span class="keyword">int</span>&gt;st;</span><br><span class="line">st.<span class="built_in">insert</span>(<span class="number">3</span>);</span><br><span class="line">st.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">st.<span class="built_in">insert</span>(<span class="number">3</span>);</span><br><span class="line">st.<span class="built_in">insert</span>(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">for</span>(set&lt;<span class="keyword">int</span>&gt;::iterator　it=st.<span class="built_in">begin</span>();it!=st.<span class="built_in">end</span>();it++)</span><br><span class="line">cout&lt;&lt;*it&lt;&lt;<span class="string">&#x27; &#x27;</span>;<span class="comment">//注意这里的遍历只能用迭代器，除了vector和string，其他的容器都不支持直接寻址，最终输出为2 3 4 </span></span><br><span class="line">set.<span class="built_in">find</span>(<span class="number">2</span>);<span class="comment">//返回迭代器</span></span><br><span class="line">set.<span class="built_in">erase</span>(st.<span class="built_in">find</span>(<span class="number">2</span>));<span class="comment">//删除对应的迭代器，一般和find一起使用，当然参数也可以直接是值</span></span><br><span class="line">set.<span class="built_in">erase</span>(st.<span class="built_in">find</span>(<span class="number">3</span>),st.<span class="built_in">end</span>());<span class="comment">//删除一个区间中所有的值</span></span><br><span class="line"><span class="comment">//剩下还有一些函数和上面的容器都差不多，不再赘述</span></span><br></pre></td></tr></table></figure>
+<h2 id="unordered-set"><a class="header-anchor" href="#unordered-set">¶</a>unordered_set</h2>
+<p>​	unordered_set和set的区别就像是ubordered_map和map的区别一样。</p>
+<p>​	set基于红黑树实现，而unordered_set基于哈希表。</p>
+<p>​	因此，在需要保留一组不同的元素或者不需要遍历的时候用unorder_set，在需要有序数据的时候用set。即查找问题用前者，有顺序要求的时候用后者。</p>
 <h2 id="优先队列"><a class="header-anchor" href="#优先队列">¶</a>优先队列</h2>
 <p>​	包含在头文件queue中，用堆实现，每次出队都是优先级最高的那个，和队列不一样的是，优先队列只能通过top()函数访问优先级最高的元素，除了这个剩下的操作都和队列一样</p>
 <p>​	下面说一下如何设置优先级。</p>
@@ -6681,6 +6688,115 @@ $(RM) $*.o</p>
       <tags>
         <tag>数据结构</tag>
         <tag>特殊数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Datalab</title>
+    <url>/blog/2022/02/27/Datalab/</url>
+    <content><![CDATA[<h1>整形部分</h1>
+<h2 id="bitXor"><a class="header-anchor" href="#bitXor">¶</a>bitXor</h2>
+<p>​	本题要求使用<sub>和&amp;两种运算实现^，其实这是很简单的，利用数字逻辑里学过的方法可以将异或门用与门和非门表示，类似的就可以得到用</sub>和&amp;表示^的逻辑表达式。</p>
+<h2 id="tmin"><a class="header-anchor" href="#tmin">¶</a>tmin</h2>
+<p>​	本题要求利用*! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*获得二进制补码整数的最小值，根据补码的相关知识，其实只需要用&lt;&lt;即可，即对二进制1右移31位即可。</p>
+<h2 id="isTmax"><a class="header-anchor" href="#isTmax">¶</a>isTmax</h2>
+<p>​	本题要求利用*! ~ &amp; ^ | +*判断参数x是否是int型的最大值，如果是则返回1，否则返回0。主要思路就是让x逐渐靠近0，然后在整个式子前面取非即可。</p>
+<p>​	关于这个靠近零的方法，假设x就是最大值，即0x7fffffff，那再加一个1就变成了0x80000000，接下来再加x就可以得到-1，再加1就可以得到0。</p>
+<p>​	经过上面的一系列操作，提交之后会发现还是没有过，这是因为如果x是-1也会返回1，那只要想办法排除-1即可。注意到如果x是-1的话，加1就会变成0，那么这个时候只要在最上面的思路中再加上修正项!(x+1)即可，如果x为-1就会返回0，从而顺利通过了这个函数。</p>
+<h2 id="allOddBits"><a class="header-anchor" href="#allOddBits">¶</a>allOddBits</h2>
+<p>​	本题要求使用*! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*来判断参数x的所有奇数位是否是1，是则返回1，否则返回0。位数从低到高依次为0~31</p>
+<p>​	本体主要设计一个掩码就行了，即所有奇数位都为1的0xAAAAAAAA，然后利用&amp;运算取出x的所有奇数位，然后用异或判断是否全为1</p>
+<h2 id="negate"><a class="header-anchor" href="#negate">¶</a>negate</h2>
+<p>​	本题要求使用*! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*来求出参数x的相反数。</p>
+<p>​	其实根据书上的定义来就行了，按位取反再加1</p>
+<h2 id="isAsciiDigit"><a class="header-anchor" href="#isAsciiDigit">¶</a>isAsciiDigit</h2>
+<p>​	本题要求使用*! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*判断参数x是否在0x30到0x39之间。</p>
+<p>​	这道题最开始初看比较懵逼，没有什么思路，后来参考了网上的一些思路，最后也算是好不容易做出来了。</p>
+<p>​	其实这道题目比较关键的在于如何用位运算去表示一个范围，这里采取了很精妙的方案，即设计两个边界，上边界在加上比0x39大的数之后会由正变负，而下边界在加上比0x30小的数之后还是负的。然后取出两个边界的符号位进行判断即可。</p>
+<h2 id="conditional"><a class="header-anchor" href="#conditional">¶</a>conditional</h2>
+<p>​	本题要求使用*! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*实现三目运算符。</p>
+<p>​	其实主要的观点就是把判断条件x从0值和非0值转换成0值和-1，这样就可以利用x&amp;y|~x&amp;z的方法进行选择输出</p>
+<p>​	那么关键就是对x的转换了，这里采用的是两次求非的方法，将x转换成0或1，然后求其相反数即可。</p>
+<h2 id="isLessOrEqual"><a class="header-anchor" href="#isLessOrEqual">¶</a>isLessOrEqual</h2>
+<p>​	本题要求使用 *! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*实现小于等于的判断。</p>
+<p>​	其实这个思路也很明确，就是在符号相同的时候相减不会发生移除，直接减就行，在符号不同的时候特判一下符号就行。</p>
+<h2 id="logicalNeg"><a class="header-anchor" href="#logicalNeg">¶</a>logicalNeg</h2>
+<p>​	本题要求使用 *! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*实现逻辑非。</p>
+<p>​	最开始认为这是一个很简单的题，后来想想好像没有那么简单。</p>
+<p>​	因为最主要是要把0和其它值区别开，所以这里要考虑相反数，因为只有0和最小值的相反数是他本身。然后因为0和最小值的二进制串只有符号位是不同的，所以可以考虑将本身和其相反数进行取反，然后再右移31位加1即可。</p>
+<h2 id="howManyBits"><a class="header-anchor" href="#howManyBits">¶</a>howManyBits</h2>
+<p>​	本题要求使用 *! ~ &amp; ^ | + &lt;&lt; &gt;&gt;*实现求参数x的补码位数。</p>
+<p>​	首先分析一下，如果x是正数的话，只需要统计x最高的1在哪一位，然后加上符号位即可。如果x是负数的话，只需要统计x最高的0在哪一位，然后加上符号位即可。之所以要统计最高的0，这是由补码的表示方法决定的。</p>
+<p>​	具体实现的话，考虑借助五个常量，将32位分隔成16+8+4+2+1+1，以正数为例，先考虑高16位是否有1，如果有的话则至少用16位，这个用b16去记录，然后接下来将x右移十六位去统计接下来八位是否有1，用b8记录，依次类推即可。最终将这5个标记加起来，再加上符号位即可。</p>
+<p>​	注意最开始需要对x进行预处理。</p>
+<hr>
+<p><strong>上面的这些题全都是整形的部分，在之前都已经了解过，所以也没有复盘相关的知识，下面是浮点数的知识，还是需要总结一下的</strong></p>
+<h1>浮点数部分</h1>
+<h2 id="IEEE标准"><a class="header-anchor" href="#IEEE标准">¶</a>IEEE标准</h2>
+<p>​	该标准用类似于科学计数法的方法表示浮点数，即每一个浮点数可以被表示为$V=(-1)^s\times M\times 2^E$。</p>
+<p>​	其中s为符号位，s为0时为正，s为1时为负。M为尾数，是一个二进制小数，范围是$0$到$1-\epsilon$，或者$1$到$2-\epsilon$，其中$\epsilon$的值一般是$2^{-k}，k&gt;0$。E为阶码，是一个二进制整数，可正可负，主要作用是给尾数加权。</p>
+<p>​	浮点数分为单精度和双精度，就是对应了C语言中的float和double。float为32位，包括1位符号位，8位阶码以及23位尾数。double为64位，包括1位符号位，11位阶码以及52位尾数。</p>
+<p>​	对于阶码E的值，浮点数可以分为三种不同的情况，分别是规格化的、非规格化的、特殊值，先贴一张书中对于单精度的三种情况的表示。其中特殊值有被分成了两种情况。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/30223444-1de9570a39d0498e9a643d35f7137385.jpg" alt="img"></p>
+<p>​	下面对三种情况进行说明：</p>
+<ol>
+<li>
+<p>第一种情况就是规格化的，即单精度浮点数的阶码不为0也不为255，这种浮点数的阶码会被传换成一个“偏置”后的有符号数。所谓偏置，就是在原来的基础上再加上一个偏移量Bias，对于阶码位数为k，一般Bias=$2^{k-1}-1$</p>
+<p>对于这时候的尾数，是一个小于1的小数或者0，而再计算浮点数的数值时，会在尾数值得基础上加1。</p>
+</li>
+<li>
+<p>第二种情况是非规格化的，此时阶码全为0，讲道理，按照1中得情况，真实阶码值应该是-Bias，但是这里为了能够使其平滑的过渡到规格化浮点数，我们将其设置成1-Bias。对于尾数，这里不会加1，因为一旦加了1，不管怎么都取不到0。非规格化得浮点数主要作用或许就是可以表示0，此外这里得0根据符号位的不同还有正负之分</p>
+</li>
+<li>
+<p>第三种情况是特殊值，此时阶码全为1。如果尾数位全为0，则表示无穷大，根据符号位来得出是正无穷大还是负无穷大，而若尾数不全为0，则表示NaN</p>
+</li>
+</ol>
+<p>​    然后说一下规格化和非规格化的取值范围。</p>
+<p>​	先说一下非规格化，对于阶码，此时就是确定的k个0，即$E=2-2^{k-1}$，下面考察三种情况：</p>
+<ol>
+<li>当尾数是n个0的时候，此时值为+0.0</li>
+<li>当尾数最低位为1，其余全为0的时候，此时为最小非0值，即尾数为$M=2<sup>{-n}$，此时值为$2</sup>{2-2^{k-1}-n}$。</li>
+<li>当尾数为n个1的时候，此时为非规格化的最大值，具体的值我就不算了。</li>
+</ol>
+<p>​    然后说一下规格化，如下：</p>
+<ol>
+<li>当阶码最低位为1，其余全为0的时候，是最小的非规格化的值，此时的阶码和非规格化的阶码相同，<strong>这正是之前取1-Bias而不是-Bias的功劳</strong>。此时的值为$2<sup>{2-2</sup>{k-1}}$</li>
+<li>当阶码最高位为0，其余全为1，尾数为n个0的时候，此时的值为1，因为取了偏置。</li>
+<li>当阶码最低位为0，其余全为1，尾数为n个1的时候，此时取到最大值，经过计算得到$(1-2^{-n-1})\times 2<sup>{2</sup>{k-1}}$</li>
+</ol>
+<p>​    书中也给出了单双精度的取值范围，这里直接贴图。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/01001645-f5a41560df0a43dca83e9c1ad279bf5e.jpg" alt="img"></p>
+<p>​	图中exp为阶码位，frac为尾数位。</p>
+<h2 id="浮点数舍入"><a class="header-anchor" href="#浮点数舍入">¶</a>浮点数舍入</h2>
+<p>​	按照日常生活，在需要舍入的时候，我们通常使用四舍五入，不过对于浮点数，有更多的舍入方式，即<strong>向偶数舍入、向零舍入、向上舍入、向下舍入</strong>。</p>
+<p>​	这些方式从字面意义上还是很容易理解的，向偶数舍入就是向最近的偶数靠近，其它的意思就不再赘述了。按理来说，向偶数舍入看起来会更合理一点，尤其是在统计的时候，可以最大程度的中和舍入带来的误差。</p>
+<p>​	对于IEEE的规则，一般在中间值的时候会考虑向偶数舍入，其它的情况都是舍入到离它最近的值。在二进制中，一般认为<strong>末尾为0则是偶数</strong></p>
+<p>​	举个例子，比如10.10011，舍入到个位就是11，舍入到小数点后1位就是10.1，舍入到小数点后4位就是10.1010</p>
+<h2 id="浮点数运算"><a class="header-anchor" href="#浮点数运算">¶</a>浮点数运算</h2>
+<p>​	在IEEE标准中，浮点数的运算规则大致就是将两个浮点数运算后的舍入值作为最终的精确值。这就会导致平常生活中的一些常见规律在这里是用不了的。所以这就会导致编译器不会对浮点数做相关的优化</p>
+<h2 id="floatScale2"><a class="header-anchor" href="#floatScale2">¶</a>floatScale2</h2>
+<p>​	本题可以使用任何整形或者无符号整形的运算符，返回参数uf与2相乘的结果，注意如果参数是NaN的时候返回参数。</p>
+<p>​	这个题的主要思路是这样的。因为题目也提示了如果是NaN这种特殊值的时候需要返回参数，那就可以先对特殊情况进行处理，因为其实浮点数乘2在正常情况下就是阶码位加一。</p>
+<p>​	先考虑如果参数是NaN或者无穷的话，就直接返回参数，其实如果是0的话也是要返回参数的。根据上文对IEEE标准的说明，我们需要先把阶码位和符号位提取出来。如果阶码位全为0的话，说明是非规格化浮点数，这个时候只需要左移一位即可，但是注意左移会让原本的符号位消失，所以还需要加上符号位。然后如果阶码全为1，即为255的时候，说明是特殊值，直接返回参数即可。</p>
+<p>​	然后排除了上面的几种情况，就可以对阶码位操作，根据上文的IEEE标准，只需要让阶码位自增即可。当然这个时候也有一种特殊情况，即<strong>自增后阶码位全为1</strong>，这个时候直接返回无穷大这个特殊值即可，注意加上符号位。如果不是这种情况，就返回值即可。</p>
+<h2 id="floatFloat2Int"><a class="header-anchor" href="#floatFloat2Int">¶</a>floatFloat2Int</h2>
+<p>​	本题可以使用任何整形或者无符号整形的运算符，返回将参数uf转换成浮点数位级表示。其实就是看如何把传入进来的无符号整形uf转换成正常的二进制，个人感觉和舍入差不多</p>
+<p>​	可以考虑将uf的三部分提取出来，即exp、sign、frac。</p>
+<p>​	首先考虑一些特殊情况，比如如果为0，即exp和frac均为0，直接返回0即可。如果exp是0xff，那么返回NaN或Infinity对应的值即可。</p>
+<p>​	接下来就是非规格化和规格化两种情况，对于非规格化，此时exp为0，此时由于偏置的作用，考虑到之前讨论过的非规格化的取值范围，不管尾数是多少，必然向0舍入。</p>
+<p>​	对于规格化，情况要复杂一点。首先先根据exp的值计算出阶码E的值，注意根据IEEE标准中的计算公式，这里的E就是尾数部分移动的位数，也就是说，如果E大于31，肯定溢出，如果E小于0，也不行，这样去处理特殊情况。然后是一些正常情况，如果E大于23，就可以直接把frac部分左移E-23位，因为frac本身是有23位的，E大于23意味着这23位都可以保留，并且还可以多扩充几个0。相反则右移23-E位，最后结合符号位范围frac即可。</p>
+<h2 id="floatPower2"><a class="header-anchor" href="#floatPower2">¶</a>floatPower2</h2>
+<p>​	本题可以使用任何整形或者无符号整形的运算符，计算$2.0^{x}$，最后用无符号表示。</p>
+<p>​	这个题就需要考察之前提到的几种情况的范围，比如对于非规格化来说，首先阶数带来了-126，然后frac部分还有-23，因此如果x小于-149的时候，就不用算了，返回0就行。而当x介于-149和-128之间，属于非规格化，这个等会再说，当x介于-127和127之间的时候，x显然属于规格化，这个具体可以看上面的分析，具体计算也等会再说。然后如果x再大一点，就要溢出了，直接返回Infinity即可。然后再看两种相对复杂的情况。</p>
+<p>​	对于规格化，这个还比较简单，对于参数x，实际上x就相当于阶数E，只需要加上偏置量就可以得到exp，再右移回去即可。</p>
+<p>​	对于非规格化，是这么一个情况，根据计算公式，现在有$2^{-126}\times M=2^x$，那么M对应的指数就是x+126，然后就是要考虑怎么去在frac部分表达这个数。举个例子，比如x=-128，那么M对应的指数就是-2，要表示这个值，其实就是在把左往右数第22位变成1就行了，那其实这个转换的方法就已经很显然了吧。</p>
+<h1>小结</h1>
+<p>​	datalab就算是暂时告一段落了，不过以后有时间肯定是要再写一遍的，最开始对于浮点数的理解真的不到位，也是看了别人的题解才逐渐明白。开头整形部分有几个题的思路也很不好想，以后有时间还是要再做一遍。</p>
+]]></content>
+      <categories>
+        <category>csapp</category>
+      </categories>
+      <tags>
+        <tag>csapp</tag>
       </tags>
   </entry>
 </search>
