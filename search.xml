@@ -1547,17 +1547,11 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   <entry>
     <title>tmux</title>
     <url>/blog/2021/10/20/tmux/</url>
-    <content><![CDATA[<h1>前言</h1>
-<p>​	为什么要学习Tmux呢？<s>因为我今天在编译Linux内核的时候因为花费时间太长而没有事干</s>，主要是为了能够同时运行多个命令行程序</p>
-<h1>基本用法</h1>
-<h2 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
-<h2 id="启动与退出"><a class="header-anchor" href="#启动与退出">¶</a>启动与退出</h2>
-<p>​	要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
-<h2 id="前缀键"><a class="header-anchor" href="#前缀键">¶</a>前缀键</h2>
-<p>​	快捷键的前缀键为<strong>Ctrl+b</strong>，只有这样才能够使快捷键生效，**Ctrl+b+?**可以查看帮助文档</p>
-<h2 id="会话管理"><a class="header-anchor" href="#会话管理">¶</a>会话管理</h2>
-<ol>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    为什么要学习Tmux呢？<del>因为我今天在编译Linux内核的时候因为花费时间太长而没有事干</del>，主要是为了能够同时运行多个命令行程序</p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
+<h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><p>​    要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
+<h2 id="前缀键"><a href="#前缀键" class="headerlink" title="前缀键"></a>前缀键</h2><p>​    快捷键的前缀键为<strong>Ctrl+b</strong>，只有这样才能够使快捷键生效，<strong>Ctrl+b+?</strong>可以查看帮助文档</p>
+<h2 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h2><ol>
 <li><strong>tmux new -s name</strong>可以创建新的会话，每个会话都有编号0，1，2……</li>
 <li><strong>tmux detach</strong>可以让当前会话与窗口分离，快捷键为<strong>Ctrl+b d</strong></li>
 <li><strong>tmux ls</strong>可以查看当前所有的会话，快捷键为<strong>Ctrl+b s</strong></li>
@@ -1566,31 +1560,28 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <li><strong>tmux switch -t name</strong>可以用来切换会话</li>
 <li><strong>tmux rename-session -t num name</strong>可以用来重命名，快捷键为<strong>Ctrl+b $</strong></li>
 </ol>
-<h1>高级操作</h1>
-<h2 id="窗格操作"><a class="header-anchor" href="#窗格操作">¶</a>窗格操作</h2>
-<ol>
-<li><strong>tmux split-window</strong>划分上下两个窗格，加参数**-h<strong>划分左右，左右快捷键为</strong>%<strong>，上下快捷键为</strong>&quot;**</li>
-<li><strong>tmux select-pane</strong>移动窗格光标，加参数**-U -D -L -R**分别向上下左右移动，方向键也可以直接切换</li>
+<h1 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h1><h2 id="窗格操作"><a href="#窗格操作" class="headerlink" title="窗格操作"></a>窗格操作</h2><ol>
+<li><strong>tmux split-window</strong>划分上下两个窗格，加参数<strong>-h</strong>划分左右，左右快捷键为<strong>%</strong>，上下快捷键为<strong>“</strong></li>
+<li><strong>tmux select-pane</strong>移动窗格光标，加参数<strong>-U -D -L -R</strong>分别向上下左右移动，方向键也可以直接切换</li>
 <li><strong>tmux swap-pane</strong>交换窗格位置，参数与上面一样</li>
-<li>还有一些快捷键，比如<strong>x</strong>关闭当前窗格，**!**拆分出当前窗格，<strong>z</strong>全屏显示当前窗格，<strong>q</strong>显示当前窗格编号</li>
+<li>还有一些快捷键，比如<strong>x</strong>关闭当前窗格，<strong>!</strong>拆分出当前窗格，<strong>z</strong>全屏显示当前窗格，<strong>q</strong>显示当前窗格编号</li>
 </ol>
-<h2 id="窗口管理"><a class="header-anchor" href="#窗口管理">¶</a>窗口管理</h2>
-<ol>
+<h2 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h2><ol>
 <li><strong>tmux new-window -n name</strong>新建窗口</li>
 <li><strong>tmux select-window -t name</strong>切换窗口</li>
 <li><strong>tmux rename-window name</strong>为当前窗口起名或重命名</li>
-<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>num</strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，**,**窗口重命名</li>
+<li>常用快捷键，<strong>c</strong>创建新窗口并显示多个窗口信息，<strong>p</strong>切换到上一个窗口，<strong>n</strong>切换到下一个窗口，<strong>num</strong>切换到指定编号的窗口，<strong>w</strong>从列表中选择窗口，<strong>,</strong>窗口重命名</li>
 </ol>
-<p><em><strong>注意：所有的快捷键都必须先按前缀键</strong></em></p>
-<p><em><strong>参考：<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">http://www.ruanyifeng.com/blog/2019/10/tmux.html</a></strong></em></p>
+<p><strong><em>注意：所有的快捷键都必须先按前缀键</em></strong></p>
+<p><strong><em>参考：<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">http://www.ruanyifeng.com/blog/2019/10/tmux.html</a></em></strong></p>
 ]]></content>
       <categories>
         <category>Linux</category>
-        <category>Tmux</category>
+        <category>Shell</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>Tmux</tag>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -6797,6 +6788,351 @@ $(RM) $*.o</p>
       </categories>
       <tags>
         <tag>csapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSAPP第三章学习笔记</title>
+    <url>/blog/2022/03/05/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><p>​    本章主要是关于x86汇编的一些东西，正好和目前学校在教的汇编语言是相对应的。这篇笔记大概就是关于在阅读CSAPP第三章的时候对于一些疑难知识的解释以及重要知识的记录</p>
+<h1 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h1><p>​    假设一个C程序有两个文件p1.c和p2.c，采用如下命令编译</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gcc -Og -o p p1.c p2.c</span><br></pre></td></tr></table></figure>
+<p>​    其中大O参数对应的是gcc采用的优化选项，就和洛谷OJ上提供的O1优化或O2优化选项类似。由于较高级别的优化会使得产生的代码严重变形，难以学习，所以这里使用-Og优化。</p>
+<p>​    对于这一条命令，gcc调用了一整套的程序将源代码转换成可执行文件，大致过程如下：</p>
+<ol>
+<li><strong>C预处理器</strong>插入所有用#include指定的文件，并把宏定义作替换。</li>
+<li><strong>编译器</strong>产生两个文件的汇编代码，名字分别为p1.s和p2.s。</li>
+<li><strong>汇编器</strong>将汇编代码转换成二进制目标代码文件p1.o和p2.o。</li>
+<li><strong>链接器</strong>将两个目标代码文件与实现库函数（如printf）文件的代码合并，并用-o命令指定最终的目标文件。</li>
+</ol>
+<h2 id="机器级代码"><a href="#机器级代码" class="headerlink" title="机器级代码"></a>机器级代码</h2><p>​    计算机系统使用了多种不同的<strong>抽象</strong>，下面两种很重要：</p>
+<ol>
+<li>由<strong>指令集体系结构或指令集架构</strong>来定义机器级程序的格式和行为，它定义了处理器状态、指令的格式、以及每条指令对状态的影响。</li>
+<li>机器级程序使用的内存地址是<strong>虚拟地址</strong>，提供的内存模型看上去是一个很大的、按字节寻址的数组。</li>
+</ol>
+<p>​    机器代码呈现了很多在C程序中不可见的处理器状态，如：</p>
+<ol>
+<li><strong>程序计数器</strong>（PC，在x86汇编中用%rip表示），给出了将要执行的下一条指令在内存中的地址。</li>
+<li>整数寄存器文件，主要是用来存储64位的值的，比如一些地址或者整数数据。</li>
+<li>条件码寄存器，保存着最近执行的一些算数或逻辑指令的状态信息。</li>
+<li>向量寄存器，可以存放一个或多个整数或浮点数的值。</li>
+</ol>
+<p>​    现在看这些可能还是云里雾里，什么都不太清楚，但是在后面这些处理器的作用都会逐一详细介绍的。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>​    假定有一个C文件mstore.c，在命令行使用-S选项就可以得到汇编代码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gcc -Og -S mstore.c</span><br></pre></td></tr></table></figure>
+<p>​    在汇编代码中会<strong>除去所有关于局部变量名或数据类型的信息。</strong></p>
+<p>​    再使用如下命令，就会编译并汇编该代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gcc -Og -c mstore.c</span><br></pre></td></tr></table></figure>
+<p>​    这产生的目标代码文件是二进制格式的。无法直接查看。但是可以用反汇编器来查看。GDB中有相关的查看的方法，在后文会提到。</p>
+<p>​    当然也有直接的命令可以查看，比如可以使用如下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">objdump -d mstore.o</span><br></pre></td></tr></table></figure>
+<p>​    另外，如果去查看汇编代码的内容，会发现有一些行是以“.”开头的，这些是指导汇编器和链接器工作的<strong>伪指令</strong>，通常不用管它。</p>
+<p>​    <strong>注意，汇编代码通常有不同的格式，书中使用的是ATT格式的汇编代码，使用-masm参数可以产生Intel格式的汇编</strong></p>
+<h1 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>C声明</th>
+<th style="text-align:center">Intel数据类型</th>
+<th>汇编代码后缀</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td style="text-align:center">字节</td>
+<td>b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td style="text-align:center">字</td>
+<td>w</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td style="text-align:center">双字</td>
+<td>l</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td style="text-align:center">四字</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>char*</td>
+<td style="text-align:center">四字</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td style="text-align:center">单精度</td>
+<td>s</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td style="text-align:center">双精度</td>
+<td>l</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    <strong>需要额外注意的是，指针也是四个字节</strong></p>
+<h1 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h1><p>​    一个x86-64的中央处理器单元（CPU）包含一组16个存储64位值的<strong>通用目的寄存器</strong>。这些寄存器用来存储整数数据和指针。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-a4fdd18e266dafb2fa2b7b89c93b45c4_1440w.jpg" alt="img"></p>
+<p>​    相关的指令可以对这16个寄存器的低位字节存放的不同大小的数据进行操作。对于生成小于8字节1结果的指令，对于剩下的字节，有如下两条规则：</p>
+<ol>
+<li>生成1字节和2字节数字的指令会保持剩下的字节不变。</li>
+<li>生成四字节的数字的指令会把高位4个字节置为0.。</li>
+</ol>
+<p>​    上图中最右边的一列指明了在常见的程序中这些寄存器扮演什么样的角色。</p>
+<h2 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h2><p>​    大多数指令都有一个或多个<strong>操作数</strong>，指示当前操作要使用的源数据值以及放置结果的目的位置。操作数分为如下三种类型：</p>
+<ol>
+<li><strong>立即数</strong>，用来表示一个常数值。在ATT格式的汇编中，一般用$后面跟一个用标准C表示法表示的整数</li>
+<li><strong>寄存器</strong>，用来表示某个寄存器的内容。</li>
+<li><strong>内存引用</strong>，根据计算出来的地址访问某个内存位置。</li>
+</ol>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-f9e206ce400c2d8fe60949d8d152cd0c_1440w.jpg" alt="img"></p>
+<p>​    上面的图表示了常见的几种操作数格式。比较通用的应该就是最后一行</p>
+<h2 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h2><p>​    <strong>指令类</strong>中包含了一系列指令，这些指令执行的操作都相同，区别在于操作数的大小不同。</p>
+<p>​    最简单的数据传送指令是<strong>MOV类</strong>，见下表</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-4877513aca7692221f8615f862c4e452_1440w.jpg" alt="img"></p>
+<p>​    该命令的作用就是把数据从源位置复制到目的位置。</p>
+<p>​    源操作数指定的是一个立即数，目的操作数是一个位置，可以是寄存器也可以是内存位置。但是MOV指令有一条限制，即<strong>两个操作数不能都指向内存位置</strong></p>
+<p>​    MOV指令只会更新目的操作数制定的那些寄存器字节或内存位置。唯一的例外是movl指令以寄存器作为目的时，它会把该寄存器的高位4字节设置为0。</p>
+<p>​    常规的movq指令只能以表示为32位补码数字的立即数作为源操作数。movabsq指令能以任意64位立即数值作为源操作数，并且只能以寄存器作为目的</p>
+<p>​    还有另外两个指令类，即MOVZ和MOVS。可以将较小的源值复制到较大的目的。区别在于前者把目的中的剩余字节填充为0，而后者通过符号扩展来填充。如下图</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-1e19219ec92acec8ad5ee7eee1e4dc36_1440w.jpg" alt="img"></p>
+<p>​    另外还有<strong>cltq</strong>指令，它总是以寄存器%eax作为源，%rax作为符号扩展结果的目的</p>
+<h2 id="数据传送示例"><a href="#数据传送示例" class="headerlink" title="数据传送示例"></a>数据传送示例</h2><p>​    首先要明确函数参数通过寄存器转给函数。</p>
+<p>​    这里主要是说间接引用指针就是把这个指针放在寄存器里。像局部变量都是保存在寄存器中，因为访问寄存器要更快。</p>
+<h2 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h2><p>​    主要就是下面这两个操作吧。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-e515b4938bda4ebcd81f379e5ab3e4e6_1440w.jpg" alt="img"></p>
+<p>​    栈指针%rsp保存着栈顶元素的地址。在入栈的时候，比如说要把一个四字值压倒栈里，首先要将栈指针减8，然后将值写到新的栈顶地址。这么说的话，其实push命令也可以用sub和mov命令实现，不过这样会消耗比较多的资源。</p>
+<h1 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h1><p>​    主要介绍的就是下面这张图里的吧。</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-104351fade6344715ef28a2ab852171d_1440w.jpg" alt="img"></p>
+<p>​    接下来会分别对这些进行解析。</p>
+<h2 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h2><p>​    该操作leaq实际上是movq指令的变形，主要是从内存读数据到寄存器，但是它并没有引用内存，该指令将有效地址写入目的操作数。</p>
+<p>​    很多时候这个操作会有一些妙用吧，拿csapp的练习题来说，更多的或许是用来计算加减乘除？</p>
+<h2 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h2><p>​    从名字上看就非常显然了，一元操作符和二元操作符。</p>
+<p>​    一元操作只有一个操作数，这个操作数可以是一个寄存器，也可以是一个内存位置。</p>
+<p>​    二元操作的第二个操作数既是源又是目的。第一个操作数可以是立即数 、寄存器或是内存位置，第二个操作数可以是寄存器或是内存位置。当第二个操作数为内存地址时，处理器必须从内存读出值，执行操作，再把结果写回内存。</p>
+<h2 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h2><p>​    移位操作是最后一组操作。</p>
+<p>​    先给出移位量，第二项给出要移位的数。移位量可以是立即数，也可以放在单字节寄存器%cl中。因为<strong>只允许以这个特定的寄存器作为操作数</strong></p>
+<h2 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h2><p>​    这里给出了支持两个64位数乘除法的运算符</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-6b9dd45e5c33cfa1d314876eced58ed5_1440w.jpg" alt="img"></p>
+<p>​    注意图3-10里面也有一个imul，那一个就是从两个64位操作数得到两个64位乘积，就是通过截断</p>
+<p>​    这里的是用两个寄存器存储最终得到的128位的结果，需要把一个参数存到%rax寄存器里，然后另一个指令作为源操作数，最终结果的低位存到%rax中，高位存储到%rdx中。</p>
+<p>​    除法或取模操作由单操作数除法指令来提供。有符号数除法指令<strong>idivq</strong>将寄存器%rdx（高64位）和%rax（低64位）中的128位数作为被除数，除数作为指令的操作数给出。指令将商存在寄存器%rax中，将余数存在寄存器%rdx中。</p>
+<p>​    指令cqto读出%rax的符号位，并将它复制到%rdx的所有位。</p>
+]]></content>
+      <categories>
+        <category>csapp</category>
+      </categories>
+      <tags>
+        <tag>csapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建以太坊全节点</title>
+    <url>/blog/2022/03/06/geth%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​    目前主要是通过官方给的教程来搭建这么一个结点，不过其实我个人目前对以太坊结点的理解还没有很深刻，<del>甚至有可能完全错误</del>，目前感觉就是装一下Geth，然后用Geth开启一个账户就行了？</p>
+<h1 id="安装Geth等组件"><a href="#安装Geth等组件" class="headerlink" title="安装Geth等组件"></a>安装Geth等组件</h1><p>​    在安装Geth之前，首先配置一个go语言的运行环境，这个我之前已经配过，就不再赘述了。</p>
+<p>​    Geth主要有如下三种安装方法：</p>
+<ol>
+<li><p>直接在<a href="https://geth.ethereum.org">官网</a>下载可执行文件</p>
+</li>
+<li><p>Ubuntu用户可以在线安装。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository -y ppa:ethereum/ethereum</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install ethereum</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过源码编译安装。首先需要从GitHub上下载源码，<a href="https://github.com/ethereum/go-ethereum/releases">点这里</a></p>
+<p>然后采用如下命令解压编译</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -xzf go-ethereum-1.10.16.tar.gz</span><br><span class="line">cd go-ethereum-1.10.16</span><br><span class="line">make all</span><br></pre></td></tr></table></figure>
+<p>等一会就编译成功了，可以根据提示找到可执行文件的位置</p>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220307125056796.png" alt="image-20220307125056796"></p>
+<p>不过我在编译的时候出现了这么一个错误，在网上查找之后发现有各种各样的原因，有说go版本不对的，有说缺包的。都没什么用。后来在一个犄角旮旯里发现使用如下命令就可以解决这个问题</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
+<p>后来上网查了查这个包有什么用，发现它仅仅就是把开发CPP的一些包下载了，像是gcc，make什么的。估计我也是缺了这里面的一些东西吧。</p>
+<p>此外，这里除了Geth也编译了一些其它的组件，像Clef，由于官方给的入门文档里用到了Clef，所以了解一下Clef也是很有必要的。</p>
+</li>
+</ol>
+<h1 id="Clef"><a href="#Clef" class="headerlink" title="Clef"></a>Clef</h1><h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><p>​    Geth大概是一个代替Geth原有的结点账户管理的工具，Clef可以使Geth不必依赖Geth的账户管理，当Dapp需要对数据进行签名时，可以将数据发给Clef，在经过授权同意后，Clef把签名返还给Dapp</p>
+<p>​    上面的描述是官方文档给出来的。关于签名这种名词是区块链相关的概念，Dapp就是一个应用，不过其后端代码在一个去中心化的P2P网络上运行。也就是说Clef的主要作用就是把账户管理和Geth的其他功能分隔开。</p>
+<h2 id="简单实用"><a href="#简单实用" class="headerlink" title="简单实用"></a>简单实用</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>​    启用Clef服务需要先进行初始化，初始化的时候会要求输入一个密码。虽然后来在使用Geth的时候官方也没有初始化。。。</p>
+<p>​    这里的密码主要是为了加密数据，因为Clef本身存储的可能是一些敏感数据，所以它的整个存储都是加密的</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">clef init</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p>​    初始化之后就可以启动服务，相关的参数可以去官网查看</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">clef --keystore geth-tutorial/keystore --configdir geth-tutorial/clef --chainid 5</span><br></pre></td></tr></table></figure>
+<p>​    这里面的几个参数含义如下</p>
+<ul>
+<li><code>--keystore</code>，这个参数后面跟的是一个路径，主要就是存储账户的一些信息</li>
+<li><code>--chainid</code>，主要是指定一条需要签名的链的编号</li>
+</ul>
+<p>​    启动之后这个终端就不要管了，打开一个新的终端去进行操作吧</p>
+<h2 id="规则引擎"><a href="#规则引擎" class="headerlink" title="规则引擎"></a>规则引擎</h2><p>​    主要是设置一些规则来允许其自动签署某些交易。可以创建一些规则文件，自动允许任何人在没有用户确认的情况下列出可用账户。规则文件是一个很小的<code>JavaScript</code>代码片段。</p>
+<p>​    当然为了防止一些恶意的规则文件的存在，需要计算出这个规则文件的hash，将其注入到Clef的存储中，Clef才能够运用这个规则，主要命令如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sha256sum rules.js</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一串<span class="built_in">hash</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> clef attest 那串<span class="built_in">hash</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 中间需要输入密码</span></span><br></pre></td></tr></table></figure>
+<p>​    然后在clef启动的时候使用参数<code>--rule</code>参数后面跟文件名即可</p>
+<h2 id="外部API"><a href="#外部API" class="headerlink" title="外部API"></a>外部API</h2><p>​    Clef提供了一些外部API可供客户端与其交互</p>
+<ul>
+<li><code>account_new</code>，创建账号</li>
+<li><code>account_list</code>，列出账号列表</li>
+<li><code>account_signTransaction</code>，获得交易签名</li>
+<li><code>account_signData</code>，获得签名数据</li>
+<li><code>account_import</code>，账号导入</li>
+<li><code>account_export</code>，账号导出</li>
+</ul>
+<h2 id="与Geth整合"><a href="#与Geth整合" class="headerlink" title="与Geth整合"></a>与Geth整合</h2><p>​    可以使用<code>--signer</code>来和Geth整合</p>
+<h1 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h1><h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><h3 id="生成账户"><a href="#生成账户" class="headerlink" title="生成账户"></a>生成账户</h3><p>​    采用如下命令生成账户</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">clef newaccount --keystore geth-tutorial/keystore</span><br></pre></td></tr></table></figure>
+<p>​    这条命令将会给出一个WARINING，这是正常的，输入ok即可，接下来他就会提示让你输入密码，输一个就行。然后就会产生你的账户和私钥。</p>
+<p>​    注意把账户和生成的私钥地址保存下来。</p>
+<p>​    接下来需要重复这个步骤，再生成一个账户。</p>
+<h3 id="启动clef"><a href="#启动clef" class="headerlink" title="启动clef"></a>启动clef</h3><p>​    要启动clef，需要打开一个新的终端并运行以下命令，这个终端就是用来保持clef运行的</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">clef --keystore geth-tutorial/keystore --configdir geth-tutorial/clef --chainid 5</span><br></pre></td></tr></table></figure>
+<p>​    注意这里的geth-tutorial这种目录都是需要自己创建的，不然会一直启动不成功。</p>
+<p>​    使用这条命令之后再敲一个ok就行了</p>
+<h3 id="启动Geth"><a href="#启动Geth" class="headerlink" title="启动Geth"></a>启动Geth</h3><p>​    需要新开启一个终端并执行如下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">geth --datadir geth-tutorial --signer=geth-tutorial/clef/clef.ipc --goerli --syncmode light --http</span><br></pre></td></tr></table></figure>
+<p>​    其中的几个主要参数含义如下所示</p>
+<ul>
+<li><strong>—datadir</strong>，用来存放节点数据的目录</li>
+<li><strong>—syncmode</strong> “mode”，主要对应于三种同步模式，即fast、full、light，其中fast模式指的是该节点会同步所有的区块头、区块体、状态数据，但是不对区块中的交易进行重放，仅仅对数据进行校验。full模式指的是结点会从网络同步所有的数据。light模式则是仅仅同步区块头。这里选择light模式也是因为本人的机器限制，同步全节点数据会把我的机器给爆掉</li>
+</ul>
+<p>​    另外，在启动Geth之后，就会发现当前的结点已经在同步数据了，在自定义的datadir里可以找到这些数据，需要用16进制打开。</p>
+<p>​    官网还在后面给出了两个账户交互的一些方法，但是由于我这里仅仅只是想要用一些链上的数据，同步下来的数据还比较像，所以就先不管了。</p>
+<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>​    上面那个方案是我在geth官网上找到的一个搭建方法，与其说是搭建方法不如说是教了Geth的一些入门用法:joy:</p>
+<p>​    下面这个方法是在网上找到的，其实基本的操作都差不多，就是安装Geth，不过在网上找到的方法也可能都比较老了，没有使用Clef进行账户管理，另外关于Geth的一些命令也有一些问题。下面先来记录一下这个方法。</p>
+<h3 id="启动Geth-1"><a href="#启动Geth-1" class="headerlink" title="启动Geth"></a>启动Geth</h3><p>​    在安装好Geth之后，创建一个用来存放数据的文件夹。然后启动Geth</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir ~/data/eth_data</span><br><span class="line">nohup geth --datadir ~/data/eth_data --syncmode full --http --http.addr 0.0.0.0 --http.corsdomain &quot;*&quot; --http.api eth,net,web3 --ws --ws.addr 0.0.0.0 --ws.origins &quot;*&quot; --ws.api eth,net,web3 &amp;</span><br></pre></td></tr></table></figure>
+<p>​    先说一下第二条长命令，首先<code>nohup</code>和<code>&amp;</code>是和进程相关的命令。一般两个一起用，如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nohup command &amp;</span><br></pre></td></tr></table></figure>
+<p>​    <code>nohup</code>表示不挂断的运行命令，相关输出会导入到当前目录下的<code>nohup.out</code>文件中，<code>&amp;</code>就是简单地表示在后台运行，所以一般两个会一起用。要查看运行的后台进程可以用如下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ps -aux|grep command</span><br><span class="line"><span class="meta">#</span><span class="bash"> 其中ps参数a表示显示所有程序，u表示以用户为主的格式来显示，x表示显示所有程序，不以终端机来区分</span></span><br></pre></td></tr></table></figure>
+<p>​    然后看一下geth相关的参数，一些前文已经介绍过的就不再赘述了。下面主要贴一下之前没写到的参数。</p>
+<p>JSON-RPC API:</p>
+<blockquote>
+<p>—http                              Enable the HTTP-RPC server<br>—http.addr value                   HTTP-RPC server listening interface (default: “localhost”)<br>  —http.port value                   HTTP-RPC server listening port (default: 8545)<br>  —http.api value                    API’s offered over the HTTP-RPC interface<br>  —http.rpcprefix value              HTTP path path prefix on which JSON-RPC is served. Use ‘/‘ to serve on all paths.<br>  —http.corsdomain value             Comma separated list of domains from which to accept cross origin requests (browser enforced)<br>  —http.vhosts value                 Comma separated list of virtual hostnames from which to accept requests (server enforced). Accepts ‘*’ wildcard. (default: “localhost”)<br>  —ws                                Enable the WS-RPC server<br>  —ws.addr value                     WS-RPC server listening interface (default: “localhost”)<br>  —ws.port value                     WS-RPC server listening port (default: 8546)<br>  —ws.api value                      API’s offered over the WS-RPC interface<br>  —ws.rpcprefix value                HTTP path prefix on which JSON-RPC is served. Use ‘/‘ to serve on all paths.<br>  —ws.origins value                  Origins from which to accept websockets requests</p>
+</blockquote>
+<p>​    具体更详细的介绍可以参考官网文档的<code>JSON-RPC API</code>部分。</p>
+<p>​    所谓的坑就是说官网给的参数似乎一直在变，我参考的很多的教程在开启http服务器的时候都是用的<code>--rpc</code>参数，后来查看官方文档发现这个已经改了….</p>
+<p>​    此外，使用这个命令后会发现在刚刚<code>--datadir</code>命令指定的目录下生成了<code>geth.ipc</code>文件，这个文件用来进行通讯。</p>
+<h3 id="终端交互"><a href="#终端交互" class="headerlink" title="终端交互"></a>终端交互</h3><p>​    在启动过Geth之后，目前的这个终端就不要再动了，打开一个新的终端，开启JavaScript控制台。Geth提供了相关的API</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">geth console # 启动Geth结点然后打开控制台</span><br><span class="line">geth attach # 将启动的控制台附加到已经运行的geth实例</span><br></pre></td></tr></table></figure>
+<p>​    这里我们选择了后者，由于需要附加到实例，这个时候可以通过rpc接口进行连接，也可以通过刚刚的ipc文件连接，只需要在这条命令后面加上文件路径即可。</p>
+<p>​    开启了终端之后会显示一系列的启动配置，这些配置可以在启动的时候通过设置启动参数进行更改。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">eth.blockNumber # 查看区块高度</span><br><span class="line">eth.syncing # 查看同步进程，返回false的时候表示同步未开始或者已经完毕</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/C:/Users\yx7\AppData\Roaming\Typora\typora-user-images\image-20220311201824027.png" alt="image-20220311201824027"></p>
+<p>​    同步下来的数据大概是这样的，咱也不清楚这是什么意思，先留个坑</p>
+<h1 id="相关数据的含义"><a href="#相关数据的含义" class="headerlink" title="相关数据的含义"></a>相关数据的含义</h1><h2 id="Block"><a href="#Block" class="headerlink" title="Block"></a>Block</h2><ul>
+<li><code>BlockNum</code>：块号，或者说块高度，越大则块就越新</li>
+<li><code>Timestamp</code>：块产生的时间戳</li>
+<li><code>transactionCount</code>：交易数量</li>
+<li><code>internaltransactionCount</code>：外部交易数量</li>
+<li><code>mineraddress</code>：矿工地址，表示这个区块是他挖出来的，给他奖励</li>
+<li><code>blockreward</code>：奖励给矿工的币</li>
+<li><code>unclesreward</code>：给创建了添加到有效链中的叔块的矿工的奖励。</li>
+<li><code>difficulty</code>：挖矿难度值</li>
+<li><code>totalDifficulty</code>：当前区块的之前的所有区块的难度总和，是<strong>最长链的最佳指标</strong></li>
+<li><code>size</code>：记录区块的大小，大小可变</li>
+<li><code>gasUsed</code>：交易消耗的Gas，这个Gas就是账户交易时产生的消耗，归矿工</li>
+<li><code>gasLimit</code>：Gas限制，交易消耗的Gas不允许超过该值</li>
+<li><code>BaseFeePerGas</code>：通过公式计算出来的一个东西，由当前区块的前一个区块决定，更容易让用户预测到交易费用</li>
+<li><code>BurnFees</code>：和基本费用有关的一个量，当当前块被开采出来后就会燃烧基本费用</li>
+<li><code>ExtraData</code>：长度不固定的Byte数组，最长32位，完全由矿工自定义</li>
+<li><code>Hash</code>：推测应该是区块的Hash</li>
+<li><code>ParentHash</code>：父块的Hash，可以和前面的块连接起来</li>
+<li><code>sha3Uncles</code>：记录引用的叔块，叔块就是对于PoW挖矿产生分叉时候的改进</li>
+<li><code>stateRoot</code>：矿工在把交易打包成块的时候会组织三棵树，其中状态数的叶子节点保存影响到的账户状态。该数据就是将状态数求Hash得到的，这建立了交易和区块头字段的映射</li>
+<li><code>Nonce</code>：一个随机数，让块头Hash满足要求，比如需要前几位都是0</li>
+</ul>
+<h2 id="Block-Transaction"><a href="#Block-Transaction" class="headerlink" title="Block Transaction"></a>Block Transaction</h2><ul>
+<li><code>blockNum</code>：同上</li>
+<li><code>timeStamp</code>：同上</li>
+<li><code>trasactionHash</code>：交易Hash，交易的唯一标志</li>
+<li><code>from</code>：交易发送方地址</li>
+<li><code>to</code>：交易接收方地址</li>
+<li><code>toCreate</code>：</li>
+<li><code>fromIsContract</code>：</li>
+<li><code>toIsContract</code>：</li>
+<li><code>Value</code>：交易的币</li>
+<li><code>GasLimit</code>：同上</li>
+<li><code>GasPrice</code>：为交易付出的Gas的价格</li>
+<li><code>GasUsed</code>：本交易消耗的Gas</li>
+<li><code>callingFunction</code>：</li>
+<li><code>isError</code>：</li>
+<li><code>eip2718type</code>：一种交易类型</li>
+<li><code>baseFeePerGas</code>：同上</li>
+<li><code>masFeePerGas</code>：上下两个数据的总和</li>
+<li><code>maxPriorityFeePerGas</code>：给矿工消费的最低限度</li>
+</ul>
+]]></content>
+      <categories>
+        <category>分布式系统</category>
+        <category>区块链</category>
+      </categories>
+      <tags>
+        <tag>分布式系统</tag>
+        <tag>区块链</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux配置环境变量</title>
+    <url>/blog/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    昨天晚上在配置Geth环境的时候突然发现像ls这种基本的命令竟然都找不到了，意识到配置环境的时候可能把/usr/bin这个目录给冲掉了，仔细想想自己好像一直都是照猫画虎的配环境，也不知道其中的命令的一些缘由，所以今天也是尽快找了一些相关的教程，总结一下配置环境的常见问题。参考<a href="https://www.cnblogs.com/youyoui/p/10680329.html">https://www.cnblogs.com/youyoui/p/10680329.html</a></p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>​    比如我现在就是要去配置/home/usrname/，使用的系统是Ubuntu20.04。</p>
+<h2 id="读取环境变量"><a href="#读取环境变量" class="headerlink" title="读取环境变量"></a>读取环境变量</h2><p>​    主要有两种读取环境变量的方法</p>
+<ul>
+<li><code>export</code>命令显示当前系统定义的所有环境变量，执行出来的结果一般都会很长。</li>
+<li><code>echo $PATH</code>命令显示当前的PATH环境变量，执行结果一般如下</li>
+</ul>
+<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220307124856180.png" alt="image-20220307124856180"></p>
+<p>​    <code>PATH</code>变量主要就是定义了运行命令的查找路径，用冒号分隔不同的路径，在使用<code>export</code>定义的时候这个冒号可加可不加。</p>
+<h2 id="Linux配置环境变量的几种方法"><a href="#Linux配置环境变量的几种方法" class="headerlink" title="Linux配置环境变量的几种方法"></a>Linux配置环境变量的几种方法</h2><h3 id="export-PATH"><a href="#export-PATH" class="headerlink" title="export PATH"></a>export PATH</h3><p>​    可以使用<code>export</code>直接修改<code>PATH</code>的值，如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export PATH=/home/username:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 也可以把PATH放在前面</span></span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
+<p>​    注意该种方式立刻生效，不需要使用<code>source</code>命令，但是只对当前终端有效，也只对当前账户有效。</p>
+<p>​    注意，使用<code>$PATH</code>是为了保存之前的命令，如果没有这个，新加入的路径将会覆盖之前的PATH，我也正是因为直接这样搞了，所以/usr/bin下的命令全都找不到了</p>
+<h3 id="vim-bashrc"><a href="#vim-bashrc" class="headerlink" title="vim ~/.bashrc"></a>vim ~/.bashrc</h3><p>​    通过修改<code>~/.bashrc</code>文件来进行配置，当然如果用了zsh等其它的shell的话，需要修改对应的文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在最后一行加上</span></span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
+<p>​    注意该命令需要使用<code>source ~/.bashrc</code>来使其生效，并且永久有效，但是只对当前用户有效。</p>
+<h3 id="vim-bash-profile"><a href="#vim-bash-profile" class="headerlink" title="vim ~/.bash_profile"></a>vim ~/.bash_profile</h3><p>​    这个和上面的那个就是类似的，不管是各种范围还是什么都是类似的。</p>
+<p>​    不过需要注意的是，有的系统可能没有这个文件，比如我的，这种情况下可以编辑~/.profile或者新建一个这个文件。</p>
+<h3 id="vim-etc-bashrc"><a href="#vim-etc-bashrc" class="headerlink" title="vim /etc/bashrc"></a>vim /etc/bashrc</h3><p>​    这种方法是修改系统配置，需要管理员权限或者对该文件的写入权限。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -v u+w /etc/bashrc</span><br><span class="line">vim /etc/bashrc</span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
+<p>​    也需要使用<code>source</code>命令使其有效，这个就是永久有效的，并且对于所有的用户都有效。</p>
+<p><strong>注：之前没怎么用过chmod命令，需要给权限都是直接sudo，可以参考<a href="https://www.runoob.com/linux/linux-comm-chmod.html了解一下这个给权限的命令">https://www.runoob.com/linux/linux-comm-chmod.html了解一下这个给权限的命令</a></strong></p>
+<h3 id="vim-etc-profile"><a href="#vim-etc-profile" class="headerlink" title="vim /etc/profile"></a>vim /etc/profile</h3><p>​    这种方法和上面那个完全一样的，就不再多说了</p>
+<h3 id="vim-etc-environment"><a href="#vim-etc-environment" class="headerlink" title="vim /etc/environment"></a>vim /etc/environment</h3><p>​    这种方法和上面那个也是完全一样的，也不再多说了。</p>
+<h1 id="环境变量加载原理"><a href="#环境变量加载原理" class="headerlink" title="环境变量加载原理"></a>环境变量加载原理</h1><h2 id="环境变量的分类"><a href="#环境变量的分类" class="headerlink" title="环境变量的分类"></a>环境变量的分类</h2><p>​    可以简单地分成用户自定义的环境变量以及系统级别的环境变量</p>
+<ul>
+<li>用户级别环境变量定义文件：<code>~/.bashrc</code>，<code>~/.profile</code>（也有的系统是<code>~/.bashrc_profile</code>）</li>
+<li>系统级别环境变量定义文件：<code>/etc/bashrc</code>，<code>/etc/profile</code>（也有的系统是<code>/etc/bash_profile</code>），<code>/etc/environment</code></li>
+</ul>
+<p>​    在用户环境变量中，系统会首先读取<code>~/.bashrc_profile</code>（或者<code>~/.profile</code>）文件，如果没有该文件就读取<code>~/.bash_login</code>，然后根据这些文件中的内容读取<code>~/.bashrc</code></p>
+<h2 id="环境变量加载顺序"><a href="#环境变量加载顺序" class="headerlink" title="环境变量加载顺序"></a>环境变量加载顺序</h2><p>​    在我参考的博客中，给出了测试环境变量加载顺序的一个方法，即在所有相关文件中都定义一个相同的环境变量，然后观察它的值即可。</p>
+<p>​    经过测试，加载环境变量的顺序大概如下</p>
+<p>​    <strong>系统环境变量-&gt;用户自定义环境变量</strong></p>
+<p>​    这个是可以根据相关文件的内容推断的，比如对于<code>/etc/profile</code>，打开之后，文件内容如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/profile: system-wide .profile file <span class="keyword">for</span> the Bourne shell (sh(1))</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).</span></span><br><span class="line"></span><br><span class="line">if [ &quot;$&#123;PS1-&#125;&quot; ]; then</span><br><span class="line">  if [ &quot;$&#123;BASH-&#125;&quot; ] &amp;&amp; [ &quot;$BASH&quot; != &quot;/bin/sh&quot; ]; then</span><br><span class="line">    # The file bash.bashrc already sets the default PS1.</span><br><span class="line">    # PS1=&#x27;\h:\w\$ &#x27;</span><br><span class="line">    if [ -f /etc/bash.bashrc ]; then</span><br><span class="line">      . /etc/bash.bashrc</span><br><span class="line">    fi</span><br><span class="line">  else</span><br><span class="line">    if [ &quot;`id -u`&quot; -eq 0 ]; then</span><br><span class="line">      PS1=&#x27;# &#x27;</span><br><span class="line">    else</span><br><span class="line">      PS1=&#x27;$ &#x27;</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ -d /etc/profile.d ]; then</span><br><span class="line">  for i in /etc/profile.d/*.sh; do</span><br><span class="line">    if [ -r $i ]; then</span><br><span class="line">      . $i</span><br><span class="line">    fi</span><br><span class="line">  done</span><br><span class="line">  unset i</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>​    可以看出来它检查了<code>/etc/bash.bashrc</code>文件。</p>
+<p>​    类似的可以依次查看这些文件。</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>​    可以在<code>~/.profile</code>文件中使用<code>alias</code>命令定义一些变量的别名，如</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">alias rm=&quot;rm -i&quot;</span><br></pre></td></tr></table></figure>
+<p>​    这样每次使用<code>rm</code>的时候都相当于使用了<code>rm -i</code></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+        <category>基本知识</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>基本知识</tag>
       </tags>
   </entry>
 </search>
