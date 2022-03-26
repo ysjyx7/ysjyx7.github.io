@@ -7,19 +7,19 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ysjyx7.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
 
 <script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
@@ -68,25 +68,25 @@
 <meta name="description" content="一种存图的数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链式前向星存图">
-<meta property="og:url" content="https://yang-shijun.gitee.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/index.html">
+<meta property="og:url" content="https://ysjyx7.github.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/index.html">
 <meta property="og:site_name" content="杨释钧的博客">
 <meta property="og:description" content="一种存图的数据结构">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yang-shijun.gitee.io/blog/images/%E4%BE%8B%E5%9B%BE1.jpg">
+<meta property="og:image" content="https://ysjyx7.github.io/images/例图1.jpg">
 <meta property="article:published_time" content="2021-08-22T03:28:00.000Z">
 <meta property="article:modified_time" content="2022-03-12T06:57:20.190Z">
 <meta property="article:author" content="杨释钧">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="特殊数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yang-shijun.gitee.io/blog/images/%E4%BE%8B%E5%9B%BE1.jpg">
+<meta name="twitter:image" content="https://ysjyx7.github.io/images/例图1.jpg">
 
 
-<link rel="canonical" href="https://yang-shijun.gitee.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">
+<link rel="canonical" href="https://ysjyx7.github.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/","path":"2021/08/22/链式前向星/","title":"链式前向星存图"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/","path":"2021/08/22/链式前向星/","title":"链式前向星存图"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>链式前向星存图 | 杨释钧的博客</title>
@@ -96,7 +96,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/blog/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -116,12 +116,12 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">杨释钧的博客</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+      <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
   </div>
 
   <div class="site-nav-right">
@@ -135,10 +135,10 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -195,7 +195,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">链式前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">边结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.2.</span> <span class="nav-text">加边操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.3.</span> <span class="nav-text">遍历操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E5%90%91%E6%98%9F"><span class="nav-number">2.</span> <span class="nav-text">前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F"><span class="nav-number">3.</span> <span class="nav-text">链式前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">边结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.2.</span> <span class="nav-text">加边操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.3.</span> <span class="nav-text">遍历操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -203,25 +203,25 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="杨释钧"
-      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
   <p class="site-author-name" itemprop="name">杨释钧</p>
   <div class="site-description" itemprop="description">欢迎欢迎</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/blog/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/blog/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/blog/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -232,7 +232,7 @@
         <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
@@ -284,10 +284,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">
+    <link itemprop="mainEntityOfPage" href="https://ysjyx7.github.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
       <meta itemprop="name" content="杨释钧">
       <meta itemprop="description" content="欢迎欢迎">
     </span>
@@ -323,11 +323,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%89%B9%E6%AE%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">特殊数据结构</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%89%B9%E6%AE%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">特殊数据结构</span></a>
         </span>
     </span>
 
@@ -364,35 +364,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1>简述</h1>
-<p>​	链式前向星是一种存放图的数据结构，性能较好，实现起来不算很难，其存放以边为核心</p>
-<h1>前向星</h1>
-<h2 id="概念"><a class="header-anchor" href="#概念">¶</a>概念</h2>
-<p>​	在了解什么是链式前向星前，我们先说一下什么是前向星。</p>
-<p>​	前向星是一种边集数组，我们将边集数组中的每一条边按起点大小排序，如果起点相同就按终点大小排序，然后再记录下以某点为起点的所有边的权值和起始位置</p>
-<p>​	一般用len记录所有以i为起点的边在数组中的存储长度，用head记录以i为边集在数组中的第一个存储位置</p>
-<h2 id="举例"><a class="header-anchor" href="#举例">¶</a>举例</h2>
-<p>如图所示</p>
-<p><img src="/blog/images/%E4%BE%8B%E5%9B%BE1.jpg" alt></p>
+        <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    链式前向星是一种存放图的数据结构，性能较好，实现起来不算很难，其存放以边为核心</p>
+<h1 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    在了解什么是链式前向星前，我们先说一下什么是前向星。</p>
+<p>​    前向星是一种边集数组，我们将边集数组中的每一条边按起点大小排序，如果起点相同就按终点大小排序，然后再记录下以某点为起点的所有边的权值和起始位置</p>
+<p>​    一般用len记录所有以i为起点的边在数组中的存储长度，用head记录以i为边集在数组中的第一个存储位置</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>如图所示</p>
+<p><img src="/images/例图1.jpg" alt></p>
 <p>输入边的顺序为</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">3</span> <span class="number">4</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">5</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <p>排完序后得到</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">编号： 	<span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span></span><br><span class="line">起点u：	<span class="number">1</span>  <span class="number">1</span>  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span></span><br><span class="line">终点v：	<span class="number">2</span>  <span class="number">3</span>  <span class="number">5</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">1</span>  <span class="number">5</span></span><br><span class="line">head[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">-1</span>&#125;</span><br></pre></td></tr></table></figure>
-<h1>链式前向星</h1>
-<p>​	链式前向星是对前向星的一种优化，因为前向星需要用到排序，时间复杂度较高，而链式前向星可以避免排序</p>
-<h2 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h2>
-<h3 id="边结构体"><a class="header-anchor" href="#边结构体">¶</a>边结构体</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to,w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> <span class="title">edge</span>[1000];</span></span><br><span class="line"><span class="comment">//edge[i].to表示第i条边的终点，edge[i].next表示与第i条边同起点的下一条边的存储位置，edge[i].w表示这条边的权值</span></span><br><span class="line"><span class="keyword">int</span> head[<span class="number">1000</span>];</span><br><span class="line"><span class="comment">//head数组表示以i为起点的第一条边的存储位置，这里实际上是以i为起点的所有边的最后输入的编号，一般初始化为-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="加边操作"><a class="header-anchor" href="#加边操作">¶</a>加边操作</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].next=head[u];</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><p>​    链式前向星是对前向星的一种优化，因为前向星需要用到排序，时间复杂度较高，而链式前向星可以避免排序</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="边结构体"><a href="#边结构体" class="headerlink" title="边结构体"></a>边结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to,w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> <span class="title">edge</span>[1000];</span></span><br><span class="line"><span class="comment">//edge[i].to表示第i条边的终点，edge[i].next表示与第i条边同起点的下一条边的存储位置，edge[i].w表示这条边的权值</span></span><br><span class="line"><span class="keyword">int</span> head[<span class="number">1000</span>];</span><br><span class="line"><span class="comment">//head数组表示以i为起点的第一条边的存储位置，这里实际上是以i为起点的所有边的最后输入的编号，一般初始化为-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="加边操作"><a href="#加边操作" class="headerlink" title="加边操作"></a>加边操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].next=head[u];</span><br><span class="line">    head[u]=cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>举例如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">edge[<span class="number">0</span>].to = <span class="number">2</span>;     edge[<span class="number">0</span>].next = <span class="number">-1</span>;      head[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">1</span>].to = <span class="number">3</span>;     edge[<span class="number">1</span>].next = <span class="number">-1</span>;      head[<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">2</span>].to = <span class="number">4</span>;     edge[<span class="number">2</span>],next = <span class="number">-1</span>;      head[<span class="number">3</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">3</span>].to = <span class="number">3</span>;     edge[<span class="number">3</span>].next = <span class="number">0</span>;       head[<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">4</span>].to = <span class="number">1</span>;     edge[<span class="number">4</span>].next = <span class="number">-1</span>;      head[<span class="number">4</span>] = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">5</span>].to = <span class="number">5</span>;     edge[<span class="number">5</span>].next = <span class="number">3</span>;       head[<span class="number">1</span>] = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">edge[<span class="number">6</span>].to = <span class="number">5</span>;     edge[<span class="number">6</span>].next = <span class="number">4</span>;       head[<span class="number">4</span>] = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
 <p>从上面容易看出，head储存的是所有数据中最大的，将其当成初始边</p>
-<h3 id="遍历操作"><a class="header-anchor" href="#遍历操作">¶</a>遍历操作</h3>
-<p>由于head定位数组本身的性质，这里的遍历最后出现的结果是倒过来的</p>
+<h3 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h3><p>由于head定位数组本身的性质，这里的遍历最后出现的结果是倒过来的</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=head[i];j!=<span class="number">-1</span>;j=edge[j].next);</span><br><span class="line">    <span class="comment">//这里表示遍历所有以i为起点的边</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实例"><a class="header-anchor" href="#实例">¶</a>实例</h2>
-<p>洛谷P1131</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>洛谷P1131</p>
 <p>题目大意：给出n个结点的赋权树，给出根节点s，使得s到每个叶子节点的权值相同，需要加上权值的总和</p>
 <p>思路：用链式前向星存边，要想使最后的时间相等，需要从叶子节点逐步向上维护，首先找到当前所有兄弟节点的权值的最大值，然后让每个叶子节点的权值增加，更新答案，然后更新这一部分叶子结点的父节点，逐步向上维护即可</p>
 <p>代码见下</p>
@@ -412,11 +402,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="杨释钧 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="杨释钧 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -432,7 +422,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://yang-shijun.gitee.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/" title="链式前向星存图">https://yang-shijun.gitee.io/2021/08/22/链式前向星/</a>
+      <a href="https://ysjyx7.github.io/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/" title="链式前向星存图">https://ysjyx7.github.io/2021/08/22/链式前向星/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -478,20 +468,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
-              <a href="/blog/tags/%E7%89%B9%E6%AE%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 特殊数据结构</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E7%89%B9%E6%AE%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 特殊数据结构</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2021/08/19/BST%E4%BC%98%E5%8C%96/" rel="prev" title="AVL树  Treap">
+                <a href="/2021/08/19/BST%E4%BC%98%E5%8C%96/" rel="prev" title="AVL树  Treap">
                   <i class="fa fa-chevron-left"></i> AVL树  Treap
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（一）">
+                <a href="/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="《Practical TLA+》阅读笔记（一）">
                   《Practical TLA+》阅读笔记（一） <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -526,14 +516,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">231k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">3:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -564,10 +554,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-<script src="/blog/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -581,7 +571,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
-<script src="/blog/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

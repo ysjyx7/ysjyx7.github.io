@@ -7,19 +7,19 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ysjyx7.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
 
 <script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
@@ -68,7 +68,7 @@
 <meta name="description" content="关于《Practical-TLA+》第二部分chapter 8阅读笔记，以及关于数据结构的理解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Practical-TLA+》阅读笔记（八）">
-<meta property="og:url" content="https://yang-shijun.gitee.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/index.html">
+<meta property="og:url" content="https://ysjyx7.github.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/index.html">
 <meta property="og:site_name" content="杨释钧的博客">
 <meta property="og:description" content="关于《Practical-TLA+》第二部分chapter 8阅读笔记，以及关于数据结构的理解">
 <meta property="og:locale" content="zh_CN">
@@ -79,11 +79,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yang-shijun.gitee.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/">
+<link rel="canonical" href="https://ysjyx7.github.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/","path":"2021/09/25/《Practical-TLA-》阅读笔记（八）/","title":"《Practical-TLA+》阅读笔记（八）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/","path":"2021/09/25/《Practical-TLA-》阅读笔记（八）/","title":"《Practical-TLA+》阅读笔记（八）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>《Practical-TLA+》阅读笔记（八） | 杨释钧的博客</title>
@@ -93,7 +93,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/blog/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -113,12 +113,12 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">杨释钧的博客</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+      <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
   </div>
 
   <div class="site-nav-right">
@@ -132,10 +132,10 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -192,7 +192,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">有效性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%83%B3%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">具体想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="nav-number">3.2.1.</span> <span class="nav-text">判断是否有环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%8E%AF%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="nav-number">3.2.2.</span> <span class="nav-text">求环的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">3.2.3.</span> <span class="nav-text">环的起点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%81%E6%98%8E"><span class="nav-number">3.2.4.</span> <span class="nav-text">简单证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pluscal%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">Pluscal代码如下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">有效性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%83%B3%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">具体想法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="nav-number">3.2.1.</span> <span class="nav-text">判断是否有环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%8E%AF%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="nav-number">3.2.2.</span> <span class="nav-text">求环的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">3.2.3.</span> <span class="nav-text">环的起点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%81%E6%98%8E"><span class="nav-number">3.2.4.</span> <span class="nav-text">简单证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pluscal%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">Pluscal代码如下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -200,25 +200,25 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="杨释钧"
-      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
   <p class="site-author-name" itemprop="name">杨释钧</p>
   <div class="site-description" itemprop="description">欢迎欢迎</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/blog/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/blog/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/blog/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -229,7 +229,7 @@
         <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
@@ -281,10 +281,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://ysjyx7.github.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
       <meta itemprop="name" content="杨释钧">
       <meta itemprop="description" content="欢迎欢迎">
     </span>
@@ -320,11 +320,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">分布式系统</span></a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">分布式系统</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/TLA/" itemprop="url" rel="index"><span itemprop="name">TLA+</span></a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/TLA/" itemprop="url" rel="index"><span itemprop="name">TLA+</span></a>
         </span>
     </span>
 
@@ -342,7 +342,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.3k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -361,41 +361,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1>总述</h1>
-<p>​	这一章主要就是讲了在spec中如何加入数据结构，主要是需要在文件外面写一些modules，感觉就跟写个类差不多，先定义结点，再定义操作。</p>
-<p>​	在TLA+中，所有的数据结构都用函数或结构实现，首先以链表<strong>LinkedLists</strong>为例，首先需要定义每一个结点，也有数据域和指针域，指针的关系我们用如下的操作来表示</p>
+        <h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    这一章主要就是讲了在spec中如何加入数据结构，主要是需要在文件外面写一些modules，感觉就跟写个类差不多，先定义结点，再定义操作。</p>
+<p>​    在TLA+中，所有的数据结构都用函数或结构实现，首先以链表<strong>LinkedLists</strong>为例，首先需要定义每一个结点，也有数据域和指针域，指针的关系我们用如下的操作来表示</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PointerMaps(Nodes) == [Nodes -&gt; Nodes]</span><br></pre></td></tr></table></figure>
-<p>​	<s>虽然感觉这样定义有点怪怪的</s>，但是先暂时这样定义吧，然后我们定义最后的结点，即需要NULL的概念</p>
+<p>​    <del>虽然感觉这样定义有点怪怪的</del>，但是先暂时这样定义吧，然后我们定义最后的结点，即需要NULL的概念</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CONSTANT NULL</span><br><span class="line">LOCAL INSTANCE TLC</span><br><span class="line">PointerMaps(Nodes) == [Nodes -&gt; Nodes \union &#123;NULL&#125;]</span><br><span class="line">LinkedLists(Nodes) == </span><br><span class="line">	IF NULL \in Nodes THEN Assert(FALSE,&quot;NULL cannot be in Nodes&quot;) ELSE \*...</span><br></pre></td></tr></table></figure>
-<p>​	然后就是这样定义单链表有可能会出现二义性，例如出现每个元素的指向都为空的情况，为了避免发生，我们需要一个判断</p>
-<p>​	接下来就是我们需要找到表头结点，因为我们目前已经给出的都是结构，所以可以通过一系列操作转化成序列，也就是可以有如下的写法</p>
+<p>​    然后就是这样定义单链表有可能会出现二义性，例如出现每个元素的指向都为空的情况，为了避免发生，我们需要一个判断</p>
+<p>​    接下来就是我们需要找到表头结点，因为我们目前已经给出的都是结构，所以可以通过一系列操作转化成序列，也就是可以有如下的写法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">\* PointerMap is an element of PointerMaps</span><br><span class="line">isLinkedList(PointerMap) ==</span><br><span class="line"> LET</span><br><span class="line"> nodes == DOMAIN PointerMap</span><br><span class="line"> all_seqs == [1..Cardinality(nodes) -&gt; nodes]</span><br><span class="line"> IN \E ordering \in all_seqs:</span><br><span class="line"> \* each node points to the next node in the ordering</span><br><span class="line"> /\ \A i \in 1..Len(ordering)-1:</span><br><span class="line"> PointerMap[ordering[i]] = ordering[i+1]</span><br><span class="line"> \* all nodes in the mapping appear in the ordering</span><br><span class="line"> /\ \A n \in nodes:</span><br><span class="line"> \E i \in 1..Len(ordering):</span><br><span class="line"> ordering[i] = n</span><br><span class="line">LinkedLists(Nodes) ==</span><br><span class="line"> IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line"> &#123;pm \in PointerMaps(Nodes) : isLinkedList(pm)&#125;</span><br></pre></td></tr></table></figure>
-<p>​	但是现在我们想得到的是更小的链表，可以对LinkedLists(Nodes)做如下改动</p>
+<p>​    但是现在我们想得到的是更小的链表，可以对LinkedLists(Nodes)做如下改动</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LinkedLists(Nodes) ==</span><br><span class="line"> IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line"> LET</span><br><span class="line"> node_subsets == (SUBSET Nodes \ &#123;&#123;&#125;&#125;)</span><br><span class="line"> pointer_maps_sets == &#123;PointerMaps(subn): subn \in node_subsets&#125;</span><br><span class="line"> \* pointer_maps_sets is a set of set of functions,</span><br><span class="line"> \* so we need to union them all together</span><br><span class="line"> all_pointer_maps == UNION pointer_maps_sets</span><br><span class="line"> IN &#123;pm \in all_pointer_maps : isLinkedList(pm)&#125;</span><br></pre></td></tr></table></figure>
-<p>​	接下来我们可以介绍一下双向链表，这个时候，谁是第一个已经无所谓了，因此有如下写法</p>
+<p>​    接下来我们可以介绍一下双向链表，这个时候，谁是第一个已经无所谓了，因此有如下写法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Ring(LL) == (DOMAIN LL = Range(LL))</span><br><span class="line">First(LL) ==</span><br><span class="line"> IF Ring(LL)</span><br><span class="line"> THEN CHOOSE node \in DOMAIN LL:</span><br><span class="line"> TRUE</span><br><span class="line"> ELSE CHOOSE node \in DOMAIN LL:</span><br><span class="line"> node \notin Range(LL)</span><br></pre></td></tr></table></figure>
-<p>​	其实还是感觉这部分稍微有点费解，因为很多逻辑表达式的使用要让人反应很久，最后附上链表部分的代码</p>
+<p>​    其实还是感觉这部分稍微有点费解，因为很多逻辑表达式的使用要让人反应很久，最后附上链表部分的代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">---------------------------- MODULE LinkedLists ----------------------------</span><br><span class="line">CONSTANT NULL</span><br><span class="line"></span><br><span class="line">LOCAL INSTANCE FiniteSets \* For Cardinality</span><br><span class="line">LOCAL INSTANCE Sequences</span><br><span class="line">LOCAL INSTANCE TLC \* For Assert</span><br><span class="line">LOCAL INSTANCE Integers \* For a..b</span><br><span class="line"></span><br><span class="line">LOCAL PointerMaps(Nodes) == [Nodes -&gt; Nodes \union &#123;NULL&#125;]</span><br><span class="line"></span><br><span class="line">LOCAL Range(f) == &#123;f[x]: x \in DOMAIN f&#125;</span><br><span class="line"></span><br><span class="line">LOCAL isLinkedList(PointerMap) ==</span><br><span class="line">  LET </span><br><span class="line">    nodes == DOMAIN PointerMap</span><br><span class="line">    all_seqs == [1..Cardinality(nodes) -&gt; nodes]</span><br><span class="line">  IN \E ordering \in all_seqs:</span><br><span class="line">       /\ \A i \in 1..Len(ordering) - 1:</span><br><span class="line">         PointerMap[ordering[i]] = ordering[i+1]</span><br><span class="line">       /\ nodes \subseteq Range(ordering)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LinkedLists(Nodes) == </span><br><span class="line">  IF NULL \in Nodes THEN Assert(FALSE, &quot;NULL cannot be in Nodes&quot;) ELSE</span><br><span class="line">  LET </span><br><span class="line">    node_subsets == (SUBSET Nodes \ &#123;&#123;&#125;&#125;)</span><br><span class="line">    pointer_maps_sets == &#123;PointerMaps(subn): subn \in node_subsets&#125;</span><br><span class="line"></span><br><span class="line">    all_pointer_maps == UNION pointer_maps_sets</span><br><span class="line">  IN &#123;pm \in all_pointer_maps : isLinkedList(pm)&#125;</span><br><span class="line"></span><br><span class="line">Cyclic(LL) == NULL \notin Range(LL)</span><br><span class="line">Ring(LL) == DOMAIN LL = Range(LL)</span><br><span class="line"></span><br><span class="line">First(LL) == </span><br><span class="line">  IF Ring(LL)</span><br><span class="line">  THEN CHOOSE node \in DOMAIN LL: </span><br><span class="line">        TRUE</span><br><span class="line">  ELSE CHOOSE node \in DOMAIN LL: </span><br><span class="line">        node \notin Range(LL)</span><br><span class="line"></span><br><span class="line">=============================================================================</span><br></pre></td></tr></table></figure>
-<h1>有效性</h1>
-<p>​	其实到现在很多时候还是不适应Pluscal的一些语法，感觉和常规的编程语言差了太多，比如这里要求证明在一个链表中有可能存在一个结点有两个父母，我的初步想法就是做循环，记录每一个自变量对应的值即可，但是这里就直接用了存在量词，其实就是直接把自然语言翻译成逻辑命题即可，直接看代码</p>
+<h1 id="有效性"><a href="#有效性" class="headerlink" title="有效性"></a>有效性</h1><p>​    其实到现在很多时候还是不适应Pluscal的一些语法，感觉和常规的编程语言差了太多，比如这里要求证明在一个链表中有可能存在一个结点有两个父母，我的初步想法就是做循环，记录每一个自变量对应的值即可，但是这里就直接用了存在量词，其实就是直接把自然语言翻译成逻辑命题即可，直接看代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---- MODULE main ----</span><br><span class="line">EXTENDS TLC, Integers, FiniteSets, Sequences</span><br><span class="line">CONSTANTS Nodes, NULL</span><br><span class="line">INSTANCE LinkedLists WITH NULL &lt;- NULL</span><br><span class="line">AllLinkedLists == LinkedLists(Nodes)</span><br><span class="line">CycleImpliesTwoParents(ll) ==</span><br><span class="line"> Cyclic(ll) &lt;=&gt;</span><br><span class="line"> \E n \in DOMAIN ll:</span><br><span class="line"> Cardinality(&#123;p \in DOMAIN ll: ll[p] = n&#125;) = 2</span><br><span class="line">Valid ==</span><br><span class="line"> /\ \A ll \in AllLinkedLists:</span><br><span class="line"> /\ Assert(CycleImpliesTwoParents(ll), &lt;&lt;&quot;Counterexample:&quot;, ll&gt;&gt;)</span><br><span class="line"> ========</span><br></pre></td></tr></table></figure>
-<h1>例子</h1>
-<p>​	这里给的例子是Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
-<h2 id="算法描述"><a class="header-anchor" href="#算法描述">¶</a>算法描述</h2>
-<p>​	其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
-<h2 id="具体想法"><a class="header-anchor" href="#具体想法">¶</a>具体想法</h2>
-<h3 id="判断是否有环"><a class="header-anchor" href="#判断是否有环">¶</a>判断是否有环</h3>
-<p>​	定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
-<h3 id="求环的长度"><a class="header-anchor" href="#求环的长度">¶</a>求环的长度</h3>
-<p>​	p1固定在相遇位置C，移动p2，每次移动1个长度，计数即可</p>
-<h3 id="环的起点"><a class="header-anchor" href="#环的起点">¶</a>环的起点</h3>
-<p>​	此时将一个指针移到表头结点，另一个指针在相遇节点，然后两者每次均移动一个单位，再次相遇时的位置就是环的起点位置</p>
-<h3 id="简单证明"><a class="header-anchor" href="#简单证明">¶</a>简单证明</h3>
-<p>​	其实这个证明总体还是比较简单，设变量去分析即可，这里借鉴了博客[](<a target="_blank" rel="noopener" href="https://qht1003077897.github.io/2017/07/03/%E7%AE%97%E6%B3%95-floyd%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF/">算法-floyd判环(圈)算法 | 祁宏涛 (qht1003077897.github.io)</a>)</p>
-<h2 id="Pluscal代码如下"><a class="header-anchor" href="#Pluscal代码如下">¶</a>Pluscal代码如下</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">------------------------------ MODULE example ------------------------------</span><br><span class="line">EXTENDS TLC</span><br><span class="line">CONSTANTS Nodes,NULL</span><br><span class="line">INSTANCE LinkedLists_1</span><br><span class="line">(*--fair algorithm hare</span><br><span class="line">variables</span><br><span class="line">    ll \in LinkedLists(Nodes),</span><br><span class="line">    tortoise = First(ll),</span><br><span class="line">    hare = tortoise;</span><br><span class="line">macro advance(pointer) begin</span><br><span class="line">    pointer := ll[pointer];</span><br><span class="line">    if(pointer = NULL) then</span><br><span class="line">        assert ~Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">    end if;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while TRUE do</span><br><span class="line">        advance(tortoise);</span><br><span class="line">        advance(hare);</span><br><span class="line">        advance(hare);</span><br><span class="line">        if(tortoise = hare) then</span><br><span class="line">            assert Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">        end if;</span><br><span class="line">    end while;</span><br><span class="line">end algorithm;*)</span><br><span class="line">=============</span><br></pre></td></tr></table></figure>
-<h1>总结</h1>
-<p>​	本章其实内容还是比较基本的，根据链表的设计来讨论如何设计数据结构。</p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>​    这里给的例子是Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>​    其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
+<h2 id="具体想法"><a href="#具体想法" class="headerlink" title="具体想法"></a>具体想法</h2><h3 id="判断是否有环"><a href="#判断是否有环" class="headerlink" title="判断是否有环"></a>判断是否有环</h3><p>​    定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
+<h3 id="求环的长度"><a href="#求环的长度" class="headerlink" title="求环的长度"></a>求环的长度</h3><p>​    p1固定在相遇位置C，移动p2，每次移动1个长度，计数即可</p>
+<h3 id="环的起点"><a href="#环的起点" class="headerlink" title="环的起点"></a>环的起点</h3><p>​    此时将一个指针移到表头结点，另一个指针在相遇节点，然后两者每次均移动一个单位，再次相遇时的位置就是环的起点位置</p>
+<h3 id="简单证明"><a href="#简单证明" class="headerlink" title="简单证明"></a>简单证明</h3><p>​    其实这个证明总体还是比较简单，设变量去分析即可，这里借鉴了博客<a href="[算法-floyd判环(圈"></a>算法 | 祁宏涛 (qht1003077897.github.io)](<a target="_blank" rel="noopener" href="https://qht1003077897.github.io/2017/07/03/算法-floyd判断链表是否有环/">https://qht1003077897.github.io/2017/07/03/算法-floyd判断链表是否有环/</a>))</p>
+<h2 id="Pluscal代码如下"><a href="#Pluscal代码如下" class="headerlink" title="Pluscal代码如下"></a>Pluscal代码如下</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">------------------------------ MODULE example ------------------------------</span><br><span class="line">EXTENDS TLC</span><br><span class="line">CONSTANTS Nodes,NULL</span><br><span class="line">INSTANCE LinkedLists_1</span><br><span class="line">(*--fair algorithm hare</span><br><span class="line">variables</span><br><span class="line">    ll \in LinkedLists(Nodes),</span><br><span class="line">    tortoise = First(ll),</span><br><span class="line">    hare = tortoise;</span><br><span class="line">macro advance(pointer) begin</span><br><span class="line">    pointer := ll[pointer];</span><br><span class="line">    if(pointer = NULL) then</span><br><span class="line">        assert ~Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">    end if;</span><br><span class="line">end macro;</span><br><span class="line">begin</span><br><span class="line">    while TRUE do</span><br><span class="line">        advance(tortoise);</span><br><span class="line">        advance(hare);</span><br><span class="line">        advance(hare);</span><br><span class="line">        if(tortoise = hare) then</span><br><span class="line">            assert Cyclic(ll);</span><br><span class="line">        goto Done;</span><br><span class="line">        end if;</span><br><span class="line">    end while;</span><br><span class="line">end algorithm;*)</span><br><span class="line">=============</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    本章其实内容还是比较基本的，根据链表的设计来讨论如何设计数据结构。</p>
 
     </div>
 
@@ -411,11 +400,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="杨释钧 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="杨释钧 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -431,7 +420,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://yang-shijun.gitee.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/" title="《Practical-TLA+》阅读笔记（八）">https://yang-shijun.gitee.io/2021/09/25/《Practical-TLA-》阅读笔记（八）/</a>
+      <a href="https://ysjyx7.github.io/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/" title="《Practical-TLA+》阅读笔记（八）">https://ysjyx7.github.io/2021/09/25/《Practical-TLA-》阅读笔记（八）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -477,19 +466,19 @@
 </div>
 
           <div class="post-tags">
-              <a href="/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag"># 分布式系统</a>
+              <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag"># 分布式系统</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/" rel="prev" title="《Practical-TLA+》阅读笔记（七）">
+                <a href="/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/" rel="prev" title="《Practical-TLA+》阅读笔记（七）">
                   <i class="fa fa-chevron-left"></i> 《Practical-TLA+》阅读笔记（七）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/" rel="next" title="弗洛依德的兔子与乌龟算法">
+                <a href="/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/" rel="next" title="弗洛依德的兔子与乌龟算法">
                   弗洛依德的兔子与乌龟算法 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -524,14 +513,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">231k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">3:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -562,10 +551,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-<script src="/blog/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -579,7 +568,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
-<script src="/blog/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

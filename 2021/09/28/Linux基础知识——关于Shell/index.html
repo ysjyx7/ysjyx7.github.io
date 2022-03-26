@@ -7,19 +7,19 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"yang-shijun.gitee.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ysjyx7.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
 
 <script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
@@ -68,7 +68,7 @@
 <meta name="description" content="关于Linux的Shell的一些初步知识，本文章基于Ubuntu20.04版本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell（一）">
-<meta property="og:url" content="https://yang-shijun.gitee.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/index.html">
+<meta property="og:url" content="https://ysjyx7.github.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/index.html">
 <meta property="og:site_name" content="杨释钧的博客">
 <meta property="og:description" content="关于Linux的Shell的一些初步知识，本文章基于Ubuntu20.04版本">
 <meta property="og:locale" content="zh_CN">
@@ -80,11 +80,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yang-shijun.gitee.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/">
+<link rel="canonical" href="https://ysjyx7.github.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yang-shijun.gitee.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/","path":"2021/09/28/Linux基础知识——关于Shell/","title":"Shell（一）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/","path":"2021/09/28/Linux基础知识——关于Shell/","title":"Shell（一）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Shell（一） | 杨释钧的博客</title>
@@ -94,7 +94,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/blog/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -114,12 +114,12 @@
 
   <div class="site-meta">
 
-    <a href="/blog/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">杨释钧的博客</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">https://yang-shijun.gitee.io/blog</p>
+      <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
   </div>
 
   <div class="site-nav-right">
@@ -133,10 +133,10 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -193,7 +193,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Shell简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">简单的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%93%8D%E4%BD%9C%E5%88%97%E4%B8%BE"><span class="nav-number">2.1.</span> <span class="nav-text">一些基本的操作列举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E6%96%B9%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">导航方面的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E7%B4%A2Linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">探索Linux系统时遇到的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%8E%A2ls%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.1.</span> <span class="nav-text">重探ls命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.2.</span> <span class="nav-text">file命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.3.</span> <span class="nav-text">less命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86"><span class="nav-number">2.3.4.</span> <span class="nav-text">另外的一些知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95"><span class="nav-number">2.4.</span> <span class="nav-text">操作文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-number">2.4.1.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.2.</span> <span class="nav-text">常见命令</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Shell简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">简单的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%93%8D%E4%BD%9C%E5%88%97%E4%B8%BE"><span class="nav-number">2.1.</span> <span class="nav-text">一些基本的操作列举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E6%96%B9%E9%9D%A2%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">导航方面的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E7%B4%A2Linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">探索Linux系统时遇到的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%8E%A2ls%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.1.</span> <span class="nav-text">重探ls命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.2.</span> <span class="nav-text">file命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.3.</span> <span class="nav-text">less命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86"><span class="nav-number">2.3.4.</span> <span class="nav-text">另外的一些知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95"><span class="nav-number">2.4.</span> <span class="nav-text">操作文件和目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-number">2.4.1.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">2.4.2.</span> <span class="nav-text">常见命令</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,25 +201,25 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="杨释钧"
-      src="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
   <p class="site-author-name" itemprop="name">杨释钧</p>
   <div class="site-description" itemprop="description">欢迎欢迎</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/blog/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/blog/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/blog/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -230,7 +230,7 @@
         <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/blog/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
@@ -282,10 +282,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yang-shijun.gitee.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/">
+    <link itemprop="mainEntityOfPage" href="https://ysjyx7.github.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
       <meta itemprop="name" content="杨释钧">
       <meta itemprop="description" content="欢迎欢迎">
     </span>
@@ -321,11 +321,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/blog/categories/Linux/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
+          <a href="/categories/Linux/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
         </span>
     </span>
 
@@ -343,7 +343,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
+      <span>2.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -362,11 +362,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1>Shell简介</h1>
-<p>​	Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
-<h1>简单的使用</h1>
-<h2 id="一些基本的操作列举"><a class="header-anchor" href="#一些基本的操作列举">¶</a>一些基本的操作列举</h2>
-<ol>
+        <h1 id="Shell简介"><a href="#Shell简介" class="headerlink" title="Shell简介"></a>Shell简介</h1><p>​    Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
+<h1 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h1><h2 id="一些基本的操作列举"><a href="#一些基本的操作列举" class="headerlink" title="一些基本的操作列举"></a>一些基本的操作列举</h2><ol>
 <li>如果随便输入东西，会报错。</li>
 <li>使用方向键上下可以查询<strong>命令历史</strong></li>
 <li>方向键左右可以改变光标位置</li>
@@ -378,99 +375,44 @@
 <li><strong>df</strong>命令可以查看当前磁盘可用空间，<strong>free</strong>可以查看可用内存容量</li>
 <li>另外就是可以用<strong>Ctrl+D</strong>或者<strong>exit</strong>关闭终端对话</li>
 </ol>
-<h2 id="导航方面的命令"><a class="header-anchor" href="#导航方面的命令">¶</a>导航方面的命令</h2>
-<ol>
+<h2 id="导航方面的命令"><a href="#导航方面的命令" class="headerlink" title="导航方面的命令"></a>导航方面的命令</h2><ol>
 <li>首先需要明确Linux的文件系统树和Windows是差不多的，都是采用的树状结构</li>
 <li><strong>pwd</strong>可以显示当前的工作目录</li>
 <li><strong>ls</strong>命令可以列出当前工作目录中的文件和子目录</li>
-<li><strong>cd</strong>命令可以更改当前工作目录，可以用绝对路径或相对路径，绝对路径很显然，而对于相对路径，用了两种表示法，即用**.<strong>，表示当前目录，用</strong>…<strong>表示父目录，另外就是很多时候可以直接忽略掉</strong>./**</li>
+<li><strong>cd</strong>命令可以更改当前工作目录，可以用绝对路径或相对路径，绝对路径很显然，而对于相对路径，用了两种表示法，即用<strong>.</strong>，表示当前目录，用<strong>..</strong>表示父目录，另外就是很多时候可以直接忽略掉<strong>./</strong></li>
 <li>另外需要说一下Linux的一些特点，即<strong>没有文件拓展名</strong>，另外就是以点开头的文件是默认被隐藏的，ls命令在不使用<strong>ls -a</strong>的情况下不会显示</li>
-<li>下面给一些cd命令的便捷写法
-<ul>
+<li>下面给一些cd命令的便捷写法<ul>
 <li><strong>cd</strong>，切换到主目录</li>
 <li><strong>cd -</strong>，切换回前一个工作目录</li>
 <li><strong>cd ~user_name</strong>，切换到用户名的主目录</li>
 </ul>
 </li>
 </ol>
-<h2 id="探索Linux系统时遇到的命令"><a class="header-anchor" href="#探索Linux系统时遇到的命令">¶</a>探索Linux系统时遇到的命令</h2>
-<h3 id="重探ls命令"><a class="header-anchor" href="#重探ls命令">¶</a>重探ls命令</h3>
-<ol>
-<li>
-<p><strong>ls /usr</strong>，指定列出某目录下的内容</p>
+<h2 id="探索Linux系统时遇到的命令"><a href="#探索Linux系统时遇到的命令" class="headerlink" title="探索Linux系统时遇到的命令"></a>探索Linux系统时遇到的命令</h2><h3 id="重探ls命令"><a href="#重探ls命令" class="headerlink" title="重探ls命令"></a>重探ls命令</h3><ol>
+<li><p><strong>ls /usr</strong>，指定列出某目录下的内容</p>
 </li>
-<li>
-<p><strong>ls ~ /usr</strong>，指定列出多目录下的内容</p>
+<li><p><strong>ls ~ /usr</strong>，指定列出多目录下的内容</p>
 </li>
-<li>
-<p><strong>ls -l</strong>显示时间等更详细的内容</p>
+<li><p><strong>ls -l</strong>显示时间等更详细的内容</p>
 </li>
-<li>
-<p>选项与参数</p>
+<li><p>选项与参数</p>
 <ul>
-<li>
-<p>大致格式，<strong>command -options arguments</strong>，所以上面的l就类似于一个选项</p>
+<li><p>大致格式，<strong>command -options arguments</strong>，所以上面的l就类似于一个选项</p>
 </li>
-<li>
-<p>这些选项可以直接组合，例如<strong>ls -lt</strong>，其中t选项用来依照文件修改时间对输出结果进行排序</p>
+<li><p>这些选项可以直接组合，例如<strong>ls -lt</strong>，其中t选项用来依照文件修改时间对输出结果进行排序</p>
 </li>
-<li>
-<p>也可以在后面加入长选项**–reverse**，可以以降序排列输出结果</p>
+<li><p>也可以在后面加入长选项<strong>—reverse</strong>，可以以降序排列输出结果</p>
 </li>
-<li>
-<p>下面的表格给出了常用的ls命令选项</p>
+<li><p>下面的表格给出了常用的ls命令选项</p>
 </li>
-<li>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a,–all</td>
-<td>列出所有的文件包括隐藏文件</td>
-</tr>
-<tr>
-<td>-A,–almost-all</td>
-<td>不列出.和…</td>
-</tr>
-<tr>
-<td>-d,-directory</td>
-<td>列出该目录的详细信息</td>
-</tr>
-<tr>
-<td>-F,–classify</td>
-<td>在每个列出的名称后加入类型指示符</td>
-</tr>
-<tr>
-<td>-h,–human-readable</td>
-<td>不以字节为单位显示长格式的输出结果</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>以长格式显示输出</td>
-</tr>
-<tr>
-<td>-r,–reverse</td>
-<td>降序排列，而通常ls以升序排列</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>按文件大小输出</td>
-</tr>
-</tbody>
-</table>
+<li><p>| 选项                | 描述                               |<br>| —————————- | ————————————————— |<br>| -a,—all            | 列出所有的文件包括隐藏文件         |<br>| -A,—almost-all     | 不列出.和..                        |<br>| -d,-directory       | 列出该目录的详细信息               |<br>| -F,—classify       | 在每个列出的名称后加入类型指示符   |<br>| -h,—human-readable | 不以字节为单位显示长格式的输出结果 |<br>| -l                  | 以长格式显示输出                   |<br>| -r,—reverse        | 降序排列，而通常ls以升序排列       |<br>| -S                  | 按文件大小输出                     |</p>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="file命令"><a class="header-anchor" href="#file命令">¶</a>file命令</h3>
-<p>​	主要用来确定文件的类型，<strong>file filename</strong>，万物皆文件！</p>
-<h3 id="less命令"><a class="header-anchor" href="#less命令">¶</a>less命令</h3>
-<p>​	该命令可以用来查看文本文件，即<strong>less filename</strong>，进入文件后有一些比较好用的命令</p>
+<h3 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h3><p>​    主要用来确定文件的类型，<strong>file filename</strong>，万物皆文件！</p>
+<h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><p>​    该命令可以用来查看文本文件，即<strong>less filename</strong>，进入文件后有一些比较好用的命令</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -521,14 +463,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="另外的一些知识"><a class="header-anchor" href="#另外的一些知识">¶</a>另外的一些知识</h3>
-<ol>
+</div>
+<h3 id="另外的一些知识"><a href="#另外的一些知识" class="headerlink" title="另外的一些知识"></a>另外的一些知识</h3><ol>
 <li>关于复制粘贴，使用鼠标的话，双击可以复制文件名，单击中键可以粘贴到命令中</li>
 </ol>
-<h2 id="操作文件和目录"><a class="header-anchor" href="#操作文件和目录">¶</a>操作文件和目录</h2>
-<p>​	这部分将会讲述很多非常灵活与使用的东西</p>
-<h3 id="通配符"><a class="header-anchor" href="#通配符">¶</a>通配符</h3>
-<p>​	使用Shell过程中要使用非常多的文件名，所以就提供了一种特殊字符，即通配符，用来进行匹配，感觉就跟正则表达式差不多</p>
+<h2 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>​    这部分将会讲述很多非常灵活与使用的东西</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>​    使用Shell过程中要使用非常多的文件名，所以就提供了一种特殊字符，即通配符，用来进行匹配，感觉就跟正则表达式差不多</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -559,7 +500,9 @@
 </tr>
 </tbody>
 </table>
-<p>​	下面是一些常用的字符类</p>
+</div>
+<p>​    下面是一些常用的字符类</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -590,119 +533,52 @@
 </tr>
 </tbody>
 </table>
-<p>​	在GUI中也可以使用通配符</p>
-<h3 id="常见命令"><a class="header-anchor" href="#常见命令">¶</a>常见命令</h3>
-<ol>
-<li>
-<p>mkdir，在当前目录下创建新目录，并且可以一次创建多个</p>
+</div>
+<p>​    在GUI中也可以使用通配符</p>
+<h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ol>
+<li><p>mkdir，在当前目录下创建新目录，并且可以一次创建多个</p>
 </li>
-<li>
-<p>cp，主要用来复制，有两种用法</p>
+<li><p>cp，主要用来复制，有两种用法</p>
 <ul>
-<li>
-<p><strong>cp item1 item2</strong>，将item1复制到item2</p>
+<li><p><strong>cp item1 item2</strong>，将item1复制到item2</p>
 </li>
-<li>
-<p><strong>cp item… directory</strong>，将多个文件或目录item复制到directory中</p>
+<li><p><strong>cp item… directory</strong>，将多个文件或目录item复制到directory中</p>
 </li>
-<li>
-<p>下表给出了cp命令中常用的选项</p>
+<li><p>下表给出了cp命令中常用的选项</p>
 </li>
-<li>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a,–archive</td>
-<td>复制文件和目录及其包括所有权与权限在内的所有属性</td>
-</tr>
-<tr>
-<td>-i,–interactive</td>
-<td>在覆盖已有文件之前，提醒用户确认</td>
-</tr>
-<tr>
-<td>-r,–recursive</td>
-<td>递归复制目录及其内容</td>
-</tr>
-<tr>
-<td>-u,–update</td>
-<td>从一个目录复制到另外一个目录时，只复制目标目录中不存在或更新的文件</td>
-</tr>
-<tr>
-<td>-v,–verbose</td>
-<td>在进行复制时显示相关的信息</td>
-</tr>
-</tbody>
-</table>
+<li><p>| 选项             | 含义                                                         |<br>| ———————— | —————————————————————————————— |<br>| -a,—archive     | 复制文件和目录及其包括所有权与权限在内的所有属性             |<br>| -i,—interactive | 在覆盖已有文件之前，提醒用户确认                             |<br>| -r,—recursive   | 递归复制目录及其内容                                         |<br>| -u,—update      | 从一个目录复制到另外一个目录时，只复制目标目录中不存在或更新的文件 |<br>| -v,—verbose     | 在进行复制时显示相关的信息                                   |</p>
 </li>
 </ul>
 </li>
-<li>
-<p>mv，用于移动和重命名文件，和cp命令的用法大同小异</p>
+<li><p>mv，用于移动和重命名文件，和cp命令的用法大同小异</p>
 <ul>
 <li><strong>mv item1 item2</strong></li>
 <li><strong>mv item… directory</strong></li>
 <li>他的选项相比于cp命令，少了-a和-i</li>
 </ul>
 </li>
-<li>
-<p>rm，删除文件和目录</p>
+<li><p>rm，删除文件和目录</p>
 <ul>
-<li>
-<p><strong>rm item…</strong></p>
+<li><p><strong>rm item…</strong></p>
 </li>
-<li>
-<p>常用选项如下</p>
+<li><p>常用选项如下</p>
 </li>
-<li>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-i,–interactive</td>
-<td>请求用户确认</td>
-</tr>
-<tr>
-<td>-r,–recursive</td>
-<td>递归删除目录</td>
-</tr>
-<tr>
-<td>-f,–force</td>
-<td>忽略不存在的文件</td>
-</tr>
-<tr>
-<td>-v,–verbose</td>
-<td>在执行删除操作时显示相关信息</td>
-</tr>
-</tbody>
-</table>
+<li><p>| 选项             | 含义                         |<br>| ———————— | —————————————— |<br>| -i,—interactive | 请求用户确认                 |<br>| -r,—recursive   | 递归删除目录                 |<br>| -f,—force       | 忽略不存在的文件             |<br>| -v,—verbose     | 在执行删除操作时显示相关信息 |</p>
 </li>
-<li>
-<p>要小心使用rm命令，因为Linux并没有提供还原的命令</p>
+<li><p>要小心使用rm命令，因为Linux并没有提供还原的命令</p>
 </li>
 </ul>
 </li>
-<li>
-<p>ln，用来创建硬链接和符号链接</p>
+<li><p>ln，用来创建硬链接和符号链接</p>
 <ul>
 <li><strong>ln file link</strong>，创建硬链接</li>
 <li><strong>ln -s item link</strong>，创建符号链接</li>
 </ul>
 </li>
 </ol>
-<p><em><strong>这里说一下两种链接，硬链接有两个重要限制，一是不能引用所在文件系统之外的文件，即不能跨物理设备，二是不能引用目录。而符号链接克服了硬链接的限制，创建了一种特别类型的文件，内含一个指针，和Windows下的快捷方式比较像，就和引用指针比较类似，文件至少有一个硬链接，因为文件名都是通过硬链接创建的</strong></em></p>
-<p>​	另外对于判断硬链接和文件其实是同一个这个问题，其实可以用<strong>ls -i</strong>命令，系统为i结点分配了一系列的磁盘块，然后将i结点和名称关联在一起，这个命令可以显示这种信息</p>
-<p>​	<em><strong>关于软硬连接这方面以后有时间了要再看看</strong></em></p>
+<p><strong><em>这里说一下两种链接，硬链接有两个重要限制，一是不能引用所在文件系统之外的文件，即不能跨物理设备，二是不能引用目录。而符号链接克服了硬链接的限制，创建了一种特别类型的文件，内含一个指针，和Windows下的快捷方式比较像，就和引用指针比较类似，文件至少有一个硬链接，因为文件名都是通过硬链接创建的</em></strong></p>
+<p>​    另外对于判断硬链接和文件其实是同一个这个问题，其实可以用<strong>ls -i</strong>命令，系统为i结点分配了一系列的磁盘块，然后将i结点和名称关联在一起，这个命令可以显示这种信息</p>
+<p>​    <strong><em>关于软硬连接这方面以后有时间了要再看看</em></strong></p>
 
     </div>
 
@@ -718,11 +594,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/blog/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="杨释钧 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/blog/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="杨释钧 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -738,7 +614,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://yang-shijun.gitee.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/" title="Shell（一）">https://yang-shijun.gitee.io/2021/09/28/Linux基础知识——关于Shell/</a>
+      <a href="https://ysjyx7.github.io/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/" title="Shell（一）">https://ysjyx7.github.io/2021/09/28/Linux基础知识——关于Shell/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -784,20 +660,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
-              <a href="/blog/tags/Shell/" rel="tag"># Shell</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/blog/2021/09/27/%E5%8C%BA%E9%97%B4dp/" rel="prev" title="区间dp">
+                <a href="/2021/09/27/%E5%8C%BA%E9%97%B4dp/" rel="prev" title="区间dp">
                   <i class="fa fa-chevron-left"></i> 区间dp
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/blog/2021/09/29/Linux%E4%B9%8BShell%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="Shell（二）">
+                <a href="/2021/09/29/Linux%E4%B9%8BShell%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="Shell（二）">
                   Shell（二） <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -832,14 +708,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">232k</span>
+    <span title="站点总字数">231k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">3:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -870,10 +746,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script><script src="/blog/js/bookmark.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-<script src="/blog/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -887,7 +763,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
-<script src="/blog/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
