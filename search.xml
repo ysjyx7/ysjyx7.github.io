@@ -309,7 +309,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <ol>
 <li>函数声明结构如下</li>
 </ol>
-<p>​	<img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20211206184658781.png" alt="image-20211206184658781"></p>
+<p>​	<img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326145313498.png" alt="image-20220326145313498"></p>
 <ol start="2">
 <li>
 <p>C++函数允许有省略参数…，表示后面可以接0到任意个任意类型的参数</p>
@@ -3861,7 +3861,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
 <ol>
 <li>
 <p>多继承有多个基类，在使用多继承的时候很容易产生命名冲突，见下</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/1-2006291I602320.png" alt="菱形继承"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326145416515.png" alt="image-20220326145416515"></p>
 <p>这个时候类D继承了两份A的东西，即同一派生类多次初始化同一基类，一份从A-&gt;B-&gt;D过来，另一份从A-&gt;C-&gt;D过来，为了解决这个问题，我们需要使用<strong>虚基类</strong></p>
 </li>
 <li>
