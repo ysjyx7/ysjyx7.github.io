@@ -69,16 +69,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux配置环境变量">
 <meta property="og:url" content="https://ysjyx7.github.io/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/index.html">
-<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:site_name" content="ysjhust">
 <meta property="og:description" content="关于Linux环境的一些知识以及配置环境的方法。主要是对之前一直遗漏的知识的补充。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220307124856180.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326163741090.png">
 <meta property="article:published_time" content="2022-03-07T03:20:34.000Z">
-<meta property="article:modified_time" content="2022-03-12T06:48:54.567Z">
-<meta property="article:author" content="杨释钧">
+<meta property="article:modified_time" content="2022-03-26T08:37:53.559Z">
+<meta property="article:author" content="ysjhust">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220307124856180.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326163741090.png">
 
 
 <link rel="canonical" href="https://ysjyx7.github.io/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
@@ -88,7 +88,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/","path":"2022/03/07/Linux配置环境变量/","title":"Linux配置环境变量"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Linux配置环境变量 | 杨释钧的博客</title>
+<title>Linux配置环境变量 | ysjhust</title>
   
 
 
@@ -117,7 +117,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">杨释钧的博客</h1>
+      <h1 class="site-title">ysjhust</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
@@ -194,17 +194,17 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">读取环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">Linux配置环境变量的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#export-PATH"><span class="nav-number">2.2.1.</span> <span class="nav-text">export PATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-bashrc"><span class="nav-number">2.2.2.</span> <span class="nav-text">vim ~&#x2F;.bashrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-bash-profile"><span class="nav-number">2.2.3.</span> <span class="nav-text">vim ~&#x2F;.bash_profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-bashrc"><span class="nav-number">2.2.4.</span> <span class="nav-text">vim &#x2F;etc&#x2F;bashrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-profile"><span class="nav-number">2.2.5.</span> <span class="nav-text">vim &#x2F;etc&#x2F;profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-environment"><span class="nav-number">2.2.6.</span> <span class="nav-text">vim &#x2F;etc&#x2F;environment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%A0%E8%BD%BD%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">环境变量加载原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">环境变量的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">环境变量加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">3.3.</span> <span class="nav-text">小技巧</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">读取环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">Linux配置环境变量的几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#export-PATH"><span class="nav-number">2.2.1.</span> <span class="nav-text">export PATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-bashrc"><span class="nav-number">2.2.2.</span> <span class="nav-text">vim ~&#x2F;.bashrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-bash-profile"><span class="nav-number">2.2.3.</span> <span class="nav-text">vim ~&#x2F;.bash_profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-bashrc"><span class="nav-number">2.2.4.</span> <span class="nav-text">vim &#x2F;etc&#x2F;bashrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-profile"><span class="nav-number">2.2.5.</span> <span class="nav-text">vim &#x2F;etc&#x2F;profile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-etc-environment"><span class="nav-number">2.2.6.</span> <span class="nav-text">vim &#x2F;etc&#x2F;environment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">环境变量加载原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">环境变量的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">环境变量加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">3.3.</span> <span class="nav-text">小技巧</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="杨释钧"
+    <img class="site-author-image" itemprop="image" alt="ysjhust"
       src="/images/%E5%A4%B4%E5%83%8F.jpg">
-  <p class="site-author-name" itemprop="name">杨释钧</p>
-  <div class="site-description" itemprop="description">欢迎欢迎</div>
+  <p class="site-author-name" itemprop="name">ysjhust</p>
+  <div class="site-description" itemprop="description">Hello World!</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
@@ -287,12 +287,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="杨释钧">
-      <meta itemprop="description" content="欢迎欢迎">
+      <meta itemprop="name" content="ysjhust">
+      <meta itemprop="description" content="Hello World!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨释钧的博客">
+      <meta itemprop="name" content="ysjhust">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -314,7 +314,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-12 14:48:54" itemprop="dateModified" datetime="2022-03-12T14:48:54+08:00">2022-03-12</time>
+        <time title="修改时间：2022-03-26 16:37:53" itemprop="dateModified" datetime="2022-03-26T16:37:53+08:00">2022-03-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -363,46 +363,60 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    昨天晚上在配置Geth环境的时候突然发现像ls这种基本的命令竟然都找不到了，意识到配置环境的时候可能把/usr/bin这个目录给冲掉了，仔细想想自己好像一直都是照猫画虎的配环境，也不知道其中的命令的一些缘由，所以今天也是尽快找了一些相关的教程，总结一下配置环境的常见问题。参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/youyoui/p/10680329.html">https://www.cnblogs.com/youyoui/p/10680329.html</a></p>
-<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>​    比如我现在就是要去配置/home/usrname/，使用的系统是Ubuntu20.04。</p>
-<h2 id="读取环境变量"><a href="#读取环境变量" class="headerlink" title="读取环境变量"></a>读取环境变量</h2><p>​    主要有两种读取环境变量的方法</p>
+        <h1>前言</h1>
+<p>​	昨天晚上在配置Geth环境的时候突然发现像ls这种基本的命令竟然都找不到了，意识到配置环境的时候可能把/usr/bin这个目录给冲掉了，仔细想想自己好像一直都是照猫画虎的配环境，也不知道其中的命令的一些缘由，所以今天也是尽快找了一些相关的教程，总结一下配置环境的常见问题。参考https://www.cnblogs.com/youyoui/p/10680329.html</p>
+<h1>环境配置</h1>
+<p>​	比如我现在就是要去配置/home/usrname/，使用的系统是Ubuntu20.04。</p>
+<h2 id="读取环境变量"><a class="header-anchor" href="#读取环境变量">¶</a>读取环境变量</h2>
+<p>​	主要有两种读取环境变量的方法</p>
 <ul>
 <li><code>export</code>命令显示当前系统定义的所有环境变量，执行出来的结果一般都会很长。</li>
 <li><code>echo $PATH</code>命令显示当前的PATH环境变量，执行结果一般如下</li>
 </ul>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220307124856180.png" alt="image-20220307124856180"></p>
-<p>​    <code>PATH</code>变量主要就是定义了运行命令的查找路径，用冒号分隔不同的路径，在使用<code>export</code>定义的时候这个冒号可加可不加。</p>
-<h2 id="Linux配置环境变量的几种方法"><a href="#Linux配置环境变量的几种方法" class="headerlink" title="Linux配置环境变量的几种方法"></a>Linux配置环境变量的几种方法</h2><h3 id="export-PATH"><a href="#export-PATH" class="headerlink" title="export PATH"></a>export PATH</h3><p>​    可以使用<code>export</code>直接修改<code>PATH</code>的值，如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326163741090.png" alt="image-20220326163741090"></p>
+<p>​	<code>PATH</code>变量主要就是定义了运行命令的查找路径，用冒号分隔不同的路径，在使用<code>export</code>定义的时候这个冒号可加可不加。</p>
+<h2 id="Linux配置环境变量的几种方法"><a class="header-anchor" href="#Linux配置环境变量的几种方法">¶</a>Linux配置环境变量的几种方法</h2>
+<h3 id="export-PATH"><a class="header-anchor" href="#export-PATH">¶</a>export PATH</h3>
+<p>​	可以使用<code>export</code>直接修改<code>PATH</code>的值，如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/username:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 也可以把PATH放在前面</span></span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
-<p>​    注意该种方式立刻生效，不需要使用<code>source</code>命令，但是只对当前终端有效，也只对当前账户有效。</p>
-<p>​    注意，使用<code>$PATH</code>是为了保存之前的命令，如果没有这个，新加入的路径将会覆盖之前的PATH，我也正是因为直接这样搞了，所以/usr/bin下的命令全都找不到了</p>
-<h3 id="vim-bashrc"><a href="#vim-bashrc" class="headerlink" title="vim ~/.bashrc"></a>vim ~/.bashrc</h3><p>​    通过修改<code>~/.bashrc</code>文件来进行配置，当然如果用了zsh等其它的shell的话，需要修改对应的文件。</p>
+<p>​	注意该种方式立刻生效，不需要使用<code>source</code>命令，但是只对当前终端有效，也只对当前账户有效。</p>
+<p>​	注意，使用<code>$PATH</code>是为了保存之前的命令，如果没有这个，新加入的路径将会覆盖之前的PATH，我也正是因为直接这样搞了，所以/usr/bin下的命令全都找不到了</p>
+<h3 id="vim-bashrc"><a class="header-anchor" href="#vim-bashrc">¶</a>vim ~/.bashrc</h3>
+<p>​	通过修改<code>~/.bashrc</code>文件来进行配置，当然如果用了zsh等其它的shell的话，需要修改对应的文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在最后一行加上</span></span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
-<p>​    注意该命令需要使用<code>source ~/.bashrc</code>来使其生效，并且永久有效，但是只对当前用户有效。</p>
-<h3 id="vim-bash-profile"><a href="#vim-bash-profile" class="headerlink" title="vim ~/.bash_profile"></a>vim ~/.bash_profile</h3><p>​    这个和上面的那个就是类似的，不管是各种范围还是什么都是类似的。</p>
-<p>​    不过需要注意的是，有的系统可能没有这个文件，比如我的，这种情况下可以编辑~/.profile或者新建一个这个文件。</p>
-<h3 id="vim-etc-bashrc"><a href="#vim-etc-bashrc" class="headerlink" title="vim /etc/bashrc"></a>vim /etc/bashrc</h3><p>​    这种方法是修改系统配置，需要管理员权限或者对该文件的写入权限。</p>
+<p>​	注意该命令需要使用<code>source ~/.bashrc</code>来使其生效，并且永久有效，但是只对当前用户有效。</p>
+<h3 id="vim-bash-profile"><a class="header-anchor" href="#vim-bash-profile">¶</a>vim ~/.bash_profile</h3>
+<p>​	这个和上面的那个就是类似的，不管是各种范围还是什么都是类似的。</p>
+<p>​	不过需要注意的是，有的系统可能没有这个文件，比如我的，这种情况下可以编辑~/.profile或者新建一个这个文件。</p>
+<h3 id="vim-etc-bashrc"><a class="header-anchor" href="#vim-etc-bashrc">¶</a>vim /etc/bashrc</h3>
+<p>​	这种方法是修改系统配置，需要管理员权限或者对该文件的写入权限。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod -v u+w /etc/bashrc</span><br><span class="line">vim /etc/bashrc</span><br><span class="line">export PATH=$PATH:/home/username</span><br></pre></td></tr></table></figure>
-<p>​    也需要使用<code>source</code>命令使其有效，这个就是永久有效的，并且对于所有的用户都有效。</p>
-<p><strong>注：之前没怎么用过chmod命令，需要给权限都是直接sudo，可以参考<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-chmod.html了解一下这个给权限的命令">https://www.runoob.com/linux/linux-comm-chmod.html了解一下这个给权限的命令</a></strong></p>
-<h3 id="vim-etc-profile"><a href="#vim-etc-profile" class="headerlink" title="vim /etc/profile"></a>vim /etc/profile</h3><p>​    这种方法和上面那个完全一样的，就不再多说了</p>
-<h3 id="vim-etc-environment"><a href="#vim-etc-environment" class="headerlink" title="vim /etc/environment"></a>vim /etc/environment</h3><p>​    这种方法和上面那个也是完全一样的，也不再多说了。</p>
-<h1 id="环境变量加载原理"><a href="#环境变量加载原理" class="headerlink" title="环境变量加载原理"></a>环境变量加载原理</h1><h2 id="环境变量的分类"><a href="#环境变量的分类" class="headerlink" title="环境变量的分类"></a>环境变量的分类</h2><p>​    可以简单地分成用户自定义的环境变量以及系统级别的环境变量</p>
+<p>​	也需要使用<code>source</code>命令使其有效，这个就是永久有效的，并且对于所有的用户都有效。</p>
+<p><strong>注：之前没怎么用过chmod命令，需要给权限都是直接sudo，可以参考https://www.runoob.com/linux/linux-comm-chmod.html了解一下这个给权限的命令</strong></p>
+<h3 id="vim-etc-profile"><a class="header-anchor" href="#vim-etc-profile">¶</a>vim /etc/profile</h3>
+<p>​	这种方法和上面那个完全一样的，就不再多说了</p>
+<h3 id="vim-etc-environment"><a class="header-anchor" href="#vim-etc-environment">¶</a>vim /etc/environment</h3>
+<p>​	这种方法和上面那个也是完全一样的，也不再多说了。</p>
+<h1>环境变量加载原理</h1>
+<h2 id="环境变量的分类"><a class="header-anchor" href="#环境变量的分类">¶</a>环境变量的分类</h2>
+<p>​	可以简单地分成用户自定义的环境变量以及系统级别的环境变量</p>
 <ul>
 <li>用户级别环境变量定义文件：<code>~/.bashrc</code>，<code>~/.profile</code>（也有的系统是<code>~/.bashrc_profile</code>）</li>
 <li>系统级别环境变量定义文件：<code>/etc/bashrc</code>，<code>/etc/profile</code>（也有的系统是<code>/etc/bash_profile</code>），<code>/etc/environment</code></li>
 </ul>
 <p>​    在用户环境变量中，系统会首先读取<code>~/.bashrc_profile</code>（或者<code>~/.profile</code>）文件，如果没有该文件就读取<code>~/.bash_login</code>，然后根据这些文件中的内容读取<code>~/.bashrc</code></p>
-<h2 id="环境变量加载顺序"><a href="#环境变量加载顺序" class="headerlink" title="环境变量加载顺序"></a>环境变量加载顺序</h2><p>​    在我参考的博客中，给出了测试环境变量加载顺序的一个方法，即在所有相关文件中都定义一个相同的环境变量，然后观察它的值即可。</p>
-<p>​    经过测试，加载环境变量的顺序大概如下</p>
-<p>​    <strong>系统环境变量-&gt;用户自定义环境变量</strong></p>
-<p>​    这个是可以根据相关文件的内容推断的，比如对于<code>/etc/profile</code>，打开之后，文件内容如下</p>
+<h2 id="环境变量加载顺序"><a class="header-anchor" href="#环境变量加载顺序">¶</a>环境变量加载顺序</h2>
+<p>​	在我参考的博客中，给出了测试环境变量加载顺序的一个方法，即在所有相关文件中都定义一个相同的环境变量，然后观察它的值即可。</p>
+<p>​	经过测试，加载环境变量的顺序大概如下</p>
+<p>​	<strong>系统环境变量-&gt;用户自定义环境变量</strong></p>
+<p>​	这个是可以根据相关文件的内容推断的，比如对于<code>/etc/profile</code>，打开之后，文件内容如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/profile: system-wide .profile file <span class="keyword">for</span> the Bourne shell (sh(1))</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).</span></span><br><span class="line"></span><br><span class="line">if [ &quot;$&#123;PS1-&#125;&quot; ]; then</span><br><span class="line">  if [ &quot;$&#123;BASH-&#125;&quot; ] &amp;&amp; [ &quot;$BASH&quot; != &quot;/bin/sh&quot; ]; then</span><br><span class="line">    # The file bash.bashrc already sets the default PS1.</span><br><span class="line">    # PS1=&#x27;\h:\w\$ &#x27;</span><br><span class="line">    if [ -f /etc/bash.bashrc ]; then</span><br><span class="line">      . /etc/bash.bashrc</span><br><span class="line">    fi</span><br><span class="line">  else</span><br><span class="line">    if [ &quot;`id -u`&quot; -eq 0 ]; then</span><br><span class="line">      PS1=&#x27;# &#x27;</span><br><span class="line">    else</span><br><span class="line">      PS1=&#x27;$ &#x27;</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ -d /etc/profile.d ]; then</span><br><span class="line">  for i in /etc/profile.d/*.sh; do</span><br><span class="line">    if [ -r $i ]; then</span><br><span class="line">      . $i</span><br><span class="line">    fi</span><br><span class="line">  done</span><br><span class="line">  unset i</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<p>​    可以看出来它检查了<code>/etc/bash.bashrc</code>文件。</p>
-<p>​    类似的可以依次查看这些文件。</p>
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>​    可以在<code>~/.profile</code>文件中使用<code>alias</code>命令定义一些变量的别名，如</p>
+<p>​	可以看出来它检查了<code>/etc/bash.bashrc</code>文件。</p>
+<p>​	类似的可以依次查看这些文件。</p>
+<h2 id="小技巧"><a class="header-anchor" href="#小技巧">¶</a>小技巧</h2>
+<p>​	可以在<code>~/.profile</code>文件中使用<code>alias</code>命令定义一些变量的别名，如</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias rm=&quot;rm -i&quot;</span><br></pre></td></tr></table></figure>
-<p>​    这样每次使用<code>rm</code>的时候都相当于使用了<code>rm -i</code></p>
+<p>​	这样每次使用<code>rm</code>的时候都相当于使用了<code>rm -i</code></p>
 
     </div>
 
@@ -418,11 +432,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="ysjhust 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="ysjhust 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -434,7 +448,7 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>杨释钧
+      <strong>本文作者： </strong>ysjhust
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
@@ -523,7 +537,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+  <span class="author" itemprop="copyrightHolder">ysjhust</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
@@ -531,14 +545,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:30</span>
+    <span title="站点阅读时长">3:31</span>
   </span>
 </div>
 <div class="busuanzi-count">

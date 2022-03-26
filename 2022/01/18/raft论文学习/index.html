@@ -69,23 +69,23 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="raft论文学习">
 <meta property="og:url" content="https://ysjyx7.github.io/2022/01/18/raft%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/index.html">
-<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:site_name" content="ysjhust">
 <meta property="og:description" content="关于读Raft一致性算法论文的记录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119202016393.png">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119204521221.png">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/4.gif">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/3.gif">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/5.gif">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119224458286.png">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/v2-e20bb28724cae9b1dc3b939cac15179c_1440w.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164002639.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164027192.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/4.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/3.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/5.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164318214.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164353114.png">
 <meta property="article:published_time" content="2022-01-18T12:12:41.000Z">
-<meta property="article:modified_time" content="2022-01-20T01:39:21.661Z">
-<meta property="article:author" content="杨释钧">
+<meta property="article:modified_time" content="2022-03-26T08:43:59.248Z">
+<meta property="article:author" content="ysjhust">
 <meta property="article:tag" content="分布式系统">
 <meta property="article:tag" content="Raft">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119202016393.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164002639.png">
 
 
 <link rel="canonical" href="https://ysjyx7.github.io/2022/01/18/raft%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">
@@ -95,7 +95,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2022/01/18/raft%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/","path":"2022/01/18/raft论文学习/","title":"raft论文学习"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>raft论文学习 | 杨释钧的博客</title>
+<title>raft论文学习 | ysjhust</title>
   
 
 
@@ -124,7 +124,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">杨释钧的博客</h1>
+      <h1 class="site-title">ysjhust</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
@@ -201,17 +201,17 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Raft%E7%AE%97%E6%B3%95%E7%9A%84%E5%90%8D%E8%AF%8D"><span class="nav-number">4.</span> <span class="nav-text">Raft算法的名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Raft%E7%AE%97%E6%B3%95%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">Raft算法的流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Raft%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="nav-number">6.</span> <span class="nav-text">Raft算法的详细说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">一些参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E5%A4%87%E4%BB%BD"><span class="nav-number">6.2.</span> <span class="nav-text">日志备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader-%E9%80%89%E4%B8%BE"><span class="nav-number">6.3.</span> <span class="nav-text">Leader 选举</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Raft算法的名词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Raft算法的流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">Raft算法的详细说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">一些参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E5%A4%87%E4%BB%BD"><span class="nav-number">6.2.</span> <span class="nav-text">日志备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader-%E9%80%89%E4%B8%BE"><span class="nav-number">6.3.</span> <span class="nav-text">Leader 选举</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="杨释钧"
+    <img class="site-author-image" itemprop="image" alt="ysjhust"
       src="/images/%E5%A4%B4%E5%83%8F.jpg">
-  <p class="site-author-name" itemprop="name">杨释钧</p>
-  <div class="site-description" itemprop="description">欢迎欢迎</div>
+  <p class="site-author-name" itemprop="name">ysjhust</p>
+  <div class="site-description" itemprop="description">Hello World!</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
@@ -294,12 +294,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="杨释钧">
-      <meta itemprop="description" content="欢迎欢迎">
+      <meta itemprop="name" content="ysjhust">
+      <meta itemprop="description" content="Hello World!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨释钧的博客">
+      <meta itemprop="name" content="ysjhust">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -321,7 +321,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-01-20 09:39:21" itemprop="dateModified" datetime="2022-01-20T09:39:21+08:00">2022-01-20</time>
+        <time title="修改时间：2022-03-26 16:43:59" itemprop="dateModified" datetime="2022-03-26T16:43:59+08:00">2022-03-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -370,11 +370,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    从tinykv的Project2部分就开始正式到了分布式数据库的部分，所以接下来一段时间需要先了解一下Raft论文，主要参考GitHub上的中文翻译<a target="_blank" rel="noopener" href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md">Raft论文中文版</a>，以及原文<a target="_blank" rel="noopener" href="https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf">In Search of an Understandable Consensus Algorithm</a>，大概简单地熟悉一下Raft算法的思想即可，然后再依据tinykv的实现去熟悉一些更具体的东西。</p>
-<p>​    这篇论文详细的介绍了斯坦福大学的研究人员为了解决Paxos难度过高难以理解而开发出的分布式共识算法。</p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>​    一致性算法（consensus algorithm）可以说是分布式系统的根基，它保证了一组机器能够像一个机器一样工作，即使其中某些机器出现故障也能正常工作下去。</p>
-<p>​    主流的一致性算法就是Paxos和Raft，前者本身太过复杂，并且难以应用到实际生产中，而Raft算法没有Paxos的这些缺点，它实际上是很容易理解的。</p>
-<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>​    根据之前的学习，我们知道分布式系统有如下四个挑战：</p>
+        <h1>前言</h1>
+<p>​	从tinykv的Project2部分就开始正式到了分布式数据库的部分，所以接下来一段时间需要先了解一下Raft论文，主要参考GitHub上的中文翻译<a target="_blank" rel="noopener" href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md">Raft论文中文版</a>，以及原文<a target="_blank" rel="noopener" href="https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf">In Search of an Understandable Consensus Algorithm</a>，大概简单地熟悉一下Raft算法的思想即可，然后再依据tinykv的实现去熟悉一些更具体的东西。</p>
+<p>​	这篇论文详细的介绍了斯坦福大学的研究人员为了解决Paxos难度过高难以理解而开发出的分布式共识算法。</p>
+<h1>背景</h1>
+<p>​	一致性算法（consensus algorithm）可以说是分布式系统的根基，它保证了一组机器能够像一个机器一样工作，即使其中某些机器出现故障也能正常工作下去。</p>
+<p>​	主流的一致性算法就是Paxos和Raft，前者本身太过复杂，并且难以应用到实际生产中，而Raft算法没有Paxos的这些缺点，它实际上是很容易理解的。</p>
+<h1>前置知识</h1>
+<p>​	根据之前的学习，我们知道分布式系统有如下四个挑战：</p>
 <ol>
 <li>时序性（Timing），运行在不同网络下的机器中的进程如何判断一些事件发生的顺序</li>
 <li>并发性（Concurrency），不同网络下的机器如何共享资源互不干扰</li>
@@ -382,14 +385,14 @@
 <li>一致性（Consistency），无论访问哪个结点，都能得到相同的结果</li>
 </ol>
 <p>​    比较重要的一点，<strong>共识（Consensus）</strong>，即多个节点之间彼此对某个状态达成一致。</p>
-<p>​    当然除了上面的四个挑战，也有一些比较重要的东西，比如<strong>高可用HA（High Availability）</strong>，指的是通过某种设计来减少系统不能提供服务的时间。为了使进程实现高可用，主要有如下两种方法：</p>
+<p>​	当然除了上面的四个挑战，也有一些比较重要的东西，比如<strong>高可用HA（High Availability）</strong>，指的是通过某种设计来减少系统不能提供服务的时间。为了使进程实现高可用，主要有如下两种方法：</p>
 <ul>
 <li><strong>State Transfer</strong>，主服务器将完整状态内容传输给备份服务器</li>
 <li><strong>Replicated State Machine</strong>，将需要备份的服务器视为一个确定性状态机 ——主备以相同的状态启动，以相同顺序导入相同的输入，最后它们就会进入相同的状态、给出相同的输出</li>
 </ul>
 <p>​    后者是比较常用的方式，常见架构如下图</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119202016393.png" alt="image-20220119202016393"></p>
-<p>​    四个操作含义如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164002639.png" alt="image-20220326164002639"></p>
+<p>​	四个操作含义如下：</p>
 <ol>
 <li>客户端向服务端发送请求</li>
 <li>公式模块将该操作以<strong>日志</strong>的形式被分到其他备份服务器上</li>
@@ -397,8 +400,9 @@
 <li>服务端返回操作结果到客户端</li>
 </ol>
 <p>​    在上面这个流程中，可以认为分布式共识算法就是要<strong>按照固定的顺序将指定的日志内容备份到集群的其他实例上</strong></p>
-<p>​    下面开始正文</p>
-<h1 id="Raft算法的名词"><a href="#Raft算法的名词" class="headerlink" title="Raft算法的名词"></a>Raft算法的名词</h1><p>​    首先在Raft算法建立的模型中，结点有三类，分别是<strong>Leader、Follower、Candidate</strong>，分别有以下作用：</p>
+<p>​	下面开始正文</p>
+<h1>Raft算法的名词</h1>
+<p>​	首先在Raft算法建立的模型中，结点有三类，分别是<strong>Leader、Follower、Candidate</strong>，分别有以下作用：</p>
 <ul>
 <li>Leader结点负责从客户端接收新的日志记录然后备份到其他服务器上，名且在<strong>日志安全备份之后</strong>让其他服务器将该日志记录应用到其上层状态机</li>
 <li>Candidate结点会在选举Leader时作为一个备选的人</li>
@@ -408,7 +412,8 @@
 <ul>
 <li><strong>Leader选举</strong>：现有的Leader可能会挂掉，这个时候需要选新的</li>
 <li><strong>日志备份</strong>：Leader结点从客户端接受日志，备份到其他服务器上</li>
-<li><strong>安全性</strong>：主要是需要保证下面的几点：<ul>
+<li><strong>安全性</strong>：主要是需要保证下面的几点：
+<ul>
 <li><strong>Election Safety</strong>（选举安全）：在任意给定的 Term 中，至多一个节点会被选举为 Leader</li>
 <li><strong>Leader Append-Only</strong>（Leader 只追加）：Leader 绝不会覆写或删除其所记录的日志，只会追加日志</li>
 <li><strong>Log Matching</strong>（日志匹配）：若两份日志在给定 Term 及给定 index 值处有相同的记录，那么两份日志在该位置及之前的所有内容完全一致</li>
@@ -418,39 +423,57 @@
 </li>
 </ul>
 <p>​    在结点之间有采用RPC请求，主要有<strong>AppendEntries RPC</strong>和<strong>RequestVote RPC</strong>，前者是Leader发出的，主要是向其他结点发出的一些信息或<strong>心跳</strong>，后者是候选人结点给自己拉票用的。</p>
-<p>​    以上的这些概念在后文会详细解释，并展示更多的细节，现在先按字面意思理解就行，这里先说一个比较重要的概念</p>
-<p>​    <strong>Term</strong>，Raft算法在运行的时候会把时间分为任意长度的Term，如下图</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119204521221.png" alt="image-20220119204521221"></p>
+<p>​	以上的这些概念在后文会详细解释，并展示更多的细节，现在先按字面意思理解就行，这里先说一个比较重要的概念</p>
+<p>​	<strong>Term</strong>，Raft算法在运行的时候会把时间分为任意长度的Term，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164027192.png" alt="image-20220326164027192"></p>
 <p>​    每个Term的开头都会有一次Leader选举，胜出的就是这个Term的Leader。</p>
-<p>​    Term 由单调递增的 Term ID 所标识，每个节点都会在内存中保存当前 Term 的 ID。每次节点间发生通信时，它们都会发出自己所保存的 Term ID；当节点从其他节点处接收到比自己保存的 Term ID 更大的 Term ID 值时，它便会更新自己的 Term ID 并进入 Follower 状态。 </p>
-<h1 id="Raft算法的流程"><a href="#Raft算法的流程" class="headerlink" title="Raft算法的流程"></a>Raft算法的流程</h1><p>​    根据我看论文的经验，直接从Raft算法的特点开始还是比较全退的，所以可以先看一下Raft算法的运行流程，然后再考虑一些细节的东西。</p>
-<p>​    首先假设我们有三个结点，最初三个结点都是Follower状态，如果Follower在<strong>一段时间内</strong>没有收到来自Leader的AppendEntries RPC，它就会转变成Candidate结点来竞争领导者，这个时候的AppendEntries RPC就是所谓的<strong>心跳</strong>，是帮助其它结点检测Leader结点是否还活着的，所以说这个请求是并行发布的，并且是周期性的，其实命名成心跳是一个非常形象的说法:joy:，上文中加粗的一段时间指的是<strong>election timeout</strong>，这个时间是<strong>随机的</strong>，保证不会出现一些问题，如果超过这段时间Follower还没有听到Leader的心跳的话就认为Leader挂掉了，它就变成了Candidate。此外，Leader发出心跳到其他结点也有一个平均耗时，即<strong>broadcastTime</strong>，它是远小于前者的。</p>
-<p>​    然后现在Candidate结点就可以开始拉票了，它向别的结点发送<strong>RequestVote RPC</strong>，如果接收到的结点没有给别人投过票，就把这个票投给它，<strong>为了简便起见，先这样认为吧</strong>，此外，在一个Term中每个Follower只能投给一个结点。在Candidate票数过半的时候他就变成了Leader。</p>
-<p>​    另外的话上面的关于Term的示意图里似乎每个Term的开始都是election的时间，但大多数时候是不需要进行选举这个过程的，因为太消耗时间了。</p>
-<p>​    当然，有时候会出现所有候选人选票相同，这个时候将会重新进行新的一轮投票，对应的就是Term定义图中的tm3</p>
-<p>​    注意选票的过程中这个Term是不断更新的</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/4.gif" alt="4"></p>
-<p>​    上面的这个过程就是Raft要处理的第一个过程，就是所谓的<strong><em>Leader Election</em></strong></p>
-<p>​    前文提到过所有客户要读写值都要通过Leader，现在比如Client给Leader传了一个set5，（如果这个时候因为某些原因Leader挂掉了，这条命令就没用了），然后Leader会通过<strong>AppendEntries RPC</strong>向其他结点发送这个日志信息，其他结点接收到之后，经过核验，得到了这条日志信息，然后就会给Leader返回一个成功的命令。如果整个集群中大多数结点都返回了成功，Leader就会认为这条命令被普遍接收，并将他commited到它的状态机里，在Leader结点commited成功之后，它会再下次的响应中传递给其它结点信息，让其它结点把这条命令应用到状态机中，整个过程如下</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/3.gif" alt="3"></p>
-<p>​    这个过程就是Raft算法要解决的第二个问题，即<strong>log replication</strong></p>
-<p>​    关于Raft算法要解决的第三个问题，即安全性的问题，这里是依靠一些限制来实现的。</p>
-<p>​    我们先看一个动画演示吧，这里是有五个结点，然后通过一些手段将它们分成两组，注意到如果有两个客户端对其发出不一样的信息的话，集群中将会出现状态不一致的问题，这个时候是以Term高的为准</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/5.gif" alt="5"></p>
-<p>​    上面大概就是Raft算法的应用场景，显然这是很粗糙的一个过程，下面将会介绍一些更加详细的内容</p>
-<h1 id="Raft算法的详细说明"><a href="#Raft算法的详细说明" class="headerlink" title="Raft算法的详细说明"></a>Raft算法的详细说明</h1><h2 id="一些参数"><a href="#一些参数" class="headerlink" title="一些参数"></a>一些参数</h2><p>​    这里主要介绍一下上面提到的一些类型的参数</p>
-<p>​    首先是集群结点的信息。</p>
+<p>​    Term 由单调递增的 Term ID 所标识，每个节点都会在内存中保存当前 Term 的 ID。每次节点间发生通信时，它们都会发出自己所保存的 Term ID；当节点从其他节点处接收到比自己保存的 Term ID 更大的 Term ID 值时，它便会更新自己的 Term ID 并进入 Follower 状态。</p>
+<h1>Raft算法的流程</h1>
+<p>​	根据我看论文的经验，直接从Raft算法的特点开始还是比较全退的，所以可以先看一下Raft算法的运行流程，然后再考虑一些细节的东西。</p>
+<p>​	首先假设我们有三个结点，最初三个结点都是Follower状态，如果Follower在<strong>一段时间内</strong>没有收到来自Leader的AppendEntries RPC，它就会转变成Candidate结点来竞争领导者，这个时候的AppendEntries RPC就是所谓的<strong>心跳</strong>，是帮助其它结点检测Leader结点是否还活着的，所以说这个请求是并行发布的，并且是周期性的，其实命名成心跳是一个非常形象的说法😂，上文中加粗的一段时间指的是<strong>election timeout</strong>，这个时间是<strong>随机的</strong>，保证不会出现一些问题，如果超过这段时间Follower还没有听到Leader的心跳的话就认为Leader挂掉了，它就变成了Candidate。此外，Leader发出心跳到其他结点也有一个平均耗时，即<strong>broadcastTime</strong>，它是远小于前者的。</p>
+<p>​	然后现在Candidate结点就可以开始拉票了，它向别的结点发送<strong>RequestVote RPC</strong>，如果接收到的结点没有给别人投过票，就把这个票投给它，<strong>为了简便起见，先这样认为吧</strong>，此外，在一个Term中每个Follower只能投给一个结点。在Candidate票数过半的时候他就变成了Leader。</p>
+<p>​	另外的话上面的关于Term的示意图里似乎每个Term的开始都是election的时间，但大多数时候是不需要进行选举这个过程的，因为太消耗时间了。</p>
+<p>​	当然，有时候会出现所有候选人选票相同，这个时候将会重新进行新的一轮投票，对应的就是Term定义图中的tm3</p>
+<p>​	注意选票的过程中这个Term是不断更新的</p>
+<img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/4.gif">
+<p>​	上面的这个过程就是Raft要处理的第一个过程，就是所谓的<em><strong>Leader Election</strong></em></p>
+<p>​	前文提到过所有客户要读写值都要通过Leader，现在比如Client给Leader传了一个set5，（如果这个时候因为某些原因Leader挂掉了，这条命令就没用了），然后Leader会通过<strong>AppendEntries RPC</strong>向其他结点发送这个日志信息，其他结点接收到之后，经过核验，得到了这条日志信息，然后就会给Leader返回一个成功的命令。如果整个集群中大多数结点都返回了成功，Leader就会认为这条命令被普遍接收，并将他commited到它的状态机里，在Leader结点commited成功之后，它会再下次的响应中传递给其它结点信息，让其它结点把这条命令应用到状态机中，整个过程如下</p>
+<img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/3.gif">
+<p>​	这个过程就是Raft算法要解决的第二个问题，即<strong>log replication</strong></p>
+<p>​	关于Raft算法要解决的第三个问题，即安全性的问题，这里是依靠一些限制来实现的。</p>
+<p>​	我们先看一个动画演示吧，这里是有五个结点，然后通过一些手段将它们分成两组，注意到如果有两个客户端对其发出不一样的信息的话，集群中将会出现状态不一致的问题，这个时候是以Term高的为准</p>
+<img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/5.gif">
+<p>​	上面大概就是Raft算法的应用场景，显然这是很粗糙的一个过程，下面将会介绍一些更加详细的内容</p>
+<h1>Raft算法的详细说明</h1>
+<h2 id="一些参数"><a class="header-anchor" href="#一些参数">¶</a>一些参数</h2>
+<p>​	这里主要介绍一下上面提到的一些类型的参数</p>
+<p>​	首先是集群结点的信息。</p>
 <blockquote>
-<p>​    所有节点都会持有的持久化状态信息（在响应 RPC 前会先将更新写入到持久存储）：<br>- <code>currentTerm</code>：当前 Term ID（初值为 <code>0</code>）<br>- <code>votedFor</code>: 该 Term 中已接收到来自该节点的选票的 Candidate ID<br>- <code>log[]</code>: 日志记录。第一个日志记录的 index 值为 <code>1</code></p>
-<p>​    所有节点都会持有的易失性状态信息：<br>- <code>commitIndex</code>: 最后一个已提交日志记录的 index（初值为 <code>0</code>）<br>- <code>lastApplied</code>: 最后一个已应用至上层状态机的日志记录的 index（初值为 <code>0</code>）</p>
-<p>​    只有Leader 才会持有的易失性状态信息（会在每次选举完成后初始化）：<br>- <code>nextIndex[]</code>: 每个节点接收到的下一个日志记录的 index（初值均为 Leader，最新日志记录 index 值 + 1）<br>- <code>matchIndex[]</code>: 每个节点上已备份的最后一条日志记录的 index（初值均为 <code>0</code>）</p>
+<p>​	所有节点都会持有的持久化状态信息（在响应 RPC 前会先将更新写入到持久存储）：<br>
+- <code>currentTerm</code>：当前 Term ID（初值为 <code>0</code>）<br>
+- <code>votedFor</code>: 该 Term 中已接收到来自该节点的选票的 Candidate ID<br>
+- <code>log[]</code>: 日志记录。第一个日志记录的 index 值为 <code>1</code></p>
+<p>​	所有节点都会持有的易失性状态信息：<br>
+- <code>commitIndex</code>: 最后一个已提交日志记录的 index（初值为 <code>0</code>）<br>
+- <code>lastApplied</code>: 最后一个已应用至上层状态机的日志记录的 index（初值为 <code>0</code>）</p>
+<p>​	只有Leader 才会持有的易失性状态信息（会在每次选举完成后初始化）：<br>
+- <code>nextIndex[]</code>: 每个节点接收到的下一个日志记录的 index（初值均为 Leader，最新日志记录 index 值 + 1）<br>
+- <code>matchIndex[]</code>: 每个节点上已备份的最后一条日志记录的 index（初值均为 <code>0</code>）</p>
 </blockquote>
-<p>​    然后是两种请求的信息。</p>
+<p>​	然后是两种请求的信息。</p>
 <blockquote>
-<p>​    <strong>AppendEntries RPC</strong>：由 Leader 进行调用，用于将日志记录备份至 Follower，同时还会被用来作为心跳信息</p>
-<p>​    参数：<br>- <code>term</code>: Leader 的 Term ID<br>- <code>leaderId</code>: Leader 的 ID<br>- <code>prevLogIndex</code>: 在正在备份的日志记录之前的日志记录的 index 值<br>- <code>prevLogTerm</code>: 在正在备份的日志记录之前的日志记录的 Term ID<br>- <code>entries[]</code>: 正在备份的日志记录<br>- <code>leaderCommmit</code>: Leader 已经提交的最后一条日志记录的 index 值</p>
-<p>​    返回值：<br>- <code>term</code>: 接收方的当前 Term ID<br>- <code>success</code>: 当 Follower 能够在自己的日志中找到 index 值和 Term ID 与 <code>prevLogIndex</code> 和 <code>prevLogTerm</code> 相同的记录时为 <code>true</code></p>
-<p>​    接收方在接收到该 RPC 后会进行以下操作：</p>
+<p>​	<strong>AppendEntries RPC</strong>：由 Leader 进行调用，用于将日志记录备份至 Follower，同时还会被用来作为心跳信息</p>
+<p>​	参数：<br>
+- <code>term</code>: Leader 的 Term ID<br>
+- <code>leaderId</code>: Leader 的 ID<br>
+- <code>prevLogIndex</code>: 在正在备份的日志记录之前的日志记录的 index 值<br>
+- <code>prevLogTerm</code>: 在正在备份的日志记录之前的日志记录的 Term ID<br>
+- <code>entries[]</code>: 正在备份的日志记录<br>
+- <code>leaderCommmit</code>: Leader 已经提交的最后一条日志记录的 index 值</p>
+<p>​	返回值：<br>
+- <code>term</code>: 接收方的当前 Term ID<br>
+- <code>success</code>: 当 Follower 能够在自己的日志中找到 index 值和 Term ID 与 <code>prevLogIndex</code> 和 <code>prevLogTerm</code> 相同的记录时为 <code>true</code></p>
+<p>​	接收方在接收到该 RPC 后会进行以下操作：</p>
 <ol>
 <li>若 <code>term &lt; currentTerm</code>，返回 <code>false</code></li>
 <li>若日志中不包含index 值和 Term ID 与 <code>prevLogIndex</code> 和 <code>prevLogTerm</code> 相同的记录，返回 <code>false</code></li>
@@ -459,26 +482,33 @@
 <li>若 <code>leaderCommit &gt; commitIndex</code>，令 <code>commitIndex</code> 等于 <code>leaderCommit</code> 和最后一个新日志记录的 index 值之间的最小值</li>
 </ol>
 <p>​    <strong>RequestVote RPC</strong>：由 Candidate 调用以拉取选票</p>
-<p>​    参数：<br>- <code>term</code>：Candidate 的 Term ID<br>- <code>candidateId</code>: Candidate 的 ID<br>- <code>lastLogIndex</code>: Candidate 所持有的最后一条日志记录的 index<br>- <code>lastLogTerm</code>: Candidate 所持有的最后一条日志记录的 Term ID</p>
-<p>​    返回值：<br>- <code>term</code>：接收方的 Term ID<br>- <code>voteGranted</code>：接收方是否同意给出选票</p>
-<p>​    接收方在接收到该 RPC 后会进行以下操作：</p>
+<p>​	参数：<br>
+- <code>term</code>：Candidate 的 Term ID<br>
+- <code>candidateId</code>: Candidate 的 ID<br>
+- <code>lastLogIndex</code>: Candidate 所持有的最后一条日志记录的 index<br>
+- <code>lastLogTerm</code>: Candidate 所持有的最后一条日志记录的 Term ID</p>
+<p>​	返回值：<br>
+- <code>term</code>：接收方的 Term ID<br>
+- <code>voteGranted</code>：接收方是否同意给出选票</p>
+<p>​	接收方在接收到该 RPC 后会进行以下操作：</p>
 <ol>
 <li>若 <code>term &lt; currentTerm</code>，返回 <code>false</code></li>
 <li>若 <code>votedFor == null</code> 且给定的日志记录信息可得出对方的日志和自己的相同甚至更新，返回 <code>true</code></li>
 </ol>
 </blockquote>
-<h2 id="日志备份"><a href="#日志备份" class="headerlink" title="日志备份"></a>日志备份</h2><p>​    先说一下日志的组成成分，先看下面这个图</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/image-20220119224458286.png" alt="image-20220119224458286"></p>
-<p>​    这就是所谓的日志，由若干日志记录组成，每个记录都包含着命令、index值以及自己所属的Term ID。</p>
-<p>​    在整个日志备份的过程中，Raft提供了两个性质，这两条性质共同保证了安全性中的<strong>log Matching</strong>如下：</p>
+<h2 id="日志备份"><a class="header-anchor" href="#日志备份">¶</a>日志备份</h2>
+<p>​	先说一下日志的组成成分，先看下面这个图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164318214.png" alt="image-20220326164318214"></p>
+<p>​	这就是所谓的日志，由若干日志记录组成，每个记录都包含着命令、index值以及自己所属的Term ID。</p>
+<p>​	在整个日志备份的过程中，Raft提供了两个性质，这两条性质共同保证了安全性中的<strong>log Matching</strong>如下：</p>
 <ul>
 <li>对于两份日志中给定的 index 处，如果该处两个日志记录的 Term ID 相同，那么它们存储的状态机命令相同</li>
 <li>如果两份日志中给定 index 处的日志记录有相同的 Term ID 值，那么位于它们之前的日志记录完全相同</li>
 </ul>
 <p>​    第一条性质是很显然的，第二条命令是因为在AppendEntries RPC处理过程中会有一个校对新日志之前的index和Term ID的过程，如果Follower没有找到的话就会拒绝这条记录，所以每一次AppendEntries RPC调用的成功返回都意味着Leader可以确定该 Follower 存储的日志直到该index处均与自己所存储的日志相同。</p>
-<p>​    如果AppendEntries RPC没有这种日志检查则会出现各种各样的问题。有时候如果Leader崩了之后都会出现不一致性，如下图</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/v2-e20bb28724cae9b1dc3b939cac15179c_1440w.jpg" alt="img"></p>
-<p>​    然后如果Leader发现有的Follower的日志和自己不一样的话，Raft会强制两者一致，这个时候Leader会尝试确定它与各个Follower一致的最后一个index值，然后将这之后所有的日志删除，再将自己的日志备份过去，具体有以下几步</p>
+<p>​	如果AppendEntries RPC没有这种日志检查则会出现各种各样的问题。有时候如果Leader崩了之后都会出现不一致性，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164353114.png" alt="image-20220326164353114"></p>
+<p>​	然后如果Leader发现有的Follower的日志和自己不一样的话，Raft会强制两者一致，这个时候Leader会尝试确定它与各个Follower一致的最后一个index值，然后将这之后所有的日志删除，再将自己的日志备份过去，具体有以下几步</p>
 <ol>
 <li>Leader 会为每个 Follower 维持一个 <code>nextIndex</code> 变量，代表 Leader 即将通过 AppendEntries RPC 调用发往该 Follower 的日志的 index 值</li>
 <li>在刚刚被选举为一个 Leader 时，Leader 会将每个 Follower 的 <code>nextIndex</code> 置为其所保存的最新日志记录的 index 之后</li>
@@ -486,10 +516,11 @@
 <li>Follower 接收到合法的 AppendEntries 后，便会移除其在该位置上及以后存储的日志记录，并追加上新的日志记录</li>
 <li>如此，在 AppendEntries 调用成功后，Follower 便会在该 Term 接下来的时间里与 Leader 保持一致</li>
 </ol>
-<p>​    显然的，这样保证了<strong><em>Leader Append-Only</em></strong>性质</p>
-<h2 id="Leader-选举"><a href="#Leader-选举" class="headerlink" title="Leader 选举"></a>Leader 选举</h2><p>​    在上面已经简单介绍过了Leader选举的简单过程，这里再说一些细节，比如Candidate在拉票过程中有可能收到Leader的心跳或请求，这个时候要根据RPC请求中的Term ID和自身的大小关系来进行判断，如果自身较小，则成为Follower，否则继续拉票</p>
-<p>​    此外，Leader选举也有一些约束，仅有日志备份方面的保证是不能保证所有的状态机都能按照相同的顺序执行命令的。有可能在某个Term中，某个Follower挂掉了，然后Leader没能把日志备份过去，后来它又好了，而且还成为了Leader，这种情况下就有日志发生了缺失。</p>
-<p>​    Raft采用下面的机制来防止这一点：主要是限制拉票环节，在RequestVote RPC中附带了这个Candidate日志中最后一条记录的index值和Term ID值，其它结点接收到后会和自己的比较，如果对方日志落后，就会拒绝这次选票，实际上这保证了Candidate领先于集群中的大部分节点</p>
+<p>​    显然的，这样保证了<em><strong>Leader Append-Only</strong></em>性质</p>
+<h2 id="Leader-选举"><a class="header-anchor" href="#Leader-选举">¶</a>Leader 选举</h2>
+<p>​	在上面已经简单介绍过了Leader选举的简单过程，这里再说一些细节，比如Candidate在拉票过程中有可能收到Leader的心跳或请求，这个时候要根据RPC请求中的Term ID和自身的大小关系来进行判断，如果自身较小，则成为Follower，否则继续拉票</p>
+<p>​	此外，Leader选举也有一些约束，仅有日志备份方面的保证是不能保证所有的状态机都能按照相同的顺序执行命令的。有可能在某个Term中，某个Follower挂掉了，然后Leader没能把日志备份过去，后来它又好了，而且还成为了Leader，这种情况下就有日志发生了缺失。</p>
+<p>​	Raft采用下面的机制来防止这一点：主要是限制拉票环节，在RequestVote RPC中附带了这个Candidate日志中最后一条记录的index值和Term ID值，其它结点接收到后会和自己的比较，如果对方日志落后，就会拒绝这次选票，实际上这保证了Candidate领先于集群中的大部分节点</p>
 
     </div>
 
@@ -505,11 +536,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="ysjhust 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="ysjhust 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -521,7 +552,7 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>杨释钧
+      <strong>本文作者： </strong>ysjhust
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
@@ -611,7 +642,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+  <span class="author" itemprop="copyrightHolder">ysjhust</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
@@ -619,14 +650,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:30</span>
+    <span title="站点阅读时长">3:31</span>
   </span>
 </div>
 <div class="busuanzi-count">

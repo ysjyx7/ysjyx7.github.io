@@ -69,18 +69,18 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="并查集">
 <meta property="og:url" content="https://ysjyx7.github.io/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/index.html">
-<meta property="og:site_name" content="杨释钧的博客">
+<meta property="og:site_name" content="ysjhust">
 <meta property="og:description" content="简单介绍了并查集的性质即算法实现">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523922.png">
-<meta property="og:image" content="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523911.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164510579.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164534204.png">
 <meta property="article:published_time" content="2021-08-16T07:19:00.000Z">
-<meta property="article:modified_time" content="2022-03-12T06:55:18.210Z">
-<meta property="article:author" content="杨释钧">
+<meta property="article:modified_time" content="2022-03-26T08:45:37.783Z">
+<meta property="article:author" content="ysjhust">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="特殊数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523922.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164510579.png">
 
 
 <link rel="canonical" href="https://ysjyx7.github.io/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
@@ -90,7 +90,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/","path":"2021/08/16/并查集/","title":"并查集"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>并查集 | 杨释钧的博客</title>
+<title>并查集 | ysjhust</title>
   
 
 
@@ -119,7 +119,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">杨释钧的博客</h1>
+      <h1 class="site-title">ysjhust</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
@@ -196,17 +196,17 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%B0%E5%AE%9E%E6%84%8F%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">现实意义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E6%A6%82%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">大概的含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">find()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">join()函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%B9%B6%E6%9F%A5%E9%9B%86%E8%B7%AF%E5%BE%84"><span class="nav-number">3.</span> <span class="nav-text">压缩并查集路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96find-%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">优化find()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%9D%83%E6%A0%87%E8%AE%B0%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">加权标记法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">现实意义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E6%A6%82%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">大概的含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">find()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join-%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">join()函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">压缩并查集路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96find-%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">优化find()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%9D%83%E6%A0%87%E8%AE%B0%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">加权标记法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="杨释钧"
+    <img class="site-author-image" itemprop="image" alt="ysjhust"
       src="/images/%E5%A4%B4%E5%83%8F.jpg">
-  <p class="site-author-name" itemprop="name">杨释钧</p>
-  <div class="site-description" itemprop="description">欢迎欢迎</div>
+  <p class="site-author-name" itemprop="name">ysjhust</p>
+  <div class="site-description" itemprop="description">Hello World!</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
@@ -289,12 +289,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="杨释钧">
-      <meta itemprop="description" content="欢迎欢迎">
+      <meta itemprop="name" content="ysjhust">
+      <meta itemprop="description" content="Hello World!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨释钧的博客">
+      <meta itemprop="name" content="ysjhust">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -316,7 +316,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-03-12 14:55:18" itemprop="dateModified" datetime="2022-03-12T14:55:18+08:00">2022-03-12</time>
+        <time title="修改时间：2022-03-26 16:45:37" itemprop="dateModified" datetime="2022-03-26T16:45:37+08:00">2022-03-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -365,23 +365,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ol>
+        <h1>概述</h1>
+<ol>
 <li>并查集是一种树形的数据结构，主要用来解决不相交集合间的合并和查询的问题，比如可以用它来判断森林中有几棵树、某个结点是否属于某个树</li>
 <li>主要由一个整型数组pre[]和两个函数find()、join()构成</li>
 <li>可以用来求连通分支数</li>
 </ol>
-<h1 id="现实意义"><a href="#现实意义" class="headerlink" title="现实意义"></a>现实意义</h1><h2 id="大概的含义"><a href="#大概的含义" class="headerlink" title="大概的含义"></a>大概的含义</h2><p><strong>以下的有趣的解释摘自CSDN博主酱懵静</strong></p>
-<p><strong>原文链接：</strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/the_ZED/article/details/105126583">https://blog.csdn.net/the_ZED/article/details/105126583</a></p>
+<h1>现实意义</h1>
+<h2 id="大概的含义"><a class="header-anchor" href="#大概的含义">¶</a>大概的含义</h2>
+<p><strong>以下的有趣的解释摘自CSDN博主酱懵静</strong></p>
+<p>**原文链接：**<a target="_blank" rel="noopener" href="https://blog.csdn.net/the_ZED/article/details/105126583">https://blog.csdn.net/the_ZED/article/details/105126583</a></p>
 <hr>
-<p>故事引入：<br>    话说在江湖中散落着各式各样的大侠，他们怀揣着各自的理想和信仰在江湖中奔波。或是追求武林至尊，或是远离红尘，或是居庙堂之高，或是处江湖之远。尽管大多数人都安分地在做自己，但总有些人会因为彼此的信仰不同而聚众斗殴。因此，江湖上常年乱作一团，纷纷扰扰。<br>    这样长期的混战，难免会打错人，说不定一刀就把拥有和自己相同信仰的队友给杀了。这该如何是好呢？于是，那些有着相同信仰的人们便聚在一起，进而形成了各种各样的门派，比如我们所熟知的“华山派”、“峨嵋派”、“,崆峒派”、“少林寺”、“明教”……这样一来，那些有着相同信仰的人们便聚在一起成为了朋友。以后再遇到要打架的事时，就不会打错人了。    </p>
-<p>​    但是新的问题又来了，原本互不相识的两个人如何辨别是否共属同一门派呢?<br>​    这好办！我们可以先在门派中选举一个“大哥”作为话事人（也就是掌门人，或称教主等）。这样一来，每当要打架的时候，决斗双方先自报家门，说出自己所在门派的教主名称，如果名称相同，就说明是自己人，就不必自相残杀了，否则才能进行决斗。于是，教主下令将整个门派划分为三六九等，使得整个门派内部形成一个严格的等级制度（即树形结构）。教主就是根节点，下面分别是二级、三级、……、N级队员。每个人只需要记住自己的上级名称，以后遇到需要辨别敌友的情况时，只需要一层层往上询问（网上询问）就能知道是否是同道中人了。</p>
-<p>​    以上的教主被称为代表元</p>
-<h2 id="find-函数"><a href="#find-函数" class="headerlink" title="find()函数"></a>find()函数</h2><p>故事引入：<br>    子夜，小昭于骊山下快马送信，发现一头戴竹笠之人立于前方，其形似黑蝠，倒挂于树前，甚惧，正系拔剑之时，只听四周悠悠传来：“如此夜深，姑凉竟敢擅闯明教，何不下坐陪我喝上一盅？”。小昭听闻，后觉此人乃明教四大护法之一的青翼蝠王韦一笑，答道：“在下小昭，乃紫衫龙王之女”。蝠王轻惕，急问道：“尔等既为龙王之女，故同为明教中人。敢问阁下教主大名，若非本教中人，于明教之地肆意走动那可是死罪！”。小昭吓得赶紧打了个电话问龙王：“龙王啊，咱教主叫啥名字来着？”，龙王答道：“吾教主乃张无忌也！”，小昭遂答蝠王：“张无忌！”。蝠王听后，抱拳请礼以让之。<br>    在上面的情境中，小昭向他的上级（紫衫龙王）请示教主名称，龙王在得到申请后也向他的上级（张无忌）请示教主名称，此时由于张无忌就是教主，因此他直接反馈给龙王教主名称是“张无忌”。同理，青翼蝠王也经历了这一请示过程。<br>在并查集中，用于查询各自的教主名字的函数就是我们的find()函数。find(x)的作用是用于查找某个人所在门派的教主，换言之就是用于对某个给定的点x，返回其所属集合的代表。</p>
+<p>故事引入：<br>
+话说在江湖中散落着各式各样的大侠，他们怀揣着各自的理想和信仰在江湖中奔波。或是追求武林至尊，或是远离红尘，或是居庙堂之高，或是处江湖之远。尽管大多数人都安分地在做自己，但总有些人会因为彼此的信仰不同而聚众斗殴。因此，江湖上常年乱作一团，纷纷扰扰。<br>
+这样长期的混战，难免会打错人，说不定一刀就把拥有和自己相同信仰的队友给杀了。这该如何是好呢？于是，那些有着相同信仰的人们便聚在一起，进而形成了各种各样的门派，比如我们所熟知的“华山派”、“峨嵋派”、“,崆峒派”、“少林寺”、“明教”……这样一来，那些有着相同信仰的人们便聚在一起成为了朋友。以后再遇到要打架的事时，就不会打错人了。</p>
+<p>​	但是新的问题又来了，原本互不相识的两个人如何辨别是否共属同一门派呢?<br>
+​    这好办！我们可以先在门派中选举一个“大哥”作为话事人（也就是掌门人，或称教主等）。这样一来，每当要打架的时候，决斗双方先自报家门，说出自己所在门派的教主名称，如果名称相同，就说明是自己人，就不必自相残杀了，否则才能进行决斗。于是，教主下令将整个门派划分为三六九等，使得整个门派内部形成一个严格的等级制度（即树形结构）。教主就是根节点，下面分别是二级、三级、……、N级队员。每个人只需要记住自己的上级名称，以后遇到需要辨别敌友的情况时，只需要一层层往上询问（网上询问）就能知道是否是同道中人了。</p>
+<p>​	以上的教主被称为代表元</p>
+<h2 id="find-函数"><a class="header-anchor" href="#find-函数">¶</a>find()函数</h2>
+<p>故事引入：<br>
+子夜，小昭于骊山下快马送信，发现一头戴竹笠之人立于前方，其形似黑蝠，倒挂于树前，甚惧，正系拔剑之时，只听四周悠悠传来：“如此夜深，姑凉竟敢擅闯明教，何不下坐陪我喝上一盅？”。小昭听闻，后觉此人乃明教四大护法之一的青翼蝠王韦一笑，答道：“在下小昭，乃紫衫龙王之女”。蝠王轻惕，急问道：“尔等既为龙王之女，故同为明教中人。敢问阁下教主大名，若非本教中人，于明教之地肆意走动那可是死罪！”。小昭吓得赶紧打了个电话问龙王：“龙王啊，咱教主叫啥名字来着？”，龙王答道：“吾教主乃张无忌也！”，小昭遂答蝠王：“张无忌！”。蝠王听后，抱拳请礼以让之。<br>
+在上面的情境中，小昭向他的上级（紫衫龙王）请示教主名称，龙王在得到申请后也向他的上级（张无忌）请示教主名称，此时由于张无忌就是教主，因此他直接反馈给龙王教主名称是“张无忌”。同理，青翼蝠王也经历了这一请示过程。<br>
+在并查集中，用于查询各自的教主名字的函数就是我们的find()函数。find(x)的作用是用于查找某个人所在门派的教主，换言之就是用于对某个给定的点x，返回其所属集合的代表。</p>
 <p>实现：</p>
 <p>​    这里我们定义了一个数组pre[]，将每个人进行编号，然后每个编号对应的值是他的上级，如果上级是自己，就说明他是代表元</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(pre[x]!=x)</span><br><span class="line">	&#123;</span><br><span class="line">		x=pre[x];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="join-函数"><a href="#join-函数" class="headerlink" title="join()函数"></a>join()函数</h2><p>故事引入：<br>    虚竹和周芷若是我个人非常喜欢的两个人物，他们的教主分别是玄慈方丈和灭绝师太，但是显然这两个人属于不同门派，但是我又不想看到他们打架。于是，我就去问了下玄慈和灭绝：“你看你们俩都没头发，要不就做朋友吧”。他们俩看在我的面子上同意了，这一同意非同小可，它直接换来了少林和峨眉的永世和平。</p>
-<p>实现：<br>    在上面的情景中，两个已存的不同门派就这样完成了合并。这么重大的变化，要如何实现？要改动多少地方？其实很简单，我对玄慈方丈说：“大师，麻烦你把你的上级改为灭绝师太吧。这样一来，两派原先所有人员的教主就都变成了师太，于是下面的人们也就不会打起来了！反正我们关心的只是连通性，门派内部的结构不要紧的”。玄慈听后立刻就不乐意了：“我靠，凭什么是我变成她手下呀，怎么不反过来？我抗议！”。抗议无效，我安排的，最大。反正谁加入谁效果是一样的，我就随手指定了一个，join()函数的作用就是用来实现这个的。</p>
+<h2 id="join-函数"><a class="header-anchor" href="#join-函数">¶</a>join()函数</h2>
+<p>故事引入：<br>
+虚竹和周芷若是我个人非常喜欢的两个人物，他们的教主分别是玄慈方丈和灭绝师太，但是显然这两个人属于不同门派，但是我又不想看到他们打架。于是，我就去问了下玄慈和灭绝：“你看你们俩都没头发，要不就做朋友吧”。他们俩看在我的面子上同意了，这一同意非同小可，它直接换来了少林和峨眉的永世和平。</p>
+<p>实现：<br>
+在上面的情景中，两个已存的不同门派就这样完成了合并。这么重大的变化，要如何实现？要改动多少地方？其实很简单，我对玄慈方丈说：“大师，麻烦你把你的上级改为灭绝师太吧。这样一来，两派原先所有人员的教主就都变成了师太，于是下面的人们也就不会打起来了！反正我们关心的只是连通性，门派内部的结构不要紧的”。玄慈听后立刻就不乐意了：“我靠，凭什么是我变成她手下呀，怎么不反过来？我抗议！”。抗议无效，我安排的，最大。反正谁加入谁效果是一样的，我就随手指定了一个，join()函数的作用就是用来实现这个的。</p>
 <p>join(x,y)的执行逻辑如下：</p>
 <ol>
 <li>寻找 x 的代表元（即教主）；</li>
@@ -390,22 +403,31 @@
 </ol>
 <p>join(x,y)的实现如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int join(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int fx=find(x);</span><br><span class="line">	int fy=find(y);</span><br><span class="line">	if(x!=y)</span><br><span class="line">		pre[x]=y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="压缩并查集路径"><a href="#压缩并查集路径" class="headerlink" title="压缩并查集路径"></a>压缩并查集路径</h1><h2 id="优化find-函数"><a href="#优化find-函数" class="headerlink" title="优化find()函数"></a>优化find()函数</h2><p><strong>现实意义</strong></p>
-<p>两个互不相识的大将夏侯惇和许褚碰面了，他们都互相看不惯，想揍对方。于是按照江湖规矩，先打电话问自己的上级：“你是不是教主？” 上级说：“我不是呀，我的上级是<em>*</em>，我帮你问一下。” 就这样两个人一路问下去，直到最终发现他们的教主都是曹操。具体结构如下：</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523922.png" alt="找掌门人"></p>
-<p>“失礼失礼，原来是自己人，在下军机处前将军夏侯惇!”<br>“幸会幸会，不打不相识嘛，在下军情处上将许褚！”<br>紧接着，两人便高高兴兴地手拉手喝酒去了。<br>“等等等等，两位同学请留步，还有事情没完成呢！”我叫住他俩：“还要做路径压缩！”<br>两人醒悟，夏侯惇赶紧打电话给他的上级郭嘉：“军师啊，我查过了，我们的教主都是曹丞相。不如我们直接拜在丞相手下吧，省得级别太低，以后找起来太麻烦。”郭嘉答道：“所言甚是” 。<br>许褚接着也打电话给刚才拜访过的荀彧，做了同样的事。于是此时，整个曹操阵营的结构如下所示：</p>
-<p><img src="https://gitee.com/yang-shijun/image/raw/master/images/20210219181523911.png" alt="路径压缩"></p>
+<h1>压缩并查集路径</h1>
+<h2 id="优化find-函数"><a class="header-anchor" href="#优化find-函数">¶</a>优化find()函数</h2>
+<p><strong>现实意义</strong></p>
+<p>两个互不相识的大将夏侯惇和许褚碰面了，他们都互相看不惯，想揍对方。于是按照江湖规矩，先打电话问自己的上级：“你是不是教主？” 上级说：“我不是呀，我的上级是***，我帮你问一下。” 就这样两个人一路问下去，直到最终发现他们的教主都是曹操。具体结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164510579.png" alt="image-20220326164510579"></p>
+<p>“失礼失礼，原来是自己人，在下军机处前将军夏侯惇!”<br>
+“幸会幸会，不打不相识嘛，在下军情处上将许褚！”<br>
+紧接着，两人便高高兴兴地手拉手喝酒去了。<br>
+“等等等等，两位同学请留步，还有事情没完成呢！”我叫住他俩：“还要做路径压缩！”<br>
+两人醒悟，夏侯惇赶紧打电话给他的上级郭嘉：“军师啊，我查过了，我们的教主都是曹丞相。不如我们直接拜在丞相手下吧，省得级别太低，以后找起来太麻烦。”郭嘉答道：“所言甚是” 。<br>
+许褚接着也打电话给刚才拜访过的荀彧，做了同样的事。于是此时，整个曹操阵营的结构如下所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326164534204.png" alt="image-20220326164534204"></p>
 <p>这样一来，在刚才查询过程中涉及到的人物就都聚集在了曹操的直接领导下，以后再需要查询教主名称的时候，就只需要询问一级便可得到。所以，在经过一次查询后，整个门派树的高度都将大大降低，路径压缩所实现的功能就是这么个意思。</p>
 <p><strong>实现：</strong></p>
 <p>根据上面的大大给出的精彩的解释，我们只需要在寻找过程中将所有人的直接上级改成代表元即可，这个时候就应该考虑用递归了</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pre[x]==x)</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> pre[x]=find(pre[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>缺点：</strong></p>
 <p>这种方法的缺点就是在第一次寻找的时候没有任何的优化</p>
-<h2 id="加权标记法"><a href="#加权标记法" class="headerlink" title="加权标记法"></a>加权标记法</h2><p><strong>大体含义</strong></p>
+<h2 id="加权标记法"><a class="header-anchor" href="#加权标记法">¶</a>加权标记法</h2>
+<p><strong>大体含义</strong></p>
 <p>其实就是在额外增加一个rank[]数组，记录每个点在树中的高度，在合并的时候根据权值来决定谁当老大，这里其实只用优化合并的函数</p>
 <p><strong>代码实现：</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(rank[fx]&gt;rank[fy])</span><br><span class="line">		pre[fy]=fx;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(rank[fx]==rank[fy]) rank[fy]++;</span><br><span class="line">		pre[fx]=fy;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<h1>总结</h1>
+<ol>
 <li>并查集的用处，判断是否连通，求连通分量个数</li>
 <li>注意两种优化方法，个人觉得优化find()函数虽然有弊端，但是相对而言开销要小些</li>
 </ol>
@@ -424,11 +446,11 @@
   </button>
   <div class="post-reward">
       <div>
-        <img src="/images/wechatpay.png" alt="杨释钧 微信">
+        <img src="/images/wechatpay.png" alt="ysjhust 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="/images/alipay.png" alt="杨释钧 支付宝">
+        <img src="/images/alipay.png" alt="ysjhust 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -440,7 +462,7 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>杨释钧
+      <strong>本文作者： </strong>ysjhust
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
@@ -530,7 +552,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">杨释钧</span>
+  <span class="author" itemprop="copyrightHolder">ysjhust</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
@@ -538,14 +560,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:30</span>
+    <span title="站点阅读时长">3:31</span>
   </span>
 </div>
 <div class="busuanzi-count">
