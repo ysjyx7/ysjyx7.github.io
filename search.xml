@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>大学生数学竞赛微分相关知识的复习</title>
-    <url>/2021/08/16/2021-8-16-%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B%E5%BE%AE%E5%88%86%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
+    <url>/blog/2021/08/16/2021-8-16-%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%A6%E7%AB%9E%E8%B5%9B%E5%BE%AE%E5%88%86%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h1><h2 id="前导"><a href="#前导" class="headerlink" title="前导"></a>前导</h2><ol>
 <li>不为计算而计算，很多时候是为了便于分析，比如定义$e=\lim_{n\to +\infty}{\sum_{i=1}^n\frac{1}{n!}}$</li>
 <li>要注意的是抓住主要矛盾，比如计算极限$\lim_{n \to +\infty} \sum_{k=1}^{n}\frac{k^n}{n^n}$</li>
@@ -95,7 +95,7 @@
   </entry>
   <entry>
     <title>AVL树  Treap</title>
-    <url>/2021/08/19/BST%E4%BC%98%E5%8C%96/</url>
+    <url>/blog/2021/08/19/BST%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>​    二叉搜索树就是对于树中的每一个结点，其左子树都小于它，右子树都大于它，其查询效率为$log(n)$，但是，一旦输入的序列有序，二叉搜索树就退化成了链表，时间复杂度退化至$n$</p>
 <p>​    正是由于二叉搜索树在这种情况下的劣势，我们考虑从两个方面对其进行优化，一是在每次插入的时候，考察此时的平衡因子，根据其值做适当的调整，来防止它出现单支树的情况，此即为AVL树，二是将输入的序列随机化，因为二叉搜索树在输入序列随机时具有较高的性能，这个时候需要加入一个另外的特征值来使其具有堆的性质，此即为Treap</p>
 <h1 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h1><h2 id="类型定义"><a href="#类型定义" class="headerlink" title="类型定义"></a>类型定义</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> height,data;</span><br><span class="line">    ArcNode *left,*right;</span><br><span class="line">&#125;*ArcTree,ArcNode;</span><br></pre></td></tr></table></figure>
@@ -157,7 +157,7 @@
   </entry>
   <entry>
     <title>C++学习（三）</title>
-    <url>/2021/12/06/C-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <url>/blog/2021/12/06/C-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="单继承类"><a href="#单继承类" class="headerlink" title="单继承类"></a>单继承类</h2><ol>
 <li><p>用class声明的类的继承方式缺省为private，而用struct声明的类的继承方式缺省为public，而union既不能作为派生类的基类，也不能作为基类的派生类，基类成员在派生类中的访问权限由继承方式决定</p>
 <ul>
@@ -287,7 +287,7 @@
   </entry>
   <entry>
     <title>C++学习（二）</title>
-    <url>/2021/12/06/C-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/blog/2021/12/06/C-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    目前是考过了csp，最终的成绩是215 :satisfied: ，第一次参加，也算是非常满意了。考试过程中也出现了种种意外，但总的来说就是有惊无险吧。</p>
 <p>​    接下来这一周主要是复习C++的考试，STL的使用先放一放，主要着重于学习C++面向对象的一些特征，参考马光志老师的课件和《C++ Primer Plus》，主要记录一些自己不太熟悉的知识点。</p>
 <h1 id="类型、常量、变量、函数"><a href="#类型、常量、变量、函数" class="headerlink" title="类型、常量、变量、函数"></a>类型、常量、变量、函数</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>​    这块和C语言基本一样，多了一个布尔类型。</p>
@@ -428,7 +428,7 @@
   </entry>
   <entry>
     <title>C++中的::</title>
-    <url>/2021/12/07/C-%E4%B8%AD%E7%9A%84/</url>
+    <url>/blog/2021/12/07/C-%E4%B8%AD%E7%9A%84/</url>
     <content><![CDATA[<h1 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h1><p>​    用来说明类作用域，用来表明类的变量</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a, *b;</span><br><span class="line">    <span class="keyword">int</span> A::*u;   <span class="keyword">int</span> A::*A::*x;</span><br><span class="line">    <span class="keyword">int</span> A::**y; <span class="keyword">int</span> *A::*z;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c, A::*d;</span><br><span class="line">&#125;z;</span><br></pre></td></tr></table></figure>
 <p>​    最开始见到这种写法的时候感觉还晕乎乎的，现在来看的话，int A::*u指的应该是定义了一个指针u，指向类A中的一个整形数据成员，而像int A::<em>A::\</em>x这种写法应该是定义了一个指针x，指向类A中的一个指针，并且这个类A中的指针是一个整形指针。例子中的写法是确定了指针指向的变量所处的类。</p>
@@ -447,7 +447,7 @@
   </entry>
   <entry>
     <title>CSAPP第三章学习笔记</title>
-    <url>/2022/03/05/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <url>/blog/2022/03/05/CSAPP%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><p>​    本章主要是关于x86汇编的一些东西，正好和目前学校在教的汇编语言是相对应的。这篇笔记大概就是关于在阅读CSAPP第三章的时候对于一些疑难知识的解释以及重要知识的记录。</p>
 <p>​    注意，学校教的是intel格式的汇编，CSAPP里讲的是AT&amp;T格式的汇编。</p>
 <h1 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h1><p>​    假设一个C程序有两个文件p1.c和p2.c，采用如下命令编译</p>
@@ -635,7 +635,7 @@
   </entry>
   <entry>
     <title>Datalab</title>
-    <url>/2022/02/27/Datalab/</url>
+    <url>/blog/2022/02/27/Datalab/</url>
     <content><![CDATA[<h1>整形部分</h1>
 <h2 id="bitXor"><a class="header-anchor" href="#bitXor">¶</a>bitXor</h2>
 <p>​	本题要求使用<sub>和&amp;两种运算实现^，其实这是很简单的，利用数字逻辑里学过的方法可以将异或门用与门和非门表示，类似的就可以得到用</sub>和&amp;表示^的逻辑表达式。</p>
@@ -744,7 +744,7 @@
   </entry>
   <entry>
     <title>Shell（三）</title>
-    <url>/2021/09/30/Linux%E4%B9%8BShell%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/</url>
+    <url>/blog/2021/09/30/Linux%E4%B9%8BShell%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<h1 id="高级键盘技巧"><a href="#高级键盘技巧" class="headerlink" title="高级键盘技巧"></a>高级键盘技巧</h1><h2 id="编辑命令行"><a href="#编辑命令行" class="headerlink" title="编辑命令行"></a>编辑命令行</h2><p>​    这一部分主要基于<strong>Readline</strong>库，介绍了一些可以提高效率的特性</p>
 <h3 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h3><ol>
 <li>Ctrl+A，将光标移动到行首</li>
@@ -834,7 +834,7 @@
   </entry>
   <entry>
     <title>Shell（二）</title>
-    <url>/2021/09/29/Linux%E4%B9%8BShell%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/blog/2021/09/29/Linux%E4%B9%8BShell%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h1 id="和命令打交道"><a href="#和命令打交道" class="headerlink" title="和命令打交道"></a>和命令打交道</h1><h2 id="命令的含义"><a href="#命令的含义" class="headerlink" title="命令的含义"></a>命令的含义</h2><ol>
 <li>可执行程序</li>
 <li>Shell中的内建命令，如cd命令</li>
@@ -916,7 +916,7 @@
   </entry>
   <entry>
     <title>Shell（一）</title>
-    <url>/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/</url>
+    <url>/blog/2021/09/28/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EShell/</url>
     <content><![CDATA[<h1 id="Shell简介"><a href="#Shell简介" class="headerlink" title="Shell简介"></a>Shell简介</h1><p>​    Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
 <h1 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h1><h2 id="一些基本的操作列举"><a href="#一些基本的操作列举" class="headerlink" title="一些基本的操作列举"></a>一些基本的操作列举</h2><ol>
 <li>如果随便输入东西，会报错。</li>
@@ -1146,7 +1146,7 @@
   </entry>
   <entry>
     <title>Linux系统编程（一）</title>
-    <url>/2021/10/04/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/blog/2021/10/04/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="名词汇总"><a href="#名词汇总" class="headerlink" title="名词汇总"></a>名词汇总</h1><ol>
 <li><p>静态链接，共享库，该方法导入所有必要库函数和数据，文件大。</p>
 </li>
@@ -1193,7 +1193,7 @@
   </entry>
   <entry>
     <title>Python在数学建模中的应用（一）</title>
-    <url>/2021/10/12/Python%E5%9C%A8%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/blog/2021/10/12/Python%E5%9C%A8%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h1><p>​    语法格式如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">eval</span>(expression, <span class="built_in">globals</span>=<span class="literal">None</span>, <span class="built_in">locals</span>=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <p>​    用于执行一个字符串表达式并返回该表达式的值，第一个参数就是表达式，第二个参数必须是<strong>字典</strong>，第三个参数掌控局部的命名空间，下面给几个例子</p>
@@ -1243,7 +1243,7 @@
   </entry>
   <entry>
     <title>flex&amp;bison</title>
-    <url>/2021/11/05/flex/</url>
+    <url>/blog/2021/11/05/flex/</url>
     <content><![CDATA[<h1 id="大致工作模式"><a href="#大致工作模式" class="headerlink" title="大致工作模式"></a>大致工作模式</h1><p>​    对于语法分析，主要包括词法分析和语法分析两个部分，前者用来将输入分割成一个个有意义的词块，即为<strong>记号（token）</strong>，后者用来确定这些记号彼此之间如何关联。</p>
 <p>​    例如表达式<strong>alpha=beta+gamma</strong>，词法分析器将其分割为alpha、=、beta、+、gamma、；这些记号，而语法分析确定了beta+gamma是一个表达式，其值被赋给alpha</p>
 <h1 id="词法分析flex"><a href="#词法分析flex" class="headerlink" title="词法分析flex"></a>词法分析flex</h1><p>​    flex文件主要包含三个部分，每部分之间用<strong>%%</strong>隔开，第一个部分包含声明和选项设置，其中<strong>%{</strong>和<strong>%}</strong>之间的部分被照抄到C文件开头部分；第二个部分包含模式和对应的动作，模式一般用正则表达式描述，对应的动作就是C代码，为了防止出错，尽量放在大括号里；最后一部分也是C代码，是主程序。</p>
@@ -1259,7 +1259,7 @@
   </entry>
   <entry>
     <title>Linux配置环境变量</title>
-    <url>/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+    <url>/blog/2022/03/07/Linux%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h1>前言</h1>
 <p>​	昨天晚上在配置Geth环境的时候突然发现像ls这种基本的命令竟然都找不到了，意识到配置环境的时候可能把/usr/bin这个目录给冲掉了，仔细想想自己好像一直都是照猫画虎的配环境，也不知道其中的命令的一些缘由，所以今天也是尽快找了一些相关的教程，总结一下配置环境的常见问题。参考https://www.cnblogs.com/youyoui/p/10680329.html</p>
 <h1>环境配置</h1>
@@ -1325,7 +1325,7 @@
   </entry>
   <entry>
     <title>搭建以太坊全节点</title>
-    <url>/2022/03/06/geth%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/blog/2022/03/06/geth%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1>概述</h1>
 <p>​	目前主要是通过官方给的教程来搭建这么一个结点，不过其实我个人目前对以太坊结点的理解还没有很深刻，<s>甚至有可能完全错误</s>，目前感觉就是装一下Geth，然后用Geth开启一个账户就行了？</p>
 <h1>安装Geth等组件</h1>
@@ -1504,7 +1504,7 @@
   </entry>
   <entry>
     <title>go语言学习</title>
-    <url>/2022/01/15/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/</url>
+    <url>/blog/2022/01/15/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    寒假主要会做的一些事情是数学建模和tinykv的学习，本身tinykv是用go语言实现的，美赛又比较水:joy:，所以还是先学一点go语言吧，不过整体都非常基础，仅仅是关于一些很基本的语法的学习</p>
 <h1 id="包、变量、函数"><a href="#包、变量、函数" class="headerlink" title="包、变量、函数"></a>包、变量、函数</h1><p>​    本部分主要是关于go语言的基本的结构</p>
 <p>​    第一个go语言例子</p>
@@ -1641,7 +1641,7 @@
   </entry>
   <entry>
     <title>matlab学习笔记（一）</title>
-    <url>/2021/10/09/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/blog/2021/10/09/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1>语言基础知识</h1>
 <h2 id="输入命令"><a class="header-anchor" href="#输入命令">¶</a>输入命令</h2>
 <ol>
@@ -1837,7 +1837,7 @@
   </entry>
   <entry>
     <title>raft论文学习</title>
-    <url>/2022/01/18/raft%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</url>
+    <url>/blog/2022/01/18/raft%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1>前言</h1>
 <p>​	从tinykv的Project2部分就开始正式到了分布式数据库的部分，所以接下来一段时间需要先了解一下Raft论文，主要参考GitHub上的中文翻译<a href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md">Raft论文中文版</a>，以及原文<a href="https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf">In Search of an Understandable Consensus Algorithm</a>，大概简单地熟悉一下Raft算法的思想即可，然后再依据tinykv的实现去熟悉一些更具体的东西。</p>
 <p>​	这篇论文详细的介绍了斯坦福大学的研究人员为了解决Paxos难度过高难以理解而开发出的分布式共识算法。</p>
@@ -2001,7 +2001,7 @@
   </entry>
   <entry>
     <title>tmux</title>
-    <url>/2021/10/20/tmux/</url>
+    <url>/blog/2021/10/20/tmux/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    为什么要学习Tmux呢？<del>因为我今天在编译Linux内核的时候因为花费时间太长而没有事干</del>，主要是为了能够同时运行多个命令行程序</p>
 <h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install tmux</span><br></pre></td></tr></table></figure>
 <h2 id="启动与退出"><a href="#启动与退出" class="headerlink" title="启动与退出"></a>启动与退出</h2><p>​    要启动的话直接在当前命令行窗口输入tmux即可，退出的话可以用快捷键<strong>Ctrl+D</strong>或输入<strong>exit</strong></p>
@@ -2039,7 +2039,7 @@
   </entry>
   <entry>
     <title>uva540 队列的使用</title>
-    <url>/2021/08/16/uva540/</url>
+    <url>/blog/2021/08/16/uva540/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>​    有t个团队的人正在排一个长队。每次新来一个人时，如果他有队友在排队，那么新人会插队到最后一个队友的身后。如果没有任何一个队友排队，则他会被排到长队的队尾。 输入每个团队中所有队员的编号，要求支持如下3种指令： ENQUEUE x：编号为x的人进入长队 DEQUEUE：长队的队首出队 STOP：停止模拟 对于每个DEQUEUE指令，输出出队的人的编号。</p>
 <h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><p>​    首先题目中给出了队员编号的范围，这就启发我们用一个数组根据下标存放，内容是队伍编号，然后为了更快，以时间换空间，开t个队列，然后每次入队的时候，根据入队编号，求出来是否有队员，这里需要三个数组，一个根据入队顺序来存储队伍编号，一个来根据队伍编号存放大数组中队头位置，一个存放队尾，如果有队员，直接插入到二维数组后面，否则先将队伍编号加入到队伍编号队列中，然后再插入。每次出队的时候，根据存放队伍变化数组的队头元素得到要出的队，将其队头增加，然后如果刚刚出的队空了，就将存放队伍编号的队列的队头增加，出队</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000010</span>], b[<span class="number">1010</span>][<span class="number">1010</span>], q1[<span class="number">1010</span>], q2[<span class="number">1010</span>], q[<span class="number">1010</span>];</span><br><span class="line"><span class="comment">//数组a用来存放最开始的数据，数组b是定义的t个队列，每次入队列时，判断进入哪个队列，数组q用来存储队列中的编号</span></span><br><span class="line"><span class="comment">//数组q1用来存储每个队列队尾的位置，数组q2用来存储每个队列队头的位置</span></span><br><span class="line"><span class="keyword">int</span> q1l = <span class="number">0</span>, q2l = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mem</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    q1l = <span class="number">0</span>;</span><br><span class="line">    q2l = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memset</span>(q1, <span class="number">0</span>, <span class="keyword">sizeof</span>(q1));</span><br><span class="line">    <span class="built_in">memset</span>(q2, <span class="number">0</span>, <span class="keyword">sizeof</span>(q2));</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t, count = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span> (t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Scenario #%d\n&quot;</span>, count);</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> num;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;num);</span><br><span class="line">                a[num] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        mem();</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> cmd[<span class="number">20</span>];</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, cmd);</span><br><span class="line">            <span class="keyword">if</span> (cmd[<span class="number">0</span>] == <span class="string">&#x27;S&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmd[<span class="number">0</span>] == <span class="string">&#x27;E&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> now, i;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;now);</span><br><span class="line">                <span class="keyword">if</span> (q2[a[now]] == q1[a[now]])<span class="comment">//判断第a[now]的队列是否为空</span></span><br><span class="line">                    q[++q1l] = a[now];<span class="comment">//为空的话这里入队</span></span><br><span class="line">                b[a[now]][++q1[a[now]]] = now;<span class="comment">//此时的编号入队</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q2[q[q2l]]++;<span class="comment">//q2l记录当前的队头在q中的编号，则q[q2l]队的队头自增</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, b[q[q2l]][q2[q[q2l]]]);</span><br><span class="line">                <span class="keyword">if</span> (q2[q[q2l]] == q1[q[q2l]])<span class="comment">//如果这里为空的话就可以看q中的下一个了</span></span><br><span class="line">                    q2l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="comment">//end of while(cmd)</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    &#125; <span class="comment">//end of big while(t)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2055,7 +2055,7 @@
   </entry>
   <entry>
     <title>vim+gdb</title>
-    <url>/2022/03/12/vim-gdb/</url>
+    <url>/blog/2022/03/12/vim-gdb/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    前段时间买了个平板，一直想着找到一个在平板上写代码的方法，最开始以为的最优解是使用vscode-online，后来配置好了之后发现vscode-online缺少了几个写C++的关键插件，只能当作一个文本编辑器使用，然后在终端运行，但是并不能调试，也就没什么用了。</p>
 <p>​    后来想想还是用iSH连接到服务器使用vim+gdb写代码吧，其实熟悉了之后用起来还是很方便的。但是有些命令不经常使用会忘掉，所以这里就记录一下常用的一些命令。</p>
 <p>​    <del>或许想要在平板上写代码本身就是一个很反人类的事情</del></p>
@@ -2139,7 +2139,7 @@
   </entry>
   <entry>
     <title>《Introduction to distributed systems》阅读笔记（一）</title>
-    <url>/2021/09/03/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/blog/2021/09/03/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    从标题上看，这一章应该是对布尔值、谓词和量词等一般概念的讲解，大概和离散数学里学的差不多</p>
 <h1 id="初步知识"><a href="#初步知识" class="headerlink" title="初步知识"></a>初步知识</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>​    其实定义什么的都和之前学过的差不多，函数也就是映射，注意一下这里的表示，即如开方函数表示为<em>sqrt : $IR^+ \rightarrow IR^+$</em></p>
 <p>​    然后就是函数的一种操作符，即为函数应用符（<strong>function application</strong>），用”.”来表示，比如sqrt.16，事实上我们编程的时候更常见的是sqrt(16)，但是通常选择前者，因为它很适合<strong>Currying</strong>，<del>暂时还不知道是什么东西</del></p>
@@ -2268,7 +2268,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Introduction to distributed systems》阅读笔记（二）</title>
-    <url>/2021/09/04/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/blog/2021/09/04/%E3%80%8AIntroduction-to-distributed-systems%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><p>​    程序由两部分组成，即有类型的变量的集合，以及任务的有限集，后者又通常被称为行为（<strong>action</strong>）</p>
 <p>​    注意到这里说的是任务的集合，这意味着任务是<strong>无序的</strong>，变量在最开始用关键字<strong>var</strong>来声明，任务在下一个部分被列出，用关键字<strong>assign</strong>来声明，任务之间用[]隔开，<del>其实或许应该用一个fatbar，但是我不会打</del></p>
 <p>​    下面给一个简单地例子</p>
@@ -2317,7 +2317,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（一）</title>
-    <url>/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <url>/blog/2021/08/23/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><p>​    在编程过程中，有可能代码出现了问题，我们可以通过传统的调试方法解决，但是如果是我们的设计出了问题，我们往往没有那么容易去进行调试。</p>
 <p>​    这样的错误叫做<strong>“specification errors”</strong>，我们可以用一些特殊的语言去找到这种错误，比如<strong>“TLA+”</strong>。我们是通过TLA+的符号来对系统进行检验，它可以推演系统接下来的改变。</p>
 <p>​    TLA+不需要编译，他需要被核查，这里用到了<strong>TLC</strong>，TLC将已有的模型分成了11条时间线，并且逐一去核实</p>
@@ -2392,7 +2392,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical-TLA+》阅读笔记（七）</title>
-    <url>/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/</url>
+    <url>/blog/2021/09/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    看标题是和算法相关的。</p>
 <p>​    首先，TLA+中的操作相比于函数，他显然“更强”，这意味着有时候我们可能难以将他，<del>这也是我在敲TLA+时候的一个疑惑</del>，当然很多时候其实很难写出这样的强力操作。</p>
 <p>​    这一章主要是用来<strong>证明</strong>一些算法，注意重点是证明而不是实现。</p>
@@ -2426,7 +2426,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（三）</title>
-    <url>/2021/08/25/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <url>/blog/2021/08/25/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    这一章主要介绍<strong>TLA+ proper</strong>并且用它来写一些更加复杂的不变量</p>
 <h1 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h1><p>​    在这里我们可以自行的写一些操作，大概是这样的格式</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Op(arg1, arg2) == Expr</span><br></pre></td></tr></table></figure>
@@ -2516,7 +2516,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（二）</title>
-    <url>/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <url>/blog/2021/08/24/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>​    Pluscal是一种可以编译成TLA+的语言，学习Pluscal比直接学习TLA+要简单很多，本章将涵盖除多进程算法和fair process之外的关于Plucal的知识</p>
 <h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="layout-of-spec"><a href="#layout-of-spec" class="headerlink" title="layout of spec"></a>layout of spec</h2><p>先在这里引入以下上一张的程序</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----(1)MODULE wire(2)----</span><br><span class="line">EXTENDS Integers \*(3)</span><br><span class="line">(*--algorithm wire \*(4)</span><br><span class="line">	variables (5)</span><br><span class="line">		people =&#123;&quot;alice&quot;,&quot;bob&quot;&#125;,</span><br><span class="line">		acc=[alice |-&gt;5,bob \-&gt;5];</span><br><span class="line">begin \*(6)</span><br><span class="line">	skip;</span><br><span class="line">end algorithm;*)(4)</span><br><span class="line">==== \*(1)</span><br></pre></td></tr></table></figure>
@@ -2722,7 +2722,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（五）</title>
-    <url>/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/</url>
+    <url>/blog/2021/08/27/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/</url>
     <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    现在我们接触到的大多数程序都是独立于时间的，都是一个发生之后另外一个接着发生，我们可以根据系统的初始状态和几行代码具体描述出系统最终的状态。</p>
 <p>​    但是很多程序都不是这样的简单地程序，在并发系统中，没有单一时间线，事实上会有以任意顺序发生在任何时候的事情，进而产生新时间线的断裂传播。设计并发系统需要很多进行推理的可能的行为，因此很难被正常设计。</p>
 <p>​    在这一章我们将会合理使用TLA+，我们在之前已经用其中的<strong>either</strong>和<strong>with</strong>做过一些基本的不确定性行为，现在主要介绍<strong>processes</strong>和<strong>labels</strong>两种想法，这将会帮助我们测试高并发代码</p>
@@ -2778,7 +2778,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（六）</title>
-    <url>/2021/09/02/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/</url>
+    <url>/blog/2021/09/02/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/</url>
     <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    到目前为止我们测试的是在一个行为中的任何情况下始终为真的不变量（<strong>invariants</strong>），接下来将会介绍时间属性（<strong>temporal properties</strong>），时间属性是关于行为自身的一些陈述，它给出了更多的可以用来检测的种类，下面给出一些例子</p>
 <ol>
 <li>算法是否始终有效？</li>
@@ -2851,7 +2851,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical TLA+》阅读笔记（四）</title>
-    <url>/2021/08/26/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
+    <url>/blog/2021/08/26/%E3%80%8APractical-TLA+%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    我们在之前已经写过一些比较复杂的规范，但是我们的模式是非常僵化的，用了很多硬编码值，在这一章中，我们将会使用TLC配置来进行简化</p>
 <h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>​    我们有时会希望在运行中改变规范的参数，或许是想用小数据找出明显的错误，然后再用大数据找一些别的错误，这个时候需要动态修改TLC的参数，我们可以通过添加CONSTANTS来做到这一点，这是一些定义在模型内而不是规范内的值，可以按照如下方式添加</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTENDS Integers, TLC</span><br><span class="line">CONSTANTS Capacity, Items, SizeRange, ValueRange</span><br></pre></td></tr></table></figure>
@@ -2922,7 +2922,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>《Practical-TLA+》阅读笔记（八）</title>
-    <url>/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/</url>
+    <url>/blog/2021/09/25/%E3%80%8APractical-TLA-%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    这一章主要就是讲了在spec中如何加入数据结构，主要是需要在文件外面写一些modules，感觉就跟写个类差不多，先定义结点，再定义操作。</p>
 <p>​    在TLA+中，所有的数据结构都用函数或结构实现，首先以链表<strong>LinkedLists</strong>为例，首先需要定义每一个结点，也有数据域和指针域，指针的关系我们用如下的操作来表示</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PointerMaps(Nodes) == [Nodes -&gt; Nodes]</span><br></pre></td></tr></table></figure>
@@ -2958,7 +2958,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>以太坊中的数据结构</title>
-    <url>/2022/03/23/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <url>/blog/2022/03/23/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<h1 id="RLP"><a href="#RLP" class="headerlink" title="RLP"></a>RLP</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>​    根据前面的学习，在区块链中，每个区块上都存放着各种各样的数据，为了方便传输这些数据，需要有一种合理的编码解码方法，RLP就是这样的一种方法。</p>
 <h2 id="RLP编码"><a href="#RLP编码" class="headerlink" title="RLP编码"></a>RLP编码</h2><p>​    首先，RLP编码先把数据划分成两类：</p>
 <ul>
@@ -3135,7 +3135,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>内核开发前置工作</title>
-    <url>/2021/10/20/%E5%86%85%E6%A0%B8%E5%BC%80%E5%8F%91%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/</url>
+    <url>/blog/2021/10/20/%E5%86%85%E6%A0%B8%E5%BC%80%E5%8F%91%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C/</url>
     <content><![CDATA[<h1>获取内核</h1>
 <h2 id="内核源码"><a class="header-anchor" href="#内核源码">¶</a>内核源码</h2>
 <p>​	这里主要有两种方式，一种是在官网<a href="http://www.kernel.org">http://www.kernel.org</a>获取当前版本的源码，可以是完整的压缩格式，也可以是增量补丁，另一种是使用Git，这里建议使用Git</p>
@@ -3196,7 +3196,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>关于数论的一道小题目</title>
-    <url>/2021/10/11/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA%E7%9A%84%E4%B8%80%E9%81%93%E5%B0%8F%E9%A2%98%E7%9B%AE/</url>
+    <url>/blog/2021/10/11/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA%E7%9A%84%E4%B8%80%E9%81%93%E5%B0%8F%E9%A2%98%E7%9B%AE/</url>
     <content><![CDATA[<p>​    昨天一个上海交大的大佬问了我一道算法题，大概的意思就是，给出一个整数$n$，一个素数$p$，求出$n!$中包含因子$p$的数量。这个题目乍一看很简单，只需要先用一个循环算出$n!$，再用一个循环算出答案即可。但是我们没想到的是，交大的题目竟然会给一群刚学C++没几天的新生卡时长，这样计算运算时间太长，所有测试集都过不了，<del>不亏是交大</del>，那接下来只能从数学的角度对题目进行化简了。</p>
 <p>​    其实另外的思路也很简单，只需要统计$1$~$n$中所有数包含质因子$p$的数量即可，我们注意到其实$n/p$就是$1$到$n$中出现过的$p$的倍数个数，所以其实$p$本身是给最终的答案贡献了这么多个值，然后还有$p$的次方数，也会贡献一定的量，我们需要考虑一下这个量具体是多少。仔细一想好像是$k\times (int)(\frac {n}{p^k})$，然后累加起来，但是这样其实就重复了，因为$p$的前$k-1$次方已经被计算过一次了，所以每次其实只需要加上$\frac {n}{p^k}$即可，所以最终我们可以得到答案为$ans=\frac{n}{p}+\frac{n}{p^2}+…+\frac{n}{p^k}$，并且$\frac{n}{p^{k+1}}=0$，具体代码就不写了，太简单了。</p>
 ]]></content>
@@ -3211,7 +3211,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>动态规划之背包</title>
-    <url>/2021/09/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E8%83%8C%E5%8C%85/</url>
+    <url>/blog/2021/09/19/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E8%83%8C%E5%8C%85/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    背包问题的最初版本就是01背包，接下来从01背包上衍生出了多种不同的背包问题，其问题大致的描述就是背包定容量，有很多物体，每一个物体都有给定的价值和体积，要求背包中装入的物品达到最大值</p>
 <h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>​    这种背包指的就是所有的物品只有一件，只能有选或不选两种状态，因此也称之为01背包</p>
 <h2 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h2><p>​    我们考虑一下动态规划的思想，由于我们需要两个参数$i$，$j$来衡量状态，所以考虑二维数组$dp[i][j]$，其中$i$表示第$i$个物品，$j$表示剩余空间为$j$，那么通过分类，非常容易就能得到动态转移方程，即<img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/20190312205757755.png" alt="img"></p>
@@ -3249,7 +3249,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>区块链</title>
-    <url>/2022/03/12/%E5%8C%BA%E5%9D%97%E9%93%BE/</url>
+    <url>/blog/2022/03/12/%E5%8C%BA%E5%9D%97%E9%93%BE/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    其实在网上已经有非常详细的区块链的原理介绍了，但是我觉得还是得自己总结一下才能理解的更深入。</p>
 <p>​    主要参考<a href="https://www.ruanyifeng.com/blog/2017/12/blockchain-tutorial.html">阮一峰区块链教程</a>和<a href="liaoxuefeng.com/wiki/1207298049439968">廖雪峰区块链教程</a></p>
 <h1 id="区块链概述"><a href="#区块链概述" class="headerlink" title="区块链概述"></a>区块链概述</h1><p>​    区块链可以理解成一个<strong>去中心化的分布式数据库</strong>，而其它数据库都是有管理员的。正是因为区块链这么一个特性，它才不会被某个特定的团体控制，但是没有管理员也就意味着任何人都可以往区块链里写入数据，显然，区块链会采取一些方式来保证数据是可信的</p>
@@ -3307,7 +3307,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>动态规划入门</title>
-    <url>/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/</url>
+    <url>/blog/2021/09/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​    本篇对动态规划问题进行简单地入门，个人感觉动态规划问题就像是高中所学过的用递推公式求解问题，关键在于找出状态转移方程</p>
 <h1 id="洛谷P1216"><a href="#洛谷P1216" class="headerlink" title="洛谷P1216"></a>洛谷P1216</h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916153724707.png" alt="image-20210916153724707"></p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210916154705058.png" alt="image-20210916154705058"></p>
@@ -3326,7 +3326,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>单调队列和单调栈</title>
-    <url>/2021/08/18/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E5%92%8C%E5%8D%95%E8%B0%83%E6%A0%88/</url>
+    <url>/blog/2021/08/18/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E5%92%8C%E5%8D%95%E8%B0%83%E6%A0%88/</url>
     <content><![CDATA[<h1 id="概念简述"><a href="#概念简述" class="headerlink" title="概念简述"></a>概念简述</h1><h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><ol>
 <li><p>单调栈就是在原本的先进后出线性表的基础上满足表中的元素依然是单调的，这就需要我们每次在新元素进栈的时候对栈进行维护，使其仍然保持单调性，下面以单调递增栈为例说明如何维护进栈</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(top&amp;&amp;a[<span class="built_in">stack</span>[top<span class="number">-1</span>]]&gt;a[i])</span><br><span class="line">	top--;</span><br><span class="line"><span class="built_in">stack</span>[top++]=i;</span><br><span class="line"><span class="comment">//比如栈中已经有元素1 2 4，现在3要入栈</span></span><br><span class="line"><span class="comment">//就先把4弹出，然后入栈，即1 2 3</span></span><br></pre></td></tr></table></figure>
@@ -3371,7 +3371,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>区间dp</title>
-    <url>/2021/09/27/%E5%8C%BA%E9%97%B4dp/</url>
+    <url>/blog/2021/09/27/%E5%8C%BA%E9%97%B4dp/</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​    区间dp就是在区间上进行动态规划，求一段区间上的最优解。即通过循环来合并小区间的最优解进而得到大区间上的最优解。</p>
 <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>​    结合注释，模板应该很容易看懂</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> len = <span class="number">1</span>;len&lt;=n;len++)<span class="comment">//枚举区间长度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j+len&lt;=n;j++)<span class="comment">//枚举区间起点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> ends=j+len<span class="number">-1</span>;<span class="comment">//通过当前区间起点和长度计算区间终点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=j;i&lt;ends;i++)<span class="comment">//枚举断点</span></span><br><span class="line">            dp[j][ends]=max(dp[j][ends],dp[j][i]+dp[i+<span class="number">1</span>][ends]+w[i][ends])</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//上面的dp[i][j]表示区间长度从i到j对应的值</span></span><br></pre></td></tr></table></figure>
@@ -3403,7 +3403,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>基本知识和组合逻辑</title>
-    <url>/2021/12/15/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%92%8C%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91/</url>
+    <url>/blog/2021/12/15/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E5%92%8C%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91/</url>
     <content><![CDATA[<h1>基础知识</h1>
 <h2 id="进制"><a class="header-anchor" href="#进制">¶</a>进制</h2>
 <ol>
@@ -3569,7 +3569,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>并查集</title>
-    <url>/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <url>/blog/2021/08/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h1>概述</h1>
 <ol>
 <li>并查集是一种树形的数据结构，主要用来解决不相交集合间的合并和查询的问题，比如可以用它来判断森林中有几棵树、某个结点是否属于某个树</li>
@@ -3648,7 +3648,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>弗洛依德的兔子与乌龟算法</title>
-    <url>/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/</url>
+    <url>/blog/2021/09/25/%E5%BC%97%E6%B4%9B%E4%BE%9D%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="Tortoise-and-the-Hare-algorithm"><a href="#Tortoise-and-the-Hare-algorithm" class="headerlink" title="Tortoise and the Hare algorithm"></a>Tortoise and the Hare algorithm</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    Floyd判圈算法，用来在有限状态机、迭代函数或者链表上判断是否有环的算法。</p>
 <h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>​    其实主要是利用双指针，乌龟和兔子在一个含环的跑道上进行比赛，乌龟在单位时间内移动一步，兔子移动两步，两者同时出发，如果存在环的话，乌龟总能和兔子相遇</p>
 <h2 id="具体想法"><a href="#具体想法" class="headerlink" title="具体想法"></a>具体想法</h2><h3 id="判断是否有环"><a href="#判断是否有环" class="headerlink" title="判断是否有环"></a>判断是否有环</h3><p>​    定义双指针<strong>p1</strong>和<strong>p2</strong>，起始时指向头结点，然后p1每次移动1个，p2每次移动两个，如果p2移动到尾端的时候未与p1相遇，则不存在环，否则有环</p>
@@ -3680,7 +3680,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>搜索算法刷题记录</title>
-    <url>/2021/10/16/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <url>/blog/2021/10/16/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1>洛谷P3315</h1>
 <h2 id="题目大意"><a class="header-anchor" href="#题目大意">¶</a>题目大意</h2>
 <p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326171323489.png" alt="image-20220326171323489"></p>
@@ -3700,7 +3700,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>数据处理与可视化</title>
-    <url>/2021/10/12/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+    <url>/blog/2021/10/12/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
     <content><![CDATA[<h1>NumPy</h1>
 <p>​	首先列表可以完成数组操作，但是在数据量大的时候速度很慢，所以这里采用NumPy拓展库完成数组操作。</p>
 <p>​	NumPy提供两种基本对象，即<strong>ndarray</strong>和<strong>ufunc</strong>，前者是存储单一数据类型的多维数组，后者是能够对数组进行处理的通用函数。</p>
@@ -3841,7 +3841,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>数据结构刷题之二叉树</title>
-    <url>/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%88%B7%E9%A2%98%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <url>/blog/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%88%B7%E9%A2%98%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
     <content><![CDATA[<h1 id="洛谷P1229"><a href="#洛谷P1229" class="headerlink" title="洛谷P1229"></a>洛谷P1229</h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>​    输入一个二叉树的前序遍历和后序遍历序列，求可能的中序遍历序列的个数。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>​    首先之所以此时有多种二叉树，是因为在只有一个孩子的情况下无法确定它是左孩子还是右孩子，所以每次找到这样的一种情况，答案需要翻倍，而如果当前根前序遍历的后一个和后序遍历的前一个相同，那么它就是这样的一个结点</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: ysj </span></span><br><span class="line"><span class="comment"> * @Date: 2021-10-09 13:11:11 </span></span><br><span class="line"><span class="comment"> * @Last Modified by: ysj</span></span><br><span class="line"><span class="comment"> * @Last Modified time: 2021-10-09 13:22:01</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//本问题通过二叉树的前序遍历和后续遍历，要求共有多少种中序遍历</span></span><br><span class="line"><span class="comment">//首先我们考虑一下为什么中序遍历不唯一，因为前序为根左右，后序为左右根，只能判断出祖先，而其中树的结构无法确定</span></span><br><span class="line"><span class="comment">//不能确定就是因为里面可能含有单叶子结点，可以考虑如何使用两种遍历顺序确定单叶子结点，每多一个单叶子结点，总数翻倍</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> pre[<span class="number">100000001</span>];</span><br><span class="line"><span class="keyword">char</span> post[<span class="number">100000001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">char</span> key)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, pre);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, post);</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(pre)<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = find(pre[i]);<span class="comment">//找到后序遍历中对应的索引值</span></span><br><span class="line">        <span class="keyword">if</span>(j&lt;<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(pre[i+<span class="number">1</span>]==post[j<span class="number">-1</span>])<span class="comment">//前序的后一个等于后序的前一个，实际上就是当前根节点只有一个孩子</span></span><br><span class="line">            ans *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">char</span> key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(post);i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(post[i]==key)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -3878,7 +3878,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>时序逻辑</title>
-    <url>/2021/12/15/%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91/</url>
+    <url>/blog/2021/12/15/%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91/</url>
     <content><![CDATA[<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><p>​    触发器是一种具有记忆功能的电子器件</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
 <li>有两个互补的输出端$Q$和$\overline{Q}$</li>
@@ -4040,7 +4040,7 @@ u Q t.i_0Qt.i_1Q\dots Q t.i_N</script><p>​    其中u是Q的单位元素</p>
   </entry>
   <entry>
     <title>大学生数学竞赛微分相关知识的复习</title>
-    <url>/2021/08/16/%E6%9E%81%E9%99%90/</url>
+    <url>/blog/2021/08/16/%E6%9E%81%E9%99%90/</url>
     <content><![CDATA[<h1>极限</h1>
 <h2 id="前导"><a class="header-anchor" href="#前导">¶</a>前导</h2>
 <ol>
@@ -4171,7 +4171,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>树形dp</title>
-    <url>/2021/10/04/%E6%A0%91%E5%BD%A2dp/</url>
+    <url>/blog/2021/10/04/%E6%A0%91%E5%BD%A2dp/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    树形dp，顾名思义就是在树形结构上面做动态规划，一般都是用$dp[i][]$来表示$i$这棵树所具有的某种最优性质，一般要用到dfs来对整棵树进行遍历，存树的方法很多，可以用邻接表，也可以用并查集之类的，这里直接看一些题目吧</p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="洛谷P1352"><a href="#洛谷P1352" class="headerlink" title="洛谷P1352"></a>洛谷P1352</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20211004103500038.png" alt="image-20211004103500038"></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>​    很明显的一个树形结构，每一个人来与不来会对所有数值产生影响，我们可以用$dp[i][0/1]$来表示此时的最大值，这样其实思路就很明显了，代码如下，注释详细</p>
@@ -4195,7 +4195,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>树状数组</title>
-    <url>/2022/02/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</url>
+    <url>/blog/2022/02/23/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h1>背景</h1>
 <p>​	一般对于数组而言，我们可能会经常进行单点修改和求某个区间和的操作，如果不做任何处理，那显然前者时间复杂度为$O(1)$，后者为$O(n)$，而如果用前缀和进行维护，后者时间复杂度就变成了$O(1)$，但是在单点修改的时候，由于要对前缀和数组进行维护，时间复杂度就变成了$O(n)$。</p>
 <p>​	树状数组是一种折衷的方案，在大多数情况下可以让这两种操作的时间复杂度达到$log(n)$</p>
@@ -4231,7 +4231,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>洛谷P1908，求逆序对</title>
-    <url>/2021/08/15/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/</url>
+    <url>/blog/2021/08/15/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/</url>
     <content><![CDATA[<h1 id="题目概述"><a href="#题目概述" class="headerlink" title="题目概述"></a>题目概述</h1><p>​    给出一列数，共有$n$个，逆序对指的是满足$i&gt;j$并且$a_i&lt;a_j$的数对，求数对的数量</p>
 <h1 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h1><h2 id="思路一：归并排序"><a href="#思路一：归并排序" class="headerlink" title="思路一：归并排序"></a>思路一：归并排序</h2><p>​    归并排序的思路就是每次折半分，然后再有一个匹配的过程，然后在匹配之前，左右两部分都已经基本有序，这时候就按照归并排序中匹配的步骤，只是加入了计算逆序对数量的一步，下面给出一个具体的例子，这里复制了洛谷题解中<strong>学无止境</strong>大佬的例子</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在某个时候，左区间：  5 6 7  下标为i</span></span><br><span class="line"><span class="comment">//           右区间：  1 2 9  下标为j</span></span><br><span class="line"><span class="comment">//          </span></span><br><span class="line"><span class="comment">//这个时候我们进行合并：</span></span><br><span class="line"><span class="comment">//step 1：由于 5&gt;1，所以产生了逆序对，这里，我们发现，左区间所有还没有被合并的数都比 1 大，所以1与左区间所有元素共产生了 3 个逆序对(即tot_numleft-i+1对)，统计答案并合并 1 </span></span><br><span class="line"><span class="comment">//step 2：由于 5&gt;2，由上产生了3对逆序对，统计答案并合并 2</span></span><br><span class="line"><span class="comment">//step 3：由于 5&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 4：由于 6&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 5：由于 7&lt;9, 没有逆序对产生，右区间下标 j++</span></span><br><span class="line"><span class="comment">//step 6：由于右区间已经结束，正常执行合并左区间剩余，结束</span></span><br><span class="line"><span class="comment">//PS： tot_numleft=3，即左区间总元素个数</span></span><br></pre></td></tr></table></figure>
@@ -4271,7 +4271,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>洛谷P1090 哈夫曼树</title>
-    <url>/2021/08/15/%E6%B4%9B%E8%B0%B7P1090/</url>
+    <url>/blog/2021/08/15/%E6%B4%9B%E8%B0%B7P1090/</url>
     <content><![CDATA[<h1 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h1><p>​    一堆果子，每次合并两个，需要一定的体力，最后到一个停止，让消耗的体力最大</p>
 <h1 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h1><p>​    这很明显就是哈夫曼树，也就是每次找到两个最小的，然后重复$n$次即可。</p>
 <p>​    另外就是使用优先队列</p>
@@ -4293,7 +4293,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>洛谷P1309 排序算法</title>
-    <url>/2021/08/15/%E6%B4%9B%E8%B0%B7P1309/</url>
+    <url>/blog/2021/08/15/%E6%B4%9B%E8%B0%B7P1309/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>$2×N$ 名编号为 $1∼2N$ 的选手共进行R 轮比赛。每轮比赛开始前，以及所有比赛结束后，都会按照总分从高到低对选手进行一次排名。选手的总分为第一轮开始前的初始分数加上已参加过的所有比赛的得分和。总分相同的，约定编号较小的选手排名靠前。</p>
 <p>每轮比赛的对阵安排与该轮比赛开始前的排名有关：第1名和第2名、第3名和第4名、……、第2<em>K</em>−1名和第2<em>K</em>名、…… 、第2<em>N</em>−1名和第2<em>N</em>名，各进行一场比赛。每场比赛胜者得1分，负者得0分。也就是说除了首轮以外，其它轮比赛的安排均不能事先确定，而是要取决于选手在之前比赛中的表现。</p>
 <p>现给定每个选手的初始分数及其实力值，试计算在R 轮比赛过后，排名第<em>Q</em> 的选手编号是多少。我们假设选手的实力值两两不同，且每场比赛中实力值较高的总能获胜。</p>
@@ -4314,7 +4314,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>线性dp</title>
-    <url>/2021/09/25/%E7%BA%BF%E6%80%A7dp/</url>
+    <url>/blog/2021/09/25/%E7%BA%BF%E6%80%A7dp/</url>
     <content><![CDATA[<h1 id="最长公共子序列（LOS）"><a href="#最长公共子序列（LOS）" class="headerlink" title="最长公共子序列（LOS）"></a>最长公共子序列（LOS）</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><img src="https://raw.githubusercontent.com/ysjyx7/images/master/img/image-20210925211120449.png" alt="image-20210925211120449"></p>
 <h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>​    其实是一个比较显然的dp问题，可以找到一个明显的动态转移方程，我们用$x[n]$和$y[m]$表示两个序列，然后用$c[i][j]$表示以$x[i]$和$y[j]$结尾的最长公共子序列长度，首先，如果$x[i]=y[j]$，那么我们可以直接将这两个都加到目前的子序列中，然后，如果$x[i]\neq y[j]$，那么目前这两个中肯定有一个不属于最长公共序列，那么目前的$c[i][j]$肯定就是$c[i][j-1]$和$c[i-1][j]$中的最大值</p>
 <p>​    那么就可以推出动态转移方程</p>
@@ -4353,7 +4353,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>链式前向星存图</title>
-    <url>/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/</url>
+    <url>/blog/2021/08/22/%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F/</url>
     <content><![CDATA[<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>​    链式前向星是一种存放图的数据结构，性能较好，实现起来不算很难，其存放以边为核心</p>
 <h1 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    在了解什么是链式前向星前，我们先说一下什么是前向星。</p>
 <p>​    前向星是一种边集数组，我们将边集数组中的每一条边按起点大小排序，如果起点相同就按终点大小排序，然后再记录下以某点为起点的所有边的权值和起始位置</p>
@@ -4389,7 +4389,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>Bomblab</title>
-    <url>/2022/03/20/Bomblab/</url>
+    <url>/blog/2022/03/20/Bomblab/</url>
     <content><![CDATA[<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>​    主要是使用<code>vim+gdb</code>，没有使用<code>gdb</code>看反汇编，因为感觉那个看起来不是很舒服。</p>
 <p>​    首先用<code>objjump</code>生成反汇编，将它重定向到一个文本文件里，用<code>vim</code>看，然后另外一边用<code>gdb</code>打断点调试，可以用<code>tmux</code>分屏去看，会舒服一点。大概整个布局就像下面这样？右下角的部分有可能编辑一些文件，不过也可以关掉。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326144038902.png" alt="image-20220326144038902"></p>
@@ -4475,7 +4475,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>C++学习（一）</title>
-    <url>/2021/11/30/C-%E5%AD%A6%E4%B9%A0/</url>
+    <url>/blog/2021/11/30/C-%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    首先这段时间一直比较忙，自从上次更新到现在大概过了一个多月，期间准备了大学生数学竞赛，同时参与了阿里的miniob比赛，后者基本上就是抱着竞赛驱动学习的想法去的，<del>其实是自己太菜，拿不了奖</del>，也算是初步接触了一下数据库和编译的一些知识，另外由于oceanbase是用C++实现的，也算是对阅读大项目源码有了一点认知，过段时间或许会写一下参赛总结，复盘一下这学期我都做了些什么，以及未来一段时间的打算，不过我会先把之前那个写了一半的flex&amp;bison写完:joy:</p>
 <p>​    另外就是这学期选了马光志老师的C++程序设计语言，虽然这门课基本上学的都是C++的精髓，即面向对象编程的这种思想，但是感觉目前是用不上的。目前在准备这周末的csp考试，这里就简单总结一下刷题的时候用到的stl的一些东西，先把C++当成带stl的C来用吧:joy:</p>
 <h1 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h1><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>​    首先需要介绍的就是algoirthm类里的快速排序，函数原型如下</p>
@@ -4590,7 +4590,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>LaTex学习笔记</title>
-    <url>/2022/01/17/LaTex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <url>/blog/2022/01/17/LaTex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1>前言</h1>
 <p>​	本人采用的是vscode+Tex Live2021，相关配置参考<a href="https://zhuanlan.zhihu.com/p/38178015">LaTex+vscode环境配置</a></p>
 <p>​	这里主要是记录一下学习LaTex过程中的一些笔记，主要参考<strong>一份（不太）简短的LaTex介绍</strong>以及知乎Dylaaan的<a href="https://zhuanlan.zhihu.com/p/456055339">LaTex新手教程</a></p>
@@ -4891,7 +4891,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>Linux进程管理</title>
-    <url>/2021/10/07/Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
+    <url>/blog/2021/10/07/Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
 <li><p>单CPU系统其实就是通过快速切换任务执行来给人一种它在同时执行所有任务的错觉。这种逻辑并行性称为“并发”</p>
 </li>
@@ -4966,7 +4966,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>二叉搜索树与红黑树</title>
-    <url>/2021/10/10/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <url>/blog/2021/10/10/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<h1>二叉搜索树</h1>
 <p>​	其实在之前对于二叉搜索树已经非常熟悉了，这里主要是打算再总结一下</p>
 <h2 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h2>
@@ -5110,7 +5110,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>Attacklab</title>
-    <url>/2022/03/27/Attacklab/</url>
+    <url>/blog/2022/03/27/Attacklab/</url>
     <content><![CDATA[<h1>工具与材料</h1>
 <p>​	主要用的工具和Bomblab一样，tmux+gdb+vim的组合。</p>
 <p>​	Attacklab主要和csapp的3.10.3和3.10.4联系密切，另外其实也需要参考官方的文档，即<a href="http://csapp.cs.cmu.edu/3e/attacklab.pdf">官方文档</a>，这里面给出了整个lab中文件的介绍以及一些提示。</p>
@@ -5204,7 +5204,7 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
   </entry>
   <entry>
     <title>hadoop常用命令记录</title>
-    <url>/2022/03/26/hadoop%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    <url>/blog/2022/03/26/hadoop%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1>HDFS</h1>
 <h2 id="dd"><a class="header-anchor" href="#dd">¶</a>dd</h2>
 <p>​	我本以为这是HDFS专有的命令。后来查了一下发现竟然是Linux下也有的命令，真是功夫不到家。</p>
@@ -5257,5 +5257,10 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
       <tags>
         <tag>分布式系统</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>地址更换</title>
+    <url>/blog/2022/03/30/%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%8D%A2/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
