@@ -5516,4 +5516,114 @@ $\lim_{n \to \infty}n(\int_{0}<sup>{1}f(x)dx-\frac{1}{n}\sum_{k=1}</sup>{n}f(\fr
         <tag>生产力工具</tag>
       </tags>
   </entry>
+  <entry>
+    <title>图算法总结</title>
+    <url>/2022/04/29/%E5%9B%BE%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h1><h2 id="相关符号说明"><a href="#相关符号说明" class="headerlink" title="相关符号说明"></a>相关符号说明</h2><p>​    首先最短路径问题指的是这样一个问题：对于带权有向图$G=(V,E)$和权重函数$w: E\rightarrow R$，该权重函数将每条边映射到一个实数值。图中的一条路径$p=<v_0,v_1,\dots,v_k>$的权重$w(p)$是构成该路径所有边的权重之和，即$w(p)=\sum_{i=1}^kw(v_{i-1},v_i)$。那么从结点$u$到结点$v$最短路径$\delta(u,v)$的定义就是$\delta(u,v)=min(w(p):u\stackrel{F}{\longrightarrow}v)$，当然如果没有边的话就是$\infty$。</v_0,v_1,\dots,v_k></p>
+<p>​    其次，最短路径问题具有最优子结构性质，这一点也是非常清晰的。</p>
+<p>​    此外，如果图中含有负权环路的话，最短路径问题是没有意义的，因此定义$\delta(u,v)=-\infty$，当然，最短路径中也是不可能有正权环路的，因为我们只需要把这个环路删除，也就是相当于把它缩放成一个点，就可以得到一条权值更小的路径。</p>
+<p>​    下面，为了表示出最短路径，也给出了一些别的符号。对于图$G(V,E)$，其中每个结点$v$，都维系一个前驱节点$v.\pi$，其值为另一个结点或者$NIL$，通过这种设置，我们很容易就可以得到相应路径。然后给出<strong>前驱子图</strong>的概念，即$G_{\pi}=(V_{\pi},E_{\pi})$，其中结点集包含原图中前驱结点不为$NIL$的集合，再加上缘节点$s$，即$V_\pi={v\in V:v.\pi \neq NIL}\cup{s}$，而其边集定义为$E_\pi=\{(v.\pi,v)\in E:v\in V_\pi-{s}\}$，经过本章算法生成的前驱子图都是一棵树。</p>
+<p>​    然后是<strong>松弛</strong>操作，首先对于每个结点$v$，维系一个属性$v.d$，表示从源节点$s$到结点$v$的最短路径权重的上界。松弛操作就是看能否通过一个中间结点$u$来尽可能减少$v.d$，伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">RELAX</span>(u,v,w)</span><br><span class="line">    <span class="keyword">if</span> v.d&gt;u.d+<span class="built_in">w</span>(u,v)</span><br><span class="line">        v.d=u.d+<span class="built_in">w</span>(u,v)</span><br><span class="line">        v.pi=u</span><br></pre></td></tr></table></figure>
+<p>​    下面给出一些相关性质</p>
+<ol>
+<li>三角不等式性质：对于任何边$(u,v)\in E$，均有$\delta(s,v)\le \delta(s,u)+w(u,v)$</li>
+<li>上界性质：对于任何结点$v\in V$，均有$v.d\ge \delta(s,v)$</li>
+<li>非路径性质：如果从结点$s$到结点$v$没有路径，那么有$v.d=\delta(s,v)=\infty$</li>
+<li>收敛性质： 如果对于某些节点$u,v\in V$，如果$S\looparrowright u\rightarrow v$是图中的一条最短路径，并在对边$(u,v)$进行松弛前的任意时间都有$u.d=\delta(s,u)$，那么在之后的所有时间都有$v.d=\delta(s,v)$</li>
+<li>路径松弛性质：如果$p=<v_0,v_1,\dots,v_k>$是从源节点$s=v_0$到结点$v_k$的一条最短路径，并且松弛次序就是$(v_0,v_1),(v_1,v_2),\dots,(v_{k-1},v_k)$，那么必然有$v_k.d=\delta(s,v_k)$。注意松弛次序和其他的操作无关。</v_0,v_1,\dots,v_k></li>
+<li>前驱子图性质：对于所有的结点$v\in V$，一旦有$v.d=\delta(s,v)$，则前驱子图一定是一个以$s$为根节点的最短路径树。</li>
+</ol>
+<p>​    这上面的性质大多数都还是比较显而易见的。</p>
+<p>​    接下来我们先说单源最短路径</p>
+<h2 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h2><h3 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h3><p>​    先放伪代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">BELLMAN-<span class="built_in">FORD</span>(G,w,s)</span><br><span class="line">    INITIALIZE-SINGLE-<span class="built_in">SOURCE</span>(G,s)</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to |G.V|<span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> each <span class="built_in">edge</span>(u,v) in G.E</span><br><span class="line">            <span class="built_in">RELAX</span>(u,v,w)</span><br><span class="line">    <span class="keyword">for</span> each <span class="built_in">edge</span>(u,v) in G.E</span><br><span class="line">        <span class="keyword">if</span> v.d&gt;u.d + <span class="built_in">w</span>(u,v)</span><br><span class="line">          	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  	<span class="keyword">return</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>​    Bellman-Ford算法参数是图$G$，权重函数$w$以及源节点$s$，最终如果图中有负权环路的话就返回$false$，否则返回$true$。</p>
+<p>​    该算法依次遍历除源节点外的所有结点，然后遍历所有的边，对这个边进行松弛操作，也就是说每一条边都遍历了$|G.V|-1$次。最后通过遍历所有的边，查看是否有一条边还可以进行松弛，如果存在这一条边，就说明图中存在负权环路。</p>
+<p>​    关于算法证明，可以先证明在没有负权环路的时候可以求出最短路径，然后再证明存在负权环路的时候无法求出，主要通过反证法。</p>
+<p>​    此外，该算法也有相关的优化，比如SPFA算法。</p>
+<p>​    算法时间复杂度为$O(VE+E)$</p>
+<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>​    该算法要求<strong>所有边权值不为负</strong>，依然先给出伪代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">DIJKSTRA</span>(G,w,s)</span><br><span class="line">    INITIALIZE-SINGLE-<span class="built_in">SOURCE</span>(G,s)</span><br><span class="line">    S=&#123;&#125;</span><br><span class="line">	Q=G.V</span><br><span class="line">    <span class="keyword">while</span> Q!=&#123;&#125;</span><br><span class="line">		u=EXTRACT-<span class="built_in">MIN</span>(Q)</span><br><span class="line">         S=S+&#123;u&#125;</span><br><span class="line">		<span class="keyword">for</span> each vertex v in G.Adj[u]</span><br><span class="line">            <span class="built_in">RELAX</span>(u,v,w)</span><br></pre></td></tr></table></figure>
+<p>​    其中$S$是一个结点集合，源节点到其中所有结点的最短路径都已经确定。Q是一个优先队列，其关键值为$d$值，如果不用优先队列保存的话需要用一次循环来查找最小值。</p>
+<p>​    该算法本身上是一个贪心算法，每次从结点集$V-S$也就是$Q$中选取$d$值估计最小的结点$u$，将其加到结点集$S$，然后对所有从$u$出发的边进行松弛。</p>
+<p>​    可以用归纳法证明其正确性。</p>
+<p>​    时间复杂度为$O(V^2)$</p>
+<h3 id="差分约束系统"><a href="#差分约束系统" class="headerlink" title="差分约束系统"></a>差分约束系统</h3><p>​    差分约束是一个特殊的线性规划问题，其中每个线性约束方程都是如下形式$x_j-x_i\le b_k$，其中$1\le i,j\le n,i\ne j,1\le k \le m$</p>
+<p>​    要求解这个问题，可以从图论的角度来理解它，每一个线性约束系统都可以对应一个约束图$G=(V,E)$，其中$V=\{v_0,v_1,\dots ,v_n\}$，$E=\{(v_i,v_j):x_j-x_i\le b\}\cup\{(v_0,v_1),(v_0,v_2),\dots,(v_0,v_n)\}$，其中结点集中的每个结点$v_k$都对应了变量$x_k$，定义中的$v_0$作为虚点，保证图中存在一个结点可以到达另外所有的结点。另外，边$(v_i,v_j)$的权重就是$b_k$。</p>
+<p>​    可以证明，通过在当前差分约束系统对应的约束图中寻找最n短路径权重来求解，即其解为$x=(\delta(v_0,v_1),\delta(v_0,v_2),\delta(v_0,v_3),\dots,\delta(v_0,v_n))$</p>
+<p>​    其实就是利用三角不等式来证明最短路径也满足相同的差分约束系统满足的性质。</p>
+<p>​    综上，我们可以通过Bellman-ford算法来求解差分约束系统问题。</p>
+<h2 id="所有结点对的最短路径"><a href="#所有结点对的最短路径" class="headerlink" title="所有结点对的最短路径"></a>所有结点对的最短路径</h2><p>​    在这个问题中，我们期望找到所有结点对之间的最短路径。首先我们可以通过前文提到的单源最短路径算法，通过每次选取不同的源节点来求解此问题。不过在本节中，我们会介绍另外的几种算法。此外，本节中图采用邻接矩阵的方法表示。</p>
+<h3 id="Floyd-Warshall算法"><a href="#Floyd-Warshall算法" class="headerlink" title="Floyd-Warshall算法"></a>Floyd-Warshall算法</h3><p>​    本算法采用动态规划的思路来求解这一问题。</p>
+<p>​    这里的递归思路和选取的中间结点有关，对于任意结点对$i,j\in V$，考虑从结点$i$到$j$的所有中间结点均取自集合$\{1,2,\dots,k\}$的路径，设$p$是其中权重最小的路径，进行如下讨论：</p>
+<ol>
+<li>假设$k$不是$p$上的中间结点，那么路径$p$上所有的中间结点都属于集合$\{1,2,\dots,k-1\}$，这个时候子结构的性质就出来了，即从结点$i$到$j$的中间结点取自$\{1,2,\dots,k-1\}$的一条最短路径也是从结点$i$到结点$j$的中间结点取自$\{1,2,\dots,k\}$的一条最短路径</li>
+<li>假设$k$是$p$上的中间结点，那么可以将路径$p$作分解：$i\stackrel{p_{i}}\longrightarrow k\stackrel{p_j}\longrightarrow j$，这个时候我们可以说明，从结点$i$到结点$k$的最短路径$p_i$的所有中间结点都取自$\{1,2,\dots,k-1\}$，对于路径$p_j$也可以作相同论断。</li>
+</ol>
+<p>​    因此，我们可以设计一个递归公式去求解问题。设$d^{(k)}_{ij}$表示从结点$i$到结点$j$的一条中间结点全部取自$\{1,2,\dots,k\}$的最短路径的权重，那么当$k=0$时，有$d_{ij}^{(0)}=w_{ij}$，当$k&gt;0$时，有$d_{ij}^{(k)}=min(d_{ij}^{(k-1)},d_{ik}^{(k-1)}+d_{kj}^{(k-1)})$，最终，我们可以知道$d_{ij}^{(n)}=\delta(i,j)$</p>
+<p>​    基于如上的递归公式，可以设计出如下伪代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">FLOYD-<span class="built_in">WARSHALL</span>(W)</span><br><span class="line">    n=W.rows</span><br><span class="line">    D=W</span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">            <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">                d[i][j]=<span class="built_in">min</span>(d[i][j],d[i][k]+d[k][j])</span><br><span class="line">    <span class="keyword">return</span> D</span><br></pre></td></tr></table></figure>
+<p>​    其实讲道理应该在第一重循环之后每次都用一个新的数组来储存当前$k$对应的情况的，不过这里省略了。</p>
+<p>​    很显然该算法的时间复杂度为$O(n^3)$</p>
+<p>​    要构建出最短路径，我们可以在计算最短路径的时候同时维系一个前驱矩阵，我们定义$\pi_{ij}^{(k)}$为从结点$i$到结点$j$的一条所有中间结点都取自$\{1,2,\dots,k\}$的最短路径上的结点$j$的前驱节点。当$k=0$时，显然其值要么为$NIL$，要么为$i$。当$k&gt;0$时，根据上面的讨论，可以知道结点$j$的前驱要么是$\pi_{ij}^{(k-1)}$，要么是$\pi_{kj}^{(k-1)}$，因此我们就可以在计算最短路径的时候同时维系这样一个前驱矩阵。</p>
+<p>​    当然也有另一种方法，即先计算矩阵$D$，再根据它来构建出前驱矩阵。</p>
+<p>​    此外，我们也可以更改Floyd算法来求解有向图的传递闭包，只需要将相应的运算更换成逻辑运算即可，伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">TRANSITIVE-<span class="built_in">CLOSURE</span>(G)</span><br><span class="line">    n=|G.V|</span><br><span class="line">    let T be a <span class="keyword">new</span> n*n matrix</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">            <span class="keyword">if</span> i==j <span class="built_in"><span class="keyword">or</span></span> (i,j) in G.E</span><br><span class="line">                t[i][j]=<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                t[i][j]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">            <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">                t[i][j]=t[i][j]|(t[i][k]&amp;t[k][j])</span><br><span class="line">    <span class="keyword">return</span> T</span><br></pre></td></tr></table></figure>
+<h3 id="Johnson算法"><a href="#Johnson算法" class="headerlink" title="Johnson算法"></a>Johnson算法</h3><p>​    这一部分主要参考<a href="https://zhuanlan.zhihu.com/p/99802850">知乎文章</a>，感觉比算法导论讲的要清晰。</p>
+<p>​    Johnson算法和Floyd算法一样，都可以求出无负环图上任意两点间的最短路径。</p>
+<p>​    首先，正如前文所提到的，要想求出所有结点对的最短路径，可以运行$n$次单源最短路径算法来求解。我们知道Dijkstra算法在运行时间上是要优于Bellman-Ford算法的，但是它却无法求解带负权的图。我们接下来就是要寻找一种方法使得Dijkstra算法可以求解带负权的图。</p>
+<p>​    我们考虑一下，从最简单的角度来说，如果我们把每条边的权值都增加来保证图中所有的边权值非负，似乎就可以了，但是事实上这种思路是错误的，如下图，首先我们可以看出从结点1到结点5的最短路径明显是1 2 3 5</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220430093558423.png" alt="image-20220430093558423"></p>
+<p>​    如果我们把每个边的权值都加3来保证非负，则图变成了下面这样</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220430093720492.png" alt="image-20220430093720492"></p>
+<p>​    显然这个时候最短路径变成了1 4 5，就出现了问题。</p>
+<p>​    而Johnson算法采用了另外一种方法来解决这一问题。</p>
+<p>​    首先我们新建一个虚拟结点，不妨设它的编号是0，然后从这个结点开始向其它所有结点连一条边权为0的边。然后我们跑一次Bellman-ford算法，求出结点0到其它所有点的最短路径长度，记为$h_i$，接下来，对于结点$u$到结点$v$，假设初始权重为$w$，那么我们将其边权设置成$w+h_u-h_v$即可，然后就可以用Dijkstra算法了。</p>
+<p>​    关于这个算法的证明，其实这里和势能是有点像的。我们假设在重新赋权的图上从$s$点到$t$点有一条最短路径$s\rightarrow p_1\rightarrow p_2\rightarrow \dots\rightarrow p_k\rightarrow t$，那么它的权重就是$(w(s,p_1)+h_s-h_{p_1})+(w(p_1,p_2)+h_{p_1}-h_{p_2})+\dots+(w(p_k,t)+h_{p_k}-h_t)$</p>
+<p>​    化简后就是$w(s,p_1)+w(p_1,p_2)+\dots+w(p_k,t)+h_s-h_t$，也就是说无论从结点$s$到$t$走哪一条路径，其实就是在原图的基础上增加了一个“势能差”，所以原图上的最短路径和新图上的最短路径是对应的！</p>
+<p>​    接下来只需要说明赋权后权值非负即可，事实上，根据三角形不等式，新图上任意一边$(u,v)$满足$h_v\le h_u+w(u,v)$。这条边重新标记后的边权为$w^`(u,v)=w(u,v)+h_u-h_v\ge 0$。这样我们证明了新图上的边权均非负。</p>
+<h1 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h1><h2 id="流网络"><a href="#流网络" class="headerlink" title="流网络"></a>流网络</h2><p>​    这一部分给出流网络的定义以及最大流问题的形式化描述。</p>
+<p>​    我们首先给出流网络的定义。流网络$G=(V,E)$是一个有向图，图中每一条边$(u,v)\in E$都有一个非负的容量值$c(u,v)\ge 0$，并且如果边集合$E$中包含一条边$(u,v)$，那就不会存在反方向的边$(v,u)$。此外，如果$(u,v)\notin E$，则定义$c(u,v)=0$，并且图中不允许有自循环。另外，流网络中有两个特殊的结点，即源结点$s$和汇点$t$。为了方便起见，我们假设每个结点都在源节点到汇点的一条路径上，因此流网络是连通的，并且除源节点外的所有结点都至少有一条进入的边，即$|E|\ge|V|-1$。</p>
+<p>​    下面我们给出流的形式化定义。设$G=(V,E)$是一个流网络，其容量函数为$c$。设其源节点为$s$，汇点为$t$，那么流网络$G$中的流是一个实值函数$f:V\times V\rightarrow R$，并且满足以下两点性质：</p>
+<ol>
+<li><strong>容量限制</strong>，即对于所有的结点$u,v\in V$，要求$0\le f(u,v)\le c(u,v)$</li>
+<li><strong>流量守恒</strong>，对于所有的非源节点和汇点的结点，即$u\in V-\{s,t\}$，要求$\sum_{v\in V}f(u,v)=\sum_{v\in V}f(v,u)$</li>
+</ol>
+<p>​    此时，我们称非负数值$f(u,v)$就是从结点$u$到结点$v$的流，其值$|f|$定义为$|f|=\sum_{v\in V}f(s,v)-\sum_{v\in V}f(v,s)$，也就是说，流值为从源节点流出的总流量减去流入源节点的总流量。当然，第二个和式在一般的流网络中的值总为0。最大流问题就是需要我们去找到流值最大的一个流。</p>
+<p>​    在实际情况中，很容易就会出现$(u,v)$和$(v,u)$均存在的情况，很显然这违背了我们的假设。我们将其称之为<strong>反平行边</strong>。我们需要考虑将反平行边去掉。这里采用了这样的替换方法，即加入一个新节点$u^`$，将原本的边分成两部分，并且每部分的容量和原本的容量相同，这样就依然满足了我们的约束，并且和原本的网络是等价的。</p>
+<p>​    另外，实际情况中也可能会出现有多个源节点和多个汇点，这个时候我们一般考虑加入一个超级源节点$s$和一个超级汇点$t$，并且有$c(s,s_i)=\infty$，$c(t_i,t)=\infty$</p>
+<h2 id="Ford-Fulkerson方法"><a href="#Ford-Fulkerson方法" class="headerlink" title="Ford-Fulkerson方法"></a>Ford-Fulkerson方法</h2><p>​    为了研究这一方法，我们需要先引入几个概念</p>
+<h3 id="残存网络"><a href="#残存网络" class="headerlink" title="残存网络"></a>残存网络</h3><p>​    直观上讲，在给定流网络$G$和流量$f$的时候，残存网络$G_f$由仍有空间对流量进行调整的边构成，并且每个边都有一个<strong>残存容量</strong>。</p>
+<p>​    对于残存容量，假定有一个流网络$G=(V,E)$，源节点为$s$，汇点为$t$，当$(u,v)\in E$时，残存容量为$c_f(u,v)=c(u,v)-f(u,v)$，当$(v,u)\in E$时，残存容量为$c_f(u,v)=f(v,u)$，在其他情况下，残存容量均为0。</p>
+<p>​    接下来，残存网络$G_f$的定义就可以给出，即$G_f=(V,E_f)$，其中$E_f=\{(u,v)\in V\times V:c_f(u,v)&gt;0\}$。即残存网络的每条边都必须允许大于0的流量通过。此外，也容易看出$|E_f|\le2|E|$</p>
+<p>​    从定义中可以看出，残存网络除了不满足不能有反平行边这一约束之外，其余可以认为就是一个流网络。</p>
+<p>​    残存网络给我们指出了在流网络中增加流的一个方向。我们假设如果$f$是$G$的一个流，$f^{‘}$是$G_f$的一个流，定义$f\uparrow f^{‘}$为流$f^{‘}$对流$f$的<strong>递增</strong>，是一个从$V\times V$到$R$的一个函数，定义为$(f\uparrow f^{‘})(u,v)=f(u,v)+f^{‘}(u,v)-f^{‘}(v,u),(u,v)\in E$，否则为0。这里的先加后减类似于一个抵消操作。对于该性质，可以证明$f\uparrow f^{‘}$是图$G$的一个流并且$|f\uparrow f^{‘}|=|f|+|f^{‘}|$，这条定理的证明也蛮有意思，首先证明$f\uparrow f^{‘}$满足流的性质，然后计算其值，本身证明都是利用这些定义，在求值的时候也比较巧妙，限于篇幅此处略过。</p>
+<h3 id="增广路径"><a href="#增广路径" class="headerlink" title="增广路径"></a>增广路径</h3><p>​    增广路径就是残存网络中一条从源节点到汇点的简单路径。我们称在一条增广路径$p$上能够为每条边增加的流量最大值为路径$p$的残存容量，具体定义为$c_f(p)=min\{c_f(u,v):(u,v) \in p\}$，进一步，我们可以定义函数$f_p: V\times V\rightarrow R$，当$(u,v)\in p$时，$f_p(u,v)=c_f(p)$，否则为0。显然$f_p$也是残存网络中的一个流，流值就是$c_f(p)$</p>
+<p>​    可以证明，对流$f$增加$f_p$的量，就可以获得$G$的另一个流，并且更接近最大流。</p>
+<h3 id="流网络的切割"><a href="#流网络的切割" class="headerlink" title="流网络的切割"></a>流网络的切割</h3><p>​    我们已经介绍了残存网络和增广路径的概念，这两个概念指明了增加流值的一个方向，而Ford-Fulkerson方法的核心就是沿着增广路径重复增加路径上的流量，然后我们接下来需要找到一种方法来确定我们已经拥有了最大流，这就用到了<strong>最大流最小割定理</strong>，我们先来说一下流网络中切割的概念</p>
+<p>​    流网络$G=(V,E)$的一个切割$(S,T)$将结点集合$V$划分成$S$和$T=V-S$两个集合，并且使得$s\in S$，$t\in T$。然后我们定义横跨切割$(S,T)$的<strong>净流量</strong>$f(S,T)=\sum_{u\in S}\sum_{v\in T}f(u,v)-\sum_{u\in S}\sum_{v \in T}f(v,u)$，切割$(S,T)$的容量为$c(S,T)=\sum_{u\in S}\sum_{v\in T}c(u,v)$，一个网络中的最小切割是整个网络中容量最小的切割。</p>
+<p>​    可以证明，对于给定流$f$，横跨任何切割的净流量都相同，都是流值。证明的方法也很优美，主要是利用定义对和式进行相应的变换，最终得到定义中的式子，巧妙地利用了流量守恒性质来对和式进行变换。通过这条引理，我们可以推出，流网络$G$中的任意流$f$的值不能超过$G$的任意切割的流量。这个推论是很显然的，只需要借助容量限制性质进行一步简单地放缩即可。</p>
+<p>​    下面我们陈述一下最大流最小割定理。</p>
+<p>​    设$f$为流网络$G=(V,E)$中的一个流，该流网络的源节点为$s$，汇点为$t$，则下面的条件是等价的：</p>
+<ol>
+<li>$f$是$G$的一个最大流</li>
+<li>残存网络$G_f$不包括任何增广路径</li>
+<li>$|f|=c(S,T)$，其中$(S,T)$是流网络$G$的某个切割</li>
+</ol>
+<p>​    采用循环论证。</p>
+<h3 id="基本的Ford-Fulkerson算法"><a href="#基本的Ford-Fulkerson算法" class="headerlink" title="基本的Ford-Fulkerson算法"></a>基本的Ford-Fulkerson算法</h3><p>​    先给出伪代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">FORD-<span class="built_in">FULKERSON</span>(G,s,t)</span><br><span class="line">    <span class="function"><span class="keyword">for</span> each <span class="title">edge</span><span class="params">(u,v)</span> in G.<span class="title">E</span></span></span><br><span class="line"><span class="function">        <span class="params">(u,v)</span>.f</span>=<span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">while</span> there exists a path p from s to t in the residual network Gf</span></span><br><span class="line"><span class="function">        <span class="title">cf</span><span class="params">(p)</span></span>=<span class="built_in">min</span>(<span class="built_in">cf</span>(u,v) in p)</span><br><span class="line">        <span class="function"><span class="keyword">for</span> each <span class="title">edge</span><span class="params">(u,v)</span> in p</span></span><br><span class="line"><span class="function">            <span class="title">if</span> <span class="params">(u,v)</span> in <span class="title">E</span></span></span><br><span class="line"><span class="function">                <span class="params">(u,v)</span>.f</span>=(u,v).f+<span class="built_in">cf</span>(p)</span><br><span class="line">            <span class="keyword">else</span> (v,u).f=(v,u).f-<span class="built_in">cf</span>(p)</span><br></pre></td></tr></table></figure>
+<p>​    在其每次迭代中，寻找某条增广路径，然后通过它对流$f$进行修改来获得一个更大的流，当不再有增广路径时，就得到了最大流。</p>
+<h3 id="Edmonds-Karp算法"><a href="#Edmonds-Karp算法" class="headerlink" title="Edmonds-Karp算法"></a>Edmonds-Karp算法</h3><p>​    我们主要通过使用BFS寻找增广路径来改善Ford-Fulkerson算法的效率，也就是说，我们选择的增广路径是一条从源节点到汇点的最短路径，其中<strong>每条边的权重为1</strong>，其运行时间复杂度为$O(VE^2)$</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图算法</tag>
+      </tags>
+  </entry>
 </search>
