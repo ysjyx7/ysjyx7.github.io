@@ -195,7 +195,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">获取内核</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">内核源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8"><span class="nav-number">1.2.</span> <span class="nav-text">编译内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%86%85%E6%A0%B8"><span class="nav-number">1.3.</span> <span class="nav-text">安装内核</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">内核开发特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%A0%87%E5%87%86%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">无标准头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU-C"><span class="nav-number">2.2.</span> <span class="nav-text">GNU C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.3.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%86%85%E6%A0%B8"><span class="nav-number">1.</span> <span class="nav-text">获取内核</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">内核源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8"><span class="nav-number">1.2.</span> <span class="nav-text">编译内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%86%85%E6%A0%B8"><span class="nav-number">1.3.</span> <span class="nav-text">安装内核</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%BC%80%E5%8F%91%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">内核开发特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%A0%87%E5%87%86%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">无标准头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU-C"><span class="nav-number">2.2.</span> <span class="nav-text">GNU C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.3.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -364,48 +364,38 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1>获取内核</h1>
-<h2 id="内核源码"><a class="header-anchor" href="#内核源码">¶</a>内核源码</h2>
-<p>​	这里主要有两种方式，一种是在官网<a target="_blank" rel="noopener" href="http://www.kernel.org">http://www.kernel.org</a>获取当前版本的源码，可以是完整的压缩格式，也可以是增量补丁，另一种是使用Git，这里建议使用Git</p>
+        <h1 id="获取内核"><a href="#获取内核" class="headerlink" title="获取内核"></a>获取内核</h1><h2 id="内核源码"><a href="#内核源码" class="headerlink" title="内核源码"></a>内核源码</h2><p>​	这里主要有两种方式，一种是在官网<a target="_blank" rel="noopener" href="http://www.kernel.org/">http://www.kernel.org</a>获取当前版本的源码，可以是完整的压缩格式，也可以是增量补丁，另一种是使用Git，这里建议使用Git</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git</span><br></pre></td></tr></table></figure>
+
 <p>​	以上可以得到当前的稳定版代码</p>
-<h2 id="编译内核"><a class="header-anchor" href="#编译内核">¶</a>编译内核</h2>
-<p>​	在编译内核之前，需要对内核进行配置，自己需要什么功能，就勾选配置项加进去什么功能，进行配置主要有如下几种方法：</p>
+<h2 id="编译内核"><a href="#编译内核" class="headerlink" title="编译内核"></a>编译内核</h2><p>​	在编译内核之前，需要对内核进行配置，自己需要什么功能，就勾选配置项加进去什么功能，进行配置主要有如下几种方法：</p>
 <ol>
-<li>
-<p><strong>make config</strong>，用来逐一遍历所有的配置项，让用户来一一选择，但问题是太花费时间了。</p>
+<li><p><strong>make config</strong>，用来逐一遍历所有的配置项，让用户来一一选择，但问题是太花费时间了。</p>
 </li>
-<li>
-<p><strong>make menuconfig</strong>，图形界面工具，但是需要预先下载ncurse库</p>
+<li><p><strong>make menuconfig</strong>，图形界面工具，但是需要预先下载ncurse库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ncurses-dev</span><br></pre></td></tr></table></figure>
+
 <p>当然如果这样的话也有可能报如下错误：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326170815014.png" alt="image-20220326170815014"></p>
 <p>只需要安装词法解析器flex和语法解析器bison即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install flex</span><br><span class="line">sudo apt install bison</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p><strong>make gconfig</strong>，基于gtk+的图形工具，没有使用过</p>
+<li><p><strong>make gconfig</strong>，基于gtk+的图形工具，没有使用过</p>
 </li>
-<li>
-<p><strong>make defconfig</strong>，基于默认配置来创建一个配置</p>
+<li><p><strong>make defconfig</strong>，基于默认配置来创建一个配置</p>
 </li>
 </ol>
 <p>​    在配置好内核之后，直接用<strong>make</strong>编译即可，当然编译中也会因为一些库没有安装而报错，这个时候根据提示安装需要的库即可</p>
-<p>​	另外可以通过<strong>make &gt; /dev/null</strong>，来重定向无用的输出信息，可以通过<strong>make -jn</strong>来衍生多个编译作业来并行运行，进而加快编译过程，其中的<strong>n</strong>指的是衍生出的作业数，一般每个处理器上衍生出一个或两个作业即可，<s>也是怪我没有趁早看到这一点，现在已经编译好久了</s>，另外也可以使用<strong>distcc</strong>或者<strong>ccache</strong>来动态改善内核编译时间，distcc是一个分布式编译环境，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weiwangchao_/article/details/12275923">distcc</a>进行配置使用，ccache是以空间换时间的工具，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34787560/article/details/89467776">ccache</a>进行配置</p>
-<h2 id="安装内核"><a class="header-anchor" href="#安装内核">¶</a>安装内核</h2>
-<p>​	直接<strong>make modules_install</strong>即可，这个时候编译好的模块会被安装到\lib\modules下</p>
-<h1>内核开发特点</h1>
-<h2 id="无标准头文件"><a class="header-anchor" href="#无标准头文件">¶</a>无标准头文件</h2>
-<p>​	如果要用C库的话，对内核而言，效率太低，所以这些用户空间能用的所有的标准库在内核开发中都用不了，但是常用的库函数在内核中都已经得到了实现，比如操纵字符串的函数组在<strong>lib/string.c</strong>文件中，包含<strong>lib/string.h</strong>头文件即可使用，不过让人奇怪的是它没有实现printf函数，但是它有<strong>printk</strong>函数，基本用法一样，但是在printk函数中可以指定标签来设置优先级。</p>
-<h2 id="GNU-C"><a class="header-anchor" href="#GNU-C">¶</a>GNU C</h2>
-<p>​	只能用C语言及其扩展来编写，主要有以下几个扩展</p>
+<p>​	另外可以通过<strong>make &gt; &#x2F;dev&#x2F;null</strong>，来重定向无用的输出信息，可以通过<strong>make -jn</strong>来衍生多个编译作业来并行运行，进而加快编译过程，其中的<strong>n</strong>指的是衍生出的作业数，一般每个处理器上衍生出一个或两个作业即可，<del>也是怪我没有趁早看到这一点，现在已经编译好久了</del>，另外也可以使用<strong>distcc</strong>或者<strong>ccache</strong>来动态改善内核编译时间，distcc是一个分布式编译环境，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weiwangchao_/article/details/12275923">distcc</a>进行配置使用，ccache是以空间换时间的工具，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34787560/article/details/89467776">ccache</a>进行配置</p>
+<h2 id="安装内核"><a href="#安装内核" class="headerlink" title="安装内核"></a>安装内核</h2><p>​	直接<strong>make modules_install</strong>即可，这个时候编译好的模块会被安装到\lib\modules下</p>
+<h1 id="内核开发特点"><a href="#内核开发特点" class="headerlink" title="内核开发特点"></a>内核开发特点</h1><h2 id="无标准头文件"><a href="#无标准头文件" class="headerlink" title="无标准头文件"></a>无标准头文件</h2><p>​	如果要用C库的话，对内核而言，效率太低，所以这些用户空间能用的所有的标准库在内核开发中都用不了，但是常用的库函数在内核中都已经得到了实现，比如操纵字符串的函数组在<strong>lib&#x2F;string.c</strong>文件中，包含<strong>lib&#x2F;string.h</strong>头文件即可使用，不过让人奇怪的是它没有实现printf函数，但是它有<strong>printk</strong>函数，基本用法一样，但是在printk函数中可以指定标签来设置优先级。</p>
+<h2 id="GNU-C"><a href="#GNU-C" class="headerlink" title="GNU C"></a>GNU C</h2><p>​	只能用C语言及其扩展来编写，主要有以下几个扩展</p>
 <ol>
 <li>内联函数</li>
 <li>内联汇编，可以在C函数中嵌入汇编指令</li>
 <li>分支声明，可以用**likey()<strong>和</strong>unlikely()**来对分支语句进行优化，前者用来标记通常为真的选择，而后这样用来标记通常为假的选择，这两个东西是内核封装起来的宏</li>
 </ol>
-<h2 id="其他"><a class="header-anchor" href="#其他">¶</a>其他</h2>
-<ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
 <li>没有内存保护机制</li>
 <li>不要轻易使用浮点数</li>
 <li>内核栈容积较小，并且固定</li>
@@ -541,14 +531,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

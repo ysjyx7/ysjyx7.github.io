@@ -343,7 +343,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.6k</span>
+      <span>2.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -362,7 +362,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Shell简介"><a href="#Shell简介" class="headerlink" title="Shell简介"></a>Shell简介</h1><p>​    Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
+        <h1 id="Shell简介"><a href="#Shell简介" class="headerlink" title="Shell简介"></a>Shell简介</h1><p>​	Shell是一个用来接收键盘输入的命令并将其传递给操作系统的程序，几乎所有的Linux程序使用的Shell是<strong>Bash</strong>，另外，在使用GUI的时候，我们需要所谓的<strong>终端仿真器</strong>来与Shell进行交互，在所有Linux版本中几乎都被简单地成为<strong>终端（terminal）</strong></p>
 <h1 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h1><h2 id="一些基本的操作列举"><a href="#一些基本的操作列举" class="headerlink" title="一些基本的操作列举"></a>一些基本的操作列举</h2><ol>
 <li>如果随便输入东西，会报错。</li>
 <li>使用方向键上下可以查询<strong>命令历史</strong></li>
@@ -379,19 +379,19 @@
 <li>首先需要明确Linux的文件系统树和Windows是差不多的，都是采用的树状结构</li>
 <li><strong>pwd</strong>可以显示当前的工作目录</li>
 <li><strong>ls</strong>命令可以列出当前工作目录中的文件和子目录</li>
-<li><strong>cd</strong>命令可以更改当前工作目录，可以用绝对路径或相对路径，绝对路径很显然，而对于相对路径，用了两种表示法，即用<strong>.</strong>，表示当前目录，用<strong>..</strong>表示父目录，另外就是很多时候可以直接忽略掉<strong>./</strong></li>
+<li><strong>cd</strong>命令可以更改当前工作目录，可以用绝对路径或相对路径，绝对路径很显然，而对于相对路径，用了两种表示法，即用**.<strong>，表示当前目录，用</strong>..<strong>表示父目录，另外就是很多时候可以直接忽略掉</strong>.&#x2F;**</li>
 <li>另外需要说一下Linux的一些特点，即<strong>没有文件拓展名</strong>，另外就是以点开头的文件是默认被隐藏的，ls命令在不使用<strong>ls -a</strong>的情况下不会显示</li>
 <li>下面给一些cd命令的便捷写法<ul>
 <li><strong>cd</strong>，切换到主目录</li>
-<li><strong>cd -</strong>，切换回前一个工作目录</li>
+<li>**cd -**，切换回前一个工作目录</li>
 <li><strong>cd ~user_name</strong>，切换到用户名的主目录</li>
 </ul>
 </li>
 </ol>
 <h2 id="探索Linux系统时遇到的命令"><a href="#探索Linux系统时遇到的命令" class="headerlink" title="探索Linux系统时遇到的命令"></a>探索Linux系统时遇到的命令</h2><h3 id="重探ls命令"><a href="#重探ls命令" class="headerlink" title="重探ls命令"></a>重探ls命令</h3><ol>
-<li><p><strong>ls /usr</strong>，指定列出某目录下的内容</p>
+<li><p><strong>ls &#x2F;usr</strong>，指定列出某目录下的内容</p>
 </li>
-<li><p><strong>ls ~ /usr</strong>，指定列出多目录下的内容</p>
+<li><p><strong>ls ~ &#x2F;usr</strong>，指定列出多目录下的内容</p>
 </li>
 <li><p><strong>ls -l</strong>显示时间等更详细的内容</p>
 </li>
@@ -401,18 +401,56 @@
 </li>
 <li><p>这些选项可以直接组合，例如<strong>ls -lt</strong>，其中t选项用来依照文件修改时间对输出结果进行排序</p>
 </li>
-<li><p>也可以在后面加入长选项<strong>—reverse</strong>，可以以降序排列输出结果</p>
+<li><p>也可以在后面加入长选项**–reverse**，可以以降序排列输出结果</p>
 </li>
 <li><p>下面的表格给出了常用的ls命令选项</p>
 </li>
-<li><p>| 选项                | 描述                               |<br>| —————————- | ————————————————— |<br>| -a,—all            | 列出所有的文件包括隐藏文件         |<br>| -A,—almost-all     | 不列出.和..                        |<br>| -d,-directory       | 列出该目录的详细信息               |<br>| -F,—classify       | 在每个列出的名称后加入类型指示符   |<br>| -h,—human-readable | 不以字节为单位显示长格式的输出结果 |<br>| -l                  | 以长格式显示输出                   |<br>| -r,—reverse        | 降序排列，而通常ls以升序排列       |<br>| -S                  | 按文件大小输出                     |</p>
+<li><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a,–all</td>
+<td>列出所有的文件包括隐藏文件</td>
+</tr>
+<tr>
+<td>-A,–almost-all</td>
+<td>不列出.和..</td>
+</tr>
+<tr>
+<td>-d,-directory</td>
+<td>列出该目录的详细信息</td>
+</tr>
+<tr>
+<td>-F,–classify</td>
+<td>在每个列出的名称后加入类型指示符</td>
+</tr>
+<tr>
+<td>-h,–human-readable</td>
+<td>不以字节为单位显示长格式的输出结果</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以长格式显示输出</td>
+</tr>
+<tr>
+<td>-r,–reverse</td>
+<td>降序排列，而通常ls以升序排列</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>按文件大小输出</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h3><p>​    主要用来确定文件的类型，<strong>file filename</strong>，万物皆文件！</p>
-<h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><p>​    该命令可以用来查看文本文件，即<strong>less filename</strong>，进入文件后有一些比较好用的命令</p>
-<div class="table-container">
+<h3 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h3><p>​	主要用来确定文件的类型，<strong>file filename</strong>，万物皆文件！</p>
+<h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><p>​	该命令可以用来查看文本文件，即<strong>less filename</strong>，进入文件后有一些比较好用的命令</p>
 <table>
 <thead>
 <tr>
@@ -420,8 +458,7 @@
 <th>操作</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>b</td>
 <td>后翻一页</td>
 </tr>
@@ -446,7 +483,7 @@
 <td>跳转到文件开头</td>
 </tr>
 <tr>
-<td>/characters</td>
+<td>&#x2F;characters</td>
 <td>向前搜索</td>
 </tr>
 <tr>
@@ -461,15 +498,12 @@
 <td>q</td>
 <td>退出文件或者说less命令</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="另外的一些知识"><a href="#另外的一些知识" class="headerlink" title="另外的一些知识"></a>另外的一些知识</h3><ol>
 <li>关于复制粘贴，使用鼠标的话，双击可以复制文件名，单击中键可以粘贴到命令中</li>
 </ol>
-<h2 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>​    这部分将会讲述很多非常灵活与使用的东西</p>
-<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>​    使用Shell过程中要使用非常多的文件名，所以就提供了一种特殊字符，即通配符，用来进行匹配，感觉就跟正则表达式差不多</p>
-<div class="table-container">
+<h2 id="操作文件和目录"><a href="#操作文件和目录" class="headerlink" title="操作文件和目录"></a>操作文件和目录</h2><p>​	这部分将会讲述很多非常灵活与使用的东西</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>​	使用Shell过程中要使用非常多的文件名，所以就提供了一种特殊字符，即通配符，用来进行匹配，感觉就跟正则表达式差不多</p>
 <table>
 <thead>
 <tr>
@@ -477,8 +511,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>*</td>
 <td>匹配任意多个字符</td>
 </tr>
@@ -498,11 +531,8 @@
 <td>[[:class:]]</td>
 <td>匹配属于字符类class中的任意单个字符</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p>​    下面是一些常用的字符类</p>
-<div class="table-container">
+</tbody></table>
+<p>​	下面是一些常用的字符类</p>
 <table>
 <thead>
 <tr>
@@ -510,8 +540,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>[:alnum:]</td>
 <td>任意匹配单个字母数字字符</td>
 </tr>
@@ -531,10 +560,8 @@
 <td>[:upper:]</td>
 <td>任意匹配单个大写字母</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p>​    在GUI中也可以使用通配符</p>
+</tbody></table>
+<p>​	在GUI中也可以使用通配符</p>
 <h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ol>
 <li><p>mkdir，在当前目录下创建新目录，并且可以一次创建多个</p>
 </li>
@@ -546,7 +573,34 @@
 </li>
 <li><p>下表给出了cp命令中常用的选项</p>
 </li>
-<li><p>| 选项             | 含义                                                         |<br>| ———————— | —————————————————————————————— |<br>| -a,—archive     | 复制文件和目录及其包括所有权与权限在内的所有属性             |<br>| -i,—interactive | 在覆盖已有文件之前，提醒用户确认                             |<br>| -r,—recursive   | 递归复制目录及其内容                                         |<br>| -u,—update      | 从一个目录复制到另外一个目录时，只复制目标目录中不存在或更新的文件 |<br>| -v,—verbose     | 在进行复制时显示相关的信息                                   |</p>
+<li><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a,–archive</td>
+<td>复制文件和目录及其包括所有权与权限在内的所有属性</td>
+</tr>
+<tr>
+<td>-i,–interactive</td>
+<td>在覆盖已有文件之前，提醒用户确认</td>
+</tr>
+<tr>
+<td>-r,–recursive</td>
+<td>递归复制目录及其内容</td>
+</tr>
+<tr>
+<td>-u,–update</td>
+<td>从一个目录复制到另外一个目录时，只复制目标目录中不存在或更新的文件</td>
+</tr>
+<tr>
+<td>-v,–verbose</td>
+<td>在进行复制时显示相关的信息</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 </li>
@@ -563,7 +617,30 @@
 </li>
 <li><p>常用选项如下</p>
 </li>
-<li><p>| 选项             | 含义                         |<br>| ———————— | —————————————— |<br>| -i,—interactive | 请求用户确认                 |<br>| -r,—recursive   | 递归删除目录                 |<br>| -f,—force       | 忽略不存在的文件             |<br>| -v,—verbose     | 在执行删除操作时显示相关信息 |</p>
+<li><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i,–interactive</td>
+<td>请求用户确认</td>
+</tr>
+<tr>
+<td>-r,–recursive</td>
+<td>递归删除目录</td>
+</tr>
+<tr>
+<td>-f,–force</td>
+<td>忽略不存在的文件</td>
+</tr>
+<tr>
+<td>-v,–verbose</td>
+<td>在执行删除操作时显示相关信息</td>
+</tr>
+</tbody></table>
 </li>
 <li><p>要小心使用rm命令，因为Linux并没有提供还原的命令</p>
 </li>
@@ -576,9 +653,9 @@
 </ul>
 </li>
 </ol>
-<p><strong><em>这里说一下两种链接，硬链接有两个重要限制，一是不能引用所在文件系统之外的文件，即不能跨物理设备，二是不能引用目录。而符号链接克服了硬链接的限制，创建了一种特别类型的文件，内含一个指针，和Windows下的快捷方式比较像，就和引用指针比较类似，文件至少有一个硬链接，因为文件名都是通过硬链接创建的</em></strong></p>
-<p>​    另外对于判断硬链接和文件其实是同一个这个问题，其实可以用<strong>ls -i</strong>命令，系统为i结点分配了一系列的磁盘块，然后将i结点和名称关联在一起，这个命令可以显示这种信息</p>
-<p>​    <strong><em>关于软硬连接这方面以后有时间了要再看看</em></strong></p>
+<p><em><strong>这里说一下两种链接，硬链接有两个重要限制，一是不能引用所在文件系统之外的文件，即不能跨物理设备，二是不能引用目录。而符号链接克服了硬链接的限制，创建了一种特别类型的文件，内含一个指针，和Windows下的快捷方式比较像，就和引用指针比较类似，文件至少有一个硬链接，因为文件名都是通过硬链接创建的</strong></em></p>
+<p>​	另外对于判断硬链接和文件其实是同一个这个问题，其实可以用<strong>ls -i</strong>命令，系统为i结点分配了一系列的磁盘块，然后将i结点和名称关联在一起，这个命令可以显示这种信息</p>
+<p>​	<em><strong>关于软硬连接这方面以后有时间了要再看看</strong></em></p>
 
     </div>
 
@@ -708,14 +785,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

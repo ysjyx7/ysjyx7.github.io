@@ -373,12 +373,13 @@
 </ul>
 <p><strong>注意，基类的私有成员也被继承到了派生类，但是对派生类不可见，如果需要可见，需要将其声明成基类的成员友元</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>;</span>		<span class="comment">//前向声明类B</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>(<span class="keyword">int</span> x)&#123;a=x;&#125;</span><br><span class="line">    <span class="keyword">friend</span> B;   	<span class="comment">//声明B为A的友元类，B类成员可以访问A任何成员</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span>A&#123;    	 <span class="comment">//缺省为private继承，等价于class B: private A&#123;</span></span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">B</span>(<span class="keyword">int</span> x):<span class="built_in">A</span>(x)&#123; b=x; A::b=x; a+=<span class="number">3</span>; &#125; <span class="comment">//可访问私有成员A::a,A::b</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123; <span class="function">B <span class="title">x</span><span class="params">(<span class="number">7</span>)</span></span>; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><em><strong>要注意调用函数的时候调用的是哪个，是否需要加::，防止出现自递归</strong></em></p>
+<p>当继承方式为private的时候，很有可能出现不合理的情况，这个时候可以用<strong>基类::成员名</strong>或<strong>using 基类::成员名</strong>修改访问权限</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">POINT</span>:</span><span class="keyword">private</span> LOCATION&#123; <span class="comment">//private可省略</span></span><br><span class="line">		<span class="keyword">int</span> visible;		</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		LOCATION::getx;	<span class="comment">//修改权限成public</span></span><br><span class="line">		LOCATION::gety;	<span class="comment">//修改权限成public</span></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">isvisible</span><span class="params">( )</span></span>&#123; <span class="keyword">return</span> visible; &#125;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">( )</span>, <span class="title">hide</span><span class="params">( )</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">moveto</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;	</span><br><span class="line">		<span class="built_in">POINT</span>(<span class="keyword">int</span> x,<span class="keyword">int</span> y):<span class="built_in">LOCATION</span>(x,y)&#123; visible=<span class="number">0</span>; &#125;</span><br><span class="line">		~<span class="built_in">POINT</span>( )&#123; <span class="built_in">hide</span>( ); &#125;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>   <strong><em>要注意调用函数的时候调用的是哪个，是否需要加::，防止出现自递归</em></strong></p>
-<p>   当继承方式为private的时候，很有可能出现不合理的情况，这个时候可以用<strong>基类::成员名</strong>或<strong>using 基类::成员名</strong>修改访问权限</p>
-   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">POINT</span>:</span><span class="keyword">private</span> LOCATION&#123; <span class="comment">//private可省略</span></span><br><span class="line">		<span class="keyword">int</span> visible;		</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		LOCATION::getx;	<span class="comment">//修改权限成public</span></span><br><span class="line">		LOCATION::gety;	<span class="comment">//修改权限成public</span></span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">isvisible</span><span class="params">( )</span></span>&#123; <span class="keyword">return</span> visible; &#125;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">( )</span>, <span class="title">hide</span><span class="params">( )</span></span>;</span><br><span class="line">		<span class="function"><span class="keyword">void</span> <span class="title">moveto</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;	</span><br><span class="line">		<span class="built_in">POINT</span>(<span class="keyword">int</span> x,<span class="keyword">int</span> y):<span class="built_in">LOCATION</span>(x,y)&#123; visible=<span class="number">0</span>; &#125;</span><br><span class="line">		~<span class="built_in">POINT</span>( )&#123; <span class="built_in">hide</span>( ); &#125;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
-<ol>
 <li><p>标识符作用域从小到大为：作用于函数成员、作用于类或派生类、作用于基类、作用于虚基类，标识符作用范围越小，被访问的优先级越高</p>
 </li>
 <li><p>单继承派生类的构造顺序为</p>
@@ -405,6 +406,7 @@
 <h1 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h1><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><ol>
 <li><p>::运算符优先级和结合性与括号相同，在这里使用::主要是有时候可访问性带来的差异</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">POINT2D</span>&#123;</span></span><br><span class="line">	<span class="comment">//定义二维坐标点</span></span><br><span class="line">	    <span class="keyword">int</span>  x, y;   </span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">	    <span class="comment">//获得点的二维x轴坐标</span></span><br><span class="line">	    <span class="function"><span class="keyword">int</span>  <span class="title">getx</span><span class="params">( )</span></span>;</span><br><span class="line">	    <span class="built_in">POINT2D</span> (<span class="keyword">int</span> x, <span class="keyword">int</span> y)&#123;</span><br><span class="line">	    <span class="comment">//int x访问优先于数据成员x</span></span><br><span class="line">	        POINT2D::x=x;    </span><br><span class="line">	        <span class="comment">//POINT2D::x为数据成员x </span></span><br><span class="line">	        POINT2D::y=y;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>所以也就是说，标识符作用域越小，可访问性越高，所以在上述类的构造函数中，由于重名，会优先访问函数参数中的x</p>
 </li>
 <li><p>当同一作用域的标识符名和类名相同时，可以在类前面加class、struct、union来加以区分</p>
@@ -413,6 +415,7 @@
 <h2 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h2><ol>
 <li><p>名字空间需要在全局作用域中用namespace定义，最外层名字空间需要在全局作用域中唯一，不同名字空间中可以有相同的标识符，可以分多次定义，使用保留字using来使用名字空间，并且在引用某个成员之前，该成员必须在名字空间中被定义</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;    <span class="comment">//不会引入其中的变量、函数或者类型到当前作用域</span></span><br><span class="line"><span class="keyword">namespace</span> ALPHA &#123;	<span class="comment">//初始定义ALPHA</span></span><br><span class="line">	    <span class="keyword">extern</span> <span class="keyword">int</span> x;	<span class="comment">//声明整型变量x</span></span><br><span class="line">	    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">(<span class="keyword">int</span>)</span></span>;		<span class="comment">//声明函数原型void g(int)</span></span><br><span class="line">	    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">(<span class="keyword">long</span>)</span> </span>&#123;	<span class="comment">//定义函数void g(long)</span></span><br><span class="line">	        cout &lt;&lt; <span class="string">&quot;Processing a long argument.\n&quot;</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">using</span> ALPHA::x;	<span class="comment">//声明引用变量x，引入到当前作用域</span></span><br><span class="line"><span class="keyword">using</span> ALPHA::g;	<span class="comment">//声明引用void g(int)和g(long)</span></span><br><span class="line"><span class="keyword">namespace</span> ALPHA &#123; 	<span class="comment">//扩展定义ALPHA</span></span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">5</span>;		<span class="comment">//定义整型变量x</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">(<span class="keyword">int</span> a)</span> 		<span class="comment">//定义函数void g(int)</span></span></span><br><span class="line"><span class="function">    </span>&#123; cout &lt;&lt; <span class="string">&quot;Processing a int argument.\n&quot;</span>;   &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">(<span class="keyword">void</span>)</span> 		<span class="comment">//定义新的函数void g(void)</span></span></span><br><span class="line"><span class="function">    </span>&#123; cout &lt;&lt; <span class="string">&quot;Processing a void argument.\n&quot;</span>;  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">g</span>(<span class="number">4</span>);			<span class="comment">//调用函数void g(int)</span></span><br><span class="line">    <span class="built_in">g</span>(<span class="number">4L</span>);		<span class="comment">//调用函数void g(long)</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;X=&quot;</span>&lt;&lt;x;	<span class="comment">//访问整型变量x</span></span><br><span class="line">    <span class="built_in">g</span>(<span class="keyword">void</span>);		<span class="comment">//using之前无该 原型，失败</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>容易发现，访问名字空间中的成员有三种方式即直接访问、引用名字空间成员、引用名字空间</p>
 <ul>
 <li>直接访问，&lt;名字空间名称&gt;::&lt;成员名称&gt;</li>
@@ -439,8 +442,8 @@
 <li>重载函数：静态多态与静态联编；虚函数：动态多态与动态联编。前者在编译时确定，后者在运行时确定。</li>
 <li>虚函数必须是类的实例成员函数，在派生类中重新定义该成员函数时原型必须完全相同。<strong>构造函数不能定义成虚函数</strong>，在基类中定义过虚函数后，派生类中所有原型相同的函数自动成为虚函数，<strong>最好将普通成员函数全都定义成虚函数</strong></li>
 <li>注意：如果为基类和派生类的对象分配了动态内存，或者为派生类的对象成员分配了动态内存，则一定要将基类和派生类的析构函数定义为虚析构函数，否则便可能造成内存泄漏，导致系统出现内存保护错误。</li>
-<li>一个很重要的点就是如果类A内部有指针的话，应自定义A()、A(A&amp;&amp;) noexcept 、A(const A&amp;)、A&amp; operator=(const A&amp;)、 A&amp; operator=(A&amp;&amp;)noexcept以及~A()函数</li>
-<li>对于<strong>纯虚函数</strong>，定义格式为<strong>virtual 函数原型=0</strong>，有this指针，所以不能用static修饰，另外函数体定义<strong>应在派生类中实现</strong>，使其成为非纯虚函数。定义了纯虚函数的类称为<strong>抽象类</strong>，抽象类一般用作派生类的基类，<strong>不能有对象或类实例</strong>，如果派生类中没有重新定义纯虚函数或者定义了别的纯虚函数，那它又变成了一个抽象类。通过抽象类指针或引用可调用抽象类的纯虚函数，根据多态性，实际调用的应是该类的非抽象派生类的虚函数。如果该派生类没有重新定义被调虚函数，则会导致程序出现不可意料的运行错误。调用抽象类的普通函数成员不会出现该问题。</li>
+<li>一个很重要的点就是如果类A内部有指针的话，应自定义A()、A(A&amp;&amp;) noexcept 、A(const A&amp;)、A&amp; operator&#x3D;(const A&amp;)、 A&amp; operator&#x3D;(A&amp;&amp;)noexcept以及~A()函数</li>
+<li>对于<strong>纯虚函数</strong>，定义格式为<strong>virtual 函数原型&#x3D;0</strong>，有this指针，所以不能用static修饰，另外函数体定义<strong>应在派生类中实现</strong>，使其成为非纯虚函数。定义了纯虚函数的类称为<strong>抽象类</strong>，抽象类一般用作派生类的基类，<strong>不能有对象或类实例</strong>，如果派生类中没有重新定义纯虚函数或者定义了别的纯虚函数，那它又变成了一个抽象类。通过抽象类指针或引用可调用抽象类的纯虚函数，根据多态性，实际调用的应是该类的非抽象派生类的虚函数。如果该派生类没有重新定义被调虚函数，则会导致程序出现不可意料的运行错误。调用抽象类的普通函数成员不会出现该问题。</li>
 <li>malloc函数可以为抽象类分配空间，但是没有调用构造函数，纯虚函数一般不定义成别的函数的友元，因为它没有函数体，没什么意义，但是是可以的</li>
 </ol>
 <h1 id="多继承与虚基类"><a href="#多继承与虚基类" class="headerlink" title="多继承与虚基类"></a>多继承与虚基类</h1><ol>
@@ -460,12 +463,12 @@
 </li>
 </ol>
 <h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><ol>
-<li><p>a++返回右值，大概是因为a++是先把a复制出来，然后再整体运算，即a=a+1，最后返回的还是之前的a</p>
+<li><p>a++返回右值，大概是因为a++是先把a复制出来，然后再整体运算，即a&#x3D;a+1，最后返回的还是之前的a</p>
 </li>
 <li><p>运算符有如下分类：</p>
 <ul>
 <li>不能重载的：sizeof、. 、.*、::、? :</li>
-<li>只能重载为普通函数成员的：=、-&gt;、[]、()</li>
+<li>只能重载为普通函数成员的：&#x3D;、-&gt;、[]、()</li>
 <li>不能重载为普通函数成员的：new、delete</li>
 <li>其他运算符：都不能重载为静态函数成员，但可以重载为普通函数成员和普通函数。</li>
 </ul>
@@ -475,9 +478,9 @@
 </li>
 <li><p>重载函数种类不同，参数表列出的参数个数也不同。当然也有些特例不符合下面的例子</p>
 <ul>
-<li>重载为普通函数：参数个数=运算符目数</li>
-<li>重载为普通成员：参数个数=运算符目数 - 1 (即this指针)</li>
-<li>重载为静态成员：参数个数 = 运算符目数(没有this指针)</li>
+<li>重载为普通函数：参数个数&#x3D;运算符目数</li>
+<li>重载为普通成员：参数个数&#x3D;运算符目数 - 1 (即this指针)</li>
+<li>重载为静态成员：参数个数 &#x3D; 运算符目数(没有this指针)</li>
 </ul>
 </li>
 </ol>
@@ -610,14 +613,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

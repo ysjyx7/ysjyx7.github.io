@@ -342,7 +342,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>426</span>
+      <span>440</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -361,10 +361,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="大致工作模式"><a href="#大致工作模式" class="headerlink" title="大致工作模式"></a>大致工作模式</h1><p>​    对于语法分析，主要包括词法分析和语法分析两个部分，前者用来将输入分割成一个个有意义的词块，即为<strong>记号（token）</strong>，后者用来确定这些记号彼此之间如何关联。</p>
-<p>​    例如表达式<strong>alpha=beta+gamma</strong>，词法分析器将其分割为alpha、=、beta、+、gamma、；这些记号，而语法分析确定了beta+gamma是一个表达式，其值被赋给alpha</p>
-<h1 id="词法分析flex"><a href="#词法分析flex" class="headerlink" title="词法分析flex"></a>词法分析flex</h1><p>​    flex文件主要包含三个部分，每部分之间用<strong>%%</strong>隔开，第一个部分包含声明和选项设置，其中<strong>%{</strong>和<strong>%}</strong>之间的部分被照抄到C文件开头部分；第二个部分包含模式和对应的动作，模式一般用正则表达式描述，对应的动作就是C代码，为了防止出错，尽量放在大括号里；最后一部分也是C代码，是主程序。</p>
-<p>​    当程序需要一个记号的时候，会调用yylex()来读取一小部分的的输入然后返回相应的记号，这时候每个记号都由记号编号和记号值组成，记号编号是随机确定的，bison在创建语法分析器的时候自动从258开始指派</p>
+        <h1 id="大致工作模式"><a href="#大致工作模式" class="headerlink" title="大致工作模式"></a>大致工作模式</h1><p>​	对于语法分析，主要包括词法分析和语法分析两个部分，前者用来将输入分割成一个个有意义的词块，即为<strong>记号（token）</strong>，后者用来确定这些记号彼此之间如何关联。</p>
+<p>​	例如表达式<strong>alpha&#x3D;beta+gamma</strong>，词法分析器将其分割为alpha、&#x3D;、beta、+、gamma、；这些记号，而语法分析确定了beta+gamma是一个表达式，其值被赋给alpha</p>
+<h1 id="词法分析flex"><a href="#词法分析flex" class="headerlink" title="词法分析flex"></a>词法分析flex</h1><p>​	flex文件主要包含三个部分，每部分之间用**%%<strong>隔开，第一个部分包含声明和选项设置，其中</strong>%{<strong>和</strong>%}**之间的部分被照抄到C文件开头部分；第二个部分包含模式和对应的动作，模式一般用正则表达式描述，对应的动作就是C代码，为了防止出错，尽量放在大括号里；最后一部分也是C代码，是主程序。</p>
+<p>​	当程序需要一个记号的时候，会调用yylex()来读取一小部分的的输入然后返回相应的记号，这时候每个记号都由记号编号和记号值组成，记号编号是随机确定的，bison在创建语法分析器的时候自动从258开始指派</p>
 
     </div>
 
@@ -493,14 +493,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

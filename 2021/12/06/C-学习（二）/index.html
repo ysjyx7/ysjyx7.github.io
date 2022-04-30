@@ -364,15 +364,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    目前是考过了csp，最终的成绩是215 :satisfied: ，第一次参加，也算是非常满意了。考试过程中也出现了种种意外，但总的来说就是有惊无险吧。</p>
-<p>​    接下来这一周主要是复习C++的考试，STL的使用先放一放，主要着重于学习C++面向对象的一些特征，参考马光志老师的课件和《C++ Primer Plus》，主要记录一些自己不太熟悉的知识点。</p>
-<h1 id="类型、常量、变量、函数"><a href="#类型、常量、变量、函数" class="headerlink" title="类型、常量、变量、函数"></a>类型、常量、变量、函数</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>​    这块和C语言基本一样，多了一个布尔类型。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​	目前是考过了csp，最终的成绩是215 :satisfied: ，第一次参加，也算是非常满意了。考试过程中也出现了种种意外，但总的来说就是有惊无险吧。</p>
+<p>​	接下来这一周主要是复习C++的考试，STL的使用先放一放，主要着重于学习C++面向对象的一些特征，参考马光志老师的课件和《C++ Primer Plus》，主要记录一些自己不太熟悉的知识点。</p>
+<h1 id="类型、常量、变量、函数"><a href="#类型、常量、变量、函数" class="headerlink" title="类型、常量、变量、函数"></a>类型、常量、变量、函数</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>​	这块和C语言基本一样，多了一个布尔类型。</p>
 <p>​    <strong>自动类型转换路径：char→unsigned char→ short→unsigned short→ int→unsigned int→long→unsigned long→float→double→long double</strong></p>
-<h2 id="变量及类型解析"><a href="#变量及类型解析" class="headerlink" title="变量及类型解析"></a>变量及类型解析</h2><h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>​    用static在函数外部定义的为模块静态变量，可通过单目运算符::访问，而用static在函数内部定义的是局部静态变量，下面给一个例子</p>
+<h2 id="变量及类型解析"><a href="#变量及类型解析" class="headerlink" title="变量及类型解析"></a>变量及类型解析</h2><h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>​	用static在函数外部定义的为模块静态变量，可通过单目运算符::访问，而用static在函数内部定义的是局部静态变量，下面给一个例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> x, y; <span class="comment">//模块静态变量x、y定义，默认初始值均为0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span>&#123;    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> y;       <span class="comment">//局部静态变量y定义， 初始值y=0</span></span><br><span class="line">    <span class="keyword">return</span>  ::y+x+y;<span class="comment">//分别访问模块静态变量y,模块静态变量x,局部静态变量y</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<h3 id="几个关键字"><a href="#几个关键字" class="headerlink" title="几个关键字"></a>几个关键字</h3><p>​    这里主要讲的是const，constexpr，volatile，inline</p>
-<p>​    首先对于<strong>const</strong>和<strong>constexpr</strong>，两者都是修饰只读变量，但是const没有区分这是编译期常量还是运行期常量，而constexpr会让编译器将当前变量当成编译期常量，也就是让编译器在编译时就可以对表达式进行一定的优化。const修饰成员函数表示该函数不会修改类的状态，而constexpr不能修饰成员函数，只能作为函数返回值类型，表示该函数返回的是一个编译时确定的值，而如果用constexpr修饰函数，返回值<strong>不一定是编译期常量</strong>，编译器会根据实际情况进行操作。</p>
-<p>​    具体用constexpr修饰的函数，有以下几点注意事项：</p>
+
+<h3 id="几个关键字"><a href="#几个关键字" class="headerlink" title="几个关键字"></a>几个关键字</h3><p>​	这里主要讲的是const，constexpr，volatile，inline</p>
+<p>​	首先对于<strong>const</strong>和<strong>constexpr</strong>，两者都是修饰只读变量，但是const没有区分这是编译期常量还是运行期常量，而constexpr会让编译器将当前变量当成编译期常量，也就是让编译器在编译时就可以对表达式进行一定的优化。const修饰成员函数表示该函数不会修改类的状态，而constexpr不能修饰成员函数，只能作为函数返回值类型，表示该函数返回的是一个编译时确定的值，而如果用constexpr修饰函数，返回值<strong>不一定是编译期常量</strong>，编译器会根据实际情况进行操作。</p>
+<p>​	具体用constexpr修饰的函数，有以下几点注意事项：</p>
 <ol>
 <li><p>用constexpr定义的函数当其实参为常量时可以被更彻底的优化。</p>
 </li>
@@ -387,12 +388,16 @@
 <li><p>函数main为全局作用域，故不能定义为constexpr函数。</p>
 </li>
 </ol>
-<p>​    两者在修饰变量的时候也有区别，const表示变量无法修改，但初值不确定，而constexpr修饰的变量必须用常量表达式初始化，见下</p>
+<p>​	两者在修饰变量的时候也有区别，const表示变量无法修改，但初值不确定，而constexpr修饰的变量必须用常量表达式初始化，见下</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> sz = <span class="built_in">get_size</span>(); <span class="comment">// 虽然sz无法改变，但get_size() 编译阶段无法确定值，也就是说sz不是常量表达式</span></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> mf = <span class="number">20</span>; <span class="comment">// 字面量20是常量表达式</span></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> limit = mf + <span class="number">1</span>; <span class="comment">// mf + 1是常量表达式</span></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> sz = <span class="built_in">size</span>(); <span class="comment">// 只有当size是constexpr函数时，才是正确的</span></span><br></pre></td></tr></table></figure>
-<p>​    下面说<strong>volatile</strong>，主要作用是进行多线程编程，在单线程中限制编译器优化，表示修饰的变量易变，故可以有<strong>const volatile int z=0</strong>这种写法。</p>
-<p>​    然后是<strong>inline</strong>，在过去inline只能用在函数定义前，说明成内联函数，解决参数入栈出栈的开销，但是在C++17之后，inline也可以用来修饰变量。在C++17之前，要想在多个文件中使用同一个变量、函数的话，需要在头文件中声明，在源文件中定义，但是现在我们可以直接在头文件中用inline修饰想用的变量，这样就可以直接在头文件中定义了。另外对于静态数据成员，在C++17之后使用constexpr的时候就默认使用了inline，下面给一个例子</p>
+
+<p>​	下面说<strong>volatile</strong>，主要作用是进行多线程编程，在单线程中限制编译器优化，表示修饰的变量易变，故可以有<strong>const volatile int z&#x3D;0</strong>这种写法。</p>
+<p>​	然后是<strong>inline</strong>，在过去inline只能用在函数定义前，说明成内联函数，解决参数入栈出栈的开销，但是在C++17之后，inline也可以用来修饰变量。在C++17之前，要想在多个文件中使用同一个变量、函数的话，需要在头文件中声明，在源文件中定义，但是现在我们可以直接在头文件中用inline修饰想用的变量，这样就可以直接在头文件中定义了。另外对于静态数据成员，在C++17之后使用constexpr的时候就默认使用了inline，下面给一个例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//C++17之前的</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">int</span> n = <span class="number">5</span>;<span class="comment">//仅仅是一个声明</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;D::n;<span class="comment">//这是对的，如果仅用值传递的话是没问题的，但是如果需要用到地址的话就会报错</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//C++之后就相当于直接定义了n</span></span><br></pre></td></tr></table></figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>​    首先先说明一下左值和右值的概念，这里的左值大概指的是可以取地址的值，右值是取不了地址的值</p>
+
+
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>​	首先先说明一下左值和右值的概念，这里的左值大概指的是可以取地址的值，右值是取不了地址的值</p>
 <h3 id="有址引用"><a href="#有址引用" class="headerlink" title="有址引用"></a>有址引用</h3><ol>
 <li><p>传统左值有址引用变量必须由同类型的传统左值表达式初始化。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x=<span class="number">3</span>;<span class="keyword">int</span> &amp;y=x;<span class="comment">//正确</span></span><br><span class="line"><span class="keyword">char</span> x=<span class="string">&#x27;c&#x27;</span>;<span class="keyword">int</span> &amp;y=x;<span class="comment">//错误，因为首先进行强制类型转换(int)x，返回值是个右值</span></span><br></pre></td></tr></table></figure>
@@ -404,8 +409,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp; &amp;u;<span class="comment">//错，有址引用引用的变量没有地址可还行</span></span><br><span class="line"><span class="keyword">int</span> &amp; *v;<span class="comment">//错，因为指针v不能指向没有内存的int&amp;型</span></span><br><span class="line"><span class="keyword">int</span> x=<span class="number">3</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;y=x;<span class="comment">//对</span></span><br><span class="line"><span class="keyword">int</span> &amp;z=y;<span class="comment">//对，但不是z引用y，而是z和y都引用x</span></span><br><span class="line"><span class="keyword">int</span> &amp;a[<span class="number">2</span>];<span class="comment">//错，数组元素有内存</span></span><br><span class="line"><span class="keyword">int</span> s[<span class="number">6</span>];</span><br><span class="line"><span class="built_in"><span class="keyword">int</span></span> (&amp;t)[<span class="number">6</span>]=s;<span class="comment">//对，数组有内存，可被引用</span></span><br><span class="line"><span class="comment">//位段无地址，无法被引用</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>由于引用在编译的时候被编译成了指针，所以对指针的种种使用可以推广到引用上。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;u=<span class="number">3</span>;   <span class="comment">//u是所引用单元值只读的引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;v=u;	          <span class="comment">//错：u不能初始化所引用单元值可写的引用变量v	     </span></span><br><span class="line"><span class="keyword">int</span> x=<span class="number">3</span>; <span class="keyword">int</span> &amp;y=x;<span class="comment">//对：可进行y=4，则x=4。 </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;z=y;    <span class="comment">//对：不可进行z=4。但若y=5，则x=5, z=5。</span></span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> &amp;m=y;<span class="comment">//对：可有volatile有关指针的概念推广，m引用x</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;u=<span class="number">3</span>;   <span class="comment">//u是所引用单元值只读的引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;v=u;	          <span class="comment">//错：u不能初始化所引用单元值可写的引用变量v	     </span></span><br><span class="line"><span class="keyword">int</span> x=<span class="number">3</span>; <span class="keyword">int</span> &amp;y=x;<span class="comment">//对：可进行y=4，则x=4。 </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;z=y;    <span class="comment">//对：不可进行z=4。但若y=5，则x=5, z=5。</span></span><br><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> &amp;m=y;<span class="comment">//对：可有volatile有关指针的概念推广，m引用x</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="无址引用"><a href="#无址引用" class="headerlink" title="无址引用"></a>无址引用</h3><ol>
 <li><p>传统左值无址引用</p>
@@ -416,24 +420,25 @@
 </li>
 <li><p>无址引用共享被引用对象的“缓存”，不分配内存</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;&amp;  *p;	<span class="comment">//错：p不能指向没有内存的无址引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;&amp;  &amp;q;	<span class="comment">//错：int &amp;&amp;没有内存，不能被q引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;  &amp;&amp;r;	<span class="comment">//错：int &amp;没有内存，不能被r引用。</span></span><br><span class="line"><span class="keyword">int</span> &amp;&amp;  &amp;&amp;s;	<span class="comment">//错：int &amp;&amp;没有内存，不能被s引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;&amp;t[<span class="number">4</span>];    	<span class="comment">//错：数组的元素不能为int &amp;&amp;：数组内存空间为0。</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a[<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;   <span class="built_in"><span class="keyword">int</span></span>(&amp;&amp; t)[<span class="number">3</span>]=a; <span class="comment">//错：a是有址右值, 有名(a)的均是有址的。 </span></span><br><span class="line"><span class="built_in"><span class="keyword">int</span></span>(&amp;&amp; u)[<span class="number">3</span>]= &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;    <span class="comment">//正确，&#123;1，2，3&#125;是无址右值</span></span><br></pre></td></tr></table></figure>
+
 <p>感觉上面的写法怪怪的….</p>
-<p>大概捋了一下，引用指的应该是引用分配内存的量，而int&amp;这种类型没有被分配内存，它共享了被引用对象的内存，所以这种写法是不对的。另外就是，<strong>&amp;&amp;无法引用传统左值</strong></p>
+<p>大概捋了一下，引用指的应该是引用分配内存的量，而int&amp;这种类型没有被分配内存，它共享了被引用对象的内存，所以这种写法是不对的。另外就是，**&amp;&amp;无法引用传统左值**</p>
 </li>
 <li><p>如果函数返回值不是有址引用，则默认返回无址</p>
 </li>
 </ol>
 <h2 id="另外的一些类型"><a href="#另外的一些类型" class="headerlink" title="另外的一些类型"></a>另外的一些类型</h2><ol>
 <li><p>枚举类型，和C语言里基本一致，如果使用<strong>enum class</strong>或者<strong>enum struct</strong>定义枚举类型，则访问其元素时必须使用类型名::限定元素名</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">struct</span> <span class="title">RND</span>&#123;</span>e=<span class="number">2</span>, f=<span class="number">0</span>, g, h&#125;;	<span class="comment">//正确：e=2，f=0，g=1，h= 2</span></span><br><span class="line">RND m= RND::h;			<span class="comment">//必须用限定名RND::h</span></span><br><span class="line"><span class="keyword">int</span>  n=<span class="built_in"><span class="keyword">sizeof</span></span>(RND::h);		<span class="comment">//n=4, 枚举元素实现为整数</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">struct</span> <span class="title">RND</span>&#123;</span>e=<span class="number">2</span>, f=<span class="number">0</span>, g, h&#125;;	<span class="comment">//正确：e=2，f=0，g=1，h= 2</span></span><br><span class="line">RND m= RND::h;			<span class="comment">//必须用限定名RND::h</span></span><br><span class="line"><span class="keyword">int</span>  n=<span class="built_in"><span class="keyword">sizeof</span></span>(RND::h);		<span class="comment">//n=4, 枚举元素实现为整数</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ol>
 <li>函数声明结构如下</li>
 </ol>
-<p>​    <img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326145313498.png" alt="image-20220326145313498"></p>
-<ol>
+<p>​	<img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326145313498.png" alt="image-20220326145313498"></p>
+<ol start="2">
 <li><p>C++函数允许有省略参数…，表示后面可以接0到任意个任意类型的参数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n, ...)</span> </span>&#123;</span><br><span class="line">	      <span class="keyword">long</span> s = <span class="number">0</span>; <span class="keyword">int</span>* p = &amp;n + <span class="number">1</span>;    <span class="comment">//p指向第1个省略参数</span></span><br><span class="line">	      <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)  s += p[k];</span><br><span class="line">      <span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">( )</span> </span>&#123;</span><br><span class="line">	      <span class="keyword">int</span> a = <span class="number">4</span>;  <span class="keyword">long</span> s = <span class="built_in">sum</span>(<span class="number">3</span>, a, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">//执行完后s=9</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
 <p>另外就是省略参数和给出的参数连续存放，所以&amp;n+1可以获得第一个省略参数的地址。</p>
 </li>
 <li><p>函数参数可以是默认值，<strong>调用时如果没传实参则使用默认值</strong>，声明时所有默认值参数需要出现在所有非默认值参数的后面</p>
@@ -451,6 +456,7 @@
 </li>
 <li><p>我们知道如果自己没有定义一个构造函数的话，程序会有一个默认构造函数，还会有默认拷贝构造函数，我们可以用<strong>delete</strong>或<strong>default</strong>来进行选择</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">A</span>( ) = <span class="keyword">delete</span>;		<span class="comment">//删除产生构造函数A( )</span></span><br><span class="line">    <span class="built_in">A</span>(<span class="keyword">int</span> m): <span class="built_in">x</span>(m) &#123; &#125;</span><br><span class="line">    <span class="built_in">A</span>(<span class="keyword">const</span> A&amp;a) = <span class="keyword">default</span>;	<span class="comment">//接受编译生成的拷贝构造函数A(const A&amp;)</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="function">A <span class="title">x</span><span class="params">(<span class="number">2</span>)</span></span>;			<span class="comment">//调用自定义的单参构造函数A(int)</span></span><br><span class="line">    <span class="function">A <span class="title">y</span><span class="params">(x)</span></span>;			<span class="comment">//调用编译生成的拷贝构造函数A(const A&amp;)</span></span><br><span class="line">    <span class="comment">//A u;			//错误：u要调用构造函数A( )，但A( )被删除	</span></span><br><span class="line">    <span class="function">A <span class="title">v</span><span class="params">( )</span></span>;			<span class="comment">//正确：说明外部无参非成员函数v，且返回类型为A</span></span><br><span class="line">&#125;<span class="comment">//“A v( );”等价于“extern  A v( );”</span></span><br></pre></td></tr></table></figure>
+
 <p>A v()竟然是定义了一个函数 :astonished: </p>
 </li>
 <li><p>对于访问权限，感觉这里很重要，每年考试都会考</p>
@@ -476,7 +482,7 @@
 </li>
 <li><p>对象数组中的每一个成员都应该初始化，默认调用<strong>无参构造函数</strong>进行初始化</p>
 </li>
-<li><p>用常量对象做实参，优先调用参数为<strong>无址引用&amp;&amp;</strong>的构造函数，用变量等做实参，优先调用参数为<strong>&amp;</strong>的构造函数。</p>
+<li><p>用常量对象做实参，优先调用参数为**无址引用&amp;&amp;<strong>的构造函数，用变量等做实参，优先调用参数为</strong>&amp;**的构造函数。</p>
 </li>
 </ol>
 <h2 id="成员和成员指针"><a href="#成员和成员指针" class="headerlink" title="成员和成员指针"></a>成员和成员指针</h2><ol>
@@ -621,14 +627,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

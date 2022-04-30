@@ -337,14 +337,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>1.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -363,7 +363,7 @@
 </li>
 <li><p>关于可执行文件格式，有二进制可执行平面文件，a.out可执行文件，ELF可执行文件</p>
 </li>
-<li><p>a.out文件包括文件头/代码段/数据段/符号表</p>
+<li><p>a.out文件包括文件头&#x2F;代码段&#x2F;数据段&#x2F;符号表</p>
 </li>
 <li><p>程序执行过程：首先读取文件头，确定所需总内存大小，从总大小中分配一个内存区给执行映像，清除bss段（这里面存放着静态变量和全局变量，这也是为什么他们从0开始），然后程序放弃旧映像执行新映像。最后执行Crt0.o，调用主函数</p>
 </li>
@@ -371,8 +371,9 @@
 </li>
 <li><p>程序异常终止时，内核产生信号将其传递给进程，然后进程会终止</p>
 </li>
-<li><p>在函数调用过程中，对某函数可见的栈区称为该函数的<strong>栈帧</strong>，可以通过long jump在某个函数结束后返回到调用序列较早的某个函数，头文件是<strong><setjmp.h></setjmp.h></strong></p>
+<li><p>在函数调用过程中，对某函数可见的栈区称为该函数的<strong>栈帧</strong>，可以通过long jump在某个函数结束后返回到调用序列较早的某个函数，头文件是**&lt;setjmp.h&gt;**</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;setjmp.h&gt;</span></span></span><br><span class="line">jmp_buf env;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">A</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">B</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r,a=<span class="number">100</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;call setjmp to save envirenment\n&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span>((r=setjmp(env))==<span class="number">0</span>)&#123;<span class="comment">//setjmp()函数将当前执行函数保存在jmp_buf结构体中，返回0</span></span><br><span class="line">    A();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;normal&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;back to main() via long jump, r=%d a=%d\n&quot;</span>,r,a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">A</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;enter A()\n&quot;</span>);</span><br><span class="line">  B();<span class="comment">//正常进入B函数</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;exit A()\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">B</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;enter B()\n&quot;</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;long jump? (Y|n) &quot;</span>);<span class="comment">//如果选择跳跃，则不会返回main函数</span></span><br><span class="line">  <span class="keyword">if</span>(getchar()==<span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line">    longjmp(env,<span class="number">1234</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;exit B()\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>long jump可以用来终止调用序列中的某个函数，从而使得从先前保存的已知环境中恢复执行</p>
 </li>
 <li><p>64位堆栈使用有点不同，它将会优先使用6个寄存器，然后多余的变量会被保存在堆栈中</p>
@@ -385,8 +386,10 @@
 </li>
 <li><p>然后就是听了很久但是从没用过的makefile，一个make文件由一系列目标项、依赖项和规则组成。目标项通常是要创建或更新的文件。然后目前来说，makefile就是用来给定编译顺序的一份文件</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -f mk1</span><br></pre></td></tr></table></figure>
+
 <p>然后就是make中的宏，$用来表示替换</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CC = gcc</span><br><span class="line">OFLAGS = -Wall</span><br><span class="line">OBJS = t.o mtsum.o</span><br><span class="line">INCLUDE = -Ipath</span><br><span class="line"><span class="section">myt: type.h <span class="variable">$(OBJS)</span></span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o t <span class="variable">$(OBJS)</span> <span class="variable">$(INCLUDE)</span></span><br></pre></td></tr></table></figure>
+
 <p> 这本书里的makefile把人劝退了，这里在CSDN上找到了一个看起来还不错的文章，后面摘一下</p>
 </li>
 </ol>
@@ -519,14 +522,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

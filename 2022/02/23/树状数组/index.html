@@ -195,7 +195,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E4%BF%AE%E6%94%B9"><span class="nav-number">3.1.</span> <span class="nav-text">单点修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E5%89%8Dn-%E9%A1%B9%E5%92%8C"><span class="nav-number">3.2.</span> <span class="nav-text">求前n 项和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.3.</span> <span class="nav-text">区间查询</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">主要思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E4%BF%AE%E6%94%B9"><span class="nav-number">3.1.</span> <span class="nav-text">单点修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E5%89%8Dn-%E9%A1%B9%E5%92%8C"><span class="nav-number">3.2.</span> <span class="nav-text">求前n 项和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.3.</span> <span class="nav-text">区间查询</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -364,11 +364,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1>背景</h1>
-<p>​	一般对于数组而言，我们可能会经常进行单点修改和求某个区间和的操作，如果不做任何处理，那显然前者时间复杂度为$O(1)$，后者为$O(n)$，而如果用前缀和进行维护，后者时间复杂度就变成了$O(1)$，但是在单点修改的时候，由于要对前缀和数组进行维护，时间复杂度就变成了$O(n)$。</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>​	一般对于数组而言，我们可能会经常进行单点修改和求某个区间和的操作，如果不做任何处理，那显然前者时间复杂度为$O(1)$，后者为$O(n)$，而如果用前缀和进行维护，后者时间复杂度就变成了$O(1)$，但是在单点修改的时候，由于要对前缀和数组进行维护，时间复杂度就变成了$O(n)$。</p>
 <p>​	树状数组是一种折衷的方案，在大多数情况下可以让这两种操作的时间复杂度达到$log(n)$</p>
-<h1>主要思路</h1>
-<p>​	事实上在求数组的区间和的时候，可以考虑用另外一个数组去维护一系列小区间，然后将这些小区间组合成想要的大区间即可得到区间和。当然这样做显然是需要一种很好的思路的。</p>
+<h1 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h1><p>​	事实上在求数组的区间和的时候，可以考虑用另外一个数组去维护一系列小区间，然后将这些小区间组合成想要的大区间即可得到区间和。当然这样做显然是需要一种很好的思路的。</p>
 <p>​	树状数组利用二进制来进行维护。我们以11为例，11的二进制数是1011，那么就可以通过如下方式求前11项的和，即</p>
 <p>$((0000)_2,(1000)_2]+((1000)_2,(1010)_2]+((1010)_2,(1011)_2]$</p>
 <p>​	关于上面的三个区间的得到，其实是每次都去掉二进制数最右边那个1的一个循环过程。</p>
@@ -377,16 +375,15 @@
 <p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220326171038392.png" alt="image-20220326171038392"></p>
 <p>​	比如以一个二进制数$(100110)_2$为例，更改了这个下标对应的值，需要对应更改包围这个值的对应区间值，从最小的开始找，首先是$((100100)_2,(100110)_2]$，然后是$((100110)_2,(101000)_2]$，然后依次向上找。</p>
 <p>​	这个过程实际上就是，<strong>每一步从右边起，把连续的1都变成0，然后把左边的一个0变成1</strong>，实质上，这里面每一步都加了一个$lowbit(x)$</p>
-<h1>代码实现</h1>
-<p>​	目前来看最重要的函数应该是$lowbit(x)$。先回顾一下，这个函数的作用是求出x的二进制数中最靠右的1及其右边的0的这样一个值。显然如果按照正常的思路进行演算的时候会产生额外的时间开销，但是事实上我们有一个更加精妙的计算方法，即<strong>lowbit(x)=x&amp;(-x)</strong>。</p>
-<p>​	这个方法的利用了补码的特点，即按位取反再加一，比如1000…，求负后得到的还是1000…，而这个1前面的每一位都对应相反，因此再进行按位与即可。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>​	目前来看最重要的函数应该是$lowbit(x)$。先回顾一下，这个函数的作用是求出x的二进制数中最靠右的1及其右边的0的这样一个值。显然如果按照正常的思路进行演算的时候会产生额外的时间开销，但是事实上我们有一个更加精妙的计算方法，即**lowbit(x)&#x3D;x&amp;(-x)**。</p>
+<p>​	这个方法的利用了补码的特点，即按位取反再加一，比如1000…，求负后得到的还是1000….，而这个1前面的每一位都对应相反，因此再进行按位与即可。</p>
 <p>​	接下来就可以使用这个函数来进行相应的操作了</p>
-<h2 id="单点修改"><a class="header-anchor" href="#单点修改">¶</a>单点修改</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tree[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=i;pos&lt;MAXN;pos+=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		tree[pos]+=x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="求前n-项和"><a class="header-anchor" href="#求前n-项和">¶</a>求前n 项和</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=n;pos;pos-=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		ans+=tree[pos];</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="区间查询"><a class="header-anchor" href="#区间查询">¶</a>区间查询</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">quer</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">query</span>(b)-<span class="built_in">query</span>(a<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单点修改"><a href="#单点修改" class="headerlink" title="单点修改"></a>单点修改</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tree[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=i;pos&lt;MAXN;pos+=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		tree[pos]+=x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="求前n-项和"><a href="#求前n-项和" class="headerlink" title="求前n 项和"></a>求前n 项和</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> pos=n;pos;pos-=<span class="built_in">lowbit</span>(pos))</span><br><span class="line">		ans+=tree[pos];</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="区间查询"><a href="#区间查询" class="headerlink" title="区间查询"></a>区间查询</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">quer</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">query</span>(b)-<span class="built_in">query</span>(a<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -516,14 +513,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

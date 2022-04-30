@@ -343,7 +343,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -373,8 +373,8 @@
 <li><strong>which</strong>可以显示可执行文件的位置，只适用于可执行文件，否则有可能会出现错误</li>
 </ol>
 <h2 id="获取命令文档"><a href="#获取命令文档" class="headerlink" title="获取命令文档"></a>获取命令文档</h2><ol>
-<li><strong>help</strong>，获取Shell内建命令的帮助信息，另外就是在命令语法中，<strong>|</strong>表示项与项之间是互斥关系，而方括号表示这些项是可选的</li>
-<li><strong>—help</strong>，在命令后面的长参数，显示该命令所支持的语法和选项的相关描述</li>
+<li><strong>help</strong>，获取Shell内建命令的帮助信息，另外就是在命令语法中，**|**表示项与项之间是互斥关系，而方括号表示这些项是可选的</li>
+<li><strong>–help</strong>，在命令后面的长参数，显示该命令所支持的语法和选项的相关描述</li>
 <li><strong>man</strong>，该命令主要用于浏览针对命令行的手册，<strong>man program</strong>，另外就是这里的<strong>man</strong>命令和<strong>less</strong>命令的操作是一样的，被分为了若干节，如果需要查询具体某一小节，可以在man后面加数字，man的-k选项和apropos命令有着一样的功能</li>
 <li><strong>apropos</strong>，后面跟关键字，可以根据关键字匹配手册中的内容，可惜就是比较粗糙而已</li>
 <li><strong>whatis</strong>，用来显示手册页的简述</li>
@@ -382,27 +382,28 @@
 </ol>
 <h2 id="创建自己的命令"><a href="#创建自己的命令" class="headerlink" title="创建自己的命令"></a>创建自己的命令</h2><ol>
 <li>首先，可以通过在不同命令之间输入分号来一次性输入多条命令</li>
-<li>大概的格式就是<strong>alias foo=’cd /usr; ls; cd -‘</strong>，这是一个示例，模板大概就是<strong>alias name=’string’</strong>，另外就是建议首先使用type命令查询该名称是否被使用</li>
+<li>大概的格式就是**alias foo&#x3D;’cd &#x2F;usr; ls; cd -‘<strong>，这是一个示例，模板大概就是</strong>alias name&#x3D;’string’**，另外就是建议首先使用type命令查询该名称是否被使用</li>
 <li><strong>unalias name</strong>可以用来删除自定义命令</li>
 <li>不过要注意这里创建的都是临时变量，在关闭Shell时这些设置会自动取消</li>
 </ol>
-<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><p>​    这一部分主要用来讲述如何修改输出结果的去处和输入结果的来源</p>
-<h2 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h2><p>​    要想不让输出出现在屏幕上，可以用重定向操作符<strong>&gt;</strong>，后面跟上文件名即可，就将输出保存到了后面的文件中，另外根据相应的介绍，我们可以通过<strong>&gt; filename</strong>来创建空文件。</p>
-<p>​    另外可以通过<strong>&gt;&gt;</strong>来让输出加在文件的尾部</p>
+<h1 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h1><p>​	这一部分主要用来讲述如何修改输出结果的去处和输入结果的来源</p>
+<h2 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h2><p>​	要想不让输出出现在屏幕上，可以用重定向操作符**&gt;<strong>，后面跟上文件名即可，就将输出保存到了后面的文件中，另外根据相应的介绍，我们可以通过</strong>&gt; filename**来创建空文件。</p>
+<p>​	另外可以通过**&gt;&gt;**来让输出加在文件的尾部</p>
 <h2 id="标准错误重定向"><a href="#标准错误重定向" class="headerlink" title="标准错误重定向"></a>标准错误重定向</h2><ol>
-<li>首先要知道的是标准错误重定向没有专门的重定向操作符，我们需要引用文件描述符，在文件流中，通常用0、1和2分别描述标准输入、标准输出和标准错误，即使用<strong>2&gt;</strong>可以重定向标准错误</li>
-<li>将标准输出和标准错误定向到同一个文件中，只需要进行两次重定向，新版本的Bash提供了这样一种方法来定义，即<strong>ls -l /bin/usr &amp;&gt; ls-output,txt</strong>，追加的话只需要将其中的<strong>&gt;</strong>改成<strong>&gt;&gt;</strong>即可</li>
-<li>丢弃用不着的输出结果，我们只需要将其定向到<strong>/dev/null</strong>文件即可，该文件是一个系统设备，可以接收输入结果而不做任何处理</li>
+<li>首先要知道的是标准错误重定向没有专门的重定向操作符，我们需要引用文件描述符，在文件流中，通常用0、1和2分别描述标准输入、标准输出和标准错误，即使用**2&gt;**可以重定向标准错误</li>
+<li>将标准输出和标准错误定向到同一个文件中，只需要进行两次重定向，新版本的Bash提供了这样一种方法来定义，即<strong>ls -l &#x2F;bin&#x2F;usr &amp;&gt; ls-output,txt</strong>，追加的话只需要将其中的**&gt;<strong>改成</strong>&gt;&gt;**即可</li>
+<li>丢弃用不着的输出结果，我们只需要将其定向到**&#x2F;dev&#x2F;null**文件即可，该文件是一个系统设备，可以接收输入结果而不做任何处理</li>
 </ol>
 <h2 id="标准输入重定向"><a href="#标准输入重定向" class="headerlink" title="标准输入重定向"></a>标准输入重定向</h2><ol>
-<li><strong>cat</strong>命令，用来读取一个或多个文件并将其复制到标准输出，就是<strong>cat filename…</strong>，另外如果只输入cat，我们可以输入文件名，然后通过Ctrl+D，告诉cat已经到达了文件末尾</li>
+<li><strong>cat</strong>命令，用来读取一个或多个文件并将其复制到标准输出，就是**cat filename…**，另外如果只输入cat，我们可以输入文件名，然后通过Ctrl+D，告诉cat已经到达了文件末尾</li>
 <li>如果我们想要通过键盘输入并且将内容加到文件中，可以使用<strong>cat &gt; filename</strong>，这里大概进行了复合操作</li>
-<li>另外可以通过<strong>&lt;</strong>来修改标准输入方式</li>
+<li>另外可以通过**&lt;**来修改标准输入方式</li>
 </ol>
-<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>​    管道大概是一个非常形象的词语了，首先有操作符<strong>|</strong>，可以将一个命令的标准输出传给另一个命令的标准输入，<strong>command1 | command2</strong>，值得一提的是，之前学过的<strong>less</strong>命令可以实现标准输入，可以以浏览文件的形式查询标准输入</p>
-<h3 id="排序列表"><a href="#排序列表" class="headerlink" title="排序列表"></a>排序列表</h3><p>​    sort命令可以用来对文件进行排序</p>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>​    管道大概是一个非常形象的词语了，首先有操作符**|<strong>，可以将一个命令的标准输出传给另一个命令的标准输入，</strong>command1 | command2<strong>，值得一提的是，之前学过的</strong>less**命令可以实现标准输入，可以以浏览文件的形式查询标准输入</p>
+<h3 id="排序列表"><a href="#排序列表" class="headerlink" title="排序列表"></a>排序列表</h3><p>​	sort命令可以用来对文件进行排序</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /bin /usr/bin | sort | less</span><br></pre></td></tr></table></figure>
-<p>​    另外就是要注意<strong>&gt;</strong>和<strong>|</strong>之间的差异，前者将命令与文件连接在一起，后者将一个命令的输出结果和另一个命令的输出结果连接在一起</p>
+
+<p>​	另外就是要注意**&gt;<strong>和</strong>|**之间的差异，前者将命令与文件连接在一起，后者将一个命令的输出结果和另一个命令的输出结果连接在一起</p>
 <h3 id="另外的一些命令"><a href="#另外的一些命令" class="headerlink" title="另外的一些命令"></a>另外的一些命令</h3><ol>
 <li><p><strong>uniq</strong>命令，通常和sort命令结合使用，用来忽略或报告重复行，也可以使用-d选项来查看有哪些重复行</p>
 </li>
@@ -410,27 +411,28 @@
 </li>
 <li><p><strong>grep</strong>命令，输出与模式匹配的行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep pattern filename</span><br></pre></td></tr></table></figure>
+
 <p>选项-i忽略字母大小写，选项-v只输出不匹配指定模式的行</p>
 </li>
-<li><p><strong>head/tail</strong>，输出文件的开头/结尾部分，行数可以通过选项-n来调整，另外值得一提的就是tail通过加入-f选项可以实时观察文件，该过程用Ctrl+C结束</p>
+<li><p><strong>head&#x2F;tail</strong>，输出文件的开头&#x2F;结尾部分，行数可以通过选项-n来调整，另外值得一提的就是tail通过加入-f选项可以实时观察文件，该过程用Ctrl+C结束</p>
 </li>
 <li><p><strong>tee</strong>，从标准输入中读取内容，复制到标准输出和其他文件中</p>
 </li>
 </ol>
-<h1 id="一些有趣特性"><a href="#一些有趣特性" class="headerlink" title="一些有趣特性"></a>一些有趣特性</h1><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>​    在执行命令之前，Bash会执行一些替换操作，之前的像*这样的字符有很多含义，会对其进行扩展。</p>
-<p>​    这里我们说一下<strong>echo</strong>命令，该命令将其文本参数输出到标准输出，但是如果后面跟通配符的话，不会输出通配符，因为执行之前通配符就被扩展了</p>
-<h3 id="路径名扩展"><a href="#路径名扩展" class="headerlink" title="路径名扩展"></a>路径名扩展</h3><p>​    通配符的工作机制被称为路径名扩展，echo后面可以跟相应的组合</p>
-<h3 id="浪纹线扩展"><a href="#浪纹线扩展" class="headerlink" title="浪纹线扩展"></a>浪纹线扩展</h3><p>​    其实代表的就是主目录</p>
-<h3 id="算术扩展"><a href="#算术扩展" class="headerlink" title="算术扩展"></a>算术扩展</h3><p>​    形式为<strong>$((expression))</strong>，可以当作计算器来使用</p>
-<h3 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h3><p>​    花括号扩展可以包含一个前导和一个后继，主要得到的是各个字符串，当然也可以嵌套</p>
-<p>​    最大的作用就是创建文件或目录列表</p>
-<h3 id="参数扩展"><a href="#参数扩展" class="headerlink" title="参数扩展"></a>参数扩展</h3><p>​    有各种各样的参数，但是如果打错了参数，输出为空</p>
-<h3 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h3><p>​    <strong>echo $(cmd)</strong></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>​    这里主要提供一些有选择的禁止不需要的扩展的方法</p>
-<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>​    将文本放在双引号中，一切的特殊字符将会失去特殊含义，但是<strong>参数扩展、算术扩展、命令替换仍然可用</strong></p>
-<p>​    这样可以处理文件名中有空格的情况</p>
-<p>​    另外就是将文本放在单引号中可以禁止一切扩展的发生</p>
-<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>​    在希望使用如$的单个字符时，要用转义，另外就是一些控制码，此略</p>
+<h1 id="一些有趣特性"><a href="#一些有趣特性" class="headerlink" title="一些有趣特性"></a>一些有趣特性</h1><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>​	在执行命令之前，Bash会执行一些替换操作，之前的像*这样的字符有很多含义，会对其进行扩展。</p>
+<p>​	这里我们说一下<strong>echo</strong>命令，该命令将其文本参数输出到标准输出，但是如果后面跟通配符的话，不会输出通配符，因为执行之前通配符就被扩展了</p>
+<h3 id="路径名扩展"><a href="#路径名扩展" class="headerlink" title="路径名扩展"></a>路径名扩展</h3><p>​	通配符的工作机制被称为路径名扩展，echo后面可以跟相应的组合</p>
+<h3 id="浪纹线扩展"><a href="#浪纹线扩展" class="headerlink" title="浪纹线扩展"></a>浪纹线扩展</h3><p>​	其实代表的就是主目录</p>
+<h3 id="算术扩展"><a href="#算术扩展" class="headerlink" title="算术扩展"></a>算术扩展</h3><p>​	形式为**$((expression))**，可以当作计算器来使用</p>
+<h3 id="花括号扩展"><a href="#花括号扩展" class="headerlink" title="花括号扩展"></a>花括号扩展</h3><p>​	花括号扩展可以包含一个前导和一个后继，主要得到的是各个字符串，当然也可以嵌套</p>
+<p>​	最大的作用就是创建文件或目录列表</p>
+<h3 id="参数扩展"><a href="#参数扩展" class="headerlink" title="参数扩展"></a>参数扩展</h3><p>​	有各种各样的参数，但是如果打错了参数，输出为空</p>
+<h3 id="命令替换"><a href="#命令替换" class="headerlink" title="命令替换"></a>命令替换</h3><p>​	<strong>echo $(cmd)</strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>​	这里主要提供一些有选择的禁止不需要的扩展的方法</p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>​	将文本放在双引号中，一切的特殊字符将会失去特殊含义，但是<strong>参数扩展、算术扩展、命令替换仍然可用</strong></p>
+<p>​	这样可以处理文件名中有空格的情况</p>
+<p>​	另外就是将文本放在单引号中可以禁止一切扩展的发生</p>
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>​	在希望使用如$的单个字符时，要用转义，另外就是一些控制码，此略</p>
 
     </div>
 
@@ -560,14 +562,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">259k</span>
+    <span title="站点总字数">260k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:55</span>
+    <span title="站点阅读时长">3:56</span>
   </span>
 </div>
 <div class="busuanzi-count">
