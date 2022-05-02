@@ -5667,4 +5667,122 @@
         <tag>图</tag>
       </tags>
   </entry>
+  <entry>
+    <title>动态规划</title>
+    <url>/2022/05/02/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p>​	动态规划与分治法类似，只是分治法将问题划分成互不相交的子问题，最终再将它们的解组合起来，而动态规划应用于子问题重叠的情况，不同的子问题拥有公共的子子问题。</p>
+<p>​	动态规划通常用来求解最优化问题，这种问题有多个可行解，每个解都有一个值，我们希望寻找具有最优值的解。</p>
+<p>​	设计动态规划算法一般有如下四步：</p>
+<ol>
+<li>刻画一个最优解的结构特征</li>
+<li>递归地定义最优解的值</li>
+<li>计算最优解的值，通常采用自底向上的方法。</li>
+<li>利用计算出的信息构造出一个最优解。</li>
+</ol>
+<h1 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h1><p>​	钢条切割问题是指：给定一段长度为$n$英寸的钢条和一个价格表$p_i(i&#x3D;1,2,\dots,n)$，求切割钢条方案，使得销售收益$r_n$最大。</p>
+<p>​	对于长度为$n$的钢条，显然共有$2^{n-1}$种不同的方案。假设最优解最终将钢条切割成$k$段，即$n&#x3D;i_1+i_2+\dots+i_k$，对应最大收益为$r_n&#x3D;p_{i_1}+p_{i_2}+\dots+p_{i_k}$，事实上，我们可以用另一种描述方法，将其和更短钢条切割收益联系起来，即$r_n&#x3D;max(p_n,r_1+r_{n-1}.r_2+r_{n-2},\dots,r_{n-1}+r_1)$。可以看出，本问题满足<strong>最优子结构</strong>性质，即当前问题的最优解由划分成的子问题的最优解得到。</p>
+<p>​	我们可以对上面的求解做一定的简化，即将递归式更改成$r_n&#x3D;\underset{1\le i \le n}{max}(p_i+r_{n-i})$，即先从左边截下长度为$i$的一段，然后递归求解剩下的部分。</p>
+<p>​	如果我们直接用最朴素的方法进行递归的话，伪代码如下。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">CUT-<span class="built_in">ROD</span>(p,n)</span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    q=INT_MIN</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">        q=<span class="built_in">max</span>(q,p[i]+CUT-<span class="built_in">ROD</span>(p,n-i))</span><br><span class="line">    <span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​	它的时间效率会很差，因为在运行过程中整个函数会多次计算已经求解过的子问题。</p>
+<p>​	自然而然地，我们会考虑将相关子问题的解保存下来，在需要的时候直接返回这一个解，而不是重新去计算。这有了<strong>动态规划</strong>的思想。</p>
+<p>​	动态规划有两种实现方法：</p>
+<ol>
+<li><strong>带备忘的自顶向下法</strong>：采用递归来实现，和上面不同的是，在递归时会维护一个数组来保存已求解过的子问题，在需要一个子问题的解时，首先检查这个子问题是否被求解过，如果是就可以直接返回这个值，从而避免重新计算。</li>
+<li><strong>自底向上法</strong>：使用迭代，从规模最小的子问题开始求解，当遇到一个问题的时候，其子问题都已经求解过，可以直接使用其值。</li>
+</ol>
+<p>​    下面先给出自顶向下的伪代码。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">MEMOIZED-CUT-<span class="built_in">ROD</span>(p,n)</span><br><span class="line">    let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> array</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">0</span> to n</span><br><span class="line">        r[i]=INT_MIN</span><br><span class="line">    <span class="keyword">return</span> MEMOIZED-CUT-ROD-<span class="built_in">AUX</span>(p,n,r)</span><br><span class="line">MEMOIZED-CUT-ROD-<span class="built_in">AUX</span>(p,n,r)</span><br><span class="line">    <span class="keyword">if</span> r[n]&gt;=<span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> r[n]</span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">0</span></span><br><span class="line">        q=<span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span> q=INT_MIN</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">            q=<span class="built_in">max</span>(q,p[i]+MEMOIZED-CUT-ROD-<span class="built_in">AUX</span>(p,n-i,r))</span><br><span class="line">    <span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+
+<p>​	这个方法还是很好理解的，下面给出自底向上版本的伪代码。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">BOTTOM-UP-CUT-<span class="built_in">ROD</span>(p,n)</span><br><span class="line">    let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> array</span><br><span class="line">    r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">        q=INT_MIN</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to j</span><br><span class="line">            q=<span class="built_in">max</span>(q,p[i]+r[j-i])</span><br><span class="line">        r[j]=q</span><br><span class="line">    <span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
+
+<p>​	这个相对也比较好理解，就是从最开始的$r[0]&#x3D;0$开始逐步向上求解。</p>
+<p>​	接下来我们需要给出对应的切割方案，一般的考虑就是在求解子问题的时候将方案保存起来。下面给出自底向上时的一个方案</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">EXTENDED-BOTTOM-UP-CUT-<span class="built_in">ROD</span>(p,n)</span><br><span class="line">    let r[<span class="number">0.</span>.n] <span class="keyword">and</span> s[<span class="number">0.</span>.n] be <span class="keyword">new</span> arrays</span><br><span class="line">    r[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">        q=INT_MIN</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to j</span><br><span class="line">            <span class="keyword">if</span> q &lt; p[i]+r[j-i]</span><br><span class="line">                q=p[i]+r[j-i]</span><br><span class="line">                s[j]=i</span><br><span class="line">            r[j]=q</span><br><span class="line">    <span class="keyword">return</span> r <span class="keyword">and</span> s</span><br></pre></td></tr></table></figure>
+
+<p>​	其中数组$s[j]$表示长度为$j$的钢条对应的最优解的第一段钢条的切割长度，可以用如下代码打印</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">PRINT-CUT-ROD-<span class="built_in">SOLUTION</span>(s,n)</span><br><span class="line">    <span class="keyword">while</span> n&gt;<span class="number">0</span></span><br><span class="line">        print s[n]</span><br><span class="line">        n=n-s[n]</span><br></pre></td></tr></table></figure>
+
+<p>​	最后，这里要介绍一个概念，即<strong>子问题图</strong>，可以帮助我们理清子问题之间的关系。子问题图中的顶点是各个规模的子问题，边描述子问题的依赖关系。下图就是子问题图的一个实例，描述的是$n&#x3D;4$时候的钢条切割问题</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220502144924272.png" alt="image-20220502144924272"></p>
+<h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><p>​	首先对于矩阵相乘，假如说矩阵$A$是$p\times q$的矩阵，矩阵$B$是$q\times r$，那么最终的标量乘法次数就是$pqr$，而当我们有$n$个矩阵进行相乘的时候，通过合理的调整计算顺序，也就是加括号，可以大幅减少这种标量乘法的次数。</p>
+<p>​	矩阵链乘法问题可以这样描述：给定$n$个矩阵的链$&lt;A_1,A_2,\dots,A_n&gt;$，矩阵$A_i$的规模为$p_{i-1}\times p_i(1\le i\le n)$，求完全括号化方案，使得计算乘积$A_1A_2\dots A_n$所需标量乘法次数最少。</p>
+<p>​	显然我们可以先仿照钢条切割问题给出一个类似的递归公式，即当$n\ge 2$时，有$P(n)&#x3D;\sum_{k&#x3D;1}^{n-1}P(k)P(n-k)$，显然这就是卡塔兰数的递推形式，如果要穷举所有方案的话，最终的时间复杂度一定是非常糟糕的。</p>
+<p>​	接下来我们用开始逐步设计一个动态规划算法</p>
+<h2 id="刻画最优子结构"><a href="#刻画最优子结构" class="headerlink" title="刻画最优子结构"></a>刻画最优子结构</h2><p>​	我们首先先考虑对于矩阵链$A_iA_{i+1}\dots A_{j}$，如果其分割点在$A_k$和$A_{k+1}$之间，然后我们就需要继续分割$A_iA_{i+1}\dots A_k$和$A_{k+1}\dots A_j$两条矩阵链，最终原矩阵链的计算代价等于分割后两条矩阵链代价之和以及将这两条矩阵链的结果合并所需要的代价。显然，这两条矩阵链的代价也必须最小，否则我们很容易就可以得到一个更小的方案。</p>
+<p>​	从这里，我们就找到了最优方案的结构上的特征。</p>
+<h2 id="递归求解方案"><a href="#递归求解方案" class="headerlink" title="递归求解方案"></a>递归求解方案</h2><p>​	我们可以定义数组$m[i,j]$表示计算急诊链$A_i\dots A_j$所需的标量乘法次数的最小值，那么我们最终需要的就是$m[1,n]$</p>
+<p>​	显然，当$i&#x3D;j$时，不需要任何运算，因此对所有$i&#x3D;1,2,\dots,n$，均有$m[i,i]&#x3D;0$，而当$i&lt;j$时，利用上面我们得到的结构，可以定义$m[i,j]&#x3D;m[i,k]+m[k+1,j]+p_{i-1}p_kp_j$，这里的下标$k$是最优分割点，但是实际上我们并不知道这是哪一个点，所以需要枚举所有可能的分割点。</p>
+<p>​	此外，为了构造最优解，我们用另外一个数组$s[i,j]$保存对$A_iA_{i+1}\dots A_j$进行分割的最优位置$k$</p>
+<h2 id="计算最优代价"><a href="#计算最优代价" class="headerlink" title="计算最优代价"></a>计算最优代价</h2><p>​	这里先来实现自底向上方法，我们之前提到过使用这种方法的时候需要仔细规划求解顺序。注意到这里对于$m[i,j]$来说，只需要用到长度比它小的矩阵链的计算代价，所以我们只需要按照长度递增的顺序去求解即可。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">MATRIX-CHAIN-<span class="built_in">ORDER</span>(p)</span><br><span class="line">    n=p.length<span class="number">-1</span></span><br><span class="line">    let m[<span class="number">1.</span>.n,<span class="number">1.</span>.n] <span class="keyword">and</span> s[<span class="number">1.</span>.n<span class="number">-1</span>,<span class="number">2.</span>.n] be <span class="keyword">new</span> tables</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n</span><br><span class="line">        m[i,i]=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> l=<span class="number">2</span> to n <span class="comment">//枚举长度</span></span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to n-l+<span class="number">1</span> <span class="comment">//枚举起点</span></span><br><span class="line">            j=i+l<span class="number">-1</span></span><br><span class="line">            m[i,j]=INT_MAX</span><br><span class="line">            <span class="keyword">for</span> k=i to j<span class="number">-1</span> <span class="comment">//枚举断点</span></span><br><span class="line">                q=m[i,k]+m[k+<span class="number">1</span>,j]+pqr</span><br><span class="line">                <span class="keyword">if</span> q&lt;m[i,j]</span><br><span class="line">                    m[i,j]=q</span><br><span class="line">                    s[i,j]=k</span><br><span class="line">    <span class="keyword">return</span> m <span class="keyword">and</span> s</span><br></pre></td></tr></table></figure>
+
+<p>​	如果要使用自顶向下方法，只需要用类似于钢条切割的思路即可，即在最初给$m[i,j]$设置为特殊值，然后递归的时候每次都检查一下是否已经求解过即可。</p>
+<h2 id="构造最优解"><a href="#构造最优解" class="headerlink" title="构造最优解"></a>构造最优解</h2><p>​	根据上面的伪代码，我们大体可以看出来，对于完整的矩阵链，最后一次进行的矩阵乘法应该是$A_{1\dots s[1,n]}A_{s[1,n]+1\dots n}$，因此，我们可以递归的去进行输出，伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">PRINT-OPTIMAL-<span class="built_in">PARENS</span>(s,i,j)</span><br><span class="line">    <span class="keyword">if</span> i==j</span><br><span class="line">        print <span class="string">&quot;A&quot;</span></span><br><span class="line">    <span class="keyword">else</span> print <span class="string">&quot;(&quot;</span></span><br><span class="line">        PRINT-OPTIMAL-<span class="built_in">PARENS</span>(s,i,s[i,j])</span><br><span class="line">        PRINT-OPTIMAL-<span class="built_in">PARENS</span>(s,s[i,j]+<span class="number">1</span>,j)</span><br><span class="line">        print <span class="string">&quot;)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="动态规划原理"><a href="#动态规划原理" class="headerlink" title="动态规划原理"></a>动态规划原理</h1><p>​	这一部分主要说明在什么时候使用动态规划算法。主要考察了两个要素，即<strong>最优子结构</strong>和<strong>子问题重叠</strong></p>
+<h2 id="最优子结构"><a href="#最优子结构" class="headerlink" title="最优子结构"></a>最优子结构</h2><p>​	最优子结构就是说当前问题的最优解包含其子问题的最优解，用子问题的最优解构造出原问题的最优解。在寻找这种结构特征的时候，我们遵循了如下通用模式：</p>
+<ol>
+<li>做出一个选择，比如选择钢条第一次切割位置，来产生待解的子问题。</li>
+<li>对于一个给定问题，我们假定我们已经知道了哪种选择可以得到最优解。</li>
+<li>确定这次选择可以产生哪些子问题</li>
+<li>证明每个子问题的解都是它本身的最优解。</li>
+</ol>
+<p>​    此外，这里不同的子问题之间应该是<strong>互不相关的</strong>，否则就无法用动态规划去求解。这里书上举了无权最短简单路径和最长简单路径两个例子，讲的还是很清楚的。</p>
+<h2 id="重叠子问题"><a href="#重叠子问题" class="headerlink" title="重叠子问题"></a>重叠子问题</h2><p>​	在使用动态规划过程中，我们的算法应该在反复求解相同的子问题，而不是一直产生新的子问题。后者是分治法的特征。</p>
+<p>​	满足这种的，就满足了<strong>重叠子问题</strong>性质</p>
+<h2 id="两种方法的区别"><a href="#两种方法的区别" class="headerlink" title="两种方法的区别"></a>两种方法的区别</h2><p>​	一般来说，在所有子问题都要求解的时候，自底向上方法会快一点，因为它没有递归调用函数的开销，但是如果有一些子问题完全不必要求解，备忘机制就有优势了，因为它只会求解必要的子问题。</p>
+<h1 id="最长公共子序列（LCS）"><a href="#最长公共子序列（LCS）" class="headerlink" title="最长公共子序列（LCS）"></a>最长公共子序列（LCS）</h1><p>​	该问题描述如下：给定两个序列$X&#x3D;&lt;x_1,x_2,\dots,x_m&gt;$和$Y&#x3D;&lt;y_1,y_2,\dots,y_n&gt;$，求$X$和$Y$长度最长的公共子序列。下面还是用正常的思路来设计一个动态规划算法</p>
+<h2 id="刻画最优子结构-1"><a href="#刻画最优子结构-1" class="headerlink" title="刻画最优子结构"></a>刻画最优子结构</h2><p>​	这里采用子序列串的前缀来构造，事实上，如果我们想要得到长度为$i$的一个LCS，需要先得到长度为$i-1$的LCS，然后在它的基础上再加入一个公共项。那接下来就可以从这里来考虑。</p>
+<blockquote>
+<p>令$X&#x3D;&lt;x_1,x_2,\dots,x_m&gt;$和$Y&#x3D;&lt;y_1,y_2,\dots,y_n&gt;$为两个序列，$Z&#x3D;&lt;z_1,z_2,\dots,z_k&gt;$为其任意LCS。</p>
+<ol>
+<li>若$x_m&#x3D;y_n$，则$z_k&#x3D;x_m&#x3D;y_n$，且$Z_{k-1}$是$X_{m-1}$和$Y_{n-1}$的一个LCS</li>
+<li>若$x_m≠y_n$，则$z_k≠x_m$蕴含$Z$是$X_{m-1}$和$Y$的一个LCS。</li>
+<li>若$x_m≠y_n$，则$z_k≠y_n$蕴含$Z$是$X$和$Y_{n-1}$的一个LCS</li>
+</ol>
+</blockquote>
+<p>​	上面的定理的证明并不困难，所以该问题具有最优子结构性质</p>
+<p>​	此外，从上面的定理种也很容易能够看出该问题具有重叠子问题性质。</p>
+<h2 id="一个递归解"><a href="#一个递归解" class="headerlink" title="一个递归解"></a>一个递归解</h2><p>​	我们用$c[i,j]$表示$X_i$和$Y_j$的LCS长度，根据上面的最优子结构，首先当$i&#x3D;0$或$j&#x3D;0$时，$c[i,j]&#x3D;0$，当$i,j&gt;0$且$x_i&#x3D;y_j$时，$c[i,j]&#x3D;c[i-1,j-1]+1$，当$i,j&gt;0$且$x_i\neq y_j$时，$c[i,j]&#x3D;max(c[i-1,j],c[i,j-1])$</p>
+<h2 id="计算LCS的长度"><a href="#计算LCS的长度" class="headerlink" title="计算LCS的长度"></a>计算LCS的长度</h2><p>​	这里还是用自底向上去计算，当然用备忘肯定也是可以的。</p>
+<p>​	伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">LCS-<span class="built_in">LENGTH</span>(X,Y)</span><br><span class="line">    m=X.length</span><br><span class="line">    n=Y.length</span><br><span class="line">    let b[<span class="number">1.</span>.m,<span class="number">1.</span>.n] <span class="keyword">and</span> c[<span class="number">0.</span>.m,<span class="number">0.</span>.n] be <span class="keyword">new</span> tables</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to m</span><br><span class="line">        <span class="keyword">for</span> j=<span class="number">1</span> to n</span><br><span class="line">            <span class="keyword">if</span> xi==yj</span><br><span class="line">                c[i,j]==c[i<span class="number">-1</span>,j<span class="number">-1</span>]+<span class="number">1</span></span><br><span class="line">                b[i,j]=<span class="number">1</span></span><br><span class="line">            elseif c[i<span class="number">-1</span>,j]&gt;=c[i,j<span class="number">-1</span>]</span><br><span class="line">                c[i,j]=c[i<span class="number">-1</span>,j]</span><br><span class="line">                b[i,j]=<span class="number">2</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                c[i,j]=c[i,j<span class="number">-1</span>]</span><br><span class="line">                b[i,j]=<span class="number">3</span></span><br><span class="line">    <span class="keyword">return</span> c <span class="keyword">and</span> b</span><br></pre></td></tr></table></figure>
+
+<p>​	这里的$b$是用来记录当前的序列是从哪个状态转移过来的，如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ysjyx7/img@main/image-20220502165047654.png" alt="image-20220502165047654"></p>
+<h2 id="构造LCS"><a href="#构造LCS" class="headerlink" title="构造LCS"></a>构造LCS</h2><p>​	这里只需要利用数组$b$即可递归的打印了，伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">PRINT-<span class="built_in">LCS</span>(b,X,i,j)</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> j==<span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> b[i,j]==<span class="number">1</span></span><br><span class="line">        PRINT-<span class="built_in">LCS</span>(b,X,i<span class="number">-1</span>,j<span class="number">-1</span>)</span><br><span class="line">        print x</span><br><span class="line">    elseif b[i,j]=<span class="number">2</span></span><br><span class="line">        PRINT-<span class="built_in">LCS</span>(b,X,i<span class="number">-1</span>,j)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        PRINT-<span class="built_in">LCS</span>(b,X,i,j<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h2><p>​	其实数组$b$完全可以优化掉，只需要在重构的过程中比较一下数组$c$对应的值就行。</p>
+<h1 id="最优二叉搜索树"><a href="#最优二叉搜索树" class="headerlink" title="最优二叉搜索树"></a>最优二叉搜索树</h1><p>​	先给出问题定义：给定一个$n$个不同关键字的已排序的序列$K&#x3D;&lt;k_1,k_2,\dots,k_n&gt;$（因此$k_1&lt;k_2&lt;\dots&lt;k_n$），我们希望用这些关键字构造一个二叉搜索树，对于每个关键字$k_i$，都有一个频率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$种，因此我们还有$n+1$个“伪关键字”$d_0,d_1,\dots,d_n$表示不在$K$中的值。$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$d&#x3D;1,2,\dots,n-1$，$d_i$表示所有在$k_i$和$k_{i+1}$之间的值。对于所有的伪关键字，也有一个对应的$q_i$表示其搜索频率。可以知道每次搜索要么成功要么失败，因此有$\sum_{i&#x3D;1}^np_i+\sum_{i&#x3D;0}^nq_i&#x3D;1$</p>
+<p>​	通过上面的概念，我们可以求出在一个给定的二叉搜索树中进行一次搜索的期望代价，这里我们假定一次搜索的代价等于访问的结点数，也就是此次搜索到的结点的深度加一。显然可以给出下面的计算公式，即$E&#x3D;\sum_{i&#x3D;1}^n(depth(k_i)+1)*p_i+\sum_{i&#x3D;0}^n(depth(d_i)_1)*q_i$</p>
+<p>​	化简后为$E&#x3D;1+\sum_{i&#x3D;1}^ndepth(k_i)*p_i+\sum_{i&#x3D;0}^ndepth(d_i)q_i$</p>
+<p>​	也就是说，最优二叉搜索树就是搜索期望最小的那一个二叉搜索树。</p>
+<p>​	接下来我们还是按照几步来设计一个动态规划算法。</p>
+<h2 id="刻画最优子结构-2"><a href="#刻画最优子结构-2" class="headerlink" title="刻画最优子结构"></a>刻画最优子结构</h2><p>​	根据经验，考察其子树。根据二叉搜索树的性质，其子树必然包含连续关键字$k_i,\dots,k_j,1\le i\le j\le n$，且其叶子结点必然是伪关键字$d_{i-1},\dots,d_j$。</p>
+<p>​	显然，如果$T$是一棵相对于关键字$k_1,\dots,k_n$和伪关键字$d_0, \dots,d_n$的最优二叉搜索树，则$T$中一棵包含关键字$k_i,\dots,k_j$的子树$T’$必然是相对于关键字$k_i,\dots,k_j$（和伪关键字$d_{i-1},\dots,d_j$）的最优二叉搜索子树。</p>
+<h2 id="一个递归算法"><a href="#一个递归算法" class="headerlink" title="一个递归算法"></a>一个递归算法</h2><p>​	根据其最优子结构，我们需要枚举子树的根节点。</p>
+<p>​	我们定义$e[i,j]$为在包含关键字$k_i,\dots,k_j$的最优二叉搜索树中进行一次搜索的期望代价，最终我们需要$e[1,n]$。</p>
+<p>​	首先当$j&#x3D;i-1$时，子树中只有一个伪关键字$d_{i-1}$，所有$e[i,i-1]&#x3D;q_{i-1}$</p>
+<p>​	当$j\ge i$时，我们需要选出一个结点$k_r$来作为根节点。并且左子树和右子树分别为包含关键字$k_i,\dots,k_{r-1}$和关键字$k_{r+1},\dots,k_j$的最优二叉搜索树。当一个子树称为一个结点的子树的时候，每个结点的深度都增加了1，因此期望搜索代价的增加值应该为所有概率的和，即$w(i,j)&#x3D;\sum_{l&#x3D;i}^jp_l+\sum_{l&#x3D;i-1}^jq_l$。进而我们可以导出公式，即$e[i,j]&#x3D;p_r+(e[i,r-1]+w(i,r-1))+(e[r+1,j]+w(r+1,j))$，化简得到$e[i,j]&#x3D;e[i,r-1]+e[r+1,j]+w(i,j)$</p>
+<p>​	自此，我们得到了这个递推公式。为了重构，我们可以用$root[i,j]$来保存根节点$k_r$的下标$r$</p>
+<h2 id="计算求解"><a href="#计算求解" class="headerlink" title="计算求解"></a>计算求解</h2><p>​	这里我们要用一个表$w$来保存$w(i,j)$的值，从而防止每次重新计算$w(i,j)$。伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">OPTIMAL-<span class="built_in">BST</span>(p,q,n)</span><br><span class="line">    let e[<span class="number">1.</span>.n+<span class="number">1</span>,<span class="number">0.</span>.n],w[<span class="number">1.</span>.n+<span class="number">1</span>,<span class="number">0.</span>.n] <span class="keyword">and</span> root[<span class="number">1.</span>.n,<span class="number">1.</span>.n] be <span class="keyword">new</span> tables</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n+<span class="number">1</span></span><br><span class="line">        e[i,i<span class="number">-1</span>]=q[i<span class="number">-1</span>]</span><br><span class="line">        w[i,i<span class="number">-1</span>]=q[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">for</span> l=<span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">for</span> i=<span class="number">1</span> to n-l+<span class="number">1</span></span><br><span class="line">            j=i+l<span class="number">-1</span></span><br><span class="line">            e[i,j]=INT_MAX</span><br><span class="line">            w[i,j]=w[i,j<span class="number">-1</span>]+p[j]+q[j]</span><br><span class="line">            <span class="keyword">for</span> r=i to j</span><br><span class="line">                t=e[i,r<span class="number">-1</span>]+e[r+<span class="number">1</span>,j]+w[i,j]</span><br><span class="line">                <span class="keyword">if</span> t &lt; e[i,j]</span><br><span class="line">                    e[i,j]=t</span><br><span class="line">                    root[i,j]=r</span><br><span class="line">    <span class="keyword">return</span> e <span class="keyword">and</span> root</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
 </search>
