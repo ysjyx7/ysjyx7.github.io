@@ -5657,6 +5657,37 @@
 
 <p>​	在其每次迭代中，寻找某条增广路径，然后通过它对流$f$进行修改来获得一个更大的流，当不再有增广路径时，就得到了最大流。</p>
 <h3 id="Edmonds-Karp算法"><a href="#Edmonds-Karp算法" class="headerlink" title="Edmonds-Karp算法"></a>Edmonds-Karp算法</h3><p>​	我们主要通过使用BFS寻找增广路径来改善Ford-Fulkerson算法的效率，也就是说，我们选择的增广路径是一条从源节点到汇点的最短路径，其中<strong>每条边的权重为1</strong>，其运行时间复杂度为$O(VE^2)$</p>
+<h1 id="基本的图算法"><a href="#基本的图算法" class="headerlink" title="基本的图算法"></a>基本的图算法</h1><p>​	这一部分在之前已经接触过很多了，因此只是简略的记一下都讲了什么</p>
+<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>​	这里主要介绍了两种表示法，即<strong>邻接链表</strong>和<strong>邻接矩阵</strong></p>
+<h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>​	这里将结点标记成黑白灰三种颜色，白色表示这个结点没有被访问过，黑色和灰色都表示这个结点已经被访问过，区别在于黑色的结点的邻接结点都被访问过了，但是黑色没有，当然其实这种区分是完全不必要的。</p>
+<p>​	下面给出在邻接链表上进行BFS的伪代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">BFS</span>(G,s)</span><br><span class="line">    <span class="keyword">for</span> each vertex u in G.V - &#123;s&#125;</span><br><span class="line">        u.color=WHITE</span><br><span class="line">        u.d=inf</span><br><span class="line">        u.pi=NIL</span><br><span class="line">    s.color=GRAY</span><br><span class="line">    s.d=<span class="number">0</span></span><br><span class="line">    s.pi=NIL</span><br><span class="line">    Q=&#123;&#125;</span><br><span class="line">    <span class="built_in">ENQUEUE</span>(Q,s)</span><br><span class="line">    <span class="keyword">while</span> Q != &#123;&#125;</span><br><span class="line">        u=<span class="built_in">DEQUEUE</span>(Q)</span><br><span class="line">        <span class="keyword">for</span> each v in G.Adj[u]</span><br><span class="line">            <span class="keyword">if</span> v.color==WHITE</span><br><span class="line">                v.color=GRAY</span><br><span class="line">                v.d=u.d+<span class="number">1</span></span><br><span class="line">                v.pi=u</span><br><span class="line">                <span class="built_in">ENQUEUE</span>(Q,v)</span><br><span class="line">        u.color=BLACK</span><br></pre></td></tr></table></figure>
+
+<p>​	BFS可以找单源最短路径，不过这里要求边权值为1。书中依次证明了三角不等式性质、上界性质</p>
+<p>​	此外，BFS的过程中会创建一个广度优先树</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>​	DFS最终不一定会得到一个深度优先搜索树，而有可能得到一个深度优先森林。</p>
+<p>​	和BFS一样，这里也为每个结点维护了一个颜色属性，除此之外，还给每个结点维护两个时间戳，分别记录结点变成灰色的时刻和变成黑色的时刻，分别用$u.d$和$u.f$表示，伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">DFS</span>(G)</span><br><span class="line">    <span class="keyword">for</span> each vertex u in G.V</span><br><span class="line">        u.color=WHITE</span><br><span class="line">        u.pi=NIL</span><br><span class="line">    time=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> each vertex u in G.V</span><br><span class="line">        <span class="keyword">if</span> u.color==WHITE</span><br><span class="line">            DFS-<span class="built_in">VISIT</span>(G,u)</span><br><span class="line">DFS-<span class="built_in">VISIT</span>(G,u)</span><br><span class="line">    time=time+<span class="number">1</span></span><br><span class="line">    u.d=time</span><br><span class="line">    u.color=GRAY</span><br><span class="line">    <span class="keyword">for</span> each v in G.Adj[u]</span><br><span class="line">        <span class="keyword">if</span> v.color==WHITE</span><br><span class="line">            v.pi=u</span><br><span class="line">            DFS-<span class="built_in">VISIT</span>(G,v)</span><br><span class="line">    u.color=BLACK</span><br><span class="line">    time=time+<span class="number">1</span></span><br><span class="line">    u.f=time</span><br></pre></td></tr></table></figure>
+
+<p>​	对于DFS，结点的发现时间和完成时间具有<strong>括号化结构</strong>，用左括号表示$(u$表示$u$的发现，用右括号$u)$表示$u$的完成，那最终一定可以得到一个合法的括号序列。</p>
+<blockquote>
+<p><strong>定理一</strong>：在对有向图或无向图$G&#x3D;(V,E)$进行任意的DFS时，对于任意两个结点$u$和$v$来说，下面三种情况只有一种成立：</p>
+<ul>
+<li>区间$[u.d,u.f]$和区间$[v.d,v.f]$完全分离，在深度优先森林种，结点$u$和结点$v$没有亲子关系</li>
+<li>区间$[u.d,u.f]$完全包含在区间$[v.d,v.f]$中，在深度优先树中，结点$u$是结点$v$的后代</li>
+<li>区间$[v.d,v.f]$完全包含在区间$[u.d,u.f]$中，在深度优先树中，结点$v$是结点$u$的后代</li>
+</ul>
+</blockquote>
+<p>​	大致的证明也就是分析一下递归的过程</p>
+<p>​	根据上面的定义，很容易可以得到如下推论</p>
+<blockquote>
+<p><strong>推论一</strong>：在有向或无向图$G$的深度优先森林中，结点$v$是结点$u$的真后代当且仅当$u.d&lt;v.d&lt;v.f&lt;u.f$成立</p>
+</blockquote>
+<p>​    然后又给了所谓的<strong>白色路径定理</strong></p>
+<blockquote>
+<p><strong>定理二</strong>：在有向或无向图$G&#x3D;(V,E)$的深度优先森林中，结点$v$是结点$u$的后代当且仅当在发现结点$u$的时间$u.d$，存在一条从结点$u$到结点$v$的全部由白色节点所构成的路径</p>
+</blockquote>
+<p>​	从左到右证明是比较容易的。</p>
 ]]></content>
       <categories>
         <category>数据结构</category>
