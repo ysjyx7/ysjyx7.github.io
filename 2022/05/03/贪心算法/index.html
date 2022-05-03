@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ysjyx7.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+
+<script type="text/javascript" src="/js/cursor/zjAdd.js"></script>
+
+<div class="musicwyy2" style="position:fixed;left:0px;bottom:0px;z-index:105;opacity: 1; 
+    width: 30px;
+    height: 110px;    font-size: 15px;
+    font-family: 'Long Cang';">
+
+  <button type="button" style="
+    width: 30px;
+    height: 66px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0px;
+    background: #f5f5f5;
+    z-index:200;" onclick="musicChange()"> 播放器</button>
+
+</div> 
+
+
+
+<div class="musicwyy1" style="position:fixed;left:0px;bottom:0px;z-index:100;opacity: 1; 
+    width: 300px;
+    height: 110px;font-size: 0;">
+
+  <div class="aplayer-miniswitcher" style="
+    height: 110px;
+    width: 20px;
+    display: inline-block; overflow: hidden;">
+
+
+
+  </div>
+
+  <div style="
+    width: calc(100% - 30px);
+    height: 110px;
+    display: inline-block;" id="musicZJ">
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4968365&auto=1&height=66"></iframe>
+
+  </div>
+  
+</div>
+<meta name="description" content="主要总结了《算法导论》中经典的贪心算法问题与思想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心算法">
+<meta property="og:url" content="https://ysjyx7.github.io/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="ysjhust">
+<meta property="og:description" content="主要总结了《算法导论》中经典的贪心算法问题与思想">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-03T01:34:00.000Z">
+<meta property="article:modified_time" content="2022-05-03T02:58:30.464Z">
+<meta property="article:author" content="ysjhust">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="贪心算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ysjyx7.github.io/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ysjyx7.github.io/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/","path":"2022/05/03/贪心算法/","title":"贪心算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>贪心算法 | ysjhust</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ysjhust</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">https://ysjyx7.github.io</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">总述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">活动选择问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">最优子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E9%80%89%E6%8B%A9"><span class="nav-number">2.2.</span> <span class="nav-text">贪心选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">贪心算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E9%80%89%E6%8B%A9%E6%80%A7%E8%B4%A8"><span class="nav-number">3.1.</span> <span class="nav-text">贪心选择性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84-v2"><span class="nav-number">3.2.</span> <span class="nav-text">最优子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E5%AF%B9%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">3.3.</span> <span class="nav-text">贪心对动态规划</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">哈夫曼编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">哈夫曼算法的正确性</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ysjhust"
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">ysjhust</p>
+  <div class="site-description" itemprop="description">Hello World!</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ysjyx7" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ysjyx7" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/2849458605@qq.com" title="E-Mail → 2849458605@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yang-lao-er-25-83" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yang-lao-er-25-83" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_55101026?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/ysjyx7" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ysjyx7.github.io/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="ysjhust">
+      <meta itemprop="description" content="Hello World!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ysjhust">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          贪心算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-03 09:34:00 / 修改时间：10:58:30" itemprop="dateCreated datePublished" datetime="2022-05-03T09:34:00+08:00">2022-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">贪心算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">主要总结了《算法导论》中经典的贪心算法问题与思想</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>总述</h1>
+<p>​	贪心算法也用来求解最优化问题，它总是做出局部最优的选择，当然局部最优并不一定意味着最终的全局最优，但是很多时候确实可以得到最优解。</p>
+<p>​	和学习动态规划一样，这里先给出一个例子，然后再讨论贪心算法的原理</p>
+<h1>活动选择问题</h1>
+<p>​	假定有$n$个活动的集合$S={a_1,a_2,\dots,a_n}$，这些活动使用同一个资源，这个资源在某个时刻智能供一个活动使用，每个活动$a_i$都有一个开始时间$s_i$和一个结束时间$f_i$，其中$0\le s_i&lt;f_i&lt;\infty$。如果两个活动$a_i$和$a_j$满足$[s_i,f_i)$和$[s_j,f_j)$不重叠，则称它们是兼容的。现在我们希望选出一个最大活动兼容集。为了方便起见，我们假定活动已按结束时间的单调递增顺序排序。</p>
+<h2 id="最优子结构"><a class="header-anchor" href="#最优子结构">¶</a>最优子结构</h2>
+<p>​	首先这个问题是具有最优子结构性质的，我们用$S_{ij}$表示在$a_i$结束之后开始，在$a_j$开始之前结束的活动的集合，如果要求它的最大活动兼容集的话，可以考虑用$a_k$作分割，也就是说现在的子问题就是：找到$S_{ik}$的兼容活动集合和$S_{kj}$的兼容活动集合。可以用和之前类似的方法证明：这两个子问题的解也必然是最优的。如果我们用$c[i,j]$表示$S_{ij}$的最大活动兼容子集的大小，则有$c[i,j]=\underset{a_k\in S_{ij}}{max}(c[i,k]+c[k,j]+1)$，接下来我们就可以按照之前的思路去进行求解了。</p>
+<h2 id="贪心选择"><a class="header-anchor" href="#贪心选择">¶</a>贪心选择</h2>
+<p>​	事实上，我们每次只需要考察一个选择，而不是考察所有的选择。从直观上说，我们每次选择的活动，剩下的资源应该能够尽可能多的被其他任务所用，也就是说我们这次选择的任务应该是$S$中结束最早的活动，这样才能在后续安排尽可能多的活动。</p>
+<p>​	关于这个直觉正确性的证明，将它形式化表示出来，用$S_k$表示在$a_k$结束后开始的任务集合，即证明如下定理</p>
+<blockquote>
+<p><strong>定理一</strong>：考虑任意非空子问题$S_k$，令$a_m$是$S_k$中结束时间最早的活动，则$a_m$在$S_k$的某个最大兼容活动子集中</p>
+</blockquote>
+<p>​	这个证明不算复杂，只需要把$S_k$的最大兼容活动子集设为$A_k$，然后讨论$a_m$和$A_k$中结束时间最早的活动的关系即可。</p>
+<p>​	也就是说，我们可以自顶向下计算，每次选择结束时间最早的活动加入最优解，然后对剩余子问题进行求解，伪代码如下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RECURSIVE-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f,k,n)</span><br><span class="line">    m=k+<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> m&lt;=n <span class="keyword">and</span> s[m]&lt;f[k]</span><br><span class="line">        m=m+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> m&lt;=n</span><br><span class="line">        <span class="keyword">return</span> &#123;a[m]&#125;+RECURSIVE-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f,m,n)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>​	其中的第2-3行就是在查找$S_k$中最早结束的活动。</p>
+<p>​	当然迭代的代码看起来会更直观一点，如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GREEDY-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f)</span><br><span class="line">    n=s.length</span><br><span class="line">    A=&#123;a[<span class="number">1</span>]&#125;</span><br><span class="line">    k=<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> m=<span class="number">2</span> to n</span><br><span class="line">        <span class="keyword">if</span> s[m]&gt;=f[k]</span><br><span class="line">            A=A+a[m]</span><br><span class="line">            k=m</span><br><span class="line">    <span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<p>​	这两种实现方式的时间复杂度都是$\Theta(n)$</p>
+<h1>贪心算法原理</h1>
+<p>​	设计贪心算法主要有如下几个步骤：</p>
+<ol>
+<li>将最优化问题转化成这样的形式：对其做出一次选择后，只剩下一个子问题需要求解。</li>
+<li>证明做出贪心选择后，原问题总是存在最优解</li>
+<li>证明做出贪心选择后，剩余的子问题满足性质：其最优解与贪心选择组合即可得到原问题的最优解。</li>
+</ol>
+<p>​    和动态规划一样，要想判断贪心算法是否能求解一个最优化问题，需要考察两个性质，即<strong>贪心选择性质</strong>和<strong>最优子结构</strong></p>
+<h2 id="贪心选择性质"><a class="header-anchor" href="#贪心选择性质">¶</a>贪心选择性质</h2>
+<p>​	贪心选择性质是这样的：我们可以通过做出局部最优选择来构造全局最优解，而不必考虑子问题的解。</p>
+<p>​	相比于动态规划，动态规划在每一步都要进行选择，但是这些选择一般都依赖于子问题的解，因此常用自底向上的方法求解动态规划问题，即先求解较小的子问题，然后逐步组合成较大的子问题。而贪心算法则常用自顶向下的方法，通过一次次的选择将给定问题的规模变得越来越小。</p>
+<p>​	当然，我们必须证明每一步都做出贪心选择能够生成全局最优解，就和活动选择问题一样。这种证明通常先考察某个子问题的最优解，然后用贪心选择替换某个其他选择来修改这个解，从而得到一个相似但规模更小的子问题。</p>
+<h2 id="最优子结构-v2"><a class="header-anchor" href="#最优子结构-v2">¶</a>最优子结构</h2>
+<p>​	贪心算法中的最优子结构相对更加直接，要做的全部工作就是论证将子问题的最优解与贪心选择组合在一起就能生成原问题的最优解。</p>
+<h2 id="贪心对动态规划"><a class="header-anchor" href="#贪心对动态规划">¶</a>贪心对动态规划</h2>
+<p>​	这里提出两个问题来说明两个算法之间的差别。</p>
+<ul>
+<li><strong>0-1背包问题</strong>：共有$n$个商品，第$i$个商品价值为$v_i$，重量为$w_i$，小偷背包最多能容纳$W$的商品，均为整数，问应该拿哪些商品。</li>
+<li><strong>分数背包问题</strong>：相比于0-1背包，这里的所有商品都可以仅仅选择拿走一部分</li>
+</ul>
+<p>​    显然，贪心算法只能求解分数背包问题，而不能求解0-1背包问题。</p>
+<h1>哈夫曼编码</h1>
+<p>​	这个问题也是一个很熟悉的问题了，通过贪心算法来构造最优前缀码。伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">HUFFMAN</span>(C)</span><br><span class="line">    n=|C|</span><br><span class="line">    Q=C</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n<span class="number">-1</span></span><br><span class="line">        allocate a <span class="keyword">new</span> node z</span><br><span class="line">        z.left=x=EXTRACT-<span class="built_in">MIN</span>(Q)</span><br><span class="line">        z.right=Y=EXTRACT-<span class="built_in">MIN</span>(Q)</span><br><span class="line">        z.freq=x.freq+y.freq</span><br><span class="line">        <span class="built_in">INSERT</span>(Q,z)</span><br><span class="line">    <span class="keyword">return</span> EXTRACT-<span class="built_in">MIN</span>(Q)</span><br></pre></td></tr></table></figure>
+<p>​	伪代码中$Q$为优先队列，通过进行$|C|-1$次合并操作来构造出最终的二叉树，每次合并最低频率的两个对象，得到的新对象的频率设置为原来的两个对象的频率之和。</p>
+<p>​	时间复杂度为$O(nlgn)$</p>
+<h2 id="哈夫曼算法的正确性"><a class="header-anchor" href="#哈夫曼算法的正确性">¶</a>哈夫曼算法的正确性</h2>
+<p>​	首先先证明确定最优前缀码问题具有贪心选择和最优子结构性质</p>
+<blockquote>
+<p><strong>引理一</strong>：令$C$为一个字母表，其中每个字符$c\in C$都有一个频率$c.freq$，令$x$和$y$是$C$中频率最低的两个字符，那么存在$C$的一个最优前缀码，$x$和$y$的码字长度相同，且只有最后一个二进制位不同</p>
+</blockquote>
+<p>​	正如上文提到的，这种贪心选择性质的证明，其实就是将目前最优的情况假设出来，然后通过贪心选择对最优情况进行修改，证明得到的结果依然最优。</p>
+<p>​	然后再证明其拥有最优子结构性质。</p>
+<blockquote>
+<p><strong>引理二</strong>：令$C$为一个给定的字母表，其中$c\in C$都定义了一个频率$c.freq$。令$x$和$y$是$C$种频率最低的两个字符，令$C’$为$C$去掉字符$x$和$y$，加入一个新字符$z$后得到的字母表。令$T’$为字母表$C’$的任意一个最优前缀码对应的编码树。我们可以将$T’$种的叶结点$z$替换为一个以$x$和$y$为孩子的内部节点，得到树$T$，即为字母表$C$的一个最优前缀码</p>
+</blockquote>
+<p>​	主要利用反证法和树的性质求解。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ysjhust 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="ysjhust 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>ysjhust
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://ysjyx7.github.io/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">https://ysjyx7.github.io/2022/05/03/贪心算法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://www.zhihu.com/people/yang-lao-er-25-83">
+          <span class="icon">
+            <i class="fab fa-zhihu"></i>
+          </span>
+
+          <span class="label">知乎</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/m0_55101026?spm=1001.2101.3001.5343">
+          <span class="icon">
+            <i class="fa fa-book"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/ysjyx7">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">GitHub</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag"># 贪心算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/02/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="prev" title="动态规划">
+                  <i class="fa fa-chevron-left"></i> 动态规划
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ysjhust</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">274k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:09</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

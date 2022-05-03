@@ -5785,4 +5785,74 @@
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>贪心算法</title>
+    <url>/2022/05/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1>总述</h1>
+<p>​	贪心算法也用来求解最优化问题，它总是做出局部最优的选择，当然局部最优并不一定意味着最终的全局最优，但是很多时候确实可以得到最优解。</p>
+<p>​	和学习动态规划一样，这里先给出一个例子，然后再讨论贪心算法的原理</p>
+<h1>活动选择问题</h1>
+<p>​	假定有$n$个活动的集合$S={a_1,a_2,\dots,a_n}$，这些活动使用同一个资源，这个资源在某个时刻智能供一个活动使用，每个活动$a_i$都有一个开始时间$s_i$和一个结束时间$f_i$，其中$0\le s_i&lt;f_i&lt;\infty$。如果两个活动$a_i$和$a_j$满足$[s_i,f_i)$和$[s_j,f_j)$不重叠，则称它们是兼容的。现在我们希望选出一个最大活动兼容集。为了方便起见，我们假定活动已按结束时间的单调递增顺序排序。</p>
+<h2 id="最优子结构"><a class="header-anchor" href="#最优子结构">¶</a>最优子结构</h2>
+<p>​	首先这个问题是具有最优子结构性质的，我们用$S_{ij}$表示在$a_i$结束之后开始，在$a_j$开始之前结束的活动的集合，如果要求它的最大活动兼容集的话，可以考虑用$a_k$作分割，也就是说现在的子问题就是：找到$S_{ik}$的兼容活动集合和$S_{kj}$的兼容活动集合。可以用和之前类似的方法证明：这两个子问题的解也必然是最优的。如果我们用$c[i,j]$表示$S_{ij}$的最大活动兼容子集的大小，则有$c[i,j]=\underset{a_k\in S_{ij}}{max}(c[i,k]+c[k,j]+1)$，接下来我们就可以按照之前的思路去进行求解了。</p>
+<h2 id="贪心选择"><a class="header-anchor" href="#贪心选择">¶</a>贪心选择</h2>
+<p>​	事实上，我们每次只需要考察一个选择，而不是考察所有的选择。从直观上说，我们每次选择的活动，剩下的资源应该能够尽可能多的被其他任务所用，也就是说我们这次选择的任务应该是$S$中结束最早的活动，这样才能在后续安排尽可能多的活动。</p>
+<p>​	关于这个直觉正确性的证明，将它形式化表示出来，用$S_k$表示在$a_k$结束后开始的任务集合，即证明如下定理</p>
+<blockquote>
+<p><strong>定理一</strong>：考虑任意非空子问题$S_k$，令$a_m$是$S_k$中结束时间最早的活动，则$a_m$在$S_k$的某个最大兼容活动子集中</p>
+</blockquote>
+<p>​	这个证明不算复杂，只需要把$S_k$的最大兼容活动子集设为$A_k$，然后讨论$a_m$和$A_k$中结束时间最早的活动的关系即可。</p>
+<p>​	也就是说，我们可以自顶向下计算，每次选择结束时间最早的活动加入最优解，然后对剩余子问题进行求解，伪代码如下。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">RECURSIVE-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f,k,n)</span><br><span class="line">    m=k+<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> m&lt;=n <span class="keyword">and</span> s[m]&lt;f[k]</span><br><span class="line">        m=m+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> m&lt;=n</span><br><span class="line">        <span class="keyword">return</span> &#123;a[m]&#125;+RECURSIVE-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f,m,n)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>​	其中的第2-3行就是在查找$S_k$中最早结束的活动。</p>
+<p>​	当然迭代的代码看起来会更直观一点，如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">GREEDY-ACTIVITY-<span class="built_in">SELECTOR</span>(s,f)</span><br><span class="line">    n=s.length</span><br><span class="line">    A=&#123;a[<span class="number">1</span>]&#125;</span><br><span class="line">    k=<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> m=<span class="number">2</span> to n</span><br><span class="line">        <span class="keyword">if</span> s[m]&gt;=f[k]</span><br><span class="line">            A=A+a[m]</span><br><span class="line">            k=m</span><br><span class="line">    <span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<p>​	这两种实现方式的时间复杂度都是$\Theta(n)$</p>
+<h1>贪心算法原理</h1>
+<p>​	设计贪心算法主要有如下几个步骤：</p>
+<ol>
+<li>将最优化问题转化成这样的形式：对其做出一次选择后，只剩下一个子问题需要求解。</li>
+<li>证明做出贪心选择后，原问题总是存在最优解</li>
+<li>证明做出贪心选择后，剩余的子问题满足性质：其最优解与贪心选择组合即可得到原问题的最优解。</li>
+</ol>
+<p>​    和动态规划一样，要想判断贪心算法是否能求解一个最优化问题，需要考察两个性质，即<strong>贪心选择性质</strong>和<strong>最优子结构</strong></p>
+<h2 id="贪心选择性质"><a class="header-anchor" href="#贪心选择性质">¶</a>贪心选择性质</h2>
+<p>​	贪心选择性质是这样的：我们可以通过做出局部最优选择来构造全局最优解，而不必考虑子问题的解。</p>
+<p>​	相比于动态规划，动态规划在每一步都要进行选择，但是这些选择一般都依赖于子问题的解，因此常用自底向上的方法求解动态规划问题，即先求解较小的子问题，然后逐步组合成较大的子问题。而贪心算法则常用自顶向下的方法，通过一次次的选择将给定问题的规模变得越来越小。</p>
+<p>​	当然，我们必须证明每一步都做出贪心选择能够生成全局最优解，就和活动选择问题一样。这种证明通常先考察某个子问题的最优解，然后用贪心选择替换某个其他选择来修改这个解，从而得到一个相似但规模更小的子问题。</p>
+<h2 id="最优子结构-v2"><a class="header-anchor" href="#最优子结构-v2">¶</a>最优子结构</h2>
+<p>​	贪心算法中的最优子结构相对更加直接，要做的全部工作就是论证将子问题的最优解与贪心选择组合在一起就能生成原问题的最优解。</p>
+<h2 id="贪心对动态规划"><a class="header-anchor" href="#贪心对动态规划">¶</a>贪心对动态规划</h2>
+<p>​	这里提出两个问题来说明两个算法之间的差别。</p>
+<ul>
+<li><strong>0-1背包问题</strong>：共有$n$个商品，第$i$个商品价值为$v_i$，重量为$w_i$，小偷背包最多能容纳$W$的商品，均为整数，问应该拿哪些商品。</li>
+<li><strong>分数背包问题</strong>：相比于0-1背包，这里的所有商品都可以仅仅选择拿走一部分</li>
+</ul>
+<p>​    显然，贪心算法只能求解分数背包问题，而不能求解0-1背包问题。</p>
+<h1>哈夫曼编码</h1>
+<p>​	这个问题也是一个很熟悉的问题了，通过贪心算法来构造最优前缀码。伪代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">HUFFMAN</span>(C)</span><br><span class="line">    n=|C|</span><br><span class="line">    Q=C</span><br><span class="line">    <span class="keyword">for</span> i=<span class="number">1</span> to n<span class="number">-1</span></span><br><span class="line">        allocate a <span class="keyword">new</span> node z</span><br><span class="line">        z.left=x=EXTRACT-<span class="built_in">MIN</span>(Q)</span><br><span class="line">        z.right=Y=EXTRACT-<span class="built_in">MIN</span>(Q)</span><br><span class="line">        z.freq=x.freq+y.freq</span><br><span class="line">        <span class="built_in">INSERT</span>(Q,z)</span><br><span class="line">    <span class="keyword">return</span> EXTRACT-<span class="built_in">MIN</span>(Q)</span><br></pre></td></tr></table></figure>
+<p>​	伪代码中$Q$为优先队列，通过进行$|C|-1$次合并操作来构造出最终的二叉树，每次合并最低频率的两个对象，得到的新对象的频率设置为原来的两个对象的频率之和。</p>
+<p>​	时间复杂度为$O(nlgn)$</p>
+<h2 id="哈夫曼算法的正确性"><a class="header-anchor" href="#哈夫曼算法的正确性">¶</a>哈夫曼算法的正确性</h2>
+<p>​	首先先证明确定最优前缀码问题具有贪心选择和最优子结构性质</p>
+<blockquote>
+<p><strong>引理一</strong>：令$C$为一个字母表，其中每个字符$c\in C$都有一个频率$c.freq$，令$x$和$y$是$C$中频率最低的两个字符，那么存在$C$的一个最优前缀码，$x$和$y$的码字长度相同，且只有最后一个二进制位不同</p>
+</blockquote>
+<p>​	正如上文提到的，这种贪心选择性质的证明，其实就是将目前最优的情况假设出来，然后通过贪心选择对最优情况进行修改，证明得到的结果依然最优。</p>
+<p>​	然后再证明其拥有最优子结构性质。</p>
+<blockquote>
+<p><strong>引理二</strong>：令$C$为一个给定的字母表，其中$c\in C$都定义了一个频率$c.freq$。令$x$和$y$是$C$种频率最低的两个字符，令$C’$为$C$去掉字符$x$和$y$，加入一个新字符$z$后得到的字母表。令$T’$为字母表$C’$的任意一个最优前缀码对应的编码树。我们可以将$T’$种的叶结点$z$替换为一个以$x$和$y$为孩子的内部节点，得到树$T$，即为字母表$C$的一个最优前缀码</p>
+</blockquote>
+<p>​	主要利用反证法和树的性质求解。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>贪心算法</tag>
+      </tags>
+  </entry>
 </search>
